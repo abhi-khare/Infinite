@@ -113,6 +113,7 @@ for _ in range(1,args.epoch):
     print("Train Epoch: {epoch_no} train_loss: {loss} time elapsed: {time}".format(epoch_no = _ , loss = epoch_loss , time = end_train - start_train))
 
     # validation loop
+    start_val = time.time()
     if _% args.check_val_every_n_epoch == 0:
         print('*'*10  + 'Validation loop started' + '*'*10)
         model.eval()
