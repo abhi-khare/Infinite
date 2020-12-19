@@ -74,7 +74,7 @@ if args.freeze_encoder:
         params.requires_grad = False
 
 # optimizer
-optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': args.encoder_lr}], lr=args.rest_lr,weight_decay=1e-3)
+optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': args.encoder_lr}], lr=args.rest_lr,betas=(0.7, 0.799),weight_decay=1e-3)
 
 # training loop
 print('*'*10  + 'Training loop started' + '*'*10)
@@ -93,13 +93,9 @@ for _ in range(1,args.epoch):
         slots_target = batch['slots_id'].to(args.device, dtype = torch.long)
         slots_label = batch['slots_label']
         slots_mask = batch['slots_mask'].to(args.device, dtype = torch.long)
-        # zero the parameter gradients
-        #with torch.cuda.amp.autocast():
+
         joint_loss ,sp,ip = model(token_ids,mask,intent_target,slots_target,slots_mask)
-        
-        #scaler.scale(joint_loss).backward()
-        #scaler.step(optimizer)
-        #scaler.update()
+
         joint_loss.backward()
         optimizer.step()
         optimizer.zero_grad()
