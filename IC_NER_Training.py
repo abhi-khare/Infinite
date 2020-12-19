@@ -44,7 +44,7 @@ parser.add_argument('--exp_name', type=str)
 
 args = parser.parse_args()
 
-writer = SummaryWriter(args.exp_name)
+writer = SummaryWriter('logs/'+args.exp_name)
 ###################################################################################################################
 
 # loading id to slots dictionary
