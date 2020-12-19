@@ -36,8 +36,8 @@ class jointBert(nn.Module):
 
         #intent data flow
         intent_hidden = encoded_output[0][:,0]
-        intent_LN = nn.LayerNorm(intent_hidden.size()[1:])
-        intent_hidden = self.intent_dropout(intent_LN(intent_hidden))
+        #intent_LN = nn.LayerNorm(intent_hidden.size()[1:])
+        intent_hidden = self.intent_dropout(intent_hidden)
         intent_logits = self.intent_linear(intent_hidden)
         # accumulating intent classification loss 
         intent_loss = self.intent_loss(intent_logits, intent_target)
