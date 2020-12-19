@@ -45,7 +45,7 @@ class jointBert(nn.Module):
         
         # slots data flow 
         slots_hidden = encoded_output[0]
-        slots_LN = nn.LayerNorm(intent_hidden.size()[1:])
+        slots_LN = nn.LayerNorm(slots_hidden.size()[1:])
         slots_logits = self.slots_classifier(self.slots_dropout(slots_LN(slots_hidden)))
         # accumulating slot prediction loss
         slots_loss = -1 * self.joint_loss_coef * self.crf(slots_logits, slots_target, mask=slots_mask.byte())
