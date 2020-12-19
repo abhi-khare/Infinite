@@ -130,7 +130,7 @@ for _ in range(1,args.epoch):
                 slots_mask = batch['slots_mask'].to(args.device, dtype = torch.long)
 
                 joint_loss , slots_pred, intent_pred = model(token_ids,mask,intent_target,slots_target,slots_mask)
-                slots_target,slots_pred = getSlotLabels(slots_label,slots_pred,map_idx_slots)
+                slots_target,slots_pred = getSlotsLabels(slots_label,slots_pred,map_idx_slots)
                 
                 slots_F1 += f1_score(slots_target,slots_pred)
                 val_loss += joint_loss.detach()
