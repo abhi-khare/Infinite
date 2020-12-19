@@ -74,7 +74,7 @@ if args.freeze_encoder:
         params.requires_grad = False
 
 # optimizer
-optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': args.lr_encoder}], lr=args.lr_rest,weight_decay=1e-3)
+optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': args.encoder_lr}], lr=args.rest_lr,weight_decay=1e-3)
 
 # training loop
 print('*'*10  + 'Training loop started' + '*'*10)

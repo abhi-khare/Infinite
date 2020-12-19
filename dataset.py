@@ -47,7 +47,7 @@ class nluDataset(Dataset):
         intent_id = torch.tensor(self.data.intent_ID[index], dtype=torch.long)
         intent_label = self.data.intent[index]
         # slot
-        slot_id,slot_mask = process_label(self.data.slots_ID[index],self.max_len)
+        slot_id,slot_mask = processLabel(self.data.slots_ID[index],self.max_len)
         slot_label = self.data.slot_labels[index]
 
         language = self.data.language[index]
