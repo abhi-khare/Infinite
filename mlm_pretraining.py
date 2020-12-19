@@ -58,7 +58,7 @@ training_args = TrainingArguments(
     weight_decay=args.weight_decay,
     load_best_model_at_end=True,
     greater_is_better=False,
-    save_total_limit = 2,
+    save_total_limit = 1,
     logging_dir=args.log_dir,
     metric_for_best_model="eval_loss"
 )
