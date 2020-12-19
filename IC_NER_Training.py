@@ -78,7 +78,7 @@ optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': args.lr_en
 
 # training loop
 print('*'*10  + 'Training loop started' + '*'*10)
-
+scaler = torch.cuda.amp.GradScaler()
 for _ in range(1,args.epoch):
 
     epoch_loss,num_batch = 0.0,0
@@ -94,10 +94,15 @@ for _ in range(1,args.epoch):
         slots_label = batch['slots_label']
         slots_mask = batch['slots_mask'].to(args.device, dtype = torch.long)
         # zero the parameter gradients
+        with torch.cuda.amp.autocast():
+            joint_loss ,sp,ip = model(token_ids,mask,intent_target,slots_target,slots_mask)
+        
+        scaler.scale(joint_loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
+        #joint_loss.backward()
+        #optimizer.step()
         optimizer.zero_grad()
-        joint_loss ,sp,ip = model(token_ids,mask,intent_target,slots_target,slots_mask)
-        joint_loss.backward()
-        optimizer.step()
 
         epoch_loss += joint_loss.detach()
         
