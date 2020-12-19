@@ -147,7 +147,7 @@ for _ in range(1,args.epoch):
         writer.add_scalar('intent_acc/val', intent_acc, _ )
         writer.add_scalar('slot_F1/val', slots_F1, _ )
         
-        print("Val Epoch: {epoch_no} eval_loss: {loss} intent_acc:{acc} slots_F1: {F1} time elapsed: {time}".format(epoch_no = _  , acc= intent_acc,F1=slots_F1,   loss = eval_loss , time = end_val - start_val))
+        print("Val Epoch: {epoch_no} eval_loss: {loss} intent_acc:{acc} slots_F1: {F1} time elapsed: {time}".format(epoch_no = _  , acc= intent_acc,F1=slots_F1,   loss = val_loss , time = end_val - start_val))
         print('*'*10  + 'Training loop started' + '*'*10)
 
 writer.close()
