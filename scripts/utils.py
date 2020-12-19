@@ -18,6 +18,5 @@ def getSlotsLabels(slots_labels,slots_pred,map_ids_slots):
 
     return labels,preds
 
-def train()
 
 

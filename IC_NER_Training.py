@@ -9,7 +9,7 @@ from models import jointBert
 from dataset import nluDataset
 from torch.utils.tensorboard import SummaryWriter
 from seqeval.metrics import f1_score
-
+from scripts.utils import getSlotsLabels
 
 parser = argparse.ArgumentParser()
 ###################################################################################################################
