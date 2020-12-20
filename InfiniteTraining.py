@@ -39,7 +39,7 @@ trainDL = DataLoader(trainDS,batch_size=args.batch_size,shuffle=True,num_workers
 valDL = DataLoader(trainDS,batch_size=args.batch_size,shuffle=True,num_workers=2)
 
 optimizer =  optim.Adam( model.parameters() , lr=args.lr, weight_decay=1e-3)
-loss_func = losses.TripletMarginLoss()
+loss_func = losses.TripletMarginLoss(margin=1.0)
 
 # training loop
 print('*'*10  + 'Training loop started' + '*'*10)
@@ -70,14 +70,14 @@ for _ in range(1,args.epoch):
         optimizer.zero_grad()
         embeddings = torch.cat([embedding_aug,embedding_text],dim=0)
         label = torch.cat([label,label],dim=0)
-        contraLoss = loss_func(embedding,label)
-        loss.backward()
+        contraLoss = loss_func(embeddings,label)
+        contraLoss.backward()
         optimizer.step()
 
-        epoch_loss += contraLoss.detach()
+        train_loss += contraLoss.detach()
         #print(loss.detach())
     
-    epoch_loss = epoch_loss/float(num_batch)
+    train_loss = train_loss/float(num_batch)
     end_train = time.time()
     #writer.add_scalar('Loss/train', epoch_loss, _)
-    print("Train Epoch: {epoch_no} train_loss: {loss} time elapsed: {time}".format(epoch_no = _ , loss = epoch_loss , time = end_train - start_train))
+    print("Train Epoch: {epoch_no} train_loss: {loss} time elapsed: {time}".format(epoch_no = _ , loss = train_loss , time = end_train - start_train))
