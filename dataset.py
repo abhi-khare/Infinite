@@ -2,6 +2,7 @@ import torch
 from torch.utils.data import Dataset
 from transformers import DistilBertTokenizer
 import pandas as pd
+import random
 
 def processLabel(labels, max_len):
     slot_label,slot_mask,slot_length = [] , [],0
@@ -45,14 +46,24 @@ class contraDataset(Dataset):
 
     def __getitem__(self,index):
 
-        text = str(self.data.utterance[index])
+        text = str(self.data.text[index])
         text = " ".join(text.split())
 
-        aug_text = str(self.data.utterance[index])
+        choice = random.sample([1,2,3],1)[0]
+
+        if choice == 1:
+            aug_text = str(self.data.aug_1[index])
+        elif choice == 2:
+            aug_text = str(self.data.aug_2[index])
+        else:
+            aug_text = str(self.data.aug_3[index])
+ 
         aug_text = " ".join(aug_text.split())
 
         text_token_ids, text_mask = self.tokenize(text, self.tokenizer)
         aug_token_ids, aug_mask = self.tokenize(aug_text, self.tokenizer)
+
+        label  = self.data.label[index]
 
 
         return {
@@ -61,6 +72,8 @@ class contraDataset(Dataset):
 
             'aug_token_ids': torch.tensor(aug_token_ids, dtype=torch.long),
             'aug_mask': torch.tensor(aug_mask, dtype=torch.long),
+
+            'label' : torch.tensor(label,dtype=torch.long)
         } 
     
     def __len__(self):

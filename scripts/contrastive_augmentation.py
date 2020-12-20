@@ -68,6 +68,8 @@ aug_3 += translate(text_ES,'es','en',device)
 
 print('Augmentation of ES data finished')
 
-augDataPD = pd.DataFrame({'text':text , 'aug_1':aug_1 , 'aug_2':aug_2 , 'aug_3':aug_3}) 
+labels = list(range(len(text)))
+
+augDataPD = pd.DataFrame({'text':text , 'aug_1':aug_1 , 'aug_2':aug_2 , 'aug_3':aug_3 , 'label':labels}) 
 
 augDataPD.to_csv('./data/splits/text/contrastive_data.tsv',sep='\t',index=False)
