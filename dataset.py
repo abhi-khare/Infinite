@@ -18,6 +18,57 @@ def processLabel(labels, max_len):
     
     return slot_label, slot_mask
 
+class contraDataset(Dataset):
+
+    def __init__(self, file_dir, tokenizer, max_len, device):
+        self.data = pd.read_csv(file_dir, sep='\t')
+        self.tokenizer = DistilBertTokenizer.from_pretrained(tokenizer)
+        self.max_len = max_len
+    
+    def tokenize(self,text, tokenizer):
+        
+        inputs = self.tokenizer.encode_plus(
+            text,
+            None,
+            add_special_tokens=True,
+            max_length= self.max_len,
+            padding='max_length',
+            return_token_type_ids=True,
+            truncation=True
+        )
+
+        token_ids = inputs['input_ids']
+        mask = inputs['attention_mask']
+
+        return token_ids, mask
+
+
+    def __getitem__(self,index):
+
+        text = str(self.data.utterance[index])
+        text = " ".join(text.split())
+
+        aug_text = str(self.data.utterance[index])
+        aug_text = " ".join(aug_text.split())
+
+        text_token_ids, text_mask = self.tokenize(text, self.tokenizer)
+        aug_token_ids, aug_mask = self.tokenize(aug_text, self.tokenizer)
+
+
+        return {
+            'text_token_ids': torch.tensor(text_token_ids, dtype=torch.long),
+            'text_mask': torch.tensor(text_mask, dtype=torch.long),
+
+            'aug_token_ids': torch.tensor(aug_token_ids, dtype=torch.long),
+            'aug_mask': torch.tensor(aug_mask, dtype=torch.long),
+        } 
+    
+    def __len__(self):
+        return len(self.data)
+
+
+
+
 class nluDataset(Dataset):
     def __init__(self, file_dir, tokenizer, max_len, device):
         
