@@ -110,6 +110,7 @@ model = jointBert(args).to(device=args.device)
 
 # creating train and val dataset
 train_DS =  nluDataset(args.train_dir,args.tokenizer_weights,args.max_len,args.device)
+
 val_enDS =  nluDataset(args.val_dir+'dev_EN.tsv',args.tokenizer_weights,args.max_len,args.device)
 val_esDS =  nluDataset(args.val_dir+'dev_ES.tsv',args.tokenizer_weights,args.max_len,args.device)
 val_deDS =  nluDataset(args.val_dir+'dev_DE.tsv',args.tokenizer_weights,args.max_len,args.device) 
@@ -117,8 +118,10 @@ val_frDS =  nluDataset(args.val_dir+'dev_FR.tsv',args.tokenizer_weights,args.max
 
 # train and val dataloader
 train_DL = DataLoader(train_DS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
-val_DL = DataLoader(val_DS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
-
+val_enDL = DataLoader(val_enDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
+val_esDL = DataLoader(val_esDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
+val_deDL = DataLoader(val_deDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
+val_frDL = DataLoader(val_frDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
 # freezing base bert model
 if args.freeze_encoder:
     for params in model.encoder.parameters():
@@ -161,9 +164,9 @@ for _ in range(1,args.epoch):
     print("Train Epoch: {epoch_no} train_loss: {loss} time elapsed: {time}".format(epoch_no = _ , loss = epoch_loss , time = end_train - start_train))
 
     # validation loop
-    validation(model,val_enDS,'en')
-    validation(model,val_frDS,'fr')
-    validation(model,val_deDS,'de')
-    validation(model,val_esDS,'es')
+    validation(model,val_enDL,'en')
+    validation(model,val_frDL,'fr')
+    validation(model,val_deDL,'de')
+    validation(model,val_esDL,'es')
     
 writer.close()
