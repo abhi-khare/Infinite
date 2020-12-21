@@ -19,6 +19,7 @@ def processLabel(labels, max_len):
     
     return slot_label, slot_mask
 
+
 class contraDataset(Dataset):
 
     def __init__(self, file_dir, tokenizer, max_len, device):
@@ -80,8 +81,6 @@ class contraDataset(Dataset):
         return len(self.data)
 
 
-
-
 class nluDataset(Dataset):
     def __init__(self, file_dir, tokenizer, max_len, device):
         
@@ -114,7 +113,7 @@ class nluDataset(Dataset):
         slot_id,slot_mask = processLabel(self.data.slots_ID[index],self.max_len)
         slot_label = self.data.slot_labels[index]
 
-        language = self.data.language[index]
+        #language = self.data.language[index]
         
         return {
             'token_ids': torch.tensor(token_ids, dtype=torch.long),
@@ -122,7 +121,7 @@ class nluDataset(Dataset):
             'intent_id': intent_id,
             'slots_id' : slot_id,
             'slots_mask' : slot_mask,
-            'language' : language,
+            #'language' : language,
             'intent_label': intent_label,
             'slots_label' : slot_label
         } 
