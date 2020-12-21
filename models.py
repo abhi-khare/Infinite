@@ -55,7 +55,7 @@ class jointBert(nn.Module):
 
         slots_pred = self.crf.viterbi_decode(slots_logits, slots_mask.byte())
 
-        return joint_loss,slots_pred,intent_pred
+        return joint_loss,slots_pred,intent_pred,intent_loss,slots_loss
 
 
 class Bertencoder(nn.Module):
