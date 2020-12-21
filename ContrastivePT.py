@@ -22,6 +22,7 @@ parser.add_argument('--tokenizer_name', type=str, default='distilbert-base-multi
 
 parser.add_argument('--train_dir', type=str)
 parser.add_argument('--val_dir', type=str)
+parser.add_argument('--model_export', type=str)
 
 parser.add_argument('--max_len',type=int,default=56)
 parser.add_argument('--batch_size',type=int,default=128)
@@ -121,6 +122,8 @@ for _ in range(1,args.epoch):
     print("Train Epoch: {epoch_no} train_loss: {loss} time elapsed: {time}".format(epoch_no = _ , loss = train_loss , time = end_train - start_train))
 
     validation(model,valDL)
+
+model.encoder.save_pretrained(args.model_export)
 
 
 
