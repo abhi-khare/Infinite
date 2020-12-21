@@ -54,7 +54,6 @@ with open('./notebooks/map_ids_slots.pickle', 'rb') as handle:
 def accuracy(pred,target):
     return torch.sum(pred==target)/args.batch_size
 
-
 #############################################
 
 
@@ -94,7 +93,7 @@ for _ in range(1,args.epoch):
         slots_label = batch['slots_label']
         slots_mask = batch['slots_mask'].to(args.device, dtype = torch.long)
 
-        joint_loss ,sp,ip = model(token_ids,mask,intent_target,slots_target,slots_mask)
+        joint_loss ,sp,ip,il,sl = model(token_ids,mask,intent_target,slots_target,slots_mask)
 
         joint_loss.backward()
         optimizer.step()
@@ -113,7 +112,7 @@ for _ in range(1,args.epoch):
     if _% args.check_val_every_n_epoch == 0:
         print('*'*10  + 'Validation loop started' + '*'*10)
         model.eval()
-        val_loss, slots_F1, intent_acc = 0,0,0
+        val_loss, slots_F1, intent_acc, intent_loss, slots_loss = 0,0,0,0,0
         num_batch = 0
         with torch.no_grad():
             for idx,batch in enumerate(val_DL,0):
@@ -126,12 +125,14 @@ for _ in range(1,args.epoch):
                 slots_label = batch['slots_label']
                 slots_mask = batch['slots_mask'].to(args.device, dtype = torch.long)
 
-                joint_loss , slots_pred, intent_pred = model(token_ids,mask,intent_target,slots_target,slots_mask)
+                joint_loss , slots_pred, intent_pred, il,sl = model(token_ids,mask,intent_target,slots_target,slots_mask)
                 slots_target,slots_pred = getSlotsLabels(slots_label,slots_pred,map_idx_slots)
                 
                 slots_F1 += f1_score(slots_target,slots_pred)
                 val_loss += joint_loss.detach()
                 intent_acc += accuracy(intent_pred,intent_target)
+                intent_loss += il
+                slots_loss += sl
 
         
         end_val = time.time()
@@ -139,12 +140,16 @@ for _ in range(1,args.epoch):
         slots_F1  = slots_F1/float(num_batch)
         val_loss = val_loss/float(num_batch)
         intent_acc = intent_acc/float(num_batch)
+        intent_loss = intent_loss/float(num_batch)
+        slots_loss = slots_loss/float(num_batch)
+        
         
         writer.add_scalar('Loss/val', val_loss, _ )
         writer.add_scalar('intent_acc/val', intent_acc, _ )
         writer.add_scalar('slot_F1/val', slots_F1, _ )
-        
-        print("Val Epoch: {epoch_no} eval_loss: {loss} intent_acc:{acc} slots_F1: {F1} time elapsed: {time}".format(epoch_no = _  , acc= intent_acc,F1=slots_F1,   loss = val_loss , time = end_val - start_val))
+
+
+        print("Intent_loss: {il} Slots_loss: {} Val Epoch: {epoch_no} eval_loss: {loss} intent_acc:{acc} slots_F1: {F1} time elapsed: {time}".format(il=intent_loss, sl=slots_loss, epoch_no = _  , acc= intent_acc,F1=slots_F1,   loss = val_loss , time = end_val - start_val))
         print('*'*10  + 'Training loop started' + '*'*10)
 
 writer.close()
