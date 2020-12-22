@@ -126,8 +126,13 @@ if args.freeze_encoder:
         params.requires_grad = False
 
 # optimizer
-optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': args.encoder_lr}], lr=args.rest_lr,betas=(0.9, 0.999),weight_decay=1e-3)
-
+optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': args.encoder_lr},
+                             {'params': model.intent_linear_1.parameters(),'lr': args.intent_lr},
+                             {'params': model.intent_linear_2.parameters(),'lr': args.intent_lr},
+                             {'params': model.slots_classifier_1.parameters(),'lr': args.slots_lr},
+                             {'params': model.slots_classifier_2.parameters(),'lr': args.slots_lr},
+                             {'params': model.crf.parameters(),'lr': args.slots_lr},
+                             ], weight_decay=args.weight_decay)
 # training loop
 
 #scaler = torch.cuda.amp.GradScaler()
