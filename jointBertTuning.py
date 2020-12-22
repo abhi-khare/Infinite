@@ -44,7 +44,7 @@ parser.add_argument('--exp_name', type=str)
 
 args = parser.parse_args()
 
-writer = SummaryWriter(args.exp_name)
+#writer = SummaryWriter(args.exp_name)
 ###################################################################################################################
 
 with open('./notebooks/map_ids_slots.pickle', 'rb') as handle:
@@ -103,7 +103,7 @@ class jointBert(nn.Module):
         slots_logits = self.slots_classifier_2(F.relu(slots_hidden))
 
         # accumulating slot prediction loss
-        slots_loss = -1 * self.joint_loss_coef * self.crf(slots_logits, slots_target, mask=slots_mask.byte())
+        slots_loss = -1 * self.crf(slots_logits, slots_target, mask=slots_mask.byte())
         #slots_loss = torch.mean(slots_loss)
 
         precision1 = torch.exp(-self.log_vars[0])
@@ -202,7 +202,7 @@ if __name__ == "__main__":
     
     sampler = optuna.samplers.TPESampler()
     study = optuna.create_study(sampler=sampler,direction="minimize")
-    study.optimize(objective, n_trials=100, timeout=1200)
+    study.optimize(objective, n_trials=100, timeout=3600)
 
     pruned_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.PRUNED]
     complete_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.COMPLETE]
