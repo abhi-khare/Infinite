@@ -30,7 +30,8 @@ class jointBert(nn.Module):
         self.crf = CRF(args.slots_num)
 
         self.intent_loss = nn.CrossEntropyLoss()
-        self.joint_loss_coef =  args.joint_loss_coef
+        
+        self.log_vars = nn.Parameter(torch.zeros((2)))
     
 
     
@@ -52,10 +53,14 @@ class jointBert(nn.Module):
         slots_logits = self.slots_classifier_2(F.relu(slots_hidden))
 
         # accumulating slot prediction loss
-        slots_loss = -1 * self.joint_loss_coef * self.crf(slots_logits, slots_target, mask=slots_mask.byte())
-        slots_loss = torch.mean(slots_loss)
+        slots_loss = -1 *  self.crf(slots_logits, slots_target, mask=slots_mask.byte())
         
-        joint_loss = (slots_loss + intent_loss)/2.0
+        precision1 = torch.exp(-self.log_vars[0])
+        loss = torch.sum(precision1 * intent_loss + self.log_vars[0], -1)
+        precision2 = torch.exp(-self.log_vars[1])
+        loss +=  torch.sum(precision2 * slots_loss + self.log_vars[1], -1)
+        
+        joint_loss = torch.mean(loss)
 
         slots_pred = self.crf.viterbi_decode(slots_logits, slots_mask.byte())
 
