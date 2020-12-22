@@ -157,8 +157,8 @@ for epoch in range(1,args.epoch):
     
     epoch_loss = epoch_loss/float(num_batch)
     end_train = time.time()
-    writer.add_scalar('Loss/train', epoch_loss, _)
-    print("Train Epoch: {epoch_no} train_loss: {loss} time elapsed: {time}".format(epoch_no = _ , loss = epoch_loss , time = end_train - start_train))
+    writer.add_scalar('Loss/train', epoch_loss, epoch)
+    print("Train Epoch: {epoch_no} train_loss: {loss} time elapsed: {time}".format(epoch_no = epoch , loss = epoch_loss , time = end_train - start_train))
 
     # validation loop
     print('*'*10  + 'Validation loop started' + '*'*10)
