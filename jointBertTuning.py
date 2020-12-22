@@ -4,6 +4,7 @@ import os,time, pickle
 import argparse
 import torch
 import torch.nn as nn 
+import torch.nn.functional as F
 import torch.optim as optim
 from transformers import  DistilBertModel
 from TorchCRF import CRF
@@ -64,17 +65,22 @@ class jointBert(nn.Module):
         # intent layer
         p_intent = trial.suggest_float("intent_dropout", 0.1, 0.4)
         self.intent_dropout = nn.Dropout(p_intent)
-        self.intent_linear = nn.Linear(768, args.intent_num)
+        self.intent_linear_1 = nn.Linear(768, 64)
+        self.intent_linear_2 = nn.Linear(64, args.intent_num)
+        
         
         # slots layer
-        self.slots_classifier = nn.Linear(768, args.slots_num)
-        p_slots = trial.suggest_float("slot_dropout", 0.1, 0.4)
+        p_slots = trial.suggest_float("slots_dropout", 0.1, 0.4)
         self.slots_dropout = nn.Dropout(p_slots)
+        self.slots_classifier_1 = nn.Linear(768, 256)
+        self.slots_classifier_2 = nn.Linear(256, args.slots_num)
 
         self.crf = CRF(args.slots_num)
 
-        self.intent_loss = nn.CrossEntropyLoss()
-        self.joint_loss_coef =  args.joint_loss_coef
+        self.intent_loss = nn.CrossEntropyLoss(reduction='none')
+        #self.joint_loss_coef =  args.joint_loss_coef
+
+        self.log_vars = nn.Parameter(torch.zeros((2)))
     
 
     
@@ -84,20 +90,29 @@ class jointBert(nn.Module):
 
         #intent data flow
         intent_hidden = encoded_output[0][:,0]
-        intent_hidden = self.intent_dropout(intent_hidden)
-        intent_logits = self.intent_linear(intent_hidden)
+        intent_hidden = self.intent_linear_1(self.intent_dropout(F.relu(intent_hidden)))
+        intent_logits = self.intent_linear_2(F.relu(intent_hidden))
         # accumulating intent classification loss 
         intent_loss = self.intent_loss(intent_logits, intent_target)
+
         intent_pred = torch.argmax(nn.Softmax(dim=1)(intent_logits), axis=1)
         
         # slots data flow 
         slots_hidden = encoded_output[0]
-        slots_logits = self.slots_classifier(self.slots_dropout(slots_hidden))#slots_LN(slots_hidden)))
+        slots_hidden = self.slots_classifier_1(self.slots_dropout(F.relu(slots_hidden)))
+        slots_logits = self.slots_classifier_2(F.relu(slots_hidden))
+
         # accumulating slot prediction loss
         slots_loss = -1 * self.joint_loss_coef * self.crf(slots_logits, slots_target, mask=slots_mask.byte())
-        slots_loss = torch.mean(slots_loss)
+        #slots_loss = torch.mean(slots_loss)
+
+        precision1 = torch.exp(-self.log_vars[0])
+        loss = torch.sum(precision1 * intent_loss + self.log_vars[0], -1)
+        precision2 = torch.exp(-self.log_vars[1])
+        loss +=  torch.sum(precision2 * slots_loss + self.log_vars[1], -1)
         
-        joint_loss = (slots_loss + intent_loss)/2.0
+        joint_loss = torch.mean(loss)
+        #joint_loss = (slots_loss + intent_loss)/2.0
 
         slots_pred = self.crf.viterbi_decode(slots_logits, slots_mask.byte())
 
@@ -113,9 +128,16 @@ def objective(trial):
     
     #instantiate optimizer
     encoder_lr = trial.suggest_float("encoder_lr", 1e-5, 1e-3, log=True) # lr for encoder
-    rest_lr = trial.suggest_float("rest_lr", 1e-5, 1e-3, log=True) # lr for other layer
+    intent_lr = trial.suggest_float("intent_lr", 1e-5, 1e-3, log=True) # lr for encoder
+    slots_lr = trial.suggest_float("slots_lr", 1e-5, 1e-3, log=True) # lr for other layer
     weight_decay = trial.suggest_float("weight_decay", 0.1, 0.001, log=True)
-    optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': encoder_lr}], lr=rest_lr,weight_decay=weight_decay)
+    optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': encoder_lr},
+                             {'params': model.intent_linear_1.parameters(),'lr': intent_lr},
+                             {'params': model.intent_linear_1.parameters(),'lr': intent_lr},
+                             {'params': model.slots_classifier_1.parameters(),'lr': slots_lr},
+                             {'params': model.slots_classifier_1.parameters(),'lr': slots_lr},
+                             {'params': model.crf.parameters(),'lr': slots_lr},
+                             ], weight_decay=weight_decay)
     
 
     trainDL = DataLoader(trainDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
