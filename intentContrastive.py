@@ -27,6 +27,7 @@ parser.add_argument('--model_export', type=str)
 parser.add_argument('--max_len',type=int,default=56)
 parser.add_argument('--batch_size',type=int,default=128)
 parser.add_argument('--lr',type=int,default=0.0001)
+parser.add_argument('--weights',type=int,default=0.0001)
 parser.add_argument('--epoch',type=int,default=40)
 parser.add_argument('--exp_name',type=str)
 
@@ -41,7 +42,7 @@ trainDS, valDS = nluDataset(args.train_dir,args.tokenizer_name,args.max_len,args
 trainDL = DataLoader(trainDS,batch_size=args.batch_size,shuffle=True,num_workers=2)
 valDL = DataLoader(trainDS,batch_size=args.batch_size,shuffle=True,num_workers=2)
 
-optimizer =  optim.Adam( model.parameters(), lr=args.lr, weight_decay=1e-3)
+optimizer =  optim.Adam( model.parameters(), lr=args.lr, weight_decay=args.weights)
 
 loss_func = losses.TripletMarginLoss(margin=2.0)
 
