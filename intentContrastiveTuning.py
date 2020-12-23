@@ -91,7 +91,7 @@ def objective(trial):
             
             text_ids = batch['token_ids'].to(args.device, dtype = torch.long)
             text_mask = batch['mask'].to(args.device, dtype = torch.long)
-            label = batch['label'].to(args.device, dtype = torch.long)
+            label = batch['intent_id'].to(args.device, dtype = torch.long)
 
             embeddings = model(text_ids,text_mask)
             
@@ -128,7 +128,7 @@ if __name__ == "__main__":
     
     sampler = optuna.samplers.TPESampler()
     study = optuna.create_study(sampler=sampler,direction="minimize")
-    study.optimize(objective, n_trials=100, timeout=36000)
+    study.optimize(objective, n_trials=100, timeout=18000)
 
     pruned_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.PRUNED]
     complete_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.COMPLETE]
