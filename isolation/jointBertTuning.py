@@ -73,7 +73,7 @@ class jointBert(nn.Module):
 
         self.crf = CRF(args.slots_num)
 
-        self.intent_loss = nn.CrossEntropyLoss(reduction='none')
+        self.intent_loss = nn.CrossEntropyLoss()
         #self.joint_loss_coef =  args.joint_loss_coef
 
         self.log_vars = nn.Parameter(torch.zeros((2)))
@@ -103,7 +103,9 @@ class jointBert(nn.Module):
         slots_loss = -1 * self.crf(slots_logits, slots_target, mask=slots_mask.byte())
         slots_loss = torch.mean(slots_loss)
 
-        joint_loss = ((1-self.jlc)*intent_loss + (self.jlc)*slots_loss)
+        joint_loss = (1-self.jlc)*intent_loss + (self.jlc)*slots_loss
+        
+        print
 
         slots_pred = self.crf.viterbi_decode(slots_logits, slots_mask.byte())
 
