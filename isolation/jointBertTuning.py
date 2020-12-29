@@ -11,7 +11,6 @@ from TorchCRF import CRF
 from torch.utils.data import DataLoader
 from torch import cuda
 from dataset import nluDataset
-from torch.utils.tensorboard import SummaryWriter
 from seqeval.metrics import f1_score
 from utils import getSlotsLabels
 
@@ -20,11 +19,11 @@ parser = argparse.ArgumentParser()
 # model parameters
 parser.add_argument('--model_weights', type=str, default='distilbert-base-multilingual-cased')
 parser.add_argument('--tokenizer_weights', type=str, default='distilbert-base-multilingual-cased')
-parser.add_argument('--joint_loss_coef', type=float, default=1.0)
+parser.add_argument('--joint_loss_coef', type=float, default=0.5)
 parser.add_argument('--freeze_encoder', type=bool , default=False)
 parser.add_argument('--model_mode', type=str , default='IC_NER_MODE')
 #training parameters 
-parser.add_argument('--epoch',type=int,default=20)
+parser.add_argument('--epoch',type=int,default=25)
 parser.add_argument('--batch_size',type=int,default=128)
 parser.add_argument('--check_val_every_n_epoch',type=int,default=1)
 parser.add_argument('--shuffle_data', type=bool , default=True)
@@ -39,15 +38,12 @@ parser.add_argument('--max_len', type=int, default=56)
 
 #misc. 
 parser.add_argument('--device', type=str, default='cuda')
-parser.add_argument('--exp_name', type=str)
-
 
 args = parser.parse_args()
 
-#writer = SummaryWriter(args.exp_name)
 ###################################################################################################################
 
-with open('./notebooks/map_ids_slots.pickle', 'rb') as handle:
+with open('./map_ids_slots.pickle', 'rb') as handle:
     map_idx_slots = pickle.load(handle)
 
 def accuracy(pred,target):
