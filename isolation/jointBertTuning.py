@@ -126,7 +126,7 @@ def objective(trial):
     encoder_lr = trial.suggest_float("encoder_lr", 1e-5, 1e-3, log=True) # lr for encoder
     intent_lr = trial.suggest_float("intent_lr", 1e-5, 1e-3, log=True) # lr for encoder
     slots_lr = trial.suggest_float("slots_lr", 1e-5, 1e-3, log=True) # lr for other layer
-    weight_decay = trial.suggest_float("weight_decay", 0.1, 0.001, log=True)
+    weight_decay = trial.suggest_float("weight_decay", 0.001, 0.1, log=True)
     optimizer =  optim.Adam([{'params': model.encoder.parameters(), 'lr': encoder_lr},
                              {'params': model.intent_linear_1.parameters(),'lr': intent_lr},
                              {'params': model.intent_linear_2.parameters(),'lr': intent_lr},
