@@ -77,12 +77,12 @@ class jointBert(nn.Module):
         #self.joint_loss_coef =  args.joint_loss_coef
 
         self.log_vars = nn.Parameter(torch.zeros((2)))
+        
+        self.jlc = args.joint_loss_coef
     
 
     
     def forward(self, input_ids, attention_mask, intent_target, slots_target,slots_mask):
-
-        encoded_output = self.encoder(input_ids, attention_mask)
 
         #intent data flow
         intent_hidden = encoded_output[0][:,0]
@@ -90,9 +90,8 @@ class jointBert(nn.Module):
         intent_logits = self.intent_linear_2(F.relu(intent_hidden))
         # accumulating intent classification loss 
         intent_loss = self.intent_loss(intent_logits, intent_target)
-
         intent_pred = torch.argmax(nn.Softmax(dim=1)(intent_logits), axis=1)
-        
+
         # slots data flow 
         slots_hidden = encoded_output[0]
         slots_hidden = self.slots_classifier_1(self.slots_dropout(F.relu(slots_hidden)))
@@ -100,19 +99,13 @@ class jointBert(nn.Module):
 
         # accumulating slot prediction loss
         slots_loss = -1 * self.crf(slots_logits, slots_target, mask=slots_mask.byte())
-        #slots_loss = torch.mean(slots_loss)
+        slots_loss = torch.mean(slots_loss)
 
-        precision1 = torch.exp(-self.log_vars[0])
-        loss = torch.sum(precision1 * intent_loss + self.log_vars[0], -1)
-        precision2 = torch.exp(-self.log_vars[1])
-        loss +=  torch.sum(precision2 * slots_loss + self.log_vars[1], -1)
-        
-        joint_loss = torch.mean(loss)
-        #joint_loss = (slots_loss + intent_loss)/2.0
+        joint_loss = ((1-self.jlc)*intent_loss + (self.jlc)*slots_loss)
 
         slots_pred = self.crf.viterbi_decode(slots_logits, slots_mask.byte())
 
-        return joint_loss,slots_pred,intent_pred
+        return joint_loss,slots_pred,intent_pred,torch.mean(intent_loss),torch.mean(slots_loss)
 
 
 
