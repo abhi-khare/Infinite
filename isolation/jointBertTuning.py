@@ -161,7 +161,7 @@ def objective(trial):
         
         # validation
         model.eval()
-        val_loss, slots_F1 = 0,0
+        val_loss, slots_F1, intent_acc = 0,0,0
         num_batch = 0
         with torch.no_grad():
             for idx,batch in enumerate(valDL,0):
