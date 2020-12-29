@@ -198,7 +198,7 @@ if __name__ == "__main__":
     
     sampler = optuna.samplers.TPESampler()
     study = optuna.create_study(sampler=sampler,direction="minimize")
-    study.optimize(objective, n_trials=100, timeout=3600)
+    study.optimize(objective, n_trials=100, timeout=3600*3)
 
     pruned_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.PRUNED]
     complete_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.COMPLETE]
