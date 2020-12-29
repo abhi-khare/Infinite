@@ -83,7 +83,9 @@ class jointBert(nn.Module):
 
     
     def forward(self, input_ids, attention_mask, intent_target, slots_target,slots_mask):
-
+        
+        encoded_output = self.encoder(input_ids, attention_mask)
+        
         #intent data flow
         intent_hidden = encoded_output[0][:,0]
         intent_hidden = self.intent_linear_1(self.intent_dropout(F.relu(intent_hidden)))
