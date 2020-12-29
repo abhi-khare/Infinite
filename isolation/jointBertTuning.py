@@ -13,7 +13,7 @@ from torch import cuda
 from dataset import nluDataset
 from torch.utils.tensorboard import SummaryWriter
 from seqeval.metrics import f1_score
-from scripts.utils import getSlotsLabels
+from utils import getSlotsLabels
 
 parser = argparse.ArgumentParser()
 ###################################################################################################################
@@ -22,7 +22,7 @@ parser.add_argument('--model_weights', type=str, default='distilbert-base-multil
 parser.add_argument('--tokenizer_weights', type=str, default='distilbert-base-multilingual-cased')
 parser.add_argument('--joint_loss_coef', type=float, default=1.0)
 parser.add_argument('--freeze_encoder', type=bool , default=False)
-
+parser.add_argument('--model_mode', type=str , default='IC_NER_MODE')
 #training parameters 
 parser.add_argument('--epoch',type=int,default=20)
 parser.add_argument('--batch_size',type=int,default=128)

@@ -24,7 +24,7 @@ class jointBert(nn.Module):
         self.slots_dropout = nn.Dropout(args.slots_dropout_val)
         self.slots_classifier_1 = nn.Linear(768, 256)
         self.slots_classifier_2 = nn.Linear(256, args.slots_num)
-        #p_slots = trial.suggest_float("slot_dropout", 0.1, 0.4)
+        #p_slots = trial.suggest_float("slots_dropout", 0.1, 0.4)
         
 
         self.crf = CRF(args.slots_num)
