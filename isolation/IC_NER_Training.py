@@ -18,7 +18,7 @@ parser.add_argument('--model_weights', type=str, default='distilbert-base-multil
 parser.add_argument('--tokenizer_weights', type=str, default='distilbert-base-multilingual-cased')
 parser.add_argument('--slots_dropout_val', type=float, default=0.1)
 parser.add_argument('--intent_dropout_val', type=float, default=0.1)
-parser.add_argument('--joint_loss_coef', type=float, default=1.0)
+parser.add_argument('--joint_loss_coef', type=float, default=0.5)
 parser.add_argument('--freeze_encoder', type=bool , default=False)
 parser.add_argument('--model_mode', type=str , default='IC_NER_MODE')
 #training parameters 
