@@ -140,7 +140,7 @@ def objective(trial):
     valDL = DataLoader(valDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
 
     # training of model
-    
+    best_loss = 10000.0
     for epoch in range(1,args.epoch):
 
         model.train()
@@ -154,7 +154,7 @@ def objective(trial):
             slots_mask = batch['slots_mask'].to(args.device, dtype = torch.long)
             # zero the parameter gradients
             optimizer.zero_grad()
-            joint_loss , sp, ip = model(token_ids,mask,intent_target,slots_target,slots_mask)
+            joint_loss , sp, ip,il,sl = model(token_ids,mask,intent_target,slots_target,slots_mask)
             joint_loss.backward()
             optimizer.step()
 
@@ -174,7 +174,7 @@ def objective(trial):
                 slots_label = batch['slots_label']
                 slots_mask = batch['slots_mask'].to(args.device, dtype = torch.long)
                 
-                joint_loss , slots_pred, intent_pred = model(token_ids,mask,intent_target,slots_target,slots_mask)
+                joint_loss , slots_pred, intent_pred,intent_loss,slots_loss = model(token_ids,mask,intent_target,slots_target,slots_mask)
                 slots_target,slots_pred = getSlotsLabels(slots_label,slots_pred,map_idx_slots)
                 
                 slots_F1 += f1_score(slots_target,slots_pred)
@@ -184,15 +184,20 @@ def objective(trial):
         slots_F1  = slots_F1/float(num_batch)
         intent_acc = intent_acc/float(num_batch)
         val_loss = val_loss/float(num_batch)
+        intent_loss = intent_loss/float(num_batch)
+        slots_loss = slots_loss/float(num_batch)
         
-        print('Best loss:',val_loss,'Slots_f1:', slots_F1 , 'intent_acc:', intent_acc)
+        if best_loss > val_loss:
+            best_loss = val_loss
+        
+        print('val loss:',val_loss,'Slots_f1:', slots_F1 , 'intent_acc:', intent_acc,'intent_loss:', intent_loss,'slots_loss:', slots_loss)
 
-        trial.report(val_loss, epoch)
+        trial.report(best_loss, epoch)
 
         if trial.should_prune():
             raise optuna.exceptions.TrialPruned()
     
-    return val_loss
+    return best_loss
 
 if __name__ == "__main__":
     
