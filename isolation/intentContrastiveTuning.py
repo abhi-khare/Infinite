@@ -109,7 +109,7 @@ def objective(trial):
         
         # validation
 
-        if num_iter % 5 == 0:
+        if num_iter % 10 == 0:
             model.eval()
             val_loss ,num_batch = 0.0,0
             with torch.no_grad():
