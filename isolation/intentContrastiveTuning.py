@@ -35,7 +35,6 @@ parser.add_argument('--max_len', type=int, default=56)
 
 #misc. 
 parser.add_argument('--device', type=str, default='cuda')
-parser.add_argument('--exp_name', type=str)
 
 
 args = parser.parse_args()
