@@ -10,7 +10,7 @@ from transformers import DistilBertModel ,DistilBertTokenizer
 from pytorch_metric_learning import losses
 from pytorch_metric_learning import samplers
 from dataset import nluDataset
-from scripts.utils import getSlotsLabels
+from utils import getSlotsLabels
 import argparse
 
 
