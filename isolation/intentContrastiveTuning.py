@@ -89,7 +89,7 @@ def objective(trial):
 
     # training of model
     best_loss = 1000.0
-    num_iter = 0
+    num_iter = 1
     for train_batch in trainDL:
 
         model.train()
@@ -108,25 +108,28 @@ def objective(trial):
         optimizer.step()
         
         # validation
-        model.eval()
-        val_loss ,num_batch = 0.0,0
-        with torch.no_grad():
-            for batch in valDL:
-                    
-                num_batch +=1
-                text_ids = batch['token_ids'].to(args.device, dtype = torch.long)
-                text_mask = batch['mask'].to(args.device, dtype = torch.long)
-                labels = batch['intent_id'].to(args.device, dtype = torch.long)
 
-                embeddings = model(text_ids,text_mask)
-                contraLoss = loss_func(embeddings,labels)
-                val_loss += contraLoss.detach()
+        if num_iter % 5 == 0:
+            model.eval()
+            val_loss ,num_batch = 0.0,0
+            with torch.no_grad():
+                for batch in valDL:
+                        
+                    num_batch +=1
+                    text_ids = batch['token_ids'].to(args.device, dtype = torch.long)
+                    text_mask = batch['mask'].to(args.device, dtype = torch.long)
+                    labels = batch['intent_id'].to(args.device, dtype = torch.long)
 
-        val_loss = val_loss/float(num_batch)  
+                    embeddings = model(text_ids,text_mask)
+                    contraLoss = loss_func(embeddings,labels)
+                    val_loss += contraLoss.detach()
 
-        if best_loss > val_loss:
-            best_loss = val_loss
-        
+            val_loss = val_loss/float(num_batch)  
+            
+            print('iter:',num_iter,'val_loss:', slots_loss)
+            if best_loss > val_loss:
+                best_loss = val_loss
+            
         trial.report(best_loss, num_iter)
 
         if trial.should_prune():
