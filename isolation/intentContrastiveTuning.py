@@ -69,8 +69,8 @@ trainDS, valDS =  nluDataset(args.train_dir,args.tokenizer_weights,args.max_len,
 train_labels = list(pd.read_csv('./data/train_EN.tsv',sep='\t').intent_ID)
 val_labels = list(pd.read_csv('./data/dev_EN.tsv',sep='\t').intent_ID)
 
-sampler_train = samplers.MPerClassSampler(train_labels, 6, batch_size=None, length_before_new_iter=100000)
-sampler_val = samplers.MPerClassSampler(val_labels, 3, batch_size=None, length_before_new_iter=50000)
+sampler_train = samplers.MPerClassSampler(train_labels, 6, batch_size=None, length_before_new_iter=30000)
+sampler_val = samplers.MPerClassSampler(val_labels, 3, batch_size=None, length_before_new_iter=5000)
 
 def objective(trial):
 
@@ -109,7 +109,7 @@ def objective(trial):
         
         # validation
 
-        if num_iter % 10 == 0:
+        if num_iter % 20 == 0:
             model.eval()
             val_loss ,num_batch = 0.0,0
             with torch.no_grad():
