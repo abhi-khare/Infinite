@@ -84,8 +84,8 @@ def objective(trial):
     
     loss_func = losses.NTXentLoss(temperature=0.07)
 
-    trainDL = DataLoader(trainDS,batch_size=args.intent_num*6,num_workers=args.num_worker, sampler=sampler)
-    valDL = DataLoader(valDS,batch_size=args.intent_num*6,num_workers=args.num_worker,sampler=sampler)
+    trainDL = DataLoader(trainDS,batch_size=args.intent_num*6,num_workers=args.num_worker, sampler=sampler_train)
+    valDL = DataLoader(valDS,batch_size=args.intent_num*6,num_workers=args.num_worker,sampler=sampler_val)
 
     # training of model
     best_loss = 1000.0
@@ -136,8 +136,8 @@ def objective(trial):
 
 if __name__ == "__main__":
     
-    sampler = optuna.samplers.TPESampler()
-    study = optuna.create_study(sampler=sampler,direction="minimize")
+    trial_sampler = optuna.samplers.TPESampler()
+    study = optuna.create_study(sampler=trial_sampler,direction="minimize")
     study.optimize(objective, n_trials=100, timeout=18000)
 
     pruned_trials = [t for t in study.trials if t.state == optuna.trial.TrialState.PRUNED]
