@@ -89,12 +89,12 @@ def objective(trial):
 
     # training of model
     best_loss = 1000.0
-
-    for idx,train_batch in enumerate(trainDL):
+    num_iter = 0
+    for train_batch in trainDL:
 
         model.train()
         
-        num_batch += 1
+        num_iter += 1
         
         text_ids = train_batch['token_ids'].to(args.device, dtype = torch.long)
         text_mask = train_batch['mask'].to(args.device, dtype = torch.long)
@@ -127,7 +127,7 @@ def objective(trial):
         if best_loss > val_loss:
             best_loss = val_loss
         
-        trial.report(best_loss, idx)
+        trial.report(best_loss, num_iter)
 
         if trial.should_prune():
             raise optuna.exceptions.TrialPruned()
