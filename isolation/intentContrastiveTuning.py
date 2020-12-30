@@ -82,7 +82,9 @@ def objective(trial):
     
     optimizer =  optim.Adam(model.parameters(), lr=lr,weight_decay=weight_decay)
     
-    loss_func = losses.NTXentLoss(temperature=0.07)
+    #loss_func = losses.NTXentLoss(temperature=0.07)
+
+    loss_func = losses.ContrastiveLoss(pos_margin=0, neg_margin=1)
 
     trainDL = DataLoader(trainDS,batch_size=args.intent_num*6,num_workers=args.num_worker, sampler=sampler_train)
     valDL = DataLoader(valDS,batch_size=args.intent_num*6,num_workers=args.num_worker,sampler=sampler_val)
