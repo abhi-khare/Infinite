@@ -126,7 +126,7 @@ def objective(trial):
 
             val_loss = val_loss/float(num_batch)  
             
-            print('iter:',num_iter,'val_loss:', slots_loss)
+            print('iter:',num_iter,'val_loss:', val_loss)
             if best_loss > val_loss:
                 best_loss = val_loss
             
