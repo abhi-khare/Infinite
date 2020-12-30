@@ -111,7 +111,7 @@ def objective(trial):
         model.eval()
         val_loss ,num_batch = 0.0,0
         with torch.no_grad():
-            for _,batch in enumerate(valDL,0):
+            for batch in valDL:
                     
                 num_batch +=1
                 text_ids = batch['token_ids'].to(args.device, dtype = torch.long)
