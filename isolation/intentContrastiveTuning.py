@@ -66,8 +66,8 @@ class Bertencoder(nn.Module):
 # loading dataset
 trainDS, valDS =  nluDataset(args.train_dir,args.tokenizer_weights,args.max_len,args.device), nluDataset(args.val_dir,args.tokenizer_weights,args.max_len, args.device)
 
-train_labels = list(pd.read_csv('./data/train_EN.tsv',sep='\t').intent_id)
-val_labels = list(pd.read_csv('./data/dev_EN.tsv',sep='\t').intent_id)
+train_labels = list(pd.read_csv('./data/train_EN.tsv',sep='\t').intent_ID)
+val_labels = list(pd.read_csv('./data/dev_EN.tsv',sep='\t').intent_ID)
 
 sampler_train = samplers.MPerClassSampler(train_labels, 6, batch_size=None, length_before_new_iter=100000)
 sampler_val = samplers.MPerClassSampler(val_labels, 3, batch_size=None, length_before_new_iter=50000)
@@ -82,7 +82,7 @@ def objective(trial):
     
     optimizer =  optim.Adam(model.parameters(), lr=lr,weight_decay=weight_decay)
     
-    loss_func = losses.TripletMarginLoss(margin=5.0)
+    loss_func = losses.NTXentLoss(temperature=0.07)
 
     trainDL = DataLoader(trainDS,batch_size=args.intent_num*6,num_workers=args.num_worker, sampler=sampler)
     valDL = DataLoader(valDS,batch_size=args.intent_num*6,num_workers=args.num_worker,sampler=sampler)
