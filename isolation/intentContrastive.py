@@ -53,7 +53,7 @@ def validation(model,val_DL,epoch):
             text_mask = batch['mask'].to(args.device, dtype = torch.long)
             labels = batch['intent_id'].to(args.device, dtype = torch.long)
 
-            embeddings = model(text_ids,text_mask)
+            embeddings = model(text_ids,text_mask,1,2,3)
             contraLoss = loss_func(embeddings,labels)
             val_loss += contraLoss.detach()
 
@@ -75,7 +75,7 @@ for epoch in range(args.epoch):
         text_mask = train_batch['mask'].to(args.device, dtype = torch.long)
         label = train_batch['intent_id'].to(args.device, dtype = torch.long)
 
-        embeddings = model(text_ids,text_mask)
+        embeddings = model(text_ids,text_mask,1,2,3)
         
         optimizer.zero_grad()
         contraLoss = loss_func(embeddings,label)
