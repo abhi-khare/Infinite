@@ -20,7 +20,7 @@ args = ICPT_arguments()
 writer = SummaryWriter(args.exp_name)
 
 # model class object
-model = Bertencoder(args).to(device=args.device)
+model = Bertencoder(args.model_name).to(device=args.device)
 
 # train and validation dataset
 trainDS, valDS = nluDataset(args.train_dir,args.tokenizer_name,args.max_len,args.device), nluDataset(args.val_dir,args.tokenizer_name,args.max_len,args.device)
