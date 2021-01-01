@@ -11,32 +11,35 @@ class jointBert(nn.Module):
         super(jointBert,self).__init__()
         
         # base encoder
+
+        
         self.encoder = DistilBertModel.from_pretrained(args.model_name,return_dict=True,output_hidden_states=True)
+        
+        if args.model_mode == 'IC_NER_MODE':
+            # intent layer
+            #p_intent = trial.suggest_float("intent_dropout", 0.1, 0.4)
+            self.intent_dropout = nn.Dropout(args.intent_dropout_val)
+            self.intent_linear_1 = nn.Linear(768, 64)
+            self.intent_linear_2 = nn.Linear(64, args.intent_num)
+            
+            
+            # slots layer
+            self.slots_dropout = nn.Dropout(args.slots_dropout_val)
+            self.slots_classifier_1 = nn.Linear(768, 256)
+            self.slots_classifier_2 = nn.Linear(256, args.slots_num)
+            #p_slots = trial.suggest_float("slots_dropout", 0.1, 0.4)
+            
 
-        # intent layer
-        #p_intent = trial.suggest_float("intent_dropout", 0.1, 0.4)
-        self.intent_dropout = nn.Dropout(args.intent_dropout_val)
-        self.intent_linear_1 = nn.Linear(768, 64)
-        self.intent_linear_2 = nn.Linear(64, args.intent_num)
-        
-        
-        # slots layer
-        self.slots_dropout = nn.Dropout(args.slots_dropout_val)
-        self.slots_classifier_1 = nn.Linear(768, 256)
-        self.slots_classifier_2 = nn.Linear(256, args.slots_num)
-        #p_slots = trial.suggest_float("slots_dropout", 0.1, 0.4)
-        
+            self.crf = CRF(args.slots_num)
 
-        self.crf = CRF(args.slots_num)
+            self.intent_loss = nn.CrossEntropyLoss()
+            
+            self.log_vars = nn.Parameter(torch.zeros((2)))
 
-        self.intent_loss = nn.CrossEntropyLoss()
+            self.model_mode = args.model_mode
+            
+            self.jlc = args.joint_loss_coef
         
-        self.log_vars = nn.Parameter(torch.zeros((2)))
-
-        self.model_mode = args.model_mode
-        
-        self.jlc = args.joint_loss_coef
-    
 
     
     def forward(self, input_ids, attention_mask, intent_target, slots_target,slots_mask):
