@@ -85,12 +85,13 @@ for epoch in range(args.epoch):
         num_iter += 1
 
         train_batch_loss = contraLoss.detach()
-        
+        writer.add_scalar('train loss', train_batch_loss, num_iter)
         print("Train iteration #: {iter} train_loss: {loss} time elapsed: {time}".format(epoch_no = num_iter , loss = train_batch_loss))
 
         # validation loop
         if num_iter % 10 == 0:
             val_loss = validation(model,valDL,num_iter)
+            writer.add_scalar('val loss', val_loss, num_iter)
             print('iter:',num_iter/10,'val_loss:', val_loss)
 
             if best_loss > val_loss:
