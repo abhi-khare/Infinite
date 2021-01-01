@@ -29,8 +29,15 @@ parser.add_argument('--max_len',type=int,default=56)
 parser.add_argument('--batch_size',type=int,default=128)
 parser.add_argument('--lr',type=int,default=0.00001)
 parser.add_argument('--weights',type=int,default=0.0001)
-parser.add_argument('--epoch',type=int,default=40)
 parser.add_argument('--exp_name',type=str)
+
+parser.add_argument('--model_weights', type=str, default='distilbert-base-multilingual-cased')
+parser.add_argument('--tokenizer_weights', type=str, default='distilbert-base-multilingual-cased')
+
+# data
+parser.add_argument('--intent_num', type=int, default=17)
+parser.add_argument('--slots_num', type=int , default=160)
+
 
 args = parser.parse_args()
 
