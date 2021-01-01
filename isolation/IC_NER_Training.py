@@ -15,7 +15,7 @@ from arguments import IC_NER_argument
 args = IC_NER_argument()
 
 # writer object for tensorboard logs 
-writer = SummaryWriter('logs/'+args.exp_name)
+writer = SummaryWriter(args.exp_name)
 
 # loading id to slots dictionary
 with open('./bin/map_ids_slots.pickle', 'rb') as handle:
