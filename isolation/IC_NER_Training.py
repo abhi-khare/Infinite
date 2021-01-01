@@ -18,7 +18,7 @@ args = IC_NER_argument()
 writer = SummaryWriter('logs/'+args.exp_name)
 
 # loading id to slots dictionary
-with open('./map_ids_slots.pickle', 'rb') as handle:
+with open('./bin/map_ids_slots.pickle', 'rb') as handle:
     map_idx_slots = pickle.load(handle)
 
 # instantiating a model

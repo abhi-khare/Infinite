@@ -9,6 +9,7 @@ def ICPT_arguments():
     parser.add_argument('--lr',type=float,default=0.00001)
     parser.add_argument('--weights',type=float,default=0.0001)
     parser.add_argument('--margin',type=float)
+    parser.add_argument('--model_mode', type=str , default='INTENT_CONTRA_MODE')
 
     # data args
     parser.add_argument('--max_len',type=int,default=56)
