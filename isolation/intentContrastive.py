@@ -24,7 +24,7 @@ parser.add_argument('--tokenizer_name', type=str, default='distilbert-base-multi
 parser.add_argument('--train_dir', type=str)
 parser.add_argument('--val_dir', type=str)
 parser.add_argument('--model_export', type=str)
-
+parser.add_argument('--num_iter',type=int,default=250)
 parser.add_argument('--max_len',type=int,default=56)
 parser.add_argument('--batch_size',type=int,default=128)
 parser.add_argument('--lr',type=int,default=0.00001)
