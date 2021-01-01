@@ -11,7 +11,7 @@ from dataset import nluDataset
 from torch.utils.tensorboard import SummaryWriter
 from utils import getSlotsLabels
 from arguments import ICPT_arguments
-from models import jointBert
+from models import Bertencoder
 
 # CLI arguments
 args = ICPT_arguments()
@@ -20,7 +20,7 @@ args = ICPT_arguments()
 writer = SummaryWriter(args.exp_name)
 
 # model class object
-model = jointBert(args).to(device=args.device)
+model = Bertencoder(args).to(device=args.device)
 
 # train and validation dataset
 trainDS, valDS = nluDataset(args.train_dir,args.tokenizer_name,args.max_len,args.device), nluDataset(args.val_dir,args.tokenizer_name,args.max_len,args.device)
@@ -53,7 +53,7 @@ def validation(model,val_DL,epoch):
             text_mask = batch['mask'].to(args.device, dtype = torch.long)
             labels = batch['intent_id'].to(args.device, dtype = torch.long)
 
-            embeddings = model(text_ids,text_mask,1,2,3)
+            embeddings = model(text_ids,text_mask)
             contraLoss = loss_func(embeddings,labels)
             val_loss += contraLoss.detach()
 
@@ -75,7 +75,7 @@ for epoch in range(args.epoch):
         text_mask = train_batch['mask'].to(args.device, dtype = torch.long)
         label = train_batch['intent_id'].to(args.device, dtype = torch.long)
 
-        embeddings = model(text_ids,text_mask,1,2,3)
+        embeddings = model(text_ids,text_mask)
         
         optimizer.zero_grad()
         contraLoss = loss_func(embeddings,label)

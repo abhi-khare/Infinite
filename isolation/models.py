@@ -4,6 +4,24 @@ import torch.nn.functional as F
 from transformers import  DistilBertModel
 from TorchCRF import CRF
 
+
+class Bertencoder(nn.Module):
+
+    def __init__(self,model):
+
+        super(Bertencoder,self).__init__()
+        
+        self.encoder = DistilBertModel.from_pretrained(model,return_dict=True,output_hidden_states=True)
+        self.pre_classifier = torch.nn.Linear(768, 256)
+        
+    
+    def forward(self, input_ids, attention_mask):
+
+        encoded_output = self.encoder(input_ids, attention_mask)
+        hidden = self.pre_classifier(encoded_output[0][:,0])
+        
+        return hidden
+
 class jointBert(nn.Module):
 
     def __init__(self, args):
