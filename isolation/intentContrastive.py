@@ -78,7 +78,7 @@ optimizer =  optim.Adam( model.parameters(), lr=args.lr, weight_decay=args.weigh
 
 # experiment 1 triplet margin loss margin 2.0
 loss_func = losses.TripletMarginLoss(margin=2.0)
-best_loss = 1000.0
+
 def validation(model,val_DL,epoch):
     model.eval()
     val_loss ,num_batch = 0.0,0
@@ -94,17 +94,13 @@ def validation(model,val_DL,epoch):
             contraLoss = loss_func(embeddings,labels)
             val_loss += contraLoss.detach()
 
-    val_loss = val_loss/float(num_batch)  
-    
-    print('iter:',num_iter,'val_loss:', val_loss)
-    if best_loss > val_loss:
-        best_loss = val_loss
-        model.encoder.save_pretrained(args.model_export)
+    val_loss = val_loss/float(num_batch)
 
+    return val_loss  
 
 # training loop
 num_iter = 0
-
+best_loss = 1000.0
 for train_batch in trainDL:
 
     model.train()
@@ -123,4 +119,9 @@ for train_batch in trainDL:
     optimizer.step()
 
     if num_iter % 20 == 0:
-        validation(model,valDL,num_iter)
+        val_loss = validation(model,valDL,num_iter)
+
+        print('iter:',num_iter,'val_loss:', val_loss)
+        if best_loss > val_loss:
+            best_loss = val_loss
+            model.encoder.save_pretrained(args.model_export)
