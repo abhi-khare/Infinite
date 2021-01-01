@@ -11,7 +11,7 @@ class jointBert(nn.Module):
         super(jointBert,self).__init__()
         
         # base encoder
-        self.encoder = DistilBertModel.from_pretrained(args.model_weights,return_dict=True,output_hidden_states=True)
+        self.encoder = DistilBertModel.from_pretrained(args.model_name,return_dict=True,output_hidden_states=True)
 
         # intent layer
         #p_intent = trial.suggest_float("intent_dropout", 0.1, 0.4)
@@ -43,10 +43,17 @@ class jointBert(nn.Module):
 
         encoded_output = self.encoder(input_ids, attention_mask)
 
-        if self.model_mode == 'ENCODER_MODE':
+        if self.model_mode == 'INTENT_CONTRA_MODE':
             classifier = torch.nn.Linear(768, 256)
             hidden = classifier(encoded_output[0][:,0])
             return hidden
+        
+        elif self.model_mode == 'SLOTS_CONTRA_MODE':
+            return 2.0
+        
+        elif self.model_mode == 'INTENT_SLOTS_CONTRA_MODE':
+
+            return 3.0
         
         elif self.model_mode == 'IC_NER_MODE':
 
@@ -71,6 +78,6 @@ class jointBert(nn.Module):
 
             slots_pred = self.crf.viterbi_decode(slots_logits, slots_mask.byte())
 
-            return joint_loss,slots_pred,intent_pred,torch.mean(intent_loss),torch.mean(slots_loss)
+            return joint_loss,slots_pred,intent_pred,intent_loss,slots_loss
 
 
