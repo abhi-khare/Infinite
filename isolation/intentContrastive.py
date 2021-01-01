@@ -20,7 +20,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--device', type=str, default='cuda')
 parser.add_argument('--model_name', type=str, default='distilbert-base-multilingual-cased')
 parser.add_argument('--tokenizer_name', type=str, default='distilbert-base-multilingual-cased')
-
+parser.add_argument('--num_worker', type=int , default=4)
 parser.add_argument('--train_dir', type=str)
 parser.add_argument('--val_dir', type=str)
 parser.add_argument('--model_export', type=str)
