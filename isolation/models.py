@@ -10,9 +10,8 @@ class jointBert(nn.Module):
 
         super(jointBert,self).__init__()
         
+        self.model_mode = args.model_mode
         # base encoder
-
-        
         self.encoder = DistilBertModel.from_pretrained(args.model_name,return_dict=True,output_hidden_states=True)
         
         if args.model_mode == 'IC_NER_MODE':
@@ -35,8 +34,6 @@ class jointBert(nn.Module):
             self.intent_loss = nn.CrossEntropyLoss()
             
             self.log_vars = nn.Parameter(torch.zeros((2)))
-
-            self.model_mode = args.model_mode
             
             self.jlc = args.joint_loss_coef
         
