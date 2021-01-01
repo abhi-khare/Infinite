@@ -6,4 +6,6 @@
 #python jointBertTuning.py --train_dir ./data/train_EN.tsv --val_dir ./data/dev_EN.tsv 
 
 
-python intentContrastiveTuning.py --train_dir ./data/train_EN.tsv --val_dir ./data/dev_EN.tsv 
+#python intentContrastiveTuning.py --train_dir ./data/train_EN.tsv --val_dir ./data/dev_EN.tsv --device cpu 
+
+python intentContrastive.py --train_dir ./data/train_EN.tsv --val_dir ./data/dev_EN.tsv --model_export ./bin/ICPT_TML_2 --exp_name  ICPT_TML_2
