@@ -6,8 +6,9 @@ def ICPT_arguments():
     # model arguments
     parser.add_argument('--model_name', type=str, default='distilbert-base-multilingual-cased')
     parser.add_argument('--tokenizer_name', type=str, default='distilbert-base-multilingual-cased')
-    parser.add_argument('--lr',type=int,default=0.00001)
-    parser.add_argument('--weights',type=int,default=0.0001)
+    parser.add_argument('--lr',type=float,default=0.00001)
+    parser.add_argument('--weights',type=float,default=0.0001)
+    parser.add_argument('--margin',type=float)
 
     # data args
     parser.add_argument('--max_len',type=int,default=56)
@@ -30,14 +31,16 @@ def ICPT_arguments():
 
 def IC_NER_argument():
     parser = argparse.ArgumentParser()
-
-    parser.add_argument('--model_weights', type=str, default='distilbert-base-multilingual-cased')
-    parser.add_argument('--tokenizer_weights', type=str, default='distilbert-base-multilingual-cased')
+    
+    # model arguments
+    parser.add_argument('--model_name', type=str, default='distilbert-base-multilingual-cased')
+    parser.add_argument('--tokenizer_name', type=str, default='distilbert-base-multilingual-cased')
     parser.add_argument('--slots_dropout_val', type=float, default=0.1)
     parser.add_argument('--intent_dropout_val', type=float, default=0.1)
     parser.add_argument('--joint_loss_coef', type=float, default=0.5)
     parser.add_argument('--freeze_encoder', type=bool , default=False)
     parser.add_argument('--model_mode', type=str , default='IC_NER_MODE')
+    
     #training parameters 
     parser.add_argument('--encoder_lr', type=float , default=0.0005)
     parser.add_argument('--intent_lr', type=float , default=0.002)

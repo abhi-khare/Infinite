@@ -17,7 +17,7 @@ from models import jointBert
 args = ICPT_arguments()
 
 # writer object for tensorboard logs 
-writer = SummaryWriter('logs/'+args.exp_name)
+writer = SummaryWriter(args.exp_name)
 
 # model class object
 model = jointBert(args).to(device=args.device)
@@ -39,7 +39,7 @@ valDL = DataLoader(valDS,batch_size=args.intent_num*6,num_workers=args.num_worke
 
 # optimizer and loss function
 optimizer =  optim.Adam( model.parameters(), lr=args.lr, weight_decay=args.weights)
-loss_func = losses.TripletMarginLoss(margin=2.0)
+loss_func = losses.TripletMarginLoss(margin=args.margin)
 
 # validation loop
 def validation(model,val_DL,epoch):
