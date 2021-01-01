@@ -25,7 +25,7 @@ class nluDataset(Dataset):
     def __init__(self, file_dir, tokenizer, max_len, device):
         
         self.data = pd.read_csv(file_dir, sep='\t')
-        self.tokenizer = DistilBertTokenizer.from_pretrained(args.tokenizer)
+        self.tokenizer = DistilBertTokenizer.from_pretrained(args.tokenizer_name)
         self.max_len = max_len
 
     def __getitem__(self, index):

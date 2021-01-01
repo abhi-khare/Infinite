@@ -25,9 +25,9 @@ with open('./bin/map_ids_slots.pickle', 'rb') as handle:
 model = jointBert(args).to(device=args.device)
 
 # creating train and language specific val dataset
-train_DS =  nluDataset(args.train_dir,args.tokenizer_weights,args.max_len,args.device)
+train_DS =  nluDataset(args.train_dir,args.tokenizer_name,args.max_len,args.device)
 
-val_enDS =  nluDataset(args.val_dir+'dev_EN.tsv',args.tokenizer_weights,args.max_len,args.device)
+val_enDS =  nluDataset(args.val_dir+'dev_EN.tsv',args.tokenizer_name,args.max_len,args.device)
 #val_esDS =  nluDataset(args.val_dir+'dev_ES.tsv',args.tokenizer_weights,args.max_len,args.device)
 #val_deDS =  nluDataset(args.val_dir+'dev_DE.tsv',args.tokenizer_weights,args.max_len,args.device) 
 #val_frDS =  nluDataset(args.val_dir+'dev_FR.tsv',args.tokenizer_weights,args.max_len,args.device) 
