@@ -86,7 +86,7 @@ for epoch in range(args.epoch):
 
         train_batch_loss = contraLoss.detach()
         writer.add_scalar('train loss', train_batch_loss, num_iter)
-        print("Train iteration #: {iter} train_loss: {loss} time elapsed: {time}".format(epoch_no = num_iter , loss = train_batch_loss))
+        print("Train iteration #: {iter} train_loss: {loss} time elapsed: {time}".format(iter = num_iter , loss = train_batch_loss))
 
         # validation loop
         if num_iter % 10 == 0:
