@@ -8,9 +8,13 @@ def ICPT_arguments():
     parser.add_argument('--tokenizer_name', type=str, default='distilbert-base-multilingual-cased')
     parser.add_argument('--lr',type=float,default=0.00001)
     parser.add_argument('--weights',type=float,default=0.0001)
+    parser.add_argument('--model_mode', type=str , default='INTENT_CONTRA_MODE')
+
+    # loss function args
     parser.add_argument('--margin',type=float,default=2.0)
     parser.add_argument('--temperature',type=float,default=0.07)
-    parser.add_argument('--model_mode', type=str , default='INTENT_CONTRA_MODE')
+    parser.add_argument('--neg_margin', type=float , default=2.0)
+    
 
     # data args
     parser.add_argument('--max_len',type=int,default=56)
