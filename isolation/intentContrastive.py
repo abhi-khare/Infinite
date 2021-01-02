@@ -40,9 +40,13 @@ valDL = DataLoader(valDS,batch_size=args.intent_num*6,num_workers=args.num_worke
 # optimizer and loss function
 optimizer =  optim.Adam( model.parameters(), lr=args.lr, weight_decay=args.weights)
 
-#loss_func = losses.TripletMarginLoss(margin=args.margin)
-#loss_func = losses.NTXentLoss(temperature=args.temperature)
-loss_func = losses.ContrastiveLoss(neg_margin=args.neg_margin)
+if args.loss == 'TML':
+    loss_func = losses.TripletMarginLoss(margin=args.margin)
+elif args.loss == 'CONTRA':
+    loss_func = losses.ContrastiveLoss(neg_margin=args.neg_margin)
+elif args.loss == 'NXT':
+    loss_func = losses.NTXentLoss(temperature=args.temperature)
+
 
 # validation loop
 def validation(model,val_DL,epoch):

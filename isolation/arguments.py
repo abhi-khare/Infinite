@@ -11,6 +11,7 @@ def ICPT_arguments():
     parser.add_argument('--model_mode', type=str , default='INTENT_CONTRA_MODE')
 
     # loss function args
+    parser.add_argument('--loss',type=str)
     parser.add_argument('--margin',type=float,default=2.0)
     parser.add_argument('--temperature',type=float,default=0.07)
     parser.add_argument('--neg_margin', type=float , default=2.0)
