@@ -28,17 +28,17 @@ model = jointBert(args).to(device=args.device)
 train_DS =  nluDataset(args.train_dir,args.tokenizer_name,args.max_len,args.device)
 
 val_enDS =  nluDataset(args.val_dir+'dev_EN.tsv',args.tokenizer_name,args.max_len,args.device)
-#val_esDS =  nluDataset(args.val_dir+'dev_ES.tsv',args.tokenizer_weights,args.max_len,args.device)
-#val_deDS =  nluDataset(args.val_dir+'dev_DE.tsv',args.tokenizer_weights,args.max_len,args.device) 
-#val_frDS =  nluDataset(args.val_dir+'dev_FR.tsv',args.tokenizer_weights,args.max_len,args.device) 
+val_esDS =  nluDataset(args.val_dir+'dev_ES.tsv',args.tokenizer_weights,args.max_len,args.device)
+val_deDS =  nluDataset(args.val_dir+'dev_DE.tsv',args.tokenizer_weights,args.max_len,args.device) 
+val_frDS =  nluDataset(args.val_dir+'dev_FR.tsv',args.tokenizer_weights,args.max_len,args.device) 
 
 # train and val dataloader
 train_DL = DataLoader(train_DS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
 
 val_enDL = DataLoader(val_enDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
-#val_esDL = DataLoader(val_esDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
-#val_deDL = DataLoader(val_deDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
-#val_frDL = DataLoader(val_frDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
+val_esDL = DataLoader(val_esDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
+val_deDL = DataLoader(val_deDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
+val_frDL = DataLoader(val_frDS,batch_size=args.batch_size,shuffle=args.shuffle_data,num_workers=args.num_worker)
 
 # freezing base bert model
 if args.freeze_encoder:
@@ -139,9 +139,9 @@ for epoch in range(1,args.epoch):
     # validation loop
     print('*'*10  + 'Validation loop started' + '*'*10)
     validation(model,val_enDL,'en',epoch)
-    #validation(model,val_frDL,'fr',epoch)
-    #validation(model,val_deDL,'de',epoch)
-    #validation(model,val_esDL,'es',epoch)
+    validation(model,val_frDL,'fr',epoch)
+    validation(model,val_deDL,'de',epoch)
+    validation(model,val_esDL,'es',epoch)
     
 writer.flush()
 writer.close()
