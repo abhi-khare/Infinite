@@ -23,7 +23,7 @@
 python intentContrastive.py --train_dir ./data/train_EN.tsv --val_dir ./data/dev_EN.tsv --model_export ./bin/ICPT_NXT_0_07 --exp_name ./logs/ICPT_NXT_0_07 --temperature 0.07
 python IC_NER_Training.py --model_name ./bin/ICPT_NXT_0_07 --train_dir ./data/train_EN.tsv --val_dir ./data/  --exp_name ./logs/IC_NER_ICPT_NXT_0_07 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000074857785 --slots_lr 0.000744823
 
-python intentContrastive.py --train_dir ./data/train_EN.tsv --val_dir ./data/dev_EN.tsv --model_export ./bin/ICPT_NXT_0_5 --exp_name ./logs/ICPT_NXT_0_5 --temperature 0.07
+python intentContrastive.py --train_dir ./data/train_EN.tsv --val_dir ./data/dev_EN.tsv --model_export ./bin/ICPT_NXT_0_5 --exp_name ./logs/ICPT_NXT_0_5 --temperature 0.5
 python IC_NER_Training.py --model_name ./bin/ICPT_NXT_0_5 --train_dir ./data/train_EN.tsv --val_dir ./data/  --exp_name ./logs/IC_NER_ICPT_NXT_0_5 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000074857785 --slots_lr 0.000744823
 
 # Exp 5 INFONICE loss
