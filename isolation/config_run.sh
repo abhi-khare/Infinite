@@ -6,16 +6,16 @@
 # Experiment: ICPT + triplet margin loss
 
 # Exp 1 triplet margin loss margin = 2.0
-#python intentContrastive.py --train_dir ./data/multi-train.tsv --val_dir ./data/multi-dev.tsv --model_export ./bin/multi_ICPT_TML_2 --exp_name ./logs/multi_ICPT_TML_2 --margin 2.0 --loss TML
-#python IC_NER_Training.py --model_name ./bin/multi_ICPT_TML_2 --train_dir ./data/multi-train.tsv --val_dir ./data/  --exp_name ./logs/multi_IC_NER_ICPT_TML_2 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000014857785 --slots_lr 0.000744823
+python intentContrastive.py --train_dir ./data/multi-train.tsv --val_dir ./data/multi-dev.tsv --model_export ./bin/multi_ICPT_TML_2 --exp_name ./logs/multi_ICPT_TML_2 --margin 2.0 --loss TML
+python IC_NER_Training.py --model_name ./bin/multi_ICPT_TML_2 --train_dir ./data/multi-train.tsv --val_dir ./data/  --exp_name ./logs/multi_IC_NER_ICPT_TML_2 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000014857785 --slots_lr 0.000744823
 
 # Exp 2 triplet margin loss margin = 5.0
-#python intentContrastive.py --train_dir ./data/multi-train.tsv --val_dir ./data/multi-dev.tsv --model_export ./bin/multi_ICPT_TML_5 --exp_name ./logs/multi_ICPT_TML_5 --margin 5.0 --loss TML
-#python IC_NER_Training.py --model_name ./bin/multi_ICPT_TML_5 --train_dir ./data/multi-train.tsv --val_dir ./data/  --exp_name ./logs/multi_IC_NER_ICPT_TML_5 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000014857785 --slots_lr 0.000744823
+python intentContrastive.py --train_dir ./data/multi-train.tsv --val_dir ./data/multi-dev.tsv --model_export ./bin/multi_ICPT_TML_5 --exp_name ./logs/multi_ICPT_TML_5 --margin 5.0 --loss TML
+python IC_NER_Training.py --model_name ./bin/multi_ICPT_TML_5 --train_dir ./data/multi-train.tsv --val_dir ./data/  --exp_name ./logs/multi_IC_NER_ICPT_TML_5 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000014857785 --slots_lr 0.000744823
 
 # Exp 3 triplet margin loss margin = 0.05 (base)
-#python intentContrastive.py --train_dir ./data/multi-train.tsv --val_dir ./data/multi-dev.tsv --model_export ./bin/multi_ICPT_TML_0_05 --exp_name ./logs/multi_ICPT_TML_0_05 --margin 0.05 --loss TML
-#python IC_NER_Training.py --model_name ./bin/multi_ICPT_TML_0_05 --train_dir ./data/multi-train.tsv --val_dir ./data/  --exp_name ./logs/multi_IC_NER_ICPT_TML_0_05 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000014857785 --slots_lr 0.000744823
+python intentContrastive.py --train_dir ./data/multi-train.tsv --val_dir ./data/multi-dev.tsv --model_export ./bin/multi_ICPT_TML_0_05 --exp_name ./logs/multi_ICPT_TML_0_05 --margin 0.05 --loss TML
+python IC_NER_Training.py --model_name ./bin/multi_ICPT_TML_0_05 --train_dir ./data/multi-train.tsv --val_dir ./data/  --exp_name ./logs/multi_IC_NER_ICPT_TML_0_05 --slots_dropout 0.1949101 --weight_decay 0.0022488 --intent_dropout 0.25895432 --intent_lr 0.00097826 --encoder_lr 0.000014857785 --slots_lr 0.000744823
 
 
 

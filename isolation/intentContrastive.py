@@ -30,11 +30,11 @@ train_labels = list(pd.read_csv(args.train_dir,sep='\t').intent_ID)
 val_labels = list(pd.read_csv(args.val_dir,sep='\t').intent_ID)
 
 # sampler for intent contrastive learning
-sampler_train = samplers.MPerClassSampler(train_labels, 6, batch_size=None, length_before_new_iter=30000)
-sampler_val = samplers.MPerClassSampler(val_labels, 3, batch_size=None, length_before_new_iter=10000)
+sampler_train = samplers.MPerClassSampler(train_labels, 15, batch_size=None, length_before_new_iter=60000)
+sampler_val = samplers.MPerClassSampler(val_labels, 6, batch_size=None, length_before_new_iter=20000)
 
 # dataset iterators for train and validation set
-trainDL = DataLoader(trainDS,batch_size=args.intent_num*6,num_workers=args.num_worker, sampler=sampler_train)
+trainDL = DataLoader(trainDS,batch_size=args.intent_num*15,num_workers=args.num_worker, sampler=sampler_train)
 valDL = DataLoader(valDS,batch_size=args.intent_num*6,num_workers=args.num_worker,sampler=sampler_val)
 
 # optimizer and loss function
