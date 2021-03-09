@@ -1,0 +1,5 @@
+NER Tokenization for bert :
+https://datascience.stackexchange.com/questions/69640/what-should-be-the-labels-for-subword-tokens-in-bert-for-ner-task
+https://vamvas.ch/bert-for-ner
+https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/token_classification.ipynb#scrollTo=-b70jh26IrJS
+
