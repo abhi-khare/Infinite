@@ -23,9 +23,7 @@ class IC_NER(nn.Module):
 
         self.intent_loss_fn = nn.CrossEntropyLoss()
         self.slot_loss_fn = nn.CrossEntropyLoss()
-        #self.log_vars = nn.Parameter(torch.zeros((2)))
-
-        self.jlc = 0.5#args.joint_loss_coef
+        self.log_vars = nn.Parameter(torch.zeros((2)))
         
 
     
@@ -46,12 +44,21 @@ class IC_NER(nn.Module):
         # slots data flow 
         slots_hidden = encoded_output[0]
         slots_logits = self.slots_FC(self.slots_dropout(F.relu(slots_hidden)))
-        slot_pred =  torch.argmax(nn.Softmax(dim=2)(intent_logits), axis=2)
+        slot_pred =  torch.argmax(nn.Softmax(dim=2)(slots_logits), axis=2)
 
         # accumulating slot prediction loss
         slot_loss = self.slot_loss_fn(slots_logits.view(-1, 159), slots_target.view(-1))
+
+
+        '''Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics'''
         
-        joint_loss = ((1-self.jlc)*intent_loss + (self.jlc)*slot_loss)
+        precision1 = torch.exp(-self.log_vars[0])
+        loss_intent = torch.sum(precision1*intent_loss + self.log_vars[0],-1)
+
+        precision2 = torch.exp(-self.log_vars[1])
+        loss_slots = torch.sum(precision1*slot_loss + self.log_vars[1],-1)
+
+        joint_loss = torch.mean(loss_intent + loss_slots)
         
 
         return {'joint_loss':joint_loss,

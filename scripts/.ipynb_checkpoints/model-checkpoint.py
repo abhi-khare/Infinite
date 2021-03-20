@@ -46,7 +46,7 @@ class IC_NER(nn.Module):
         # slots data flow 
         slots_hidden = encoded_output[0]
         slots_logits = self.slots_FC(self.slots_dropout(F.relu(slots_hidden)))
-       
+        slot_pred =  torch.argmax(nn.Softmax(dim=2)(slots_logits), axis=2)
 
         # accumulating slot prediction loss
         slot_loss = self.slot_loss_fn(slots_logits.view(-1, 159), slots_target.view(-1))
@@ -54,4 +54,8 @@ class IC_NER(nn.Module):
         joint_loss = ((1-self.jlc)*intent_loss + (self.jlc)*slot_loss)
         
 
-        return joint_loss,intent_pred,intent_loss,slot_loss
+        return {'joint_loss':joint_loss,
+                'ic_loss': intent_loss,
+                'ner_loss': slot_loss,
+                'intent_pred':intent_pred,
+                'slot_pred':slot_pred}
