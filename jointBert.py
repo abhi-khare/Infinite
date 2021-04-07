@@ -11,7 +11,7 @@ from transformers import  DistilBertModel,DistilBertTokenizerFast
 import pandas as pd
 import random
 
-from scripts.dataset import NLU_Dataset_pl
+from scripts.dataset import *
 from scripts.model import IC_NER
 from scripts.utils import *
 from arguments import jointBert_argument
@@ -94,10 +94,7 @@ class jointBert(pl.LightningModule):
         
 
     def configure_optimizers(self):
-         return torch.optim.AdamW( {"params":self.IC_NER.encoder.parameters(),"lr":3e-5} , 
-                                   {"params":[self.IC_NER.intent_FC1.parameters(),
-                                              self.IC_NER.intent_FC2.parameters()], "lr":3e-3} ,
-                                   {"params":self.IC_NER.slots_FC.parameters(),"lr":3e-4}, lr=3e-5 ,  weight_decay=args.weight_decay)
+         return torch.optim.AdamW( self.parameters(), lr=3e-5 ,  weight_decay=args.weight_decay)
 
 
 dm = NLU_Dataset_pl(args.train_dir, args.val_dir, args.val_dir, args.tokenizer_name, args.max_len, args.batch_size ,args.num_worker)
