@@ -36,7 +36,7 @@ final_slots = pd.read_csv('./data/multiATIS/slots_list.csv',sep=',',header=None,
 idx2slots  = {idx:slots for idx,slots in enumerate(final_slots)}
 
 # setting checkpoint callbacks
-checkpoint_callback = ModelCheckpoint(dirpath=args.weight_dir,monitor='val_IC_NER_loss', filename='jointBert-{epoch:02d}-{val_loss}')
+checkpoint_callback = ModelCheckpoint(dirpath=args.weight_dir,monitor='val_IC_NER_loss', mode='min', filename='jointBert-{epoch:02d}-{val_loss}')
 
 
 class jointBert(pl.LightningModule):
@@ -56,7 +56,7 @@ class jointBert(pl.LightningModule):
         
         out = self(token_ids,attention_mask,intent_target,slots_target)
         
-        self.log('train_IC_NER_loss', out['joint_loss'], on_step=False, on_epoch=True, prog_bar=True, logger=True)
+        self.log('train_IC_NER_loss', out['joint_loss'], on_step=False, on_epoch=True, logger=True)
         self.log('train_IC_loss', out['ic_loss'], on_step=False, on_epoch=True, logger=True)
         self.log('train_NER_loss', out['ner_loss'], on_step=False, on_epoch=True, logger=True)
         
@@ -86,24 +86,25 @@ class jointBert(pl.LightningModule):
         
         out = self(token_ids,attention_mask,intent_target,slots_target)
         intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
-        self.log('test_IC_NER_loss', out['joint_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('test_IC_loss', out['ic_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('test_NER_loss', out['ner_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('test_intent_acc', accuracy(out['intent_pred'],intent_target), on_step=False, on_epoch=True,  logger=True)
-        self.log('test_slot_f1', slot_F1(out['slot_pred'],slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
+        
+        self.log('test_intent_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
+        self.log('test_slot_f1', slot_F1(slot_pred,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
         
         return out['joint_loss']
         
 
     def configure_optimizers(self):
-         return torch.optim.AdamW(self.parameters(), lr=3e-5 ,  weight_decay=args.weight_decay)
+         return torch.optim.AdamW( {"params":self.IC_NER.encoder.parameters(),"lr":3e-5} , 
+                                   {"params":[self.IC_NER.intent_FC1.parameters(),
+                                              self.IC_NER.intent_FC2.parameters()], "lr":3e-3} ,
+                                   {"params":self.IC_NER.slots_FC.parameters(),"lr":3e-4}, lr=3e-5 ,  weight_decay=args.weight_decay)
 
 
-dm = NLU_Dataset_pl(args.train_dir, args.valid_dir, args.valid_dir, args.tokenizer_name, args.max_len, args.batch_size)
+dm = NLU_Dataset_pl(args.train_dir, args.val_dir, args.val_dir, args.tokenizer_name, args.max_len, args.batch_size ,args.num_worker)
 
 model = jointBert(args)
 
 
 trainer = pl.Trainer(gpus=gpus,precision=args.precision,accumulate_grad_batches=args.accumulate_grad,max_epochs=args.epoch, check_val_every_n_epoch=1,logger=tb_logger,callbacks=[checkpoint_callback])
 
-trainer.fit(model, dm) 
+trainer.fit(model, dm)

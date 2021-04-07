@@ -12,20 +12,18 @@ class IC_NER(nn.Module):
         
         self.encoder = DistilBertModel.from_pretrained(model_name,return_dict=True,output_hidden_states=True)
         #p_intent = trial.suggest_float("intent_dropout", 0.1, 0.4)
-        self.intent_dropout = nn.Dropout(0.1)#args.intent_dropout_val)
-        self.intent_FC = nn.Linear(768, 17)
+        self.intent_dropout = nn.Dropout(0.3)#args.intent_dropout_val)
+        self.intent_FC = nn.Linear(768, 18)
  
 
         # slots layer
-        self.slots_dropout = nn.Dropout(0.1)#args.slots_dropout_val)
+        self.slots_dropout = nn.Dropout(0.3)#args.slots_dropout_val)
         self.slots_FC = nn.Linear(768, 159)
         #p_slots = trial.suggest_float("slots_dropout", 0.1, 0.4)
 
         self.intent_loss_fn = nn.CrossEntropyLoss()
         self.slot_loss_fn = nn.CrossEntropyLoss()
-        #self.log_vars = nn.Parameter(torch.zeros((2)))
-
-        self.jlc = 0.5#args.joint_loss_coef
+        self.log_vars = nn.Parameter(torch.zeros((2)))
         
 
     
@@ -50,10 +48,26 @@ class IC_NER(nn.Module):
 
         # accumulating slot prediction loss
         slot_loss = self.slot_loss_fn(slots_logits.view(-1, 159), slots_target.view(-1))
-        
-        joint_loss = ((1-self.jlc)*intent_loss + (self.jlc)*slot_loss)
-        
 
+
+        '''Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics'''
+        
+        #precision1 = torch.exp(-self.log_vars[0])
+        #loss_intent = torch.sum(precision1*intent_loss + self.log_vars[0],-1)
+
+        #precision2 = torch.exp(-self.log_vars[1])
+        #loss_slots = torch.sum(precision1*slot_loss + self.log_vars[1],-1)
+
+        #joint_loss = torch.mean(loss_intent + loss_slots)
+        
+        joint_loss = 0.5*intent_loss + 0.5*slot_loss
+
+        
+        
+        
+        
+        
+        
         return {'joint_loss':joint_loss,
                 'ic_loss': intent_loss,
                 'ner_loss': slot_loss,

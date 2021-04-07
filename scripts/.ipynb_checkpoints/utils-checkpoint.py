@@ -1,12 +1,31 @@
 import torch 
 from seqeval.metrics import f1_score
 from seqeval.metrics import accuracy_score
+from seqeval.scheme import IOB2
 
 def accuracy(pred,target):
     return torch.sum(pred==target)/len(target)
 
-def slot_F1(pred,target):
-    return f1_score( target, pred)
+def slot_F1(pred,target,id2slots):
+    
+    pred_list = pred.tolist()
+    target_list = target.tolist()
+    
+    pred_slots , target_slots = [],[]
+
+    for idx_st,t in enumerate(target_list):
+        pred_sample,target_sample = [],[]
+        for idx_wt,wt in enumerate(t):
+
+            if wt != -100:
+                pred_sample.append(id2slots[wt])
+                target_sample.append(id2slots[pred_list[idx_st][idx_wt]])
+
+        pred_slots.append(pred_sample)
+        target_slots.append(target_sample)
+    
+    
+    return f1_score( target_slots, pred_slots,mode='strict', scheme=IOB2, average='macro')
 
 def label2slotType(slot_label,path):
     final_slots = pd.read_csv(path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()

@@ -12,21 +12,21 @@ class IC_NER(nn.Module):
         
         self.encoder = DistilBertModel.from_pretrained(args.model_name,return_dict=True,output_hidden_states=True)
        
-        self.intent_dropout = nn.Dropout(args.intent_dropout_val)
-        self.intent_FC1 = nn.Linear(768, 512)
-        self.intent_FC2 = nn.Linear(512, 128)
-        self.intent_FC3 = nn.Linear(128, args.intent_num)
+        self.intent_dropout_1 = nn.Dropout(0.30)
+        self.intent_dropout_2 = nn.Dropout(0.15)
+        self.intent_FC1 = nn.Linear(768, 128)
+        self.intent_FC2 = nn.Linear(128, args.intent_num)
  
 
         # slots layer
-        self.slots_dropout = nn.Dropout(args.slots_dropout_val)
+        self.slots_dropout = nn.Dropout(0.30)
         self.slots_FC = nn.Linear(768, args.slots_num)
         
-
         self.intent_loss_fn = nn.CrossEntropyLoss()
         self.slot_loss_fn = nn.CrossEntropyLoss()
-        #self.log_vars = nn.Parameter(torch.zeros((2)))
+
         self.jlc = args.joint_loss_coef
+        self.args = args
         
 
     
@@ -36,9 +36,8 @@ class IC_NER(nn.Module):
 
         #intent data flow
         intent_hidden = encoded_output[0][:,0]
-        intent_hidden = self.intent_FC1(self.intent_dropout(F.relu(intent_hidden)))
-        intent_hidden = self.intent_FC2(self.intent_dropout(F.relu(intent_hidden)))
-        intent_logits = self.intent_FC3(self.intent_dropout(F.relu(intent_hidden)))
+        intent_hidden = self.intent_FC1(self.intent_dropout_1(F.gelu(intent_hidden)))
+        intent_logits = self.intent_FC2(self.intent_dropout_2(F.gelu(intent_hidden)))
         
         
         # accumulating intent classification loss 
@@ -52,7 +51,7 @@ class IC_NER(nn.Module):
         slot_pred =  torch.argmax(nn.Softmax(dim=2)(slots_logits), axis=2)
 
         # accumulating slot prediction loss
-        slot_loss = self.slot_loss_fn(slots_logits.view(-1, args.slots_num), slots_target.view(-1))
+        slot_loss = self.slot_loss_fn(slots_logits.view(-1, self.args.slots_num), slots_target.view(-1))
 
 
         '''Multi-Task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics'''
