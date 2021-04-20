@@ -80,7 +80,7 @@ class nluDataset(Dataset):
 
 class NLU_Dataset_pl(pl.LightningDataModule):
     
-    def __init__(self, train_dir, val_dir, test_dir,tokenizer, max_len, batch_size):
+    def __init__(self, train_dir, val_dir, test_dir,tokenizer, max_len, batch_size,num_worker):
         
         super().__init__()
         self.train_dir = train_dir
@@ -89,6 +89,7 @@ class NLU_Dataset_pl(pl.LightningDataModule):
         self.batch_size = batch_size
         self.tokenizer = tokenizer
         self.max_len = max_len
+        self.num_worker = num_worker
 
     def setup(self,stage: [str] = None): 
         self.train = nluDataset( self.train_dir, self.tokenizer, self.max_len)
@@ -98,11 +99,11 @@ class NLU_Dataset_pl(pl.LightningDataModule):
         self.test =  nluDataset( self.test_dir, self.tokenizer, self.max_len)
 
     def train_dataloader(self):
-        return DataLoader(self.train, batch_size=self.batch_size)
+        return DataLoader(self.train, batch_size=self.batch_size,num_workers=self.num_worker)
 
     def val_dataloader(self):
-        return DataLoader(self.val, batch_size=self.batch_size)
+        return DataLoader(self.val, batch_size=self.batch_size,num_workers=self.num_worker)
     
     def test_dataloader(self):
-        return DataLoader(self.test, batch_size=self.batch_size)
+        return DataLoader(self.test, batch_size=self.batch_size,num_workers=self.num_worker)
 
