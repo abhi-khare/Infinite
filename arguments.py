@@ -18,7 +18,7 @@ def jointBert_argument():
     parser.add_argument('--batch_size',type=int,default=16)
     parser.add_argument('--weight_decay',type=float,default=0.003)
     parser.add_argument('--shuffle_data', type=bool , default=True)
-    parser.add_argument('--num_worker', type=int , default=1)
+    parser.add_argument('--num_worker', type=int , default=8)
 
     # data
     parser.add_argument('--train_dir',type=str)
