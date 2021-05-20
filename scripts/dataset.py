@@ -207,12 +207,17 @@ class contra_pl(pl.LightningDataModule):
 
         super().__init__()
         self.train_dir = train_dir
+        self.val_dir = val_dir
         self.batch_size = batch_size
         self.tokenizer = tokenizer
         self.max_len = max_len
 
     def setup(self, stage: [str] = None):
         self.train = contraDataset(self.train_dir, self.tokenizer, self.max_len)
+        self.val = contraDataset(self.val_dir, self.tokenizer, self.max_len)
 
     def train_dataloader(self):
         return DataLoader(self.train, batch_size=self.batch_size)
+    
+    def val_dataloader(self):
+        return DataLoader( self.val, batch_size=self.batch_size)

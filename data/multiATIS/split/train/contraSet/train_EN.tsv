@@ -2859,10 +2859,10 @@ flights from atlanta to baltimore denver	571	7103 7104 7105 7106 7107 7108
 show flights to denver	571	7101 7103 7106 7108
 show me flights from atlanta to baltimore denver and	571	7101 7102 7103 7104 7105 7106 7107 7108 7109
 show me flights from atlanta to baltimore denver and dallas	571	7101 7102 7103 7104 7105 7106 7107 7108 7109 7110
-one way	572	7111 7112
-one way	572	7111 7112
-one way	572	7111 7112
-one way	572	7111 7112
+one way	572	[7111, 7112]
+one way	572	[7111, 7112]
+one way	572	[7111, 7112]
+one way	572	[7111, 7112]
 one way	572	7111 7112
 list all flights on saturday from to san nonstop	573	7113 7114 7115 7116 7117 7118 7120 7121 7123
 all on saturday dallas to francisco nonstop	573	7114 7116 7117 7119 7120 7122 7123
@@ -3514,10 +3514,10 @@ i a flight atlanta to	702	8667 8669 8670 8672 8673
 i from atlanta pittsburgh	702	8667 8671 8672 8674
 i want a flight from atlanta to pittsburgh	702	8667 8668 8669 8670 8671 8672 8673 8674
 i want a flight from atlanta to pittsburgh	702	8667 8668 8669 8670 8671 8672 8673 8674
-us 201	703	8675 8676
-us 201	703	8675 8676
-us 201	703	8675 8676
-us 201	703	8675 8676
+us 201	703	[8675, 8676]
+us 201	703	[8675, 8676]
+us 201	703	[8675, 8676]
+us 201	703	[8675, 8676]
 us 201	703	8675 8676
 what flights are available from pittsburgh oakland airport	704	8677 8678 8679 8680 8681 8682 8684 8685
 are from pittsburgh to oakland airport	704	8679 8681 8682 8683 8684 8685
@@ -19379,10 +19379,10 @@ ground transportation available pittsburgh airport downtown and how much does co
 what ground the pittsburgh airport to how	3875	45685 45686 45691 45692 45693 45694 45697
 what ground transportation is available from pittsburgh airport to downtown and how much does it cost	3875	45685 45686 45687 45688 45689 45690 45692 45693 45694 45695 45696 45697 45698 45699 45700 45701
 what ground transportation is available from the pittsburgh airport to downtown and how much does it cost	3875	45685 45686 45687 45688 45689 45690 45691 45692 45693 45694 45695 45696 45697 45698 45699 45700 45701
-houston airports	3876	45702 45703
-houston airports	3876	45702 45703
-houston airports	3876	45702 45703
-houston airports	3876	45702 45703
+houston airports	3876	[45702, 45703]
+houston airports	3876	[45702, 45703]
+houston airports	3876	[45702, 45703]
+houston airports	3876	[45702, 45703]
 houston airports	3876	45702 45703
 please list information san francisco airport	3877	45704 45705 45706 45708 45709 45710
 please information regarding san airport	3877	45704 45706 45707 45708 45710
@@ -19399,10 +19399,10 @@ describe pittsburgh	3879	45718 45719
 describe pittsburgh	3879	45718 45719
 describe airport	3879	45718 45720
 describe pittsburgh airport	3879	45718 45719 45720
-airports	3880	45721
-airports	3880	45721
-airports	3880	45721
-airports	3880	45721
+airports	3880	[45721]
+airports	3880	[45721]
+airports	3880	[45721]
+airports	3880	[45721]
 airports	3880	45721
 is the name of the airport in philadelphia	3881	45723 45724 45725 45726 45727 45728 45729 45730
 is the name of airport in	3881	45723 45724 45725 45726 45728 45729
@@ -19459,10 +19459,10 @@ airport new york is closest to	3891	45786 45788 45789 45790 45791 45792
 what is closest downtown	3891	45785 45790 45791 45793
 what airport in new york is closest to downtown	3891	45785 45786 45787 45788 45789 45790 45791 45792 45793
 what airport in new york is closest to downtown	3891	45785 45786 45787 45788 45789 45790 45791 45792 45793
-houston airports	3892	45794 45795
-houston airports	3892	45794 45795
-houston airports	3892	45794 45795
-houston airports	3892	45794 45795
+houston airports	3892	[45794, 45795]
+houston airports	3892	[45794, 45795]
+houston airports	3892	[45794, 45795]
+houston airports	3892	[45794, 45795]
 houston airports	3892	45794 45795
 show me airports in dc	3893	45796 45797 45798 45799 45801
 me airports in dc	3893	45797 45798 45799 45801
@@ -20704,10 +20704,10 @@ define us	4140	47854 47856
 define airline	4140	47854 47855
 define us	4140	47854 47856
 define airline us	4140	47854 47855 47856
-code ff	4141	47857 47858
-code ff	4141	47857 47858
-code ff	4141	47857 47858
-code ff	4141	47857 47858
+code ff	4141	[47857, 47858]
+code ff	4141	[47857, 47858]
+code ff	4141	[47857, 47858]
+code ff	4141	[47857, 47858]
 code ff	4141	47857 47858
 what ea	4142	47859 47861
 does ea	4142	47860 47861
