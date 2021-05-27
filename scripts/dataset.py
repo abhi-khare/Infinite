@@ -160,9 +160,9 @@ class contra_Dataset_pl(pl.LightningDataModule):
         self.num_worker = num_worker
 
     def setup(self, stage: [str] = None):
-        self.train = nluDataset(self.train_dir)
+        self.train = contraNLUDataset(self.train_dir)
 
-        self.val = nluDataset(self.val_dir)
+        self.val = contraNLUDataset(self.val_dir)
 
 
     def train_dataloader(self):
