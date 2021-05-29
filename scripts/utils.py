@@ -1,7 +1,5 @@
 import torch 
-from seqeval.metrics import f1_score
-from seqeval.metrics import accuracy_score
-from seqeval.scheme import IOB2
+from seqeval.metrics import f1_score,accuracy_score,IOB2
 
 def accuracy(pred,target):
     return torch.sum(pred==target)/len(target)
