@@ -90,9 +90,9 @@ class nluDataset(Dataset):
         return len(self.data)
 
 
-class NLU_Dataset_pl(pl.LightningDataModule):
+class nluDataset_pl(pl.LightningDataModule):
     def __init__(
-        self, train_dir, val_dir, test_dir, tokenizer, max_len, batch_size, num_worker
+        self, train_dir, val_dir, test_dir, tokenizer, max_len, batch_size, num_worker,mode
     ):
 
         super().__init__()
@@ -105,65 +105,10 @@ class NLU_Dataset_pl(pl.LightningDataModule):
         self.num_worker = num_worker
 
     def setup(self, stage: [str] = None):
+
         self.train = nluDataset(self.train_dir, self.tokenizer, self.max_len)
 
         self.val = nluDataset(self.val_dir, self.tokenizer, self.max_len)
-
-        self.test = nluDataset(self.test_dir, self.tokenizer, self.max_len)
-
-    def train_dataloader(self):
-        return DataLoader(
-            self.train, batch_size=self.batch_size, num_workers=self.num_worker
-        )
-
-    def val_dataloader(self):
-        return DataLoader(
-            self.val, batch_size=self.batch_size, num_workers=self.num_worker
-        )
-
-    def test_dataloader(self):
-        return DataLoader(
-            self.test, batch_size=self.batch_size, num_workers=self.num_worker
-        )
-
-
-
-class contraNLUDataset(Dataset):
-    def __init__(self, file_dir):
-
-        self.data = pd.read_csv(file_dir, sep="\t")
-
-    def __getitem__(self, index):
-
-        text = str(self.data.TEXT[index])
-        text = text.replace(".", "")
-        text = text.replace("'", "")
-        text = " ".join(text.split())
-
-        return {
-            "text": text,
-        }
-
-    def __len__(self):
-        return len(self.data)
-
-
-class contra_Dataset_pl(pl.LightningDataModule):
-    def __init__(
-        self, train_dir, val_dir, test_dir, tokenizer, max_len, batch_size, num_worker
-    ):
-
-        super().__init__()
-        self.train_dir = train_dir
-        self.val_dir = val_dir
-        self.batch_size = batch_size
-        self.num_worker = num_worker
-
-    def setup(self, stage: [str] = None):
-        self.train = contraNLUDataset(self.train_dir)
-
-        self.val = contraNLUDataset(self.val_dir)
-
 
     def train_dataloader(self):
         return DataLoader(

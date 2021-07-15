@@ -1,0 +1,894 @@
+ID	TEXT	INTENT	SLOTS	INTENT_ID	SLOTS_ID
+300	me one way flights milwaukee to orlando on wednesday	atis_flight	O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 96 97 0 71 0 112 0 36
+50	what meals are on american 811 from tampa to milwaukee	atis_meal	O B-meal O O B-airline_name B-flight_number O B-fromloc.city_name O B-toloc.city_name	14	0 76 0 0 3 63 0 71 0 112
+298	would a flight from san francisco to st. petersburg	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 72 0 112 113
+613	from phoenix to las vegas	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 71 0 112 113
+729	list all the flights from dallas san francisco	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 112 113
+655	list delta from seattle to salt lake city with aircraft	atis_flight	O B-airline_name O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O O	9	0 3 0 71 0 112 113 113 0 0
+120	show me flights charlotte to minneapolis that leave at 2 pm or later monday	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O O O B-depart_time.time I-depart_time.time O B-depart_time.time_relative B-depart_date.day_name	9	0 0 0 71 0 112 0 0 0 50 51 0 52 36
+267	atlanta to st. louis tuesday before 230 pm flights	atis_flight	B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time O	9	71 0 112 113 36 52 50 51 0
+790	is transportation the memphis airport town when if at 842 in the morning	atis_ground_service	O O O B-airport_name I-airport_name O O O O O O O B-period_of_day	13	0 0 0 6 7 0 0 0 0 0 0 0 84
+293	i like flight from toronto to detroit	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+591	me all round trip from new york to miami nonstop	atis_flight	O O B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-flight_stop	9	0 0 96 97 0 71 72 0 112 64
+101	flights are available tacoma to san jose in morning on april twenty second	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_time.period_of_day O B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number	9	0 0 0 71 0 112 113 0 46 0 39 37 38
+764	is the seating capacity an m80	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+122	show the direct from charlotte to minneapolis on tuesday morning	atis_flight	O O B-connect O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 29 0 71 0 112 0 36 46
+23	which travel kansas city to los angeles	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 72 0 112 113
+587	show me ground fort worth	atis_ground_service	O O O B-city_name I-city_name	13	0 0 0 25 26
+259	flights salt lake city to phoenix arizona tuesday	atis_flight	O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-toloc.state_name B-depart_date.day_name	9	0 71 72 72 0 112 116 36
+582	show me flights from san jose phoenix	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 72 112
+230	what is m	atis_abbreviation	O O B-fare_basis_code	0	0 0 58
+654	list seating capacities of delta seattle to salt lake city	atis_capacity	O O O O B-airline_name B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	5	0 0 0 0 3 71 0 112 113 113
+598	airline is as	atis_airline	O O B-airline_code	3	0 0 2
+637	list flights from indianapolis memphis monday	atis_flight	O O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name	9	0 0 0 71 112 36
+693	flight numbers chicago seattle on continental	atis_flight_no	O O B-fromloc.city_name B-toloc.city_name O B-airline_name	10	0 0 71 112 0 3
+823	what flights from memphis to las vegas	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113
+299	show one way flight from milwaukee to orlando leaving wednesday afternoon after 6 pm	atis_flight	O B-round_trip I-round_trip O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 96 97 0 0 71 0 112 0 36 46 52 50 51
+802	the alaska airline flights burbank to anywhere	atis_flight	O B-airline_name I-airline_name O B-fromloc.city_name O O	9	0 3 4 0 71 0 0
+468	saturday fares from washington toronto	atis_airfare	B-depart_date.day_name O O B-fromloc.city_name B-toloc.city_name	2	36 0 0 71 112
+290	would flights from las vegas to san francisco	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 72 0 112 113
+681	give cheapest round trip flights from indianapolis to orlando around december twenty fifth	atis_flight	O B-cost_relative B-round_trip I-round_trip O O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number	9	0 30 96 97 0 0 71 0 112 52 39 37 38
+362	does not sa mean	atis_abbreviation	O B-mod B-days_code O	0	0 81 34 0
+320	me flights from montreal orlando	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+432	show from kansas city minneapolis	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 71 72 112
+240	list flights dallas houston arriving sunday afternoon	atis_flight	O O B-fromloc.city_name B-toloc.city_name O B-arrive_date.day_name B-arrive_time.period_of_day	9	0 0 71 112 0 9 17
+178	me delta flight 486	atis_flight	O B-airline_name O B-flight_number	9	0 3 0 63
+841	i'd like a from cincinnati newark airport arrives on saturday before 6 pm	atis_flight	O O O O B-fromloc.city_name B-toloc.airport_name I-toloc.airport_name O O B-arrive_date.day_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 0 71 110 111 0 0 9 23 21 22
+799	me about the transportation from nashville airport	atis_ground_service	O O O O O B-airport_name I-airport_name	13	0 0 0 0 0 6 7
+113	list philadelphia to san francisco with stopovers dallas	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O O B-stoploc.city_name	9	0 71 0 112 113 0 0 101
+331	get a on tuesday night from washington dc to oakland	atis_flight	O O O B-depart_date.day_name B-depart_time.period_of_day O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	9	0 0 0 36 46 0 71 73 0 112
+580	and milwaukee to atlanta before 10 am daily	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time B-flight_days	9	0 71 0 112 52 50 51 60
+171	me flights from detroit to las vegas	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113
+133	is there an american airlines flight houston to newark june tenth after 6 pm	atis_flight	O O O B-airline_name I-airline_name O B-fromloc.city_name O B-toloc.city_name B-depart_date.month_name B-depart_date.day_number B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 3 4 0 71 0 112 39 37 52 50 51
+831	the flights on mondays that from charlotte north carolina to phoenix arizona	atis_flight	O O O B-depart_date.day_name O O B-fromloc.city_name B-fromloc.state_name I-fromloc.state_name O B-toloc.city_name B-toloc.state_name	9	0 0 0 36 0 0 71 74 75 0 112 116
+409	what the lowest fare washington dc to montreal	atis_airfare	O O B-cost_relative O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	2	0 0 30 0 71 73 0 112
+495	is there available at the phoenix airport	atis_ground_service	O O O O O B-airport_name I-airport_name	13	0 0 0 0 0 6 7
+533	i'd like a one way from milwaukee to orlando wednesday evening or thursday morning	atis_airfare	O O O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day B-or B-depart_date.day_name B-depart_time.period_of_day	2	0 0 0 96 97 0 71 0 112 36 46 83 36 46
+356	show me nonstop flights from st. petersburg charlotte	atis_flight	O O B-flight_stop O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 64 0 0 71 72 112
+168	is closest to ontario california	atis_airport	O B-mod O B-city_name B-state_name	4	0 81 0 25 99
+516	need information on from indianapolis to seattle	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+36	what days of the week flights san jose nashville fly	atis_day_name	O O O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name O	17	0 0 0 0 0 0 71 72 112 0
+485	i need information for flight departing indianapolis to cleveland departing tuesday noon	atis_flight	O O O O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 0 0 71 0 112 0 36 46
+451	i need fly st. louis to milwaukee on wednesday afternoon	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 72 0 112 0 36 46
+469	get the saturday from washington toronto	atis_airfare	O O B-depart_date.day_name O B-fromloc.city_name B-toloc.city_name	2	0 0 36 0 71 112
+465	get saturday washington to boston	atis_airfare	O B-depart_date.day_name B-fromloc.city_name O B-toloc.city_name	2	0 36 71 0 112
+783	what the seating of the m80	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+507	list airports	atis_airport	O O	4	0 0
+313	now show me ground transportation houston monday afternoon	atis_ground_service	O O O O O B-city_name B-day_name B-period_of_day	13	0 0 0 0 0 25 32 84
+326	what does ua	atis_abbreviation	O O B-airline_code	0	0 0 2
+238	american airlines from milwaukee to san jose wednesday	atis_flight	B-airline_name I-airline_name O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name	9	3 4 0 71 0 112 113 36
+499	need flight and for flights departing oakland to salt lake city on thursday before 8 am	atis_flight_no	O O O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	10	0 0 0 0 0 0 71 0 112 113 113 0 36 52 50 51
+464	get fares washington boston	atis_airfare	O O B-fromloc.city_name B-toloc.city_name	2	0 0 71 112
+363	what the earliest daily flight oakland and salt lake city	atis_flight	O O B-flight_mod B-flight_days O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 61 60 0 71 0 112 113 113
+539	please show first class from indianapolis to memphis one way leaving before 10 am	atis_flight	O O B-class_type I-class_type O B-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip O B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 27 28 0 71 0 112 96 97 0 52 50 51
+450	is transportation in st. louis	atis_ground_service	O O O B-city_name I-city_name	13	0 0 0 25 26
+289	like a flight from san diego to las vegas	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 72 0 112 113
+706	cleveland to miami wednesday arriving before 4 pm	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	71 0 112 36 0 23 21 22
+480	get flight from toronto san diego stopping dtw	atis_flight	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-stoploc.airport_code	9	0 0 0 71 112 113 0 0
+403	need a flight from san diego washington dc	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-toloc.state_code	9	0 0 0 0 71 72 112 115
+737	show me the first class coach flights from kennedy airport miami	atis_flight	O O O B-class_type I-class_type B-class_type O O B-fromloc.airport_name I-fromloc.airport_name B-toloc.city_name	9	0 0 0 27 28 27 0 0 69 70 112
+198	airlines fly between washington dc columbus ohio	atis_airline	O O O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name B-toloc.state_name	3	0 0 0 71 73 112 116
+459	information on flights washington to boston that leave a saturday	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O O O B-depart_date.day_name	9	0 0 0 71 0 112 0 0 0 36
+249	us air flights saturday from charlotte airport at 1 pm	atis_flight	B-airline_name I-airline_name O B-depart_date.day_name O B-fromloc.airport_name I-fromloc.airport_name O B-depart_time.time I-depart_time.time	9	3 4 0 36 0 69 70 0 50 51
+186	which flights depart from philadelphia in atlanta	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+617	list houston to milwaukee	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+565	what is hp	atis_airline	O O B-airline_code	3	0 0 2
+118	show all the flights from indianapolis charlotte monday	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name	9	0 0 0 0 0 71 112 36
+865	i'd to a flight from memphis to tacoma stopping los angeles	atis_flight	O O O O O B-fromloc.city_name O B-toloc.city_name O B-stoploc.city_name I-stoploc.city_name	9	0 0 0 0 0 71 0 112 0 101 102
+622	airports in new york	atis_airport	O O B-city_name I-city_name	4	0 0 25 26
+229	list the airfare american airlines flight 19 from jfk lax	atis_airfare	O O O B-airline_name I-airline_name O B-flight_number O B-fromloc.airport_code B-toloc.airport_code	2	0 0 0 3 4 0 63 0 68 109
+638	list flights from memphis miami wednesday	atis_flight	O O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name	9	0 0 0 71 112 36
+90	please a flight from newark orlando	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 112
+701	dallas to houston after 1201 am	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	71 0 112 52 50 51
+339	can the shortest flight from milwaukee to orlando	atis_flight	O O B-flight_mod O O B-fromloc.city_name O B-toloc.city_name	9	0 0 61 0 0 71 0 112
+98	flights available indianapolis to san diego on april twenty first in the late afternoon	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number O O B-depart_time.period_of_day I-depart_time.period_of_day	9	0 0 71 0 112 113 0 39 37 38 0 0 46 47
+373	are there between dallas and phoenix using a dc10	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O O B-aircraft_code	9	0 0 0 71 0 112 0 0 1
+119	what is the ground between charlotte airport charlotte airport and charlotte	atis_ground_service	O O O O O B-airport_name I-airport_name B-city_name I-city_name O B-city_name	13	0 0 0 0 0 6 7 25 26 0 25
+770	what is 73s	atis_abbreviation	O O B-aircraft_code	0	0 0 1
+527	i need on between st. petersburg and charlotte	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 72 0 112
+369	what is capacity of a dc9	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+222	early evening flights tampa to cincinnati	atis_flight	B-depart_time.period_of_day B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name	9	46 46 0 71 0 112
+40	any flights from boston to orlando connecting in columbus	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-connect O B-stoploc.city_name	9	0 0 0 71 0 112 29 0 101
+692	numbers chicago to seattle	atis_flight_no	O B-fromloc.city_name O B-toloc.city_name	10	0 71 0 112
+578	st. petersburg to detroit	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	71 72 0 112
+309	show me cheapest round trip from houston to boston	atis_airfare	O O B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name	2	0 0 30 96 97 0 71 0 112
+248	list from newark boston daily	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-flight_days	9	0 0 71 112 60
+604	show the nonstop and fares from toronto st. petersburg	atis_airfare	O O B-flight_stop O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	2	0 0 64 0 0 0 71 112 113
+239	american airlines flights san jose to dallas friday afternoon	atis_flight	B-airline_name I-airline_name O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	3 4 0 71 72 0 112 36 46
+606	show me weekday milwaukee to orlando one way	atis_flight	O O B-flight_mod B-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip	9	0 0 61 71 0 112 96 97
+886	i'd book a from cincinnati to new york city on united airlines next saturday	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-airline_name I-airline_name B-depart_date.date_relative B-depart_date.day_name	9	0 0 0 0 71 0 112 113 113 0 3 4 35 36
+687	cheapest one way fare from indianapolis orlando december twenty seventh	atis_airfare	B-cost_relative B-round_trip I-round_trip O O B-fromloc.city_name B-toloc.city_name B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number	2	30 96 97 0 0 71 112 39 37 38
+750	is the earliest arriving from boston to washington dc	atis_flight	O O B-flight_mod I-flight_mod O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	9	0 0 61 62 0 71 0 112 115
+513	are the from cleveland to dallas	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+288	i like flights san diego to las vegas	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 72 0 112 113
+512	what is tpa	atis_abbreviation	O O B-airport_code	0	0 0 5
+695	is there a fare pittsburgh cleveland under 200 dollars	atis_airfare	O O O O B-fromloc.city_name B-toloc.city_name B-cost_relative B-fare_amount I-fare_amount	2	0 0 0 0 71 112 30 56 57
+707	miami to cleveland sunday afternoon	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 36 46
+612	from denver to phoenix	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+777	show me all daily flights in denver between 8 pm 9 pm	atis_flight	O O O B-flight_days O O B-toloc.city_name O B-arrive_time.start_time I-arrive_time.start_time B-arrive_time.end_time I-arrive_time.end_time	9	0 0 0 60 0 0 112 0 19 20 14 15
+754	the earliest arriving flight from houston to orlando	atis_flight	O B-flight_mod I-flight_mod O O B-fromloc.city_name O B-toloc.city_name	9	0 61 62 0 0 71 0 112
+854	please me the flights kansas city to chicago june sixteenth	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 0 71 72 0 112 39 37
+47	i need a on united airlines la guardia to san jose	atis_flight	O O O O B-airline_name I-airline_name B-fromloc.airport_name I-fromloc.airport_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 3 4 69 70 0 112 113
+140	what's transportation in westchester county	atis_ground_service	O O O B-city_name I-city_name	13	0 0 0 25 26
+721	flight from baltimore to san francisco arriving between 5 8 pm	atis_flight	B-flight O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O O B-arrive_time.start_time B-arrive_time.end_time I-arrive_time.end_time	9	0 0 71 0 112 113 0 0 19 14 15
+374	what airline aa	atis_airline	O O B-airline_code	3	0 0 2
+129	different go from las vegas to new york city	atis_airline	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	3	0 0 0 71 72 0 112 113 113
+401	i would to fly from orlando kansas city	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 112 113
+611	flights kansas city to denver	atis_flight	O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 71 72 0 112
+550	what fare code bh	atis_abbreviation	O O O B-fare_basis_code	0	0 0 0 58
+505	list from las vegas phoenix	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 71 72 112
+251	first class airfare round trip indianapolis to memphis	atis_airfare	B-class_type I-class_type O B-round_trip I-round_trip B-fromloc.city_name O B-toloc.city_name	2	27 28 0 96 97 71 0 112
+743	delta airlines flights from boston salt lake	atis_flight	B-airline_name I-airline_name O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	3 4 0 0 71 112 113
+430	from st. petersburg to charlotte	atis_flight	O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 71 72 0 112
+213	list sunday flights from cleveland nashville and their	atis_airfare	O B-depart_date.day_name O O B-fromloc.city_name B-toloc.city_name O O	2	0 36 0 0 71 112 0 0
+715	los angeles to pittsburgh afternoon tuesday	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_time.period_of_day B-depart_date.day_name	9	71 72 0 112 46 36
+380	what the between dca and milwaukee	atis_flight	O O O B-airport_code O B-city_name	9	0 0 0 5 0 25
+308	now show the cheapest one way from houston to boston	atis_flight	O O O B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 30 96 97 0 71 0 112
+349	i want to fly san francisco to milwaukee and milwaukee denver	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 72 0 112 0 71 112
+71	on sunday evening i like montreal quebec on a to san diego california	atis_flight	O B-depart_date.day_name B-depart_time.period_of_day O O B-fromloc.city_name B-fromloc.state_name O O O B-toloc.city_name I-toloc.city_name B-toloc.state_name	9	0 36 46 0 0 71 74 0 0 0 112 113 116
+568	las vegas to baltimore economy	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-economy	9	71 72 0 112 54
+319	me flights from montreal orlando and long beach	atis_flight	O O O B-fromloc.city_name B-toloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 112 0 112 113
+588	show flights fort worth to san jose	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 72 0 112 113
+554	show the flights indianapolis to memphis	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+272	cleveland to nashville flight friday morning	atis_flight	B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 0 36 46
+666	give me the from phoenix to milwaukee wednesday evening	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 71 0 112 36 46
+472	get from milwaukee dtw	atis_flight	O O B-fromloc.city_name B-toloc.airport_code	9	0 0 71 109
+888	please all from cincinnati any airport the new york city area that arrive next saturday before 6 pm	atis_flight	O O O B-fromloc.city_name O O O B-toloc.city_name I-toloc.city_name I-toloc.city_name O O O B-arrive_date.date_relative B-arrive_date.day_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 71 0 0 0 112 113 113 0 0 0 8 9 23 21 22
+828	what are flights from tampa milwaukee	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 112
+641	list type for all flights charlotte	atis_aircraft	O O O O O B-fromloc.city_name	1	0 0 0 0 0 71
+287	would like a flight san francisco for san diego	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 72 0 112 113
+540	now show all round trip flights burbank to seattle before 7 pm in seattle	atis_flight	O O O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time O B-toloc.city_name	9	0 0 0 96 97 0 71 0 112 23 21 22 0 112
+139	need fly from denver to westchester county on june seventh after 3 pm	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.month_name B-depart_date.day_number B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 71 0 112 113 0 39 37 52 50 51
+148	the flights from cincinnati westchester county on june sixth	atis_flight	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 112 113 0 39 37
+889	find a flight from cincinnati airport in the new york city	atis_flight	O O O O B-fromloc.city_name O O O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 0 0 0 112 113 113
+345	what the shortest flight from milwaukee san diego	atis_flight	O O B-flight_mod O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 61 0 0 71 112 113
+396	i'd like fly from cleveland dallas	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 112
+364	what airline dl	atis_airline	O O B-airline_code	3	0 0 2
+138	what are fares ground transportation denver	atis_ground_fare	O O O O O B-city_name	12	0 0 0 0 0 25
+476	last from oakland to salt lake city wednesday or first flight from oakland to salt lake city on thursday	atis_flight	B-flight_mod O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-depart_date.day_name B-or B-flight_mod O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	61 0 71 0 112 113 113 36 83 61 0 0 71 0 112 113 113 0 36
+796	please list transportation ewr into new york city	atis_ground_service	O O O B-airport_code O B-city_name I-city_name I-city_name	13	0 0 0 5 0 25 26 26
+311	show me the cheapest round trip fare san francisco to houston february twenty eighth 1994	atis_airfare	O O O B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number B-depart_date.year	2	0 0 0 30 96 97 0 71 72 0 112 39 37 38 42
+410	is lowest fare from toronto to washington dc	atis_airfare	O B-cost_relative O O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	2	0 30 0 0 71 0 112 115
+837	how about from milwaukee st. louis that leaves monday night	atis_flight	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 112 113 0 0 36 46
+157	list flights cleveland to memphis	atis_flight	O O B-fromloc.city_name O B-toloc.city_name	9	0 0 71 0 112
+277	minneapolis to pittsburgh flight	atis_flight	B-fromloc.city_name O B-toloc.city_name O	9	71 0 112 0
+254	flights from miami indianapolis sunday	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name	9	0 0 71 112 36
+689	flight number houston dallas	atis_flight_no	O O B-fromloc.city_name B-toloc.city_name	10	0 0 71 112
+776	list all of daily flights denver from 8 to 9 pm	atis_flight	O O O B-flight_days O B-toloc.city_name O B-arrive_time.start_time O B-arrive_time.end_time I-arrive_time.end_time	9	0 0 0 60 0 112 0 19 0 14 15
+792	what is cvg	atis_abbreviation	O O B-airport_code	0	0 0 5
+4	i would a from orlando salt lake city for april first on delta airlines	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_date.month_name B-depart_date.day_number O B-airline_name I-airline_name	9	0 0 0 0 71 112 113 113 0 39 37 0 3 4
+210	all from kansas city to cleveland	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 71 72 0 112
+883	i'd book two flights to westchester county	atis_flight	O O O O O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 112 113
+296	would like flights san francisco to long beach	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 72 0 112 113
+379	what transportation available between dca and washington	atis_ground_service	O O O O B-airport_code O B-city_name	13	0 0 0 0 5 0 25
+704	cheapest fare from indianapolis orlando the twenty seventh of december	atis_airfare	B-cost_relative O O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_number I-depart_date.day_number O B-depart_date.month_name	2	30 0 0 71 112 0 37 38 0 39
+498	need flight and from oakland to salt lake city on thursday before 8 am	atis_airfare	O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	2	0 0 0 0 71 0 112 113 113 0 36 52 50 51
+247	flights pittsburgh to newark daily	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-flight_days	9	0 71 0 112 60
+774	many passengers fly on a 757	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+322	i need a from new york los angeles on saturday evening us air	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day B-airline_name I-airline_name	9	0 0 0 0 71 72 112 113 0 36 46 3 4
+872	find flight memphis cincinnati on sunday	atis_flight	O O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name	9	0 0 71 112 0 36
+35	what are the flights tacoma san jose	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 112 113
+526	want flight from toronto to san diego	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113
+337	the cheapest round trip flight on twa columbus to st. paul	atis_flight	O B-cost_relative B-round_trip I-round_trip O O B-airline_code B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 30 96 97 0 0 2 71 0 112 113
+43	need a nonstop from miami to toronto	atis_flight	O O B-flight_stop O B-fromloc.city_name O B-toloc.city_name	9	0 0 64 0 71 0 112
+116	show the flights from kansas city to st. paul	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 72 0 112 113
+162	flights on canadian airlines international	atis_flight	O O B-airline_name I-airline_name I-airline_name	9	0 0 3 4 4
+250	list us air flights saturday charlotte airport around 1 pm	atis_flight	O B-airline_name I-airline_name O B-depart_date.day_name B-fromloc.airport_name I-fromloc.airport_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 3 4 0 36 69 70 52 50 51
+266	kansas city to atlanta monday morning flights	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day O	9	71 72 0 112 36 46 0
+827	is there taxi service ontario airport	atis_ground_service	O O B-transport_type I-transport_type B-airport_name I-airport_name	13	0 0 118 119 6 7
+616	flights houston to san jose	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 71 0 112 113
+456	i flight information on from salt lake city to phoenix	atis_flight	O O O O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 0 71 72 72 0 112
+201	are the fares for all flights washington columbus	atis_airfare	O O O O O O B-fromloc.city_name B-toloc.city_name	2	0 0 0 0 0 0 71 112
+441	flights washington dc to montreal	atis_flight	O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	9	0 71 73 0 112
+164	how many canadian airlines international use 320	atis_quantity	O O B-airline_name I-airline_name I-airline_name O B-aircraft_code	15	0 0 3 4 4 0 1
+274	first class flights pittsburgh to newark monday morning	atis_flight	B-class_type I-class_type O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	27 28 0 71 0 112 36 46
+216	how a flight from baltimore san francisco take	atis_distance	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O	8	0 0 0 0 71 112 113 0
+829	what the flights milwaukee to seattle	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+440	fares from washington dc boston	atis_airfare	O O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name	2	0 0 71 73 112
+3	i would like a one way from phoenix to san diego april first	atis_flight	O O O O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 0 96 97 0 71 0 112 113 39 37
+217	are leaving from kansas city to atlanta early monday morning	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_time.period_mod B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 72 0 112 45 36 46
+667	me the from phoenix to milwaukee wednesday on american airlines	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name O B-airline_name I-airline_name	9	0 0 0 71 0 112 36 0 3 4
+709	new york city to las vegas memphis las vegas on sunday	atis_flight	B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	71 72 72 0 112 113 71 112 113 0 36
+602	show me nonstop flights st. petersburg toronto	atis_flight	O O B-flight_stop O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 64 0 71 72 112
+731	me the flights that philadelphia and to dallas	atis_flight	O O O O B-fromloc.city_name O O B-toloc.city_name	9	0 0 0 0 71 0 0 112
+316	show airlines that flights between toronto and detroit detroit and st. louis between st. louis toronto	atis_airline	O O O O O B-fromloc.city_name O B-toloc.city_name B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	3	0 0 0 0 0 71 0 112 71 0 112 113 0 71 72 112
+145	the from cincinnati to denver on june sixth	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 71 0 112 0 39 37
+794	is there ground from lga new york city	atis_ground_service	O O O O B-airport_code B-city_name I-city_name I-city_name	13	0 0 0 0 5 25 26 26
+592	show round trip flights from miami to new york nonstop	atis_flight	O B-round_trip I-round_trip O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-flight_stop	9	0 96 97 0 0 71 0 112 113 64
+270	cleveland to kansas city arrive monday before 3 pm	atis_flight	B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-arrive_date.day_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	71 0 112 113 0 9 23 21 22
+779	tell me the m80	atis_aircraft	O O O B-aircraft_code	1	0 0 0 1
+228	direct flights from new york city los angeles after 10 am	atis_flight	B-connect O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name B-toloc.city_name I-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	29 0 0 71 72 72 112 113 52 50 51
+86	give me from nashville to houston nonstop with dinner served	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-flight_stop O B-meal_description O	9	0 0 0 71 0 112 64 0 79 0
+285	i'd flights from new york miami	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 0 71 72 112
+330	need to a car in washington dc	atis_ground_service	O O O B-transport_type O B-city_name B-state_code	13	0 0 0 118 0 25 98
+109	what flies from boston san diego	atis_airline	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	3	0 0 0 71 112 113
+852	list the flights from newark los angeles	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 112 113
+546	all flights from new york to miami any type class	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O O O	9	0 0 0 71 72 0 112 0 0 0
+255	list flights ontario california orlando florida	atis_flight	O O B-fromloc.city_name B-fromloc.state_name B-toloc.city_name B-toloc.state_name	9	0 0 71 74 112 116
+334	what q mean	atis_abbreviation	O B-fare_basis_code O	0	0 58 0
+106	what is latest baltimore to oakland that serves dinner	atis_flight	O O B-flight_mod B-fromloc.city_name O B-toloc.city_name O O B-meal_description	9	0 0 61 71 0 112 0 0 79
+644	list from orlando tacoma saturday of fare basis of q	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name O O O O B-fare_basis_code	9	0 0 71 112 36 0 0 0 0 58
+724	how does northwest have leaving dulles	atis_flight	O O B-airline_name O O B-fromloc.airport_name	9	0 0 3 0 0 69
+341	does m mean	atis_abbreviation	O B-fare_basis_code O	0	0 58 0
+668	give me flights from phoenix milwaukee on american airlines	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O B-airline_name I-airline_name	9	0 0 0 0 71 112 0 3 4
+78	on friday night i would like from newark los angeles	atis_flight	O B-depart_date.day_name B-depart_time.period_of_day O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 36 46 0 0 0 0 71 112 113
+212	list from nashville to cleveland on sunday	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 0 71 0 112 0 36
+286	would like flights miami to new york	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113
+324	i'd like a from new york to los angeles saturday morning us air	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day B-airline_name I-airline_name	9	0 0 0 0 71 72 0 112 113 36 46 3 4
+294	i would like flight from detroit st. louis	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 112 113
+158	the flights from memphis cleveland	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+771	what is capacity on aircraft 73s	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+279	i would flights leaving milwaukee to orlando	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+406	i need a round trip from atlanta washington dc the leaving the morning	atis_airfare	O O O B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name B-toloc.state_code O O O B-depart_time.period_of_day	2	0 0 0 96 97 0 71 112 115 0 0 0 46
+241	flying from seattle to salt lake city	atis_airline	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	3	0 0 71 0 112 113 113
+17	tomorrow evening from milwaukee to st. louis	atis_flight	B-depart_date.today_relative B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	40 46 0 71 0 112 113
+874	please a flight round trip from los angeles tacoma washington with a stopover san francisco not exceeding price of 300 dollars june tenth 1993	atis_flight	O O O B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-toloc.state_name O O O B-stoploc.city_name I-stoploc.city_name B-cost_relative I-cost_relative O O B-fare_amount I-fare_amount B-depart_date.month_name B-depart_date.day_number B-depart_date.year	9	0 0 0 96 97 0 71 72 112 116 0 0 0 101 102 30 31 0 0 56 57 39 37 42
+384	a flight on delta airlines from toronto san diego	atis_flight	O O O B-airline_name I-airline_name O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 3 4 0 71 112 113
+32	does tacoma airport offer the airport to area	atis_ground_service	O B-airport_name I-airport_name O O O O O	13	0 6 7 0 0 0 0 0
+853	list the flights from cincinnati burbank on american airlines	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O B-airline_name I-airline_name	9	0 0 0 0 71 112 0 3 4
+176	what meals available dl 468 which al in san francisco at 950 am	atis_meal	O B-meal O B-airline_code B-flight_number O O O B-toloc.city_name I-toloc.city_name O B-arrive_time.time I-arrive_time.time	14	0 76 0 2 63 0 0 0 112 113 0 21 22
+33	which travel tacoma to san jose	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 0 112 113
+875	there any flights on june tenth burbank to tacoma	atis_flight	O O O O B-depart_date.month_name B-depart_date.day_number B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 39 37 71 0 112
+555	show me round trip flights burbank seattle	atis_flight	O O B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name	9	0 0 96 97 0 71 112
+421	please from milwaukee to philadelphia	atis_flight	O O B-fromloc.city_name O B-toloc.city_name	9	0 0 71 0 112
+443	from toronto to washington dc	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	9	0 71 0 112 115
+231	list distance in miles boston airport downtown boston	atis_distance	O O O O B-fromloc.airport_name I-fromloc.airport_name O B-city_name	8	0 0 0 0 69 70 0 25
+192	how los angeles international from downtown	atis_distance	O B-airport_name I-airport_name I-airport_name O O	8	0 6 7 7 0 0
+551	what does code bh	atis_abbreviation	O O O B-fare_basis_code	0	0 0 0 58
+653	delta flights seattle to salt lake city	atis_flight	B-airline_name O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	3 0 71 0 112 113 113
+56	which leave newark after noon next saturday arrive in los angeles	atis_flight	O O B-fromloc.city_name B-depart_time.time_relative B-depart_time.period_of_day B-depart_date.date_relative B-depart_date.day_name O O B-toloc.city_name I-toloc.city_name	9	0 0 71 52 46 35 36 0 0 112 113
+559	show me round trip from montreal orlando	atis_flight	O O B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name	9	0 0 96 97 0 71 112
+839	how a leaving tuesday night from st. louis to burbank	atis_flight	O O O B-depart_date.day_name B-depart_time.period_of_day O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 36 46 0 71 72 0 112
+567	ground for las vegas	atis_ground_service	O O B-city_name I-city_name	13	0 0 25 26
+718	milwaukee to phoenix on saturday	atis_flight	B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	71 0 112 0 36
+570	baltimore to kansas city economy	atis_flight	B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-economy	9	71 0 112 113 54
+234	list the in miles from san francisco international airport san francisco	atis_distance	O O O O O B-fromloc.airport_name I-fromloc.airport_name I-fromloc.airport_name I-fromloc.airport_name B-toloc.city_name I-toloc.city_name	8	0 0 0 0 0 69 70 70 70 112 113
+112	show me flights from seattle boston stopovers in minneapolis	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O O B-stoploc.city_name	9	0 0 0 0 71 112 0 0 101
+481	get between st. petersburg charlotte	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 71 72 112
+446	what flights go phoenix salt lake city	atis_flight	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 71 112 113 113
+91	please find a flight orlando kansas city	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 112 113
+413	i want a memphis to seattle arrives no later than 3 pm	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-arrive_time.time_relative I-arrive_time.time_relative I-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 71 0 112 0 23 24 24 21 22
+633	list la to orlando	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+264	kansas city to atlanta monday morning flights	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day O	9	71 72 0 112 36 46 0
+626	list airports la	atis_airport	O O B-city_name	4	0 0 25
+321	i flight on friday afternoon in june new york to cleveland	atis_flight	O O O B-depart_date.day_name B-depart_time.period_of_day O B-depart_date.month_name B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 36 46 0 39 71 72 0 112
+237	flights from houston milwaukee friday pm	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 112 36 46
+64	which leave chicago on april twelfth and in indianapolis the morning	atis_flight	O O B-fromloc.city_name O B-depart_date.month_name B-depart_date.day_number O O B-toloc.city_name O B-arrive_time.period_of_day	9	0 0 71 0 39 37 0 0 112 0 17
+576	columbus to chicago one way before 10 am	atis_flight	B-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	71 0 112 96 97 52 50 51
+144	does us air cincinnati to denver on june sixth	atis_flight	O B-airline_name I-airline_name B-fromloc.city_name O B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 3 4 71 0 112 0 39 37
+683	i a sunday flight from tampa charlotte	atis_flight	O O B-depart_date.day_name O O B-fromloc.city_name B-toloc.city_name	9	0 0 36 0 0 71 112
+149	list flights from westchester county denver on june seventh	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 72 112 0 39 37
+420	list from san francisco to charlotte	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 71 72 0 112
+5	i a from toronto to newark one way leaving wednesday evening thursday morning	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip O B-depart_date.day_name B-depart_time.period_of_day B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 0 112 96 97 0 36 46 36 46
+135	i need to get cincinnati denver on june sixth by 6 pm	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O B-arrive_date.month_name B-arrive_date.day_number B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 0 71 112 0 12 10 23 21 22
+103	what is the most expensive one way detroit and westchester county	atis_airfare	O O O B-cost_relative I-cost_relative B-round_trip I-round_trip B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	2	0 0 0 30 31 96 97 71 0 112 113
+821	i flight leaving kansas city to chicago leaving next wednesday and the following day	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.date_relative B-depart_date.day_name O B-return_date.date_relative I-return_date.date_relative I-return_date.date_relative	9	0 0 0 71 72 0 112 0 35 36 0 87 88 88
+436	flights from washington dc boston	atis_flight	O O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name	9	0 0 71 73 112
+215	which fly baltimore to san francisco	atis_airline	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	3	0 0 71 0 112 113
+694	numbers from seattle to chicago continental	atis_flight_no	O O B-fromloc.city_name O B-toloc.city_name B-airline_name	10	0 0 71 0 112 3
+392	list flights from washington dc pittsburgh after 1800	atis_flight	O O O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name B-depart_time.time_relative B-depart_time.time	9	0 0 0 71 73 112 52 50
+126	show the flights in from minneapolis indianapolis tuesday afternoon	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 0 71 112 36 46
+471	saturday from boston to washington	atis_flight	B-depart_date.day_name O B-fromloc.city_name O B-toloc.city_name	9	36 0 71 0 112
+18	saturday evening from st. louis to burbank	atis_flight	B-depart_date.day_name B-depart_time.period_of_day O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	36 46 0 71 72 0 112
+529	which flights new york to miami and back	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O O	9	0 0 71 72 0 112 0 0
+646	list coach round trip from detroit st. petersburg	atis_airfare	O B-class_type B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	2	0 27 96 97 0 71 112 113
+466	from washington to montreal	atis_airfare	O B-fromloc.city_name O B-toloc.city_name	2	0 71 0 112
+338	i want fly from milwaukee los angeles	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 112 113
+811	i a from los angeles to charlotte early in morning	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_time.period_mod O B-depart_time.period_of_day	9	0 0 0 71 72 0 112 45 0 46
+780	me the m80 aircraft	atis_aircraft	O O B-aircraft_code O	1	0 0 1 0
+521	i need rent a car tampa	atis_ground_service	O O O O B-transport_type B-city_name	13	0 0 0 0 118 25
+152	list flights from cincinnati to westchester county june seventh	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 0 112 113 39 37
+422	list flights from philadelphia san francisco	atis_flight	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 71 112 113
+838	and a from st. louis to burbank leaves tuesday afternoon	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 72 0 112 0 36 46
+415	i want round trip from memphis to seattle	atis_flight	O O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name	9	0 0 96 97 0 71 0 112
+781	tell about the type of called m80	atis_aircraft	O O O O O O B-aircraft_code	1	0 0 0 0 0 0 1
+95	which flights in burbank kansas city saturdays in the afternoon	atis_flight	O O O B-toloc.city_name B-fromloc.city_name I-fromloc.city_name B-arrive_date.day_name O O B-arrive_time.period_of_day	9	0 0 0 112 71 72 9 0 0 17
+632	flights la guardia to burbank	atis_flight	O B-fromloc.airport_name I-fromloc.airport_name O B-toloc.city_name	9	0 69 70 0 112
+73	on tuesday are flights san diego california to indianapolis indiana i would the be the afternoon	atis_flight	O B-depart_date.day_name O O B-fromloc.city_name I-fromloc.city_name B-fromloc.state_name O B-toloc.city_name B-toloc.state_name O O O O O B-depart_time.period_of_day	9	0 36 0 0 71 72 74 0 112 116 0 0 0 0 0 46
+585	show me transportation phoenix	atis_ground_service	O O O B-city_name	13	0 0 0 25
+110	is the latest breakfast from dallas to tampa	atis_flight	O O B-flight_mod B-meal_description O B-fromloc.city_name O B-toloc.city_name	9	0 0 61 79 0 71 0 112
+25	which flights kansas city to los angeles on april ninth	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 71 72 0 112 113 0 39 37
+502	list california nevada arizona airports	atis_airport	O B-state_name B-state_name B-state_name O	4	0 99 99 99 0
+534	show me from milwaukee orlando	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+154	what airlines off love field 6 and 10 am on june sixth	atis_airline	O O O B-fromloc.airport_name I-fromloc.airport_name B-depart_time.start_time O B-depart_time.end_time I-depart_time.end_time O B-depart_date.month_name B-depart_date.day_number	3	0 0 0 69 70 48 0 43 44 0 39 37
+49	i need from milwaukee to seattle	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+28	which flights travel cleveland indianapolis on april fifth	atis_flight	O O O B-fromloc.city_name B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 112 0 39 37
+648	from minneapolis to pittsburgh on friday	atis_flight	O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 0 36
+29	flights from indianapolis to san diego on april fifth	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 71 0 112 113 0 39 37
+473	list flights milwaukee detroit	atis_flight	O O B-fromloc.city_name B-toloc.city_name	9	0 0 71 112
+620	list from dallas houston	atis_flight	O O B-fromloc.city_name B-toloc.city_name	9	0 0 71 112
+156	list flights montreal to philly before 9 am	atis_flight	O O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 71 0 112 52 50 51
+702	houston to dallas before midnight	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.period_of_day	9	71 0 112 52 46
+741	show delta airlines jfk to miami	atis_flight	O B-airline_name I-airline_name B-fromloc.airport_code O B-toloc.city_name	9	0 3 4 68 0 112
+150	the flights from denver to cincinnati june eighth	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 0 112 39 37
+390	list from las vegas denver	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 71 72 112
+543	show me delta airlines flights montreal to orlando	atis_flight	O O B-airline_name I-airline_name O B-fromloc.city_name O B-toloc.city_name	9	0 0 3 4 0 71 0 112
+20	flights burbank to milwaukee on monday	atis_flight	O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 0 36
+726	list the cities which northwest	atis_city	O O O O B-airline_name	7	0 0 0 0 3
+532	what abbreviation us for	atis_abbreviation	O O B-airline_code O	0	0 0 2 0
+348	what's cheapest flight from san francisco detroit today	atis_flight	O B-cost_relative O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-depart_date.today_relative	9	0 30 0 0 71 72 112 40
+801	how does alaska airlines have to burbank	atis_flight	O O B-airline_name I-airline_name O O B-toloc.city_name	9	0 0 3 4 0 0 112
+597	what fare h mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+153	list the westchester county to cincinnati on june seventh leaving after 5 pm	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number O B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 71 72 0 112 0 39 37 0 52 50 51
+583	show me from san jose to phoenix	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 72 0 112
+96	flights arrive in burbank from las vegas saturday april twenty third the afternoon	atis_flight	O O O B-toloc.city_name O B-fromloc.city_name I-fromloc.city_name B-depart_date.day_name B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number O B-depart_time.period_of_day	9	0 0 0 112 0 71 72 36 39 37 38 0 46
+763	what seating capacity the type aircraft m80	atis_capacity	O O O O O O B-aircraft_code	5	0 0 0 0 0 0 1
+748	what lowest fare from bwi to salt lake city	atis_airfare	O B-cost_relative O O B-fromloc.airport_code O B-toloc.city_name I-toloc.city_name I-toloc.city_name	2	0 30 0 0 68 0 112 113 113
+376	what the flights between milwaukee pittsburgh	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 112
+419	please list flights orlando philadelphia	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+478	get last oakland to salt lake city on wednesday	atis_flight	O B-flight_mod B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	0 61 71 0 112 113 113 0 36
+564	kansas city to las vegas economy	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-economy	9	71 72 0 112 113 54
+487	i need flight for flights cleveland going back milwaukee wednesday after 5 pm	atis_flight	O O O O O B-fromloc.city_name O O B-toloc.city_name B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 0 71 0 0 112 36 52 50 51
+810	cheapest fare from charlotte to las vegas	atis_airfare	B-cost_relative O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	2	30 0 0 71 0 112 113
+121	show all the flights charlotte to minneapolis tuesday morning	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 71 0 112 36 46
+866	find from san diego phoenix on monday am	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 72 112 0 36 46
+283	i would like salt lake city to cincinnati	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 72 72 0 112
+511	please list afternoon flights st. petersburg charlotte	atis_flight	O O B-depart_time.period_of_day O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 46 0 71 72 112
+39	are there flights from boston to orlando connecting new york	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-connect B-stoploc.city_name I-stoploc.city_name	9	0 0 0 0 71 0 112 29 101 102
+503	list the arizona	atis_airport	O O B-state_name	4	0 0 99
+61	round trip flights chicago next tuesday around 6 pm and arrive in detroit	atis_flight	B-round_trip I-round_trip O B-fromloc.city_name B-depart_date.date_relative B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time O O O B-toloc.city_name	9	96 97 0 71 35 36 52 50 51 0 0 0 112
+787	list all on all aircraft in denver between 8 and 9 pm	atis_flight	O O O O O O B-toloc.city_name O B-arrive_time.start_time O B-arrive_time.end_time I-arrive_time.end_time	9	0 0 0 0 0 0 112 0 19 0 14 15
+372	what the seating for the m80	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+609	list chicago to san diego	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 71 0 112 113
+408	what is lowest a flight from washington dc to boston	atis_airfare	O O B-cost_relative O O O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	2	0 0 30 0 0 0 71 73 0 112
+768	list all arriving in denver 8 and 9 pm	atis_flight	O O O O B-toloc.city_name B-arrive_time.start_time O B-arrive_time.end_time I-arrive_time.end_time	9	0 0 0 0 112 19 0 14 15
+762	what is the capacity aircraft m80	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+657	list in baltimore	atis_ground_service	O O B-city_name	13	0 0 25
+346	does ap 20 mean	atis_abbreviation	O B-restriction_code I-restriction_code O	0	0 85 86 0
+561	me the cheapest one way from orlando to montreal	atis_flight	O O B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name	9	0 0 30 96 97 0 71 0 112
+541	round trip from orlando to montreal	atis_flight	B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name	9	96 97 0 71 0 112
+690	saturday on american airlines milwaukee to phoenix	atis_flight	B-depart_date.day_name O B-airline_name I-airline_name B-fromloc.city_name O B-toloc.city_name	9	36 0 3 4 71 0 112
+169	show the from houston to orlando	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+736	show the first class and coach flights jfk and orlando	atis_flight	O O B-class_type I-class_type O B-class_type O B-fromloc.airport_code O B-toloc.city_name	9	0 0 27 28 0 27 0 68 0 112
+199	flights are between washington dc and columbus ohio	atis_flight	O O O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name B-toloc.state_name	9	0 0 0 71 73 0 112 116
+691	flight numbers american airlines from phoenix milwaukee	atis_flight_no	O O B-airline_name I-airline_name O B-fromloc.city_name B-toloc.city_name	10	0 0 3 4 0 71 112
+21	flights tuesday evening from milwaukee st. louis	atis_flight	O B-depart_date.day_name B-depart_time.period_of_day O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 36 46 0 71 112 113
+603	show me nonstop flights toronto st. petersburg	atis_flight	O O B-flight_stop O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 64 0 71 112 113
+816	i like flight on tuesday leaves san diego indianapolis indiana and that leaves in afternoon	atis_flight	O O O O B-depart_date.day_name O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-toloc.state_name O O O O B-depart_time.period_of_day	9	0 0 0 0 36 0 71 72 112 116 0 0 0 0 46
+386	a from toronto to san diego	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 0 112 113
+306	show me the round trips from new york to miami	atis_flight	O O O B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 96 97 0 71 72 0 112
+757	show flights from houston to orlando	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+187	which depart a atlanta and in toronto	atis_flight	O O O B-fromloc.city_name O O B-toloc.city_name	9	0 0 0 71 0 0 112
+514	please only the flights cleveland dallas that leave before noon	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O O B-depart_time.time_relative B-depart_time.period_of_day	9	0 0 0 0 71 112 0 0 52 46
+649	list flights before 9 am cincinnati tampa	atis_flight	O O B-depart_time.time_relative B-depart_time.time I-depart_time.time B-fromloc.city_name B-toloc.city_name	9	0 0 52 50 51 71 112
+596	the restriction ap58 mean	atis_abbreviation	O O B-restriction_code O	0	0 0 85 0
+885	all the airports near westchester county	atis_airport	O O O O B-city_name I-city_name	4	0 0 0 0 25 26
+492	i need flight airline information for a denver salt lake city on monday after 5 pm	atis_airline	O O O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	3	0 0 0 0 0 0 0 71 112 113 113 0 36 52 50 51
+858	i'd to from burbank to milwaukee	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+11	on next wednesday flight kansas city to chicago in chicago around 7 pm flight on thursday	atis_flight	O B-depart_date.date_relative B-depart_date.day_name O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time O O B-return_date.day_name	9	0 35 36 0 71 72 0 112 0 112 23 21 22 0 0 89
+161	the flights from pittsburgh to baltimore arriving july first	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-arrive_date.month_name B-arrive_date.day_number	9	0 0 0 71 0 112 0 12 10
+673	give flights from seattle to chicago have meals on continental saturday morning	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-meal O B-airline_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 0 112 0 76 0 3 36 46
+470	list saturday from washington boston	atis_flight	O B-depart_date.day_name O B-fromloc.city_name B-toloc.city_name	9	0 36 0 71 112
+391	list milwaukee to washington dc before 1200	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code B-depart_time.time_relative B-depart_time.time	9	0 71 0 112 115 52 50
+370	what are flights dallas and phoenix	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+859	can you find flight salt lake city to new york city next saturday before arriving before 6 pm	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-depart_date.date_relative B-depart_date.day_name B-arrive_time.time_relative O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 0 71 72 72 0 112 113 113 35 36 23 0 23 21 22
+674	give me the from chicago seattle on continental that meals early saturday morning	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O B-airline_name O B-meal B-depart_time.period_mod B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 71 112 0 3 0 76 45 36 46
+163	canadian airlines international flights use j31	atis_quantity	B-airline_name I-airline_name I-airline_name O O B-aircraft_code	15	3 4 4 0 0 1
+365	what is the latest daily oakland and salt lake city	atis_flight	O O O B-flight_mod B-flight_days B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 61 60 71 0 112 113 113
+686	cheapest round trip or indianapolis to orlando on december twenty fifth	atis_airfare	B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number	2	30 96 97 0 71 0 112 0 39 37 38
+489	need for departing from cleveland to milwaukee on wednesday after 5 pm	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 71 0 112 0 36 52 50 51
+57	which leave detroit and arrive st. petersburg around 9 am	atis_flight	O O B-fromloc.city_name O O B-toloc.city_name I-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 71 0 0 112 113 23 21 22
+263	is the airfare round trip first class ticket from detroit to st. petersburg	atis_airfare	O O O B-round_trip I-round_trip B-class_type I-class_type O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	2	0 0 0 96 97 27 28 0 0 71 0 112 113
+143	june eighth what flights from westchester county to cincinnati	atis_flight	B-depart_date.month_name B-depart_date.day_number O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	39 37 0 0 0 71 72 0 112
+629	list la	atis_city	O B-city_name	7	0 25
+182	what depart baltimore and arrive at san francisco a friday	atis_flight	O O B-fromloc.city_name O O O B-toloc.city_name I-toloc.city_name O B-arrive_date.day_name	9	0 0 71 0 0 0 112 113 0 9
+175	meal code sb	atis_abbreviation	O O B-meal_code	0	0 0 77
+297	would like flights san francisco to san diego	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 72 0 112 113
+340	what is the shortest milwaukee to long beach	atis_flight	O O O B-flight_mod B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 61 71 0 112 113
+884	i want to flight salt lake city to westchester county	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 72 72 0 112 113
+202	at the charlotte airport many different types of there us air	atis_aircraft	O O B-city_name I-city_name O O O O O B-airline_name I-airline_name	1	0 0 25 26 0 0 0 0 0 3 4
+843	need flight from memphis to tacoma that goes los angeles	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O O B-stoploc.city_name I-stoploc.city_name	9	0 0 0 71 0 112 0 0 101 102
+117	show northwest flight 608 kansas city to st. paul	atis_flight	O B-airline_name O B-flight_number B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 3 0 63 71 72 0 112 113
+697	newark to tampa on friday	atis_flight	B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	71 0 112 0 36
+62	which round trip flights chicago next tuesday arrive in detroit around 6 pm	atis_flight	O B-round_trip I-round_trip O B-fromloc.city_name B-depart_date.date_relative B-depart_date.day_name O O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 96 97 0 71 35 36 0 0 112 23 21 22
+124	show me flights from minneapolis indianapolis on tuesday leave after 2 pm	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name O B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 71 112 0 36 0 52 50 51
+786	all arriving in denver between 8 and 9 pm	atis_flight	O O O B-toloc.city_name O B-arrive_time.start_time O B-arrive_time.end_time I-arrive_time.end_time	9	0 0 0 112 0 19 0 14 15
+769	is the of the 73s	atis_capacity	O O O O B-aircraft_code	5	0 0 0 0 1
+429	show denver to houston	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+235	list limousine for city of boston	atis_ground_fare	O B-transport_type O B-city_name I-city_name I-city_name	12	0 118 0 25 26 26
+631	list from new york la	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 71 72 112
+625	list airports	atis_airport	O O	4	0 0
+34	day the week flights nashville to tacoma fly on	atis_day_name	O O O O B-fromloc.city_name O B-toloc.city_name O O	17	0 0 0 0 71 0 112 0 0
+203	all us air arriving in charlotte on saturday at 1 pm	atis_flight	O B-airline_name I-airline_name O O B-toloc.city_name O B-arrive_date.day_name O B-arrive_time.time I-arrive_time.time	9	0 3 4 0 0 112 0 9 0 21 22
+371	what is between phoenix airport and downtown phoenix	atis_ground_service	O O O B-airport_name I-airport_name O O B-city_name	13	0 0 0 6 7 0 0 25
+79	find a flight from tampa to montreal new york	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-stoploc.city_name I-stoploc.city_name	9	0 0 0 0 71 0 112 101 102
+404	i need from washington dc to san diego	atis_flight	O O O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 73 0 112 113
+123	show me us 1500 on monday from charlotte minneapolis please	atis_flight	O O B-airline_code B-flight_number O B-depart_date.day_name O B-fromloc.city_name B-toloc.city_name O	9	0 0 2 63 0 36 0 71 112 0
+130	show all the on america west twa from las vegas to jfk on friday	atis_flight	O O O O B-airline_name I-airline_name B-airline_code O B-fromloc.city_name I-fromloc.city_name O B-toloc.airport_code O B-depart_date.day_name	9	0 0 0 0 3 4 2 0 71 72 0 109 0 36
+16	from burbank to milwaukee for today	atis_flight	O B-fromloc.city_name O B-toloc.city_name O B-depart_date.today_relative	9	0 71 0 112 0 40
+387	list from oakland salt lake city leaving after 1700 wednesday	atis_flight	O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_time.time_relative B-depart_time.time B-depart_date.day_name	9	0 0 71 112 113 113 0 52 50 36
+882	find all the round trip from burbank to milwaukee stopping st. louis	atis_flight	O O O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name O B-stoploc.city_name I-stoploc.city_name	9	0 0 0 96 97 0 71 0 112 0 101 102
+855	please me flights from chicago kansas city on june seventeenth	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 0 0 71 112 113 0 39 37
+53	i need flight las vegas to ontario	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 72 0 112
+820	type of is used the american flight at 419 pm	atis_aircraft	O O O O O B-airline_name O O B-depart_time.time I-depart_time.time	1	0 0 0 0 0 3 0 0 50 51
+844	what are the cincinnati and san jose california leave after 6 pm	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-toloc.state_name O B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 71 0 112 113 116 0 52 50 51
+699	charlotte to baltimore on tuesday	atis_flight	B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	71 0 112 0 36
+312	show the cheapest one way from san francisco to houston on february twenty eighth 1994	atis_airfare	O O B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number B-depart_date.year	2	0 0 30 96 97 0 71 72 0 112 0 39 37 38 42
+579	from milwaukee to orlando one way after 5 pm wednesday	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip B-depart_time.time_relative B-depart_time.time I-depart_time.time B-depart_date.day_name	9	0 71 0 112 96 97 52 50 51 36
+15	nonstop flights salt lake city to new york on saturday april ninth	atis_flight	B-flight_stop O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.day_name B-depart_date.month_name B-depart_date.day_number	9	64 0 71 72 72 0 112 113 0 36 39 37
+292	like the airline that flies toronto detroit and st. louis	atis_airline	O O O O O B-fromloc.city_name B-toloc.city_name O B-toloc.city_name I-toloc.city_name	3	0 0 0 0 0 71 112 0 112 113
+105	what the departure times detroit to westchester county	atis_flight_time	O O B-flight_time I-flight_time B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	11	0 0 66 67 71 0 112 113
+628	airports in la	atis_airport	O O B-city_name	4	0 0 25
+332	about from dc oakland on wednesday morning	atis_flight	O O B-fromloc.state_code B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 73 112 0 36 46
+720	phoenix to milwaukee on wednesday	atis_flight	B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	71 0 112 0 36
+782	the seating capacity of the 733	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+524	i need on flights from toronto san diego	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 112 113
+474	flights detroit to toronto	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+181	flights depart baltimore	atis_flight	O O B-fromloc.city_name	9	0 0 71
+93	i would like know airports in los angeles	atis_airport	O O O O O O B-city_name I-city_name	4	0 0 0 0 0 0 25 26
+445	what flights go dallas phoenix	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+360	what is mci	atis_abbreviation	O O B-airport_code	0	0 0 5
+833	the flights on thursday from st. paul minnesota to st. louis	atis_flight	O O O B-depart_date.day_name O B-fromloc.city_name I-fromloc.city_name B-fromloc.state_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 36 0 71 72 74 0 112 113
+305	me the cheapest first class round trip from new york miami	atis_flight	O O B-cost_relative B-class_type I-class_type B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 30 27 28 96 97 0 71 72 112
+594	does code f mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+703	indianapolis to orlando december twenty seventh	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number	9	71 0 112 39 37 38
+166	on american airlines which fly from st. petersburg to ontario canada with stopover in st. louis	atis_flight	O B-airline_name I-airline_name O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-toloc.country_name O O O B-stoploc.city_name I-stoploc.city_name	9	0 3 4 0 0 0 71 72 0 112 114 0 0 0 101 102
+538	are restrictions ap 57	atis_abbreviation	O O B-restriction_code I-restriction_code	0	0 0 85 86
+621	list distance from to in new york	atis_distance	O O O O O B-city_name I-city_name	8	0 0 0 0 0 25 26
+67	i'd like to go from long beach to st. louis i'd like stop dallas also lunch during flight	atis_flight	O O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name O O O B-stoploc.city_name O B-meal_description O O	9	0 0 0 0 0 71 72 0 112 113 0 0 0 101 0 79 0 0
+672	give flights seattle to chicago that have meals continental	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O O B-meal B-airline_name	9	0 0 71 0 112 0 0 76 3
+766	list the airlines with to denver	atis_airline	O O O O O B-city_name	3	0 0 0 0 0 25
+2	on april first i need a from phoenix san diego	atis_flight	O B-depart_date.month_name B-depart_date.day_number O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 39 37 0 0 0 0 71 112 113
+438	flights washington dc to montreal	atis_flight	O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	9	0 71 73 0 112
+76	would an early morning flight today from los angeles to charlotte	atis_flight	O O B-depart_time.period_of_day B-depart_time.period_of_day O B-depart_date.today_relative O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 46 46 0 40 0 71 72 0 112
+173	the cheapest round trip coach fare on twa from las vegas to detroit	atis_airfare	O B-cost_relative B-round_trip I-round_trip B-class_type O O B-airline_code O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	2	0 30 96 97 27 0 0 2 0 71 72 0 112
+269	st. paul to kansas city friday night	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 72 0 112 113 36 46
+194	much the limousine service in boston	atis_ground_fare	O O B-transport_type O O B-city_name	12	0 0 118 0 0 25
+733	what type is a d9s	atis_aircraft	O O O O B-aircraft_code	1	0 0 0 0 1
+806	list alaska airlines a departing from burbank	atis_flight	O B-airline_name I-airline_name O O O B-fromloc.city_name	9	0 3 4 0 0 0 71
+663	me flights and fares for trip to cleveland from miami wednesday	atis_flight	O O O O O O O B-toloc.city_name O B-fromloc.city_name B-depart_date.day_name	9	0 0 0 0 0 0 0 112 0 71 36
+84	find flight from san diego to toronto on alaska airlines	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-airline_name I-airline_name	9	0 0 0 71 72 0 112 0 3 4
+639	list from miami indianapolis on sunday	atis_flight	O O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name	9	0 0 71 112 0 36
+10	a flight from memphis tacoma dinner	atis_flight	O O O B-fromloc.city_name B-toloc.city_name B-meal_description	9	0 0 0 71 112 79
+462	want to go from boston to washington saturday	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name	9	0 0 0 0 71 0 112 36
+749	me the of a first class from detroit las vegas and back	atis_airfare	O O O O B-class_type I-class_type O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-round_trip	2	0 0 0 0 27 28 0 71 112 113 0 96
+442	flights washington dc to toronto	atis_flight	O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	9	0 71 73 0 112
+795	please list the from lga into new york city	atis_ground_service	O O O O B-airport_code O B-city_name I-city_name I-city_name	13	0 0 0 0 5 0 25 26 26
+890	i'd like to from miami to chicago american airlines	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-airline_name I-airline_name	9	0 0 0 0 71 0 112 3 4
+700	baltimore to newark wednesday morning	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 36 46
+70	i would like leave this afternoon an american from cincinnati burbank	atis_flight	O O O O B-depart_date.today_relative B-depart_time.period_of_day O B-airline_name O B-fromloc.city_name B-toloc.city_name	9	0 0 0 0 40 46 0 3 0 71 112
+74	thursday morning would like nonstop flight from indianapolis to toronto	atis_flight	B-depart_date.day_name B-depart_time.period_of_day O O B-flight_stop O O B-fromloc.city_name O B-toloc.city_name	9	36 46 0 0 64 0 0 71 0 112
+22	show wednesday evening st. louis to burbank	atis_flight	O B-depart_date.day_name B-depart_time.period_of_day B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 36 46 71 72 0 112
+497	i flight information for thursday departing prior to 9 am from oakland to salt lake city	atis_airfare	O O O O B-depart_date.day_name O B-depart_time.time_relative I-depart_time.time_relative B-depart_time.time I-depart_time.time O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	2	0 0 0 0 36 0 52 53 50 51 0 71 0 112 113 113
+575	which is us	atis_airline	O O B-airline_code	3	0 0 2
+244	from seattle to salt lake city on delta l10	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-airline_name B-aircraft_code	9	0 71 0 112 113 113 0 3 1
+165	canadian airlines flights use aircraft dh8	atis_quantity	B-airline_name I-airline_name O O O B-aircraft_code	15	3 4 0 0 0 1
+618	flights milwaukee to san jose on wednesday	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 113 0 36
+735	me the airports by tower air	atis_airport	O O O O B-airline_name I-airline_name	4	0 0 0 0 3 4
+6	monday morning i like to fly columbus to indianapolis	atis_flight	B-depart_date.day_name B-depart_time.period_of_day O O O O B-fromloc.city_name O B-toloc.city_name	9	36 46 0 0 0 0 71 0 112
+344	what shortest flight from milwaukee to long beach	atis_flight	O B-flight_mod O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 61 0 0 71 0 112 113
+278	minneapolis to pittsburgh first class flight	atis_flight	B-fromloc.city_name O B-toloc.city_name B-class_type I-class_type O	9	71 0 112 27 28 0
+725	what cities does northwest fly	atis_city	O O O B-airline_name O	7	0 0 0 3 0
+727	what cities northwest fly	atis_city	O O B-airline_name O	7	0 0 3 0
+37	are the flights from tacoma san jose	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 112 113
+714	chicago to las vegas saturday morning	atis_flight	B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 113 36 46
+196	how much limousine service in toronto international	atis_ground_fare	O O B-transport_type O O B-airport_name I-airport_name	12	0 0 118 0 0 6 7
+759	what the seating the aircraft 733	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+85	please columbus to houston with a layover in nashville tomorrow	atis_flight	O B-fromloc.city_name O B-toloc.city_name O O O O B-stoploc.city_name B-depart_date.today_relative	9	0 71 0 112 0 0 0 0 101 40
+400	i to fly from san diego to seattle	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 72 0 112
+394	list between pittsburgh milwaukee	atis_flight	O O B-fromloc.city_name B-toloc.city_name	9	0 0 71 112
+27	which on us air go orlando to cleveland	atis_flight	O O B-airline_name I-airline_name O B-fromloc.city_name O B-toloc.city_name	9	0 0 3 4 0 71 0 112
+399	i would like to fly atlanta san diego	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 112 113
+185	depart from tampa in early evening and arrive in cincinnati	atis_flight	O O B-fromloc.city_name O B-depart_time.period_of_day B-depart_time.period_of_day O O O B-toloc.city_name	9	0 0 71 0 46 46 0 0 0 112
+77	on wednesday night i like flight charlotte to newark	atis_flight	O B-depart_date.day_name B-depart_time.period_of_day O O O B-fromloc.city_name O B-toloc.city_name	9	0 36 46 0 0 0 71 0 112
+846	what are the nonstop flights houston memphis	atis_flight	O O O B-flight_stop O B-fromloc.city_name B-toloc.city_name	9	0 0 0 64 0 71 112
+385	list on american airlines from toronto to san diego	atis_flight	O O B-airline_name I-airline_name O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 3 4 0 71 0 112 113
+696	how much coach flight from pittsburgh atlanta	atis_airfare	O O B-class_type O O B-fromloc.city_name B-toloc.city_name	2	0 0 27 0 0 71 112
+624	airports in la	atis_airport	O O B-city_name	4	0 0 25
+99	what flights leave cleveland to indianapolis on april twenty first morning	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number B-depart_time.period_of_day	9	0 0 0 71 0 112 0 39 37 38 46
+52	i a from memphis to las vegas	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113
+275	flights newark to los angeles wednesday morning	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 71 0 112 113 36 46
+273	nashville to cleveland sunday before 9	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.time_relative B-depart_time.time	9	71 0 112 36 52 50
+535	does fare f mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+685	can i have morning flight from baltimore newark	atis_flight	O O O B-depart_time.period_of_day O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 46 0 0 71 112
+494	need a from salt lake city to phoenix departing wednesday after 5 pm	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 71 72 72 0 112 0 36 52 50 51
+814	like an evening from newark to los angeles	atis_flight	O O B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 46 0 71 0 112 113
+31	flights travel from nashville tacoma	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+807	list all alaska airlines	atis_flight	O O B-airline_name I-airline_name	9	0 0 3 4
+183	what flights leave from cincinnati morning arrive in tampa	atis_flight	O O O O B-fromloc.city_name B-depart_time.period_of_day O O B-toloc.city_name	9	0 0 0 0 71 46 0 0 112
+12	show flight and kansas city chicago next wednesday arriving in chicago by 7 pm	atis_airfare	O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-depart_date.date_relative B-depart_date.day_name O O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	2	0 0 0 71 72 112 35 36 0 0 112 23 21 22
+167	show on american airlines go from st. petersburg to ontario california by way of st. louis	atis_flight	O O B-airline_name I-airline_name O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-toloc.state_name O O O B-stoploc.city_name I-stoploc.city_name	9	0 0 3 4 0 0 71 72 0 112 116 0 0 0 101 102
+295	would like a from toronto to st. louis	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 0 112 113
+519	i a ticket from nashville tennessee seattle	atis_airfare	O O O O B-fromloc.city_name B-fromloc.state_name B-toloc.city_name	2	0 0 0 0 71 74 112
+343	what the shortest from milwaukee to st. petersburg	atis_flight	O O B-flight_mod O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 61 0 71 0 112 113
+545	which is kw	atis_airline	O O B-airline_code	3	0 0 2
+423	please show to milwaukee	atis_ground_service	O O O B-city_name	13	0 0 0 25
+500	need numbers for those departing thursday before 8 am from oakland going to salt lake city	atis_flight_no	O O O O O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time O B-fromloc.city_name O O B-toloc.city_name I-toloc.city_name I-toloc.city_name	10	0 0 0 0 0 36 52 50 51 0 71 0 0 112 113 113
+662	give me fares for round trip from cleveland miami next wednesday	atis_airfare	O O O O B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name B-depart_date.date_relative B-depart_date.day_name	2	0 0 0 0 96 97 0 71 112 35 36
+595	me round trip from burbank to tacoma	atis_flight	O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name	9	0 96 97 0 71 0 112
+458	would like information flights leaving washington dc to denver	atis_flight	O O O O O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	9	0 0 0 0 0 71 73 0 112
+301	me from columbus to chicago first class that leave before 10 am	atis_flight	O O B-fromloc.city_name O B-toloc.city_name B-class_type I-class_type O O B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 71 0 112 27 28 0 0 52 50 51
+688	flight dallas to houston	atis_flight_no	O B-fromloc.city_name O B-toloc.city_name	10	0 71 0 112
+81	please a flight from las vegas michigan	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.state_name	9	0 0 0 0 71 72 116
+323	i'd like a red eye flight from new york los angeles saturday evening us air	atis_flight	O O O B-flight_mod I-flight_mod O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day B-airline_name I-airline_name	9	0 0 0 61 62 0 0 71 72 112 113 36 46 3 4
+850	list the flights los angeles to charlotte	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 72 0 112
+797	show me the morning memphis to new york city	atis_flight	O O O B-depart_time.period_of_day B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 46 71 0 112 113 113
+747	what are the lowest from washington dc salt lake city	atis_airfare	O O O B-cost_relative O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name I-toloc.city_name I-toloc.city_name	2	0 0 0 30 0 71 73 112 113 113
+191	how toronto international from downtown	atis_distance	O B-airport_name I-airport_name O O	8	0 6 7 0 0
+848	what are the american from newark nashville	atis_flight	O O O B-airline_name O B-fromloc.city_name B-toloc.city_name	9	0 0 0 3 0 71 112
+180	list all tower air meals	atis_flight	O O B-airline_name I-airline_name B-meal	9	0 0 3 4 76
+581	what airline yx	atis_airline	O O B-airline_code	3	0 0 2
+765	what serve denver	atis_airline	O O B-city_name	3	0 0 25
+671	give me flights chicago to seattle saturday morning that meals	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day O B-meal	9	0 0 0 71 0 112 36 46 0 76
+388	list flights oakland to salt lake city after midnight thursday	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-depart_time.time_relative B-depart_time.period_of_day B-depart_date.day_name	9	0 0 71 0 112 113 113 52 46 36
+142	what united airlines flights june eighth go from westchester county cincinnati	atis_flight	O B-airline_name I-airline_name O B-depart_date.month_name B-depart_date.day_number O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 3 4 0 39 37 0 0 71 72 112
+627	airports in la	atis_airport	O O B-city_name	4	0 0 25
+221	list early morning flights cincinnati tampa	atis_flight	O B-depart_time.period_of_day B-depart_time.period_of_day O B-fromloc.city_name B-toloc.city_name	9	0 46 46 0 71 112
+601	airline is as as in	atis_airline	O O B-airline_code O O	3	0 0 2 0 0
+437	list washington dc to montreal	atis_airfare	O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	2	0 71 73 0 112
+552	what does fare bh	atis_abbreviation	O O O B-fare_basis_code	0	0 0 0 58
+208	list their fares all flights between miami and indianapolis	atis_airfare	O O O O O O B-fromloc.city_name O B-toloc.city_name	2	0 0 0 0 0 0 71 0 112
+789	list the flights nashville to memphis on monday morning	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 0 112 0 36 46
+607	show weekday flights from milwaukee orlando one way	atis_flight	O B-flight_mod O O B-fromloc.city_name B-toloc.city_name B-round_trip I-round_trip	9	0 61 0 0 71 112 96 97
+66	which flights leave april twelfth from indianapolis and montreal around 10 pm	atis_flight	O O O B-depart_date.month_name B-depart_date.day_number O B-fromloc.city_name O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 39 37 0 71 0 112 23 21 22
+125	me flights from minneapolis to indiana	atis_flight	O O O B-fromloc.city_name O B-toloc.state_name	9	0 0 0 71 0 116
+60	show me round trip flights from chicago detroit leaving next tuesday returning day after	atis_flight	O O B-round_trip I-round_trip O O B-fromloc.city_name B-toloc.city_name O B-depart_date.date_relative B-depart_date.day_name O B-return_date.date_relative I-return_date.date_relative	9	0 0 96 97 0 0 71 112 0 35 36 0 87 88
+881	is there airline from burbank to milwaukee milwaukee to st. louis from st. louis to burbank	atis_airline	O O O O B-fromloc.city_name O B-toloc.city_name B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	3	0 0 0 0 71 0 112 71 0 112 113 0 71 72 0 112
+730	tell me again morning flights on american airlines philadelphia dallas	atis_flight	O O O B-depart_time.period_of_day O O B-airline_name I-airline_name B-fromloc.city_name B-toloc.city_name	9	0 0 0 46 0 0 3 4 71 112
+860	can me another from cincinnati to new york on saturday before 6 pm	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 71 0 112 113 0 36 52 50 51
+711	memphis to las vegas sunday afternoon	atis_flight	B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 113 36 46
+434	from minneapolis to kansas city	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 71 0 112 113
+868	find detroit to san diego on tuesday	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 113 0 36
+195	much a limousine service in la guardia	atis_ground_fare	O O B-transport_type O O B-airport_name I-airport_name	12	0 0 118 0 0 6 7
+88	a flight that goes from kansas city newark orlando back to kansas city	atis_flight	O O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-toloc.city_name O O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 72 112 112 0 0 112 113
+812	i would morning flight from charlotte to newark	atis_flight	O O B-depart_time.period_of_day O O B-fromloc.city_name O B-toloc.city_name	9	0 0 46 0 0 71 0 112
+870	find san jose to houston on wednesday	atis_flight	O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 71 72 0 112 0 36
+493	is there ground available at salt lake city airport	atis_ground_service	O O O O O B-airport_name I-airport_name I-airport_name I-airport_name	13	0 0 0 0 0 6 7 7 7
+132	i'd to from san diego to houston on june tenth	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 72 0 112 0 39 37
+353	what transportation available at denver	atis_ground_service	O O O O B-city_name	13	0 0 0 0 25
+0	i would like find a flight from charlotte to las vegas a st. louis	atis_flight	O O O O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-stoploc.city_name I-stoploc.city_name	9	0 0 0 0 0 0 0 71 0 112 113 0 101 102
+642	list flights fares from tacoma orlando round trip saturday returning next saturday	atis_airfare	O O O O B-fromloc.city_name B-toloc.city_name B-round_trip I-round_trip B-depart_date.day_name O B-return_date.date_relative B-return_date.day_name	2	0 0 0 0 71 112 96 97 36 0 87 89
+508	wednesday night flights oakland to salt lake city	atis_flight	B-depart_date.day_name B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	36 46 0 71 0 112 113 113
+817	i would like leave thursday morning indianapolis to toronto	atis_flight	O O O O B-depart_date.day_name B-depart_time.period_of_day B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 36 46 71 0 112
+477	get first flight oakland to salt lake city thursday	atis_flight	O B-flight_mod O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-depart_date.day_name	9	0 61 0 71 0 112 113 113 36
+832	are flights from phoenix arizona to st. paul minnesota on tuesday	atis_flight	O O O B-fromloc.city_name B-fromloc.state_name O B-toloc.city_name I-toloc.city_name B-toloc.state_name O B-depart_date.day_name	9	0 0 0 71 74 0 112 113 116 0 36
+104	airlines fly between detroit westchester county	atis_airline	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	3	0 0 0 71 112 113
+454	from san diego to seattle	atis_flight	O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 71 72 0 112
+876	find a from ontario westchester makes stop in chicago on may seventeenth one way with dinner	atis_flight	O O O B-fromloc.city_name B-toloc.city_name O O O B-stoploc.city_name O B-depart_date.month_name B-depart_date.day_number B-round_trip I-round_trip O B-meal_description	9	0 0 0 71 112 0 0 0 101 0 39 37 96 97 0 79
+159	the flights from denver to baltimore on july first	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-arrive_date.month_name B-arrive_date.day_number	9	0 0 0 71 0 112 0 12 10
+342	what ap 57 mean	atis_abbreviation	O B-restriction_code I-restriction_code O	0	0 85 86 0
+705	cheapest fare round trip indianapolis orlando on december twenty seventh	atis_airfare	B-cost_relative O B-round_trip I-round_trip B-fromloc.city_name B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number	2	30 0 96 97 71 112 0 39 37 38
+19	flights from burbank st. louis on monday	atis_flight	O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	0 0 71 112 113 0 36
+366	show me the between los angeles dallas	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 72 112
+772	what is capacity of a 757	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+335	it cost to fly columbus to st. louis round trip on twa	atis_airfare	O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-round_trip I-round_trip O B-airline_code	2	0 0 0 0 71 0 112 113 96 97 0 2
+425	list flights houston denver	atis_flight	O O B-fromloc.city_name B-toloc.city_name	9	0 0 71 112
+381	what available between milwaukee airport and downtown milwaukee	atis_ground_service	O O O B-airport_name I-airport_name O O B-city_name	13	0 0 0 6 7 0 0 25
+1	april first need ticket from tacoma to san jose departing before 7 am	atis_airfare	B-depart_date.month_name B-depart_date.day_number O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_time.time_relative B-depart_time.time I-depart_time.time	2	39 37 0 0 0 71 0 112 113 0 52 50 51
+670	me the meal flights departing early saturday morning chicago to seattle nonstop	atis_flight	O O B-meal O O B-depart_time.period_mod B-depart_date.day_name B-depart_time.period_of_day B-fromloc.city_name O B-toloc.city_name B-flight_stop	9	0 0 76 0 0 45 36 46 71 0 112 64
+256	list ontario california to salt lake city utah	atis_flight	O B-fromloc.city_name B-fromloc.state_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-toloc.state_name	9	0 71 74 0 112 113 113 116
+280	does hp stand	atis_abbreviation	O B-airline_code O	0	0 2 0
+558	show round trips montreal and orlando	atis_flight	O B-round_trip I-round_trip B-fromloc.city_name O B-toloc.city_name	9	0 96 97 71 0 112
+887	tell me all airports in new york city	atis_airport	O O O O O B-city_name I-city_name I-city_name	4	0 0 0 0 0 25 26 26
+407	i round trip from phoenix washington dc and the fare in the morning	atis_airfare	O B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name B-toloc.state_code O O O O O B-depart_time.period_of_day	2	0 96 97 0 71 112 115 0 0 0 0 0 46
+509	flights from oakland salt lake city before 6 am thursday morning	atis_flight	O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 112 113 113 52 50 51 36 46
+659	give me flights from los angeles pittsburgh on tuesday	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name O B-depart_date.day_name	9	0 0 0 0 71 72 112 0 36
+758	list all denver between 8 pm and 9 pm	atis_flight	O O B-fromloc.city_name O B-depart_time.start_time I-depart_time.start_time O B-depart_time.end_time I-depart_time.end_time	9	0 0 71 0 48 49 0 43 44
+261	what airlines fly baltimore san francisco	atis_airline	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	3	0 0 0 71 112 113
+577	airline is hp	atis_airline	O O B-airline_code	3	0 0 2
+836	i morning flight from burbank to milwaukee on next monday	atis_flight	O B-depart_time.period_of_day O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.date_relative B-depart_date.day_name	9	0 46 0 0 71 0 112 0 35 36
+723	many northwest leave washington dc	atis_flight	O B-airline_name O B-fromloc.city_name B-fromloc.state_code	9	0 3 0 71 73
+791	please list the flights from memphis new york city monday night	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 0 71 112 113 113 36 46
+813	like a morning flight newark to los angeles	atis_flight	O O B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 46 0 71 0 112 113
+431	show orlando to kansas city	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 71 0 112 113
+97	which flights are orlando to cleveland that around 10 pm	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 71 0 112 0 23 21 22
+742	show delta airlines from boston salt lake	atis_flight	O B-airline_name I-airline_name O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 3 4 0 71 112 113
+131	are the tacoma to miami that leave after 6 pm tomorrow	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O O B-depart_time.time_relative B-depart_time.time I-depart_time.time B-depart_date.today_relative	9	0 0 71 0 112 0 0 52 50 51 40
+463	need flight cleveland to dallas that before noon see if much information	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O B-depart_time.time_relative B-depart_time.time O O O O	9	0 0 71 0 112 0 52 50 0 0 0 0
+784	what the capacity the aircraft m80	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+719	phoenix to milwaukee on sunday	atis_flight	B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	71 0 112 0 36
+760	what is the seating a 72s	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+271	kansas city to cleveland arrive wednesday before 5 pm	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-arrive_date.day_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	71 72 0 112 0 9 23 21 22
+652	list that fly from seattle salt lake city	atis_airline	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name	3	0 0 0 0 71 112 113 113
+193	how far is san francisco international	atis_distance	O O O B-airport_name I-airport_name I-airport_name	8	0 0 0 6 7 7
+304	what airline wn	atis_airline	O O B-airline_code	3	0 0 2
+590	show me first class from new york miami round trip	atis_flight	O O B-class_type I-class_type O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-round_trip I-round_trip	9	0 0 27 28 0 71 72 112 96 97
+218	which leaving atlanta and arriving in st. louis close 230 pm on tuesday	atis_flight	O O B-fromloc.city_name O O O B-toloc.city_name I-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time O B-arrive_date.day_name	9	0 0 71 0 0 0 112 113 23 21 22 0 9
+226	from toronto to washington dc saturday am	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code B-depart_date.day_name B-depart_time.period_of_day	9	0 71 0 112 115 36 46
+223	evening from tampa to cincinnati	atis_flight	B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name	9	46 0 71 0 112
+265	monday morning from atlanta to kansas city	atis_flight	B-depart_date.day_name B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	36 46 0 71 0 112 113
+7	on wednesday april sixth would like to fly long beach columbus after 3 pm	atis_flight	O B-depart_date.day_name B-depart_date.month_name B-depart_date.day_number O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 36 39 37 0 0 0 0 71 72 112 52 50 51
+664	give me from miami to cleveland next sunday	atis_airfare	O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.date_relative B-depart_date.day_name	2	0 0 0 71 0 112 35 36
+405	i need round trip flight san diego to washington dc and the	atis_airfare	O O B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-toloc.state_code O O	2	0 0 96 97 0 71 72 0 112 115 0 0
+72	what are the on sunday from montreal quebec san diego california	atis_flight	O O O O B-depart_date.day_name O B-fromloc.city_name B-fromloc.state_name B-toloc.city_name I-toloc.city_name B-toloc.state_name	9	0 0 0 0 36 0 71 74 112 113 116
+276	los angeles to minneapolis thursday afternoon	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 72 0 112 36 46
+679	give me the new york to las vegas nonstop	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-flight_stop	9	0 0 0 71 72 0 112 113 64
+661	give me round trip flights cleveland to miami next wednesday	atis_flight	O O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name B-depart_date.date_relative B-depart_date.day_name	9	0 0 96 97 0 71 0 112 35 36
+428	list flights newark houston	atis_flight	O O B-fromloc.city_name B-toloc.city_name	9	0 0 71 112
+775	all of the daily arriving denver between 8 and 9 pm	atis_flight	O O O B-flight_days O B-toloc.city_name O B-arrive_time.start_time O B-arrive_time.end_time I-arrive_time.end_time	9	0 0 0 60 0 112 0 19 0 14 15
+880	now show the from st. louis to burbank	atis_flight	O O O O B-city_name I-city_name O B-toloc.city_name	9	0 0 0 0 25 26 0 112
+788	please list all nashville to memphis on monday morning	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 0 112 0 36 46
+676	give me the saturday morning flights meals from chicago minneapolis	atis_flight	O O O B-depart_date.day_name B-depart_time.period_of_day O B-meal O B-fromloc.city_name B-toloc.city_name	9	0 0 0 36 46 0 76 0 71 112
+426	flights houston to phoenix	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+41	this flight dinner	atis_flight	O O B-meal_description	9	0 0 79
+92	to from columbus to phoenix through cincinnati in the afternoon	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O B-stoploc.city_name O O B-depart_time.period_of_day	9	0 0 71 0 112 0 101 0 0 46
+375	show me between milwaukee and indiana	atis_flight	O O O B-fromloc.city_name O B-toloc.state_name	9	0 0 0 71 0 116
+82	please a from detroit michigan to st. petersburg arriving before 10 pm	atis_flight	O O O B-fromloc.city_name B-fromloc.state_name O B-toloc.city_name I-toloc.city_name O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 71 74 0 112 113 0 23 21 22
+302	me the cheapest round trip between st. petersburg and detroit arrives before 7 pm	atis_flight	O O B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 30 96 97 0 71 72 0 112 0 23 21 22
+449	what flights go denver to st. louis tuesday morning	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 0 112 113 36 46
+200	are the flights between washington dc columbus ohio	atis_flight	O O O O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name B-toloc.state_name	9	0 0 0 0 71 73 112 116
+352	what's the cheapest flight tomorrow milwaukee denver	atis_flight	O O B-cost_relative O B-depart_date.today_relative B-fromloc.city_name B-toloc.city_name	9	0 0 30 0 40 71 112
+549	what fare bh mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+257	list flights ontario california salt lake city utah monday	atis_flight	O O B-fromloc.city_name B-fromloc.state_name B-toloc.city_name I-toloc.city_name I-toloc.city_name B-toloc.state_name B-depart_date.day_name	9	0 0 71 74 112 113 113 116 36
+518	i a from nashville to seattle	atis_airfare	O O O B-fromloc.city_name O B-toloc.city_name	2	0 0 0 71 0 112
+134	is there an american airlines from houston newark on june tenth after 3 pm	atis_flight	O O O B-airline_name I-airline_name O B-fromloc.city_name B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 3 4 0 71 112 0 39 37 52 50 51
+849	the from ontario to westchester that in chicago	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O O B-stoploc.city_name	9	0 0 71 0 112 0 0 101
+151	list the flights denver cincinnati on june sixth after 4 pm	atis_flight	O O O B-fromloc.city_name B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 71 112 0 39 37 52 50 51
+197	how much limousine in los angeles	atis_ground_fare	O O B-transport_type O B-city_name I-city_name	12	0 0 118 0 25 26
+205	list flights from memphis miami	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+260	from phoenix arizona to ontario california wednesday	atis_flight	O B-fromloc.city_name B-fromloc.state_name O B-toloc.city_name B-toloc.state_name B-depart_date.day_name	9	0 71 74 0 112 116 36
+189	which depart from new york and arrive los angeles after 10 am	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O O B-toloc.city_name I-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 71 72 0 0 112 113 23 21 22
+615	list from chicago to kansas city in morning	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_time.period_of_day	9	0 0 71 0 112 113 0 46
+528	i need the numbers flights leaving from cleveland at dallas	atis_flight_no	O O O O O O O B-fromloc.city_name O B-toloc.city_name	10	0 0 0 0 0 0 0 71 0 112
+862	i'd like fly miami chicago on on american airlines arriving around 5 pm	atis_flight	O O O B-fromloc.city_name B-toloc.city_name O O B-airline_name I-airline_name O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 71 112 0 0 3 4 0 23 21 22
+184	flights depart from tampa and in cincinnati in evening	atis_flight	O O O B-fromloc.city_name O O B-toloc.city_name O B-arrive_time.period_of_day	9	0 0 0 71 0 0 112 0 17
+557	nonstop flights from montreal to orlando	atis_flight	B-flight_stop O O B-fromloc.city_name O B-toloc.city_name	9	64 0 0 71 0 112
+160	list flights from dallas to baltimore july first	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-arrive_date.month_name B-arrive_date.day_number	9	0 0 0 71 0 112 12 10
+879	me all the flights from milwaukee st. louis	atis_flight	O O O O O B-fromloc.city_name B-city_name I-city_name	9	0 0 0 0 0 71 25 26
+678	me saturday morning flights chicago to st. paul on continental that have meals	atis_flight	O B-depart_date.day_name B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-airline_name O O B-meal	9	0 36 46 0 71 0 112 113 0 3 0 0 76
+605	show the nonstop flights toronto to st. petersburg	atis_flight	O O B-flight_stop O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 64 0 71 0 112 113
+800	are the nonstop from cincinnati to charlotte after noon and arriving before 7 pm	atis_flight	O O B-flight_stop O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.period_of_day O O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 64 0 71 0 112 52 46 0 0 23 21 22
+665	the from milwaukee to phoenix on saturday or sunday on american airlines	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-or B-depart_date.day_name O B-airline_name I-airline_name	9	0 0 71 0 112 0 36 83 36 0 3 4
+824	what are the from las vegas ontario	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 72 112
+328	how from milwaukee to washington dc on tuesday mornings	atis_flight	O O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 0 112 115 0 36 46
+447	need an early flight from milwaukee denver	atis_flight	O O B-flight_mod O O B-fromloc.city_name B-toloc.city_name	9	0 0 61 0 0 71 112
+69	i would like to return chicago around 7 pm kansas city	atis_flight	O O O O O B-fromloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time B-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 52 50 51 112 113
+501	list airports arizona nevada california please	atis_airport	O O B-state_name I-state_name B-state_name O	4	0 0 99 0 99 0
+411	a flight from montreal to washington dc	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	9	0 0 0 71 0 112 115
+347	can i a today from san francisco to detroit michigan	atis_flight	O O O B-depart_date.today_relative O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-toloc.state_name	9	0 0 0 40 0 71 72 0 112 116
+520	i need from milwaukee to tampa	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+822	flights go long beach to st. louis	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 72 0 112 113
+13	flight on american miami to chicago arrive chicago about 5 pm	atis_flight	O O B-airline_name B-fromloc.city_name O B-toloc.city_name O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 3 71 0 112 0 112 23 21 22
+418	i to from indianapolis seattle round trip with the cheapest fare	atis_flight	O O O B-fromloc.city_name B-toloc.city_name B-round_trip I-round_trip O O B-cost_relative O	9	0 0 0 71 112 96 97 0 0 30 0
+488	i need information flights departing cleveland milwaukee on wednesday after 5 pm	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 0 71 112 0 36 52 50 51
+571	what airline us	atis_airline	O O B-airline_code	3	0 0 2
+42	need a flight charlotte to miami	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+680	give me from memphis to las vegas nonstop	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-flight_stop	9	0 0 0 71 0 112 113 64
+232	in miles from new york's la guardia airport to downtown new york city	atis_distance	O O O B-fromloc.city_name I-fromloc.city_name B-fromloc.airport_name I-fromloc.airport_name I-fromloc.airport_name O O B-city_name I-city_name I-city_name	8	0 0 0 71 72 69 70 70 0 0 25 26 26
+586	flights from phoenix to fort worth	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 0 112 113
+460	i flights from washington to montreal on saturday	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 0 0 71 0 112 0 36
+46	i need a from st. louis charlotte	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 72 112
+751	what earliest arriving flight between boston and washington dc	atis_flight	O B-flight_mod I-flight_mod O O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	9	0 61 62 0 0 71 0 112 115
+804	airline is as	atis_airline	O O B-airline_code	3	0 0 2
+547	what does bh mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+645	list airfares first class round trip from detroit st. petersburg	atis_airfare	O O B-class_type I-class_type B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	2	0 0 27 28 96 97 0 71 112 113
+482	i a flight from milwaukee to indianapolis monday before 9 am	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 71 0 112 36 52 50 51
+675	give me combination continental from chicago seattle that have meals early saturday morning	atis_flight	O O O B-airline_name O B-fromloc.city_name B-toloc.city_name O O B-meal B-depart_time.period_mod B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 3 0 71 112 0 0 76 45 36 46
+246	flights from boston pittsburgh daily	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-flight_days	9	0 0 71 112 60
+525	i need on from toronto to san diego	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 0 112 113
+873	find american from newark nashville around 630 pm	atis_flight	O B-airline_name O B-fromloc.city_name B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 3 0 71 112 52 50 51
+227	list flights washington dc philadelphia saturday pm	atis_flight	O O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 73 112 36 46
+684	give me flight from charlotte baltimore on tuesday morning	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 71 112 0 36 46
+243	is seating capacity for delta be1	atis_capacity	O O O O B-airline_name B-aircraft_code	5	0 0 0 0 3 1
+455	i would like from phoenix to denver	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+179	list tower air on mondays	atis_flight	O B-airline_name I-airline_name O B-day_name	9	0 3 4 0 32
+377	what transportation is pittsburgh airport and downtown pittsburgh	atis_ground_service	O O O B-airport_name I-airport_name O O B-city_name	13	0 0 0 6 7 0 0 25
+506	list california airports	atis_airport	O B-state_name O	4	0 99 0
+242	what is seating capacity aircraft l10	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+523	flights departing from oakland and arriving salt lake city	atis_flight	O O O B-fromloc.city_name O O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 0 112 113 113
+214	what departing from baltimore	atis_airline	O O O B-fromloc.city_name	3	0 0 0 71
+368	how many passengers can l1011 aircraft	atis_capacity	O O O O B-aircraft_code O	5	0 0 0 0 1 0
+448	what types of ground are denver	atis_ground_service	O O O O O B-city_name	13	0 0 0 0 0 25
+461	need on flights from washington to toronto on saturday	atis_airfare	O O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	2	0 0 0 0 71 0 112 0 36
+732	what is d9s	atis_abbreviation	O O B-aircraft_code	0	0 0 1
+233	list in miles from toronto international airport to toronto	atis_distance	O O O O B-fromloc.airport_name I-fromloc.airport_name I-fromloc.airport_name O B-city_name	8	0 0 0 0 69 70 70 0 25
+651	list tampa to cincinnati after 3 pm	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 71 0 112 52 50 51
+744	show delta airlines flights boston salt lake city	atis_flight	O B-airline_name I-airline_name O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 3 4 0 71 112 113 113
+318	show me flights between detroit st. louis delta northwest us air and united airlines	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name B-airline_name B-airline_name B-airline_name I-airline_name O B-airline_name I-airline_name	9	0 0 0 0 71 112 113 3 3 3 4 0 3 4
+682	a friday flight from newark to tampa	atis_flight	O B-depart_date.day_name O O B-fromloc.city_name O B-toloc.city_name	9	0 36 0 0 71 0 112
+842	a flight on american airlines from miami chicago that arrives around 5 pm	atis_flight	O O O B-airline_name I-airline_name O B-fromloc.city_name B-toloc.city_name O O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 3 4 0 71 112 0 0 23 21 22
+114	me the connecting flights between boston denver and the of aircraft	atis_flight	O O B-connect O O B-fromloc.city_name B-toloc.city_name O O O O	9	0 0 29 0 0 71 112 0 0 0 0
+284	i like to see from cincinnati salt lake city	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 0 0 71 112 113 113
+808	all flights from seattle	atis_flight	O O O B-fromloc.city_name	9	0 0 0 71
+315	now show me transportation that could in boston late night	atis_ground_service	O O O O O O O B-city_name B-period_of_day B-period_of_day	13	0 0 0 0 0 0 0 25 84 84
+619	list flights san jose to dallas friday	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.day_name	9	0 0 71 72 0 112 36
+593	show one way flights from indianapolis to memphis before 10 am day	atis_flight	O B-round_trip I-round_trip O O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time O	9	0 96 97 0 0 71 0 112 52 50 51 0
+127	show me flight us 1207 from indianapolis charlotte on monday us 1500 from charlotte minneapolis monday and flight twa 639 minneapolis to indianapolis	atis_flight	O O O B-airline_code B-flight_number O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name O B-flight_number O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name O O B-airline_code B-flight_number B-fromloc.city_name O B-toloc.city_name	9	0 0 0 2 63 0 71 112 0 36 0 63 0 71 112 36 0 0 2 63 71 0 112
+291	fare code bn mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+869	from cincinnati to san jose on monday	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 113 0 36
+146	list the flights from denver westchester county june seventh	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 0 71 112 113 39 37
+562	me the cheapest economy flights miami to new york	atis_flight	O O B-cost_relative B-economy O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 30 54 0 71 0 112 113
+350	what's the cheapest flight san francisco milwaukee	atis_flight	O O B-cost_relative O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 30 0 71 72 112
+209	all flights from cleveland to kansas city monday	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name	9	0 0 0 71 0 112 113 36
+647	flights from pittsburgh to newark monday morning	atis_flight	O O B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 0 112 36 46
+329	meals are there on flight 382 milwaukee washington dc on tuesday morning	atis_meal	B-meal O O O O B-flight_number B-fromloc.city_name B-toloc.city_name B-toloc.state_code O B-depart_date.day_name B-depart_time.period_of_day	14	76 0 0 0 0 63 71 112 115 0 36 46
+219	list flights from st. louis to st. paul which after 10 am thursday morning	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_time.time_relative B-depart_time.time I-depart_time.time B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 72 0 112 113 0 52 50 51 36 46
+310	show me the cheapest round trip san francisco to houston	atis_airfare	O O O B-cost_relative B-round_trip I-round_trip B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	2	0 0 0 30 96 97 71 72 0 112
+48	i need from tampa to milwaukee	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+826	what type ground transportation is there las vegas airport	atis_ground_service	O O O O O O B-airport_name I-airport_name I-airport_name	13	0 0 0 0 0 0 6 7 7
+354	what's cheapest flight from san francisco denver	atis_flight	O B-cost_relative O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 30 0 0 71 72 112
+361	show flights between oakland and salt lake city	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113 113
+177	the delta flights from tampa to san francisco	atis_flight	O B-airline_name O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 3 0 0 71 0 112 113
+522	need a daily flight st. louis to milwaukee	atis_flight	O O B-flight_days O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 60 0 71 72 0 112
+600	what is as	atis_airline	O O B-airline_code	3	0 0 2
+803	list the alaska airline burbank	atis_flight	O O B-airline_name I-airline_name B-fromloc.city_name	9	0 0 3 4 71
+530	what code qo mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+847	what are flights memphis and cincinnati on wednesday	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 0 0 71 0 112 0 36
+393	from washington dc to pittsburgh	atis_flight	O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name	9	0 71 73 0 112
+630	list la	atis_city	O B-city_name	7	0 25
+417	i want memphis to seattle round trip with the cheapest fare	atis_flight	O O B-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip O O B-cost_relative O	9	0 0 71 0 112 96 97 0 0 30 0
+566	transportation in las vegas	atis_ground_service	O O B-city_name I-city_name	13	0 0 25 26
+537	what does y mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+252	what code f	atis_abbreviation	O O B-fare_basis_code	0	0 0 58
+108	to what from boston america west fly first class	atis_city	O O O B-fromloc.city_name B-airline_name I-airline_name O B-class_type I-class_type	7	0 0 0 71 3 4 0 27 28
+317	show round trip fares from toronto detroit on delta northwest us air and united airlines	atis_airfare	O B-round_trip I-round_trip O O B-fromloc.city_name B-toloc.city_name O B-airline_name B-airline_name B-airline_name I-airline_name O B-airline_name I-airline_name	2	0 96 97 0 0 71 112 0 3 3 3 4 0 3 4
+416	i want fly from nashville to seattle and cheapest fare round trip	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name O B-cost_relative O B-round_trip I-round_trip	9	0 0 0 0 71 0 112 0 30 0 96 97
+8	after 12 pm wednesday april sixth would to fly from long beach to columbus	atis_flight	B-depart_time.time_relative B-depart_time.time I-depart_time.time B-depart_date.day_name B-depart_date.month_name B-depart_date.day_number O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	52 50 51 36 39 37 0 0 0 0 71 72 0 112
+857	please list all flights from chicago kansas city june seventeenth	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 0 0 71 112 113 39 37
+262	what is the fare a first class round trip from detroit st. petersburg	atis_airfare	O O O O O B-class_type I-class_type B-round_trip I-round_trip O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	2	0 0 0 0 0 27 28 96 97 0 71 112 113
+773	how many people a 757	atis_capacity	O O O O B-aircraft_code	5	0 0 0 0 1
+756	show me between houston and orlando	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+785	list arriving or leaving denver between 8 9 pm	atis_flight	O O O O B-city_name O B-depart_time.start_time B-depart_time.end_time I-depart_time.end_time	9	0 0 0 0 25 0 48 43 44
+793	what ground is from la guardia airport into new york city	atis_ground_service	O O O O B-airport_name I-airport_name I-airport_name O B-city_name I-city_name I-city_name	13	0 0 0 0 6 7 7 0 25 26 26
+9	there any flights from long beach columbus on wednesday april sixth	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name O B-depart_date.day_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 0 71 72 112 0 36 39 37
+141	i to take united airlines flight june eighth from westchester county to cincinnati after 3 pm	atis_flight	O O O B-airline_name I-airline_name O B-depart_date.month_name B-depart_date.day_number O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 3 4 0 39 37 0 71 72 0 112 52 50 51
+367	what ground transportation dallas fort worth airport to downtown dallas	atis_ground_service	O O O B-airport_name I-airport_name I-airport_name I-airport_name O O B-city_name	13	0 0 0 6 7 7 7 0 0 25
+245	list flights seattle to salt lake city delta be1	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-airline_name B-aircraft_code	9	0 0 71 0 112 113 113 3 1
+739	meals ever on tower air	atis_meal	B-meal O O B-airline_name I-airline_name	14	76 0 0 3 4
+710	new york to las vegas sunday afternoon	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 72 0 112 113 36 46
+147	list flights from westchester county to cincinnati june eighth	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 72 0 112 39 37
+677	me the saturday morning on continental that have meals chicago to minneapolis	atis_flight	O O B-depart_date.day_name B-depart_time.period_of_day O B-airline_name O O B-meal B-fromloc.city_name O B-toloc.city_name	9	0 0 36 46 0 3 0 0 76 71 0 112
+484	is there transportation at the indianapolis airport	atis_ground_service	O O O O O B-airport_name I-airport_name	13	0 0 0 0 0 6 7
+542	airline is dl	atis_airline	O O B-airline_code	3	0 0 2
+713	chicago to seattle saturday morning	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 36 46
+755	show me between houston and orlando	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+479	last wednesday flight from oakland salt lake city	atis_flight	B-flight_mod B-depart_date.day_name O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	61 36 0 0 71 112 113 113
+658	from baltimore to san francisco on friday	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 113 0 36
+30	which go from cleveland to indianapolis april fifth	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-depart_date.month_name B-depart_date.day_number	9	0 0 0 71 0 112 39 37
+174	me delta flights which serve a snack coach passengers	atis_flight	O B-airline_name O O O O B-meal_description B-compartment O	9	0 3 0 0 0 0 79 0 0
+878	me all flights from burbank to milwaukee	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+608	what airline hp	atis_airline	O O B-airline_code	3	0 0 2
+402	a flight from kansas city to minneapolis	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 72 0 112
+643	class fare code q	atis_abbreviation	O O O B-booking_class	0	0 0 0 0
+864	i'd like a round trip kansas city to chicago on wednesday may twenty sixth at 7 pm	atis_flight	O O O B-round_trip I-round_trip B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number O B-arrive_time.time I-arrive_time.time	9	0 0 0 96 97 71 72 0 112 0 36 39 37 38 0 21 22
+610	from chicago to san diego	atis_flight	O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 71 0 112 113
+281	i like from ontario to tacoma	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+397	i want fly from washington dc phoenix arizona	atis_flight	O O O O B-fromloc.city_name B-fromloc.state_code B-toloc.city_name B-toloc.state_name	9	0 0 0 0 71 73 112 116
+389	list between phoenix las vegas	atis_flight	O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 71 112 113
+204	is the first class round trip airfare from india indianapolis memphis	atis_airfare	O O B-class_type I-class_type B-round_trip I-round_trip O O O B-fromloc.city_name B-toloc.city_name	2	0 0 27 28 96 97 0 0 0 71 112
+65	leave on wednesday april thirteenth from indianapolis arrive in montreal in morning	atis_flight	O O B-depart_date.day_name B-depart_date.month_name B-depart_date.day_number O B-fromloc.city_name O O B-toloc.city_name O B-arrive_time.period_of_day	9	0 0 36 39 37 0 71 0 0 112 0 17
+634	flights from ontario california orlando	atis_flight	O O B-fromloc.city_name B-fromloc.state_name B-toloc.city_name	9	0 0 71 74 112
+491	is there ground at the denver airport	atis_ground_service	O O O O O B-airport_name I-airport_name	13	0 0 0 0 0 6 7
+453	from atlanta to seattle	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+68	next wednesday would like to leave kansas city trip to chicago arrives in chicago around 7 pm	atis_flight	B-depart_date.date_relative B-depart_date.day_name O O O O B-fromloc.city_name I-fromloc.city_name O O B-toloc.city_name O O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	35 36 0 0 0 0 71 72 0 0 112 0 0 112 23 21 22
+457	have flight information on from pittsburgh phoenix please	atis_flight	O O O O O B-fromloc.city_name B-toloc.city_name O	9	0 0 0 0 0 71 112 0
+303	show me nonstop kansas city to phoenix	atis_flight	O O B-flight_stop B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 64 71 72 0 112
+660	me the flights from pittsburgh los angeles thursday evening	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 71 112 113 36 46
+54	need a from ontario to memphis	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+572	which airline us	atis_airline	O O B-airline_code	3	0 0 2
+510	which airlines between toronto san diego	atis_airline	O O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	3	0 0 0 71 112 113
+712	new york to las vegas on sunday afternoon	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	71 72 0 112 113 0 36 46
+83	please find a from st. petersburg to miami thursday	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.day_name	9	0 0 0 0 71 72 0 112 36
+435	flights kansas city to orlando	atis_flight	O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 71 72 0 112
+314	me one way flights from houston to boston	atis_flight	O B-round_trip I-round_trip O O B-fromloc.city_name O B-toloc.city_name	9	0 96 97 0 0 71 0 112
+268	st. louis to st. paul thursday after 10 am	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	71 72 0 112 113 36 52 50 51
+225	flights from atlanta toronto friday afternoon	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 112 36 46
+102	which flights are san jose to nashville leaving the morning april twenty three	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O O B-depart_time.period_of_day B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number	9	0 0 0 71 72 0 112 0 0 46 39 37 38
+717	pittsburgh to los angeles thursday evening	atis_flight	B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 113 36 46
+378	show me the pittsburgh and washington dc	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	9	0 0 0 71 0 112 115
+809	list from indianapolis to memphis that leave before noon	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O O B-depart_time.time_relative B-depart_time.period_of_day	9	0 0 71 0 112 0 0 52 46
+355	what leave from cleveland and to dallas	atis_flight	O O O B-fromloc.city_name O O B-toloc.city_name	9	0 0 0 71 0 0 112
+877	like to book from burbank to milwaukee	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+871	find houston to memphis on friday	atis_flight	O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 0 36
+115	show me the morning from philadelphia to fort worth	atis_flight	O O O B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 46 0 71 0 112 113
+835	are the from boston to orlando stop in new york	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name O O B-stoploc.city_name I-stoploc.city_name	9	0 0 0 71 0 112 0 0 101 102
+623	list airports new york	atis_airport	O O B-city_name I-city_name	4	0 0 25 26
+253	list from memphis miami wednesday evening	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 112 36 46
+382	the used a flight from cleveland to dallas that leaves before noon	atis_aircraft	O O O O O B-fromloc.city_name O B-toloc.city_name O O B-depart_time.time_relative B-depart_time.period_of_day	1	0 0 0 0 0 71 0 112 0 0 52 46
+220	list flights from st. paul to kansas city friday the evening meal included	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.day_name O B-depart_time.period_of_day B-meal O	9	0 0 0 71 72 0 112 113 36 0 46 76 0
+452	from washington to seattle	atis_flight	O B-fromloc.city_name O B-toloc.city_name	9	0 71 0 112
+188	which flights from toronto and arrive washington dc	atis_flight	O O O B-fromloc.city_name O O B-toloc.city_name B-toloc.state_code	9	0 0 0 71 0 0 112 115
+383	find flight st. petersburg and charlotte the in the afternoon and soon after 5 pm as possible it should a nonstop flight	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O O O B-depart_time.period_of_day O O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time O O O O O B-flight_stop O	9	0 0 71 72 0 112 0 0 0 46 0 0 23 21 22 0 0 0 0 0 64 0
+548	show a return flight from miami to jfk	atis_flight	O O B-round_trip O O B-fromloc.city_name O B-toloc.airport_code	9	0 0 96 0 0 71 0 109
+107	what is the earliest between baltimore and oakland breakfast	atis_flight	O O O B-flight_mod O B-fromloc.city_name O B-toloc.city_name B-meal_description	9	0 0 0 61 0 71 0 112 79
+170	me the flights from orlando houston	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 0 71 112
+307	show me the cheapest one way from san francisco houston	atis_flight	O O O B-cost_relative B-round_trip I-round_trip O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 0 30 96 97 0 71 72 112
+851	please flights from charlotte to newark	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+825	what flights from ontario to memphis	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+504	list california airports	atis_airport	O B-state_name O	4	0 99 0
+553	show one way from milwaukee to orlando after 6 pm on wednesday	atis_flight	O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time O B-depart_date.day_name	9	0 96 97 0 71 0 112 52 50 51 0 36
+190	how new york's la guardia from downtown	atis_distance	O B-city_name I-city_name B-airport_name I-airport_name O O	8	0 25 26 6 7 0 0
+746	is the least expensive fare from boston salt lake city	atis_airfare	O O B-cost_relative I-cost_relative O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name	2	0 0 30 31 0 0 71 112 113 113
+236	list american airlines from houston milwaukee departing friday pm	atis_flight	O B-airline_name I-airline_name O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 3 4 0 71 112 0 36 46
+475	flights from toronto milwaukee	atis_flight	O O B-fromloc.city_name B-toloc.city_name	9	0 0 71 112
+444	flights from oakland salt lake city	atis_flight	O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 71 112 113 113
+574	airline is us	atis_airline	O O B-airline_code	3	0 0 2
+640	list from charlotte saturday afternoon	atis_flight	O O B-fromloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 36 46
+414	i need flight indianapolis seattle arriving in seattle at 1205 pm	atis_flight	O O O B-fromloc.city_name B-toloc.city_name O O B-toloc.city_name O B-arrive_time.time I-arrive_time.time	9	0 0 0 71 112 0 0 112 0 21 22
+58	which flights northwest airline leave detroit and at st. petersburg	atis_flight	O O B-airline_name I-airline_name O B-fromloc.city_name O O B-toloc.city_name I-toloc.city_name	9	0 0 3 4 0 71 0 0 112 113
+867	find phoenix to detroit on monday	atis_flight	O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name	9	0 71 0 112 0 36
+734	what a d9s	atis_abbreviation	O O B-aircraft_code	0	0 0 1
+24	what from las vegas to los angeles	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 72 0 112 113
+569	las vegas to baltimore economy	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-economy	9	71 72 0 112 54
+531	show from milwaukee to orlando one way	atis_flight	O O B-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip	9	0 0 71 0 112 96 97
+752	the earliest arriving flight boston and washington dc	atis_flight	O B-flight_mod I-flight_mod O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	9	0 61 62 0 71 0 112 115
+536	what does h mean	atis_abbreviation	O O B-fare_basis_code O	0	0 0 58 0
+333	much does it on twa from columbus to milwaukee	atis_airfare	O O O O B-airline_code O B-fromloc.city_name O B-toloc.city_name	2	0 0 0 0 2 0 71 0 112
+840	i need flight from salt lake newark airport that arrives saturday before 6 pm	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.airport_name I-toloc.airport_name O O B-arrive_date.day_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 0 71 72 110 111 0 0 9 23 21 22
+207	list and their fares memphis to miami on wednesday evening	atis_airfare	O O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	2	0 0 0 0 71 0 112 0 36 46
+398	need flight from phoenix to atlanta	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+767	fly into denver	atis_airline	O O B-toloc.city_name	3	0 0 112
+327	i need flight from milwaukee to washington dc monday night	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 0 71 0 112 115 36 46
+128	me all flights from las vegas to new york city	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name	9	0 0 0 0 71 72 0 112 113 113
+856	all the flights from kansas city chicago on june sixteenth	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name O B-depart_date.month_name B-depart_date.day_number	9	0 0 0 0 71 72 112 0 39 37
+614	flights from las vegas san diego	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 71 72 112 113
+75	on friday morning like to fly toronto to montreal	atis_flight	O B-depart_date.day_name B-depart_time.period_of_day O O O B-fromloc.city_name O B-toloc.city_name	9	0 36 46 0 0 0 71 0 112
+111	show me all lufthansa seattle to boston with stopovers minneapolis	atis_flight	O O O B-airline_name B-fromloc.city_name O B-toloc.city_name O O B-stoploc.city_name	9	0 0 0 3 71 0 112 0 0 101
+891	i would to round trip flight from kansas city to chicago	atis_flight	O O O B-round_trip I-round_trip O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 96 97 0 0 71 72 0 112
+892	find flight that from memphis to tacoma	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+211	list flights from cleveland nashville	atis_flight	O O O B-fromloc.city_name B-toloc.city_name	9	0 0 0 71 112
+486	i need information a flight from cleveland milwaukee wednesday after 6 pm	atis_flight	O O O O O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 0 0 71 112 36 52 50 51
+224	list from philadelphia atlanta friday am	atis_flight	O O B-fromloc.city_name B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	0 0 71 112 36 46
+325	need a from san francisco to milwaukee on monday morning	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	9	0 0 0 71 72 0 112 0 36 46
+63	which leave monday from montreal arrive in chicago in morning	atis_flight	O O B-depart_date.day_name O B-fromloc.city_name O O B-toloc.city_name O B-arrive_time.period_of_day	9	0 0 36 0 71 0 0 112 0 17
+716	los angeles to pittsburgh afternoon on monday	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_time.period_of_day O B-depart_date.day_name	9	71 72 0 112 46 0 36
+14	find arriving new york city next saturday	atis_flight	O O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-arrive_date.date_relative B-arrive_date.day_name	9	0 0 112 113 113 8 9
+818	would like a on friday morning toronto to montreal	atis_flight	O O O O B-depart_date.day_name B-depart_time.period_of_day B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 36 46 71 0 112
+573	airline is us	atis_airline	O O B-airline_code	3	0 0 2
+351	i rent a car in milwaukee	atis_ground_service	O O O B-transport_type O B-city_name	13	0 0 0 118 0 25
+635	list from ontario california orlando	atis_flight	O O B-fromloc.city_name B-fromloc.state_name B-toloc.city_name	9	0 0 71 74 112
+59	which flights chicago next tuesday arrive in detroit around 6 pm	atis_flight	O O B-fromloc.city_name B-depart_date.date_relative B-depart_date.day_name O O B-toloc.city_name B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 71 35 36 0 0 112 23 21 22
+433	show flights kansas city orlando	atis_flight	O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	9	0 0 71 72 112
+656	what transportation is there baltimore	atis_ground_service	O O O O B-city_name	13	0 0 0 0 25
+650	list cincinnati to tampa before noon	atis_flight	O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.period_of_day	9	0 71 0 112 52 46
+45	i need flight toronto to st. louis	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113
+589	show first class from new york to miami round trip	atis_flight	O B-class_type I-class_type O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-round_trip I-round_trip	9	0 27 28 0 71 72 0 112 96 97
+761	what the capacity of aircraft 72s	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+815	i like flight that on sunday from montreal quebec san diego california	atis_flight	O O O O O B-depart_date.day_name O B-fromloc.city_name B-fromloc.state_name B-toloc.city_name I-toloc.city_name B-toloc.state_name	9	0 0 0 0 0 36 0 71 74 112 113 116
+412	a from nashville to seattle that arrives no later than 3 pm	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O O B-arrive_time.time_relative I-arrive_time.time_relative I-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 71 0 112 0 0 23 24 24 21 22
+424	list from san francisco to milwaukee	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 71 72 0 112
+738	show the first class and coach flights jfk to miami	atis_flight	O O B-class_type I-class_type O B-class_type O B-fromloc.airport_code O B-toloc.city_name	9	0 0 27 28 0 27 0 68 0 112
+834	what from st. louis to charlotte north carolina leaving on friday	atis_flight	O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-toloc.state_name I-toloc.state_name O O B-depart_date.day_name	9	0 0 71 72 0 112 116 117 0 0 36
+819	i would a flight cincinnati to burbank american	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name B-airline_name	9	0 0 0 0 71 0 112 3
+861	can you of the delta salt lake city to new york next saturday arriving before 6 pm	atis_flight	O O O O B-airline_name B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-depart_date.date_relative B-depart_date.day_name O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time	9	0 0 0 0 3 71 72 72 0 112 113 35 36 0 23 21 22
+206	all their fares from indianapolis to memphis a monday morning	atis_airfare	O O O O B-fromloc.city_name O B-toloc.city_name O B-depart_date.day_name B-depart_time.period_of_day	2	0 0 0 0 71 0 112 0 36 46
+87	please flights available kansas city to newark	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 72 0 112
+698	tampa to charlotte sunday morning	atis_flight	B-fromloc.city_name O B-toloc.city_name B-depart_date.day_name B-depart_time.period_of_day	9	71 0 112 36 46
+136	what's the ground denver	atis_ground_service	O O O B-city_name	13	0 0 0 25
+515	type aircraft are flying cleveland to dallas before noon	atis_aircraft	O O O O B-fromloc.city_name O B-toloc.city_name B-depart_time.time_relative B-depart_time.period_of_day	1	0 0 0 0 71 0 112 52 46
+845	are the nonstop between san jose and houston texas	atis_flight	O O B-flight_stop O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-toloc.state_name	9	0 0 64 0 71 72 0 112 116
+599	what is as	atis_airline	O O B-airline_code	3	0 0 2
+137	what's fare for taxi to denver	atis_ground_fare	O O O B-transport_type O B-city_name	12	0 0 0 118 0 25
+26	which flights travel las vegas los angeles california and on april ninth between 4 5 pm	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name I-toloc.city_name B-toloc.state_name O O B-arrive_date.month_name B-arrive_date.day_number O B-arrive_time.start_time B-arrive_time.end_time I-arrive_time.end_time	9	0 0 0 71 72 112 113 116 0 0 12 10 0 19 14 15
+357	what airline us	atis_airline	O O B-airline_code	3	0 0 2
+584	airline is hp	atis_airline	O O B-airline_code	3	0 0 2
+258	flights from salt lake city utah phoenix arizona monday	atis_flight	O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name B-fromloc.state_name B-toloc.city_name B-toloc.state_name B-depart_date.day_name	9	0 0 71 72 72 74 112 116 36
+805	list alaska airlines flights in burbank	atis_flight	O B-airline_name I-airline_name O O B-toloc.city_name	9	0 3 4 0 0 112
+80	please a from miami florida to las vegas nevada arriving before 4 o'clock pm	atis_flight	O O O B-fromloc.city_name B-fromloc.state_name O B-toloc.city_name I-toloc.city_name B-toloc.state_name O B-arrive_time.time_relative B-arrive_time.time I-arrive_time.time I-arrive_time.time	9	0 0 0 71 74 0 112 113 116 0 23 21 22 22
+44	i a nonstop flight from toronto st. louis	atis_flight	O O B-flight_stop O O B-fromloc.city_name B-toloc.city_name I-toloc.city_name	9	0 0 64 0 0 71 112 113
+490	i need a from denver to salt lake city monday	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name B-depart_date.day_name	9	0 0 0 0 71 0 112 113 113 36
+560	me cheapest one way flights from montreal to orlando	atis_flight	O B-cost_relative B-round_trip I-round_trip O O B-fromloc.city_name O B-toloc.city_name	9	0 30 96 97 0 0 71 0 112
+89	please a from kansas city to newark	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 72 0 112
+722	many northwest leave st. paul	atis_flight	O B-airline_name O B-fromloc.city_name I-fromloc.city_name	9	0 3 0 71 72
+427	list from phoenix houston	atis_flight	O O B-fromloc.city_name B-toloc.city_name	9	0 0 71 112
+556	me round trip from orlando to montreal	atis_flight	O B-round_trip I-round_trip O B-fromloc.city_name O B-toloc.city_name	9	0 96 97 0 71 0 112
+155	arrive at love field on june sixth	atis_flight	O O B-toloc.airport_name I-toloc.airport_name O B-arrive_date.month_name B-arrive_date.day_number	9	0 0 110 111 0 12 10
+282	i like from minneapolis to san diego	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 0 71 0 112 113
+55	which flights milwaukee to tampa and in nashville	atis_flight	O O B-fromloc.city_name O B-toloc.city_name O O B-stoploc.city_name	9	0 0 71 0 112 0 0 101
+563	kansas city to las vegas economy	atis_flight	B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-economy	9	71 72 0 112 113 54
+830	what are flights la guardia to san jose on united	atis_flight	O O O B-fromloc.airport_name I-fromloc.airport_name O B-toloc.city_name I-toloc.city_name O B-airline_name	9	0 0 0 69 70 0 112 113 0 3
+100	which flights are april twenty first the morning from nashville to tacoma	atis_flight	O O O B-depart_date.month_name B-depart_date.day_number I-depart_date.day_number O B-depart_time.period_of_day O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 39 37 38 0 46 0 71 0 112
+483	need a flight departing milwaukee indianapolis leaving monday before 8 am	atis_flight	O O O O B-fromloc.city_name B-toloc.city_name O B-depart_date.day_name B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 0 0 71 112 0 36 52 50 51
+439	list fares from washington dc to toronto be	atis_airfare	O O O B-fromloc.city_name B-fromloc.state_code O B-toloc.city_name O	2	0 0 0 71 73 0 112 0
+669	me flights from phoenix to milwaukee	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+544	show me flights from orlando to montreal	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+467	saturday from washington to montreal	atis_airfare	B-depart_date.day_name O B-fromloc.city_name O B-toloc.city_name	2	36 0 71 0 112
+38	i a goes from boston to orlando	atis_flight	O O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 0 71 0 112
+172	show me the cheapest round trip coach fare las vegas detroit	atis_airfare	O O O B-cost_relative B-round_trip I-round_trip B-class_type O B-fromloc.city_name I-fromloc.city_name B-toloc.city_name	2	0 0 0 30 96 97 27 0 71 72 112
+798	give the flights from new york city nashville after 5 pm on wednesday	atis_flight	O O O O B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name B-toloc.city_name B-depart_time.time_relative B-depart_time.time I-depart_time.time O B-depart_date.day_name	9	0 0 0 0 71 72 72 112 52 50 51 0 36
+863	to travel from kansas city to chicago next wednesday	atis_flight	O O O B-fromloc.city_name I-fromloc.city_name O B-toloc.city_name B-depart_date.date_relative B-depart_date.day_name	9	0 0 0 71 72 0 112 35 36
+496	flight from oakland to salt lake city on wednesday departing after 6 pm	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name I-toloc.city_name O B-depart_date.day_name O B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 71 0 112 113 113 0 36 0 52 50 51
+728	i would connecting flight dallas to san francisco leaving after 4 o'clock	atis_flight	O O B-connect O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name O B-depart_time.time_relative B-depart_time.time I-depart_time.time	9	0 0 29 0 71 0 112 113 0 52 50 51
+740	are snacks served tower air	atis_meal	O B-meal_description O B-airline_name I-airline_name	14	0 79 0 3 4
+636	list flights from indianapolis memphis with on monday	atis_flight	O O O B-fromloc.city_name B-toloc.city_name O O B-depart_date.day_name	9	0 0 0 71 112 0 0 36
+395	like a to san diego from washington dc	atis_flight	O O O B-toloc.city_name I-toloc.city_name O B-fromloc.city_name B-fromloc.state_code	9	0 0 0 112 113 0 71 73
+708	new york city las vegas and memphis las vegas on sunday	atis_flight	B-fromloc.city_name I-fromloc.city_name I-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-fromloc.city_name B-toloc.city_name I-toloc.city_name O B-depart_date.day_name	9	71 72 72 112 113 0 71 112 113 0 36
+51	meals are served american flight 665 673 from milwaukee to seattle	atis_meal	B-meal O O B-airline_name O B-flight_number I-flight_number O B-fromloc.city_name O B-toloc.city_name	14	76 0 0 3 0 63 0 0 71 0 112
+358	me flights toronto and san diego	atis_flight	O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name	9	0 0 71 0 112 113
+336	what's cheapest flight from columbus to st. louis round trip twa	atis_flight	O B-cost_relative O O B-fromloc.city_name O B-toloc.city_name I-toloc.city_name B-round_trip I-round_trip B-airline_code	9	0 30 0 0 71 0 112 113 96 97 2
+94	does the burbank a flight that comes in kansas city	atis_flight	O O B-toloc.city_name O O O O O B-fromloc.city_name I-fromloc.city_name	9	0 0 112 0 0 0 0 0 71 72
+359	what is phl	atis_abbreviation	O O B-airport_code	0	0 0 5
+753	what is the earliest arriving flight houston orlando	atis_flight	O O O B-flight_mod I-flight_mod O B-fromloc.city_name B-toloc.city_name	9	0 0 0 61 62 0 71 112
+778	is the seating capacity the 757	atis_capacity	O O O O O B-aircraft_code	5	0 0 0 0 0 1
+517	i flight from memphis to seattle	atis_flight	O O O B-fromloc.city_name O B-toloc.city_name	9	0 0 0 71 0 112
+745	what the for flights boston and washington dc	atis_airfare	O O O O B-fromloc.city_name O B-toloc.city_name B-toloc.state_code	2	0 0 0 0 71 0 112 115

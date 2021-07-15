@@ -4,13 +4,13 @@ import torch.nn.functional as F
 from transformers import DistilBertModel
 
 
-class IC_NER(nn.Module):
-    def __init__(self, cfg):
+class jointBert(nn.Module):
+    def __init__(self, args):
 
-        super(IC_NER, self).__init__()
+        super(jointBert, self).__init__()
 
         self.encoder = DistilBertModel.from_pretrained(
-            cfg["mc"]["model_name"], return_dict=True, output_hidden_states=True
+            args.encoder, return_dict=True, output_hidden_states=True
         )
 
         self.intent_dropout_1 = nn.Dropout(cfg["mc"]["id_1"])
@@ -22,11 +22,9 @@ class IC_NER(nn.Module):
         self.slots_dropout = nn.Dropout(cfg["mc"]["sd"])
         self.slots_FC = nn.Linear(768, cfg["dc"]["slots_num"])
 
-        self.intent_loss_fn = nn.CrossEntropyLoss()
-        self.slot_loss_fn = nn.CrossEntropyLoss()
-
-        self.jlc = cfg["mc"]["joint_loss_coef"]
-        self.cfg = cfg
+        self.CE_loss = nn.CrossEntropyLoss()
+        self.jlc = args.jointCoef
+        self.args = args
 
     def forward(self, input_ids, attention_mask, intent_target, slots_target):
 

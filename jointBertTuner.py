@@ -15,13 +15,9 @@ from seqeval.scheme import IOB2
 import optuna
 from optuna.integration import PyTorchLightningPruningCallback
 
-
-basePath = './' 
-
 # loading slot index file
-final_slots = pd.read_csv( basePath + "data/SNIPS/slot_list.tsv", sep=",", header=None, names=["SLOTS"]
+final_slots = pd.read_csv( "./data/SNIPS/slot_list.tsv", sep=",", header=None, names=["SLOTS"]
 ).SLOTS.values.tolist()
-
 idx2slots = {idx: slots for idx, slots in enumerate(final_slots)}
 
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -56,129 +52,6 @@ config = {
     },
 }
 
-def slot_F1(pred,target,id2slots):
-
-    pred_list = pred.tolist()
-    target_list = target.tolist()
-    
-    pred_slots , target_slots = [],[]
-
-    for idx,sample in enumerate(target_list):
-        pred_sample,target_sample = [],[]
-        for jdx,slot in enumerate(sample):
-
-            if (slot == -100 or slot==0)!=True:
-                target_sample.append(id2slots[slot])
-                pred_sample.append(id2slots[pred_list[idx][jdx]])
-
-        pred_slots.append(pred_sample)
-        target_slots.append(target_sample)
-    
-    return f1_score( target_slots, pred_slots,mode='strict', scheme=IOB2)
-
-
-def accuracy(pred,target):
-    return torch.sum(pred==target)/len(target)
-
-class nluDataset(Dataset):
-    def __init__(self, file_dir, tokenizer, max_len):
-
-        self.data = pd.read_csv(file_dir, sep="\t")
-        self.tokenizer = DistilBertTokenizerFast.from_pretrained(tokenizer)
-        self.max_len = max_len
-
-    def processSlotLabel(self, word_ids, slot_ids):
-
-        # replace None and repetition with -100
-        word_ids = [-100 if word_id == None else word_id for word_id in word_ids]
-        previous_word = -100
-        for idx, wid in enumerate(word_ids):
-
-            if wid == -100:
-                continue
-            if wid == previous_word:
-                word_ids[idx] = -100
-            previous_word = wid
-
-        Pslot_ids = []
-        for sid in slot_ids.split():
-            Pslot_ids.append(int(sid))
-        
-        new_labels = [-100 if word_id == -100 else Pslot_ids[word_id] for word_id in word_ids
-        return new_labels
-
-
-    def __getitem__(self, index):
-
-        text = str(self.data.TEXT[index])
-
-        inputs = self.tokenizer.encode_plus(
-            text.split(),
-            None,
-            add_special_tokens=True,
-            return_token_type_ids=False,
-            truncation=True,
-            max_length=self.max_len,
-            padding="max_length",
-            is_split_into_words=True
-        )
-
-        # text encoding
-        token_ids = torch.tensor(inputs["input_ids"], dtype=torch.long)
-        mask = torch.tensor(inputs["attention_mask"], dtype=torch.long)
-        word_ids = inputs.word_ids()
-
-        # intent
-        intent_id = torch.tensor(self.data.INTENT_ID[index], dtype=torch.long)
-        intent_label = self.data.INTENT[index]
-
-        # label processing
-        slot_label = self.data.SLOTS[index]
-        slot_id = self.processSlotLabel(word_ids, self.data.SLOTS_ID[index])
-
-        slot_id = torch.tensor(slot_id, dtype=torch.long)
-
-        return {
-            "token_ids": token_ids,
-            "mask": mask,
-            "intent_id": intent_id,
-            "slots_id": slot_id,
-            "intent_label": intent_label,
-            "slots_label": slot_label,
-            "text": text,
-            "slotsID": self.data.SLOTS_ID[index],
-        }
-
-    def __len__(self):
-        return len(self.data)
-
-
-class NLU_Dataset_pl(pl.LightningDataModule):
-    def __init__(
-        self, train_dir, val_dir, test_dir, tokenizer, max_len, batch_size, num_worker
-    ):
-        super().__init__()
-        self.train_dir = train_dir
-        self.val_dir = val_dir
-        self.batch_size = batch_size
-        self.tokenizer = tokenizer
-        self.max_len = max_len
-        self.num_worker = num_worker
-
-    def setup(self, stage: [str] = None):
-        self.train = nluDataset(self.train_dir, self.tokenizer, self.max_len)
-
-        self.val = nluDataset(self.val_dir, self.tokenizer, self.max_len)
-
-    def train_dataloader(self):
-        return DataLoader(
-            self.train, batch_size=self.batch_size, shuffle=True, num_workers=self.num_worker
-        )
-
-    def val_dataloader(self):
-        return DataLoader(
-            self.val, batch_size=self.batch_size, num_workers=self.num_worker
-        )
 
 class IC_NER(nn.Module):
     def __init__(self, idropout_1, idropout_2, sdropout, ihidden_size):
@@ -237,6 +110,7 @@ class IC_NER(nn.Module):
             "intent_pred": intent_pred,
             "slot_pred": slot_pred,
         }
+
 
 trial_cnt = 0
 
