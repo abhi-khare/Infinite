@@ -1,0 +1,556 @@
+ID	TEXT	INTENT	SLOTS	INTENT_ID	SLOTS_ID
+467	i to book a top-rated steakhouse this autumn for 1 around azerbaijan	BookRestaurant	O O O O B-sort B-restaurant_type B-timeRange I-timeRange O B-party_size_number B-spatial_relation B-country	1	0 0 0 0 61 55 67 68 0 44 63 10
+254	in hawaii it be warmer 3 am	GetWeather	O B-state O O B-condition_temperature B-timeRange I-timeRange	2	0 65 0 0 9 67 68
+31	what the weather be in lago vista on october fourteenth 2022	GetWeather	O O O O O B-city I-city O B-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 6 7 0 67 68 68
+135	book a table for ten breakfast in minnesota	BookRestaurant	O O O O B-party_size_number B-timeRange O B-state	1	0 0 0 0 44 67 0 65
+411	movies are playing dickinson theatres	SearchScreeningEvent	B-movie_type O O B-location_name I-location_name	6	28 0 0 24 25
+223	add spirit touches ground to my leche con chocolate	AddToPlaylist	O B-entity_name I-entity_name I-entity_name O B-playlist_owner B-playlist I-playlist I-playlist	0	0 16 17 17 0 47 45 46 46
+476	book restaurant close by my daughters s work location with burrito three years from now	BookRestaurant	O B-restaurant_type B-spatial_relation I-spatial_relation B-poi I-poi I-poi I-poi I-poi O B-served_dish B-timeRange I-timeRange I-timeRange I-timeRange	1	0 55 63 64 49 50 50 50 50 0 57 67 68 68 68
+172	what will weather be in waverly city brazil on purple heart day	GetWeather	O O O O O B-city I-city B-country O B-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 6 7 10 0 67 68 68
+155	my rating the eiffel tower and other mythologies is 0 out of 6 stars	RateBook	O O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name O B-rating_value O O B-best_rating B-rating_unit	4	0 0 34 35 35 35 35 35 0 52 0 0 5 51
+251	will it freezing here in 9 seconds	GetWeather	O O B-condition_temperature B-current_location B-timeRange I-timeRange I-timeRange	2	0 0 9 14 67 68 68
+121	tell me the forecast for april 15 2019 here	GetWeather	O O O O O B-timeRange I-timeRange I-timeRange B-current_location	2	0 0 0 0 0 67 68 68 14
+528	please add this tune to the playlist this is selena	AddToPlaylist	O O O B-music_item O O O B-playlist I-playlist I-playlist	0	0 0 0 30 0 0 0 45 46 46
+227	a tv show called ruthless	SearchCreativeWork	O B-object_type I-object_type O B-object_name	5	0 40 41 0 34
+453	what is showtime arsho	SearchScreeningEvent	O O O B-movie_name	6	0 0 0 26
+181	what the in low moor	GetWeather	O O O B-city I-city	2	0 0 0 6 7
+543	book me a for 3 at tkk fried chicken in sri lanka	BookRestaurant	O O O O B-party_size_number O B-restaurant_name I-restaurant_name I-restaurant_name O B-country I-country	1	0 0 0 0 44 0 53 54 54 0 10 11
+283	book restaurant distant from downtown	BookRestaurant	O B-restaurant_type B-spatial_relation O B-poi	1	0 55 63 0 49
+430	this album karl davydov to reyna s this is luis fonsi playlist	AddToPlaylist	O B-music_item B-artist I-artist O B-playlist_owner I-playlist_owner B-playlist I-playlist I-playlist I-playlist O	0	0 30 3 4 0 47 48 45 46 46 46 0
+138	d like to know what movies are on the movie schedules nearby	SearchScreeningEvent	O O O O O B-movie_type O O O B-object_type I-object_type B-spatial_relation	6	0 0 0 0 0 28 0 0 0 40 41 63
+503	i want to hear major harris s songs from fifties	PlayMusic	O O O O B-artist I-artist O O O B-year	3	0 0 0 0 3 4 0 0 0 71
+284	find a video game young	SearchCreativeWork	O O B-object_type I-object_type B-object_name	5	0 0 40 41 34
+92	is windy in telogia	GetWeather	O B-condition_description O B-city	2	0 8 0 6
+271	movie schedules for movies playing close by	SearchScreeningEvent	B-object_type I-object_type O B-movie_type O B-spatial_relation I-spatial_relation	6	40 41 0 28 0 63 64
+57	play steve boyett chant music	PlayMusic	O B-artist I-artist B-music_item O	3	0 3 4 30 0
+287	to go see the trouble with girls	SearchScreeningEvent	O O O B-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 0 26 27 27 27
+318	my chill add the name cater fe she	AddToPlaylist	B-playlist_owner B-playlist O O O B-entity_name I-entity_name I-entity_name	0	47 45 0 0 0 16 17 17
+525	i would like to add by kuk harrell to my hip hop 2017 new school playlist	AddToPlaylist	O O O O O O B-artist I-artist O B-playlist_owner B-playlist I-playlist I-playlist I-playlist I-playlist O	0	0 0 0 0 0 0 3 4 0 47 45 46 46 46 46 0
+14	make reservation in south carolina	BookRestaurant	O O O B-state I-state	1	0 0 0 65 66
+201	find movie schedule for films in the area	SearchScreeningEvent	O B-object_type I-object_type O B-movie_type B-spatial_relation I-spatial_relation I-spatial_relation	6	0 40 41 0 28 63 64 64
+547	d like a reservation at a in iran for neva alice and maggie parker	BookRestaurant	O O O O O O O B-country O B-party_size_description I-party_size_description I-party_size_description I-party_size_description I-party_size_description	1	0 0 0 0 0 0 0 10 0 42 43 43 43 43
+0	sabrina salerno to grime instrumentals playlist	AddToPlaylist	B-artist I-artist O B-playlist I-playlist O	0	3 4 0 45 46 0
+187	the greatest soundtrack by nhat son last fm	PlayMusic	O B-sort B-music_item O B-artist I-artist B-service I-service	3	0 61 30 0 3 4 59 60
+192	can i find paranormal activity 3 playing near me 1 hour from now	SearchScreeningEvent	O O O B-movie_name I-movie_name I-movie_name O O O B-timeRange I-timeRange I-timeRange I-timeRange	6	0 0 0 26 27 27 0 0 0 67 68 68 68
+241	singer ivan roudyk to my fairy tales playlists	AddToPlaylist	O B-artist I-artist O B-playlist_owner B-playlist I-playlist O	0	0 3 4 0 47 45 46 0
+357	it to snow next year in wv	GetWeather	O O B-condition_description B-timeRange I-timeRange O B-state	2	0 0 8 67 68 0 65
+93	find tv show called revenge of the nerds	SearchCreativeWork	O B-object_type I-object_type O B-object_name I-object_name I-object_name I-object_name	5	0 40 41 0 34 35 35 35
+23	music from clark kent in the year 1987	PlayMusic	O O B-artist I-artist O O O B-year	3	0 0 3 4 0 0 0 71
+480	freezing on jun the 21st in apshawa south africa	GetWeather	B-condition_temperature O B-timeRange I-timeRange I-timeRange O B-city B-country I-country	2	9 0 67 68 68 0 6 10 11
+95	play the song i get ideas performed richard kruspe	PlayMusic	O O B-music_item B-track I-track I-track O B-artist I-artist	3	0 0 30 69 70 70 0 3 4
+103	is fog forecast close-by pakistan	GetWeather	O B-condition_description O B-spatial_relation B-country	2	0 8 0 63 10
+112	add tune to clásicos del hip hop español	AddToPlaylist	O B-music_item O B-playlist I-playlist I-playlist I-playlist I-playlist	0	0 30 0 45 46 46 46 46
+486	i like to book a brasserie in virginia city ga	BookRestaurant	O O O O O B-restaurant_type O B-city I-city B-state	1	0 0 0 0 0 55 0 6 7 65
+421	there movies at malco theatres	SearchScreeningEvent	O B-movie_type O B-location_name I-location_name	6	0 28 0 24 25
+170	search the complots	SearchCreativeWork	O O B-object_name	5	0 0 34
+87	play on spotify	PlayMusic	O O B-service	3	0 0 59
+366	what s the forecast my current place at five pm	GetWeather	O O O O O B-current_location I-current_location O B-timeRange I-timeRange	2	0 0 0 0 0 14 15 0 67 68
+2	will snow mt on june 13 2038	GetWeather	O B-condition_description B-state O B-timeRange I-timeRange I-timeRange	2	0 8 65 0 67 68 68
+302	is hail the weather forecast for monterey bay national marine sanctuary	GetWeather	O B-condition_description O O O O B-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi	2	0 8 0 0 0 0 22 23 23 23 23
+74	put no mystery into my punk essentials	AddToPlaylist	O B-entity_name I-entity_name O B-playlist_owner B-playlist I-playlist	0	0 16 17 0 47 45 46
+279	i would to book a restaurant for two in 42 weeks from now in wagram	BookRestaurant	O O O O O B-restaurant_type O B-party_size_number O B-timeRange I-timeRange I-timeRange I-timeRange O B-city	1	0 0 0 0 0 55 0 44 0 67 68 68 68 0 6
+420	can you get the trailer of the multiversity	SearchCreativeWork	O O O O B-object_type O B-object_name I-object_name	5	0 0 0 0 40 0 34 35
+238	i want to add digital line to my playlist infantil	AddToPlaylist	O O O O B-entity_name I-entity_name O B-playlist_owner O B-playlist	0	0 0 0 0 16 17 0 47 0 45
+262	have the movie schedule for imax corporation	SearchScreeningEvent	O O B-object_type I-object_type O B-location_name I-location_name	6	0 0 40 41 0 24 25
+417	to watch supernatural: the unseen powers of animals	SearchCreativeWork	O O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 34 35 35 35 35 35
+539	this tune my weekend playlist	AddToPlaylist	O B-music_item B-playlist_owner B-playlist O	0	0 30 47 45 0
+531	to add michelle heaton to this is chopin	AddToPlaylist	O O B-artist I-artist O B-playlist I-playlist I-playlist	0	0 0 3 4 0 45 46 46
+478	time for movie times now	SearchScreeningEvent	O O B-object_type I-object_type B-timeRange	6	0 0 40 41 67
+176	can get game list of mew singles	SearchCreativeWork	O O B-object_type B-object_name I-object_name I-object_name I-object_name	5	0 0 40 34 35 35 35
+62	i want to hear any tune the twenties	PlayMusic	O O O O O B-music_item O B-year	3	0 0 0 0 0 30 0 71
+405	rate this essay a two 6	RateBook	O B-object_select B-object_type O B-rating_value B-best_rating	4	0 38 40 0 52 5
+367	private games 3 stars out of 6	RateBook	B-object_name I-object_name B-rating_value B-rating_unit O O B-best_rating	4	34 35 52 51 0 0 5
+349	book history by contract is rated five stars in my opinion	RateBook	B-object_type B-object_name I-object_name I-object_name O O B-rating_value B-rating_unit O O O	4	40 34 35 35 0 0 52 51 0 0 0
+207	play sixties music giovanni battista guadagnini	PlayMusic	O B-year O B-artist I-artist I-artist	3	0 71 0 3 4 4
+402	add ruud jolie my playlist guest list polygon	AddToPlaylist	O B-artist I-artist B-playlist_owner O B-playlist I-playlist I-playlist	0	0 3 4 47 0 45 46 46
+136	what local movie schedule	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+230	i would rate the persistence of vision 1 stars and best rating of 6	RateBook	O O O B-object_name I-object_name I-object_name I-object_name B-rating_value B-rating_unit O O O O B-best_rating	4	0 0 0 34 35 35 35 52 51 0 0 0 0 5
+518	book a spot for kelli jean and i a pub at elevenses	BookRestaurant	O O O O B-party_size_description I-party_size_description I-party_size_description I-party_size_description O B-restaurant_type O B-timeRange	1	0 0 0 0 42 43 43 43 0 55 0 67
+33	rate cuisines of the axis of evil and other irritating states one of 6	RateBook	O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name B-rating_value O B-best_rating	4	0 34 35 35 35 35 35 35 35 35 35 52 0 5
+323	is forecast to be warm in doi inthanon national park	GetWeather	O O O O B-condition_temperature O B-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi	2	0 0 0 0 9 0 22 23 23 23
+82	show scandalous john is playing	SearchScreeningEvent	O B-movie_name I-movie_name O O	6	0 26 27 0 0
+394	i need movie schedules	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+379	will it snow granbury	GetWeather	O O B-condition_description B-city	2	0 0 8 6
+165	want to see the television show called cuts both ways	SearchCreativeWork	O O O O B-object_type I-object_type O B-object_name I-object_name I-object_name	5	0 0 0 0 40 41 0 34 35 35
+460	i m for pokémon: the movie 2000 tv show	SearchCreativeWork	O O O B-object_name I-object_name I-object_name I-object_name B-object_type I-object_type	5	0 0 0 34 35 35 35 40 41
+464	what is the south bradenton	GetWeather	O O O B-city I-city	2	0 0 0 6 7
+53	the schedule for nearby animated movies	SearchScreeningEvent	O B-object_type O B-spatial_relation B-movie_type I-movie_type	6	0 40 0 63 28 29
+249	movie schedules for today	SearchScreeningEvent	B-object_type I-object_type O O	6	40 41 0 0
+270	book restaurant please	BookRestaurant	O B-restaurant_type O	1	0 55 0
+34	arif from the fourties	PlayMusic	B-artist O O B-year	3	3 0 0 71
+395	add even serpents shine dorothea s indie hipster playlist	AddToPlaylist	O B-entity_name I-entity_name I-entity_name B-playlist_owner I-playlist_owner B-playlist I-playlist O	0	0 16 17 17 47 48 45 46 0
+246	rate book english grammar in use a five	RateBook	O B-object_type B-object_name I-object_name I-object_name I-object_name O B-rating_value	4	0 40 34 35 35 35 0 52
+104	book a restaurant 3 people at eighteen oclock in saint vincent and the grenadines	BookRestaurant	O O B-restaurant_type B-party_size_number O O B-timeRange O O B-country I-country I-country I-country I-country	1	0 0 55 44 0 0 67 0 0 10 11 11 11 11
+109	play album from 1987	PlayMusic	O B-music_item O B-year	3	0 30 0 71
+295	i d to know when i see the taking of flight 847: the uli derickson story at amco entertainment	SearchScreeningEvent	O O O O O O O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name O B-location_name I-location_name	6	0 0 0 0 0 0 0 26 27 27 27 27 27 27 27 27 0 24 25
+148	can xanadu to latin alternative music	AddToPlaylist	O B-entity_name O B-playlist I-playlist I-playlist	0	0 16 0 45 46 46
+5	can you get me reservations for a highly rated restaurant seychelles	BookRestaurant	O O O O O O O B-sort I-sort B-restaurant_type B-country	1	0 0 0 0 0 0 0 61 62 55 10
+401	show me movie time for i am sorry my movie house	SearchScreeningEvent	O O O O O B-movie_name I-movie_name I-movie_name O B-object_location_type I-object_location_type	6	0 0 0 0 0 26 27 27 0 32 33
+173	what the weather forecast in delaware	GetWeather	O O O O O B-state	2	0 0 0 0 0 65
+527	current textbook gets a 2	RateBook	B-object_select B-object_type O O B-rating_value	4	38 40 0 0 52
+501	play the 1991 soundtrack ian mcdonald	PlayMusic	O O B-year B-music_item B-artist I-artist	3	0 0 71 30 3 4
+268	what is forecast for montana at dinner	GetWeather	O O O O B-state O B-timeRange	2	0 0 0 0 65 0 67
+370	i d like to qriii onto songs to sing in the car	AddToPlaylist	O O O O B-entity_name O B-playlist I-playlist I-playlist I-playlist I-playlist I-playlist	0	0 0 0 0 16 0 45 46 46 46 46 46
+102	book a bar that serves italian-american cuisine neighboring wilson av one person	BookRestaurant	O O B-restaurant_type O O B-served_dish I-served_dish B-spatial_relation B-poi I-poi B-party_size_number O	1	0 0 55 0 0 57 58 63 49 50 44 0
+410	the city tavern in holiday ks	BookRestaurant	O B-restaurant_name I-restaurant_name O B-city B-state	1	0 53 54 0 6 65
+267	show the photograph johnny cash: the complete columbia album collection	SearchCreativeWork	O O B-object_type B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 40 34 35 35 35 35 35 35
+191	can jovino santos neto s album added to my confidence boost playlist	AddToPlaylist	O B-artist I-artist I-artist O B-music_item O O B-playlist_owner B-playlist I-playlist O	0	0 3 4 4 0 30 0 0 47 45 46 0
+408	i m looking for a churrascaria place wifi can serve a party of five	BookRestaurant	O O O O O B-restaurant_type O B-facility O O O O O B-party_size_number	1	0 0 0 0 0 55 0 18 0 0 0 0 0 44
+152	this artist to the laugh list	AddToPlaylist	O B-music_item O B-playlist I-playlist I-playlist	0	0 30 0 45 46 46
+282	i m hoping you can a photograph from live at the isle of wight 1970	SearchCreativeWork	O O O O O O B-object_type O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 0 0 0 0 40 0 34 35 35 35 35 35 35
+463	be chillier at 06:05:48 in wagener réunion	GetWeather	O B-condition_temperature O B-timeRange O B-city B-country	2	0 9 0 67 0 6 10
+447	i to add another album to the wine & dine playlist	AddToPlaylist	O O O O B-music_item O O B-playlist I-playlist I-playlist O	0	0 0 0 0 30 0 0 45 46 46 0
+335	the phishing manual four stars out of 6	RateBook	B-object_name I-object_name I-object_name B-rating_value B-rating_unit O O B-best_rating	4	34 35 35 52 51 0 0 5
+75	i want to put look to you on the named 80s classic hits	AddToPlaylist	O O O O B-entity_name I-entity_name I-entity_name O O O B-playlist I-playlist I-playlist	0	0 0 0 0 16 17 17 0 0 0 45 46 46
+28	what film playing nearby	SearchScreeningEvent	O B-movie_type O B-spatial_relation	6	0 28 0 63
+551	find a tv series armageddon summer	SearchCreativeWork	O O B-object_type I-object_type B-object_name I-object_name	5	0 0 40 41 34 35
+376	weather in ga	GetWeather	O O B-state	2	0 0 65
+351	i m for dead at 21 tv series	SearchCreativeWork	O O O B-object_name I-object_name I-object_name B-object_type I-object_type	5	0 0 0 34 35 35 40 41
+442	can i the movie times fox theatres	SearchScreeningEvent	O O O B-object_type I-object_type B-location_name I-location_name	6	0 0 0 40 41 24 25
+342	play track from peter finestone on netflix sort by newest	PlayMusic	O B-music_item O B-artist I-artist O B-service O O B-sort	3	0 30 0 3 4 0 59 0 0 61
+505	look a photograph i wanna sex you up	SearchCreativeWork	O O B-object_type B-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 40 34 35 35 35 35
+96	turk the deep house playlist	AddToPlaylist	B-artist O B-playlist I-playlist O	0	3 0 45 46 0
+106	is there snow district of columbia	GetWeather	O O B-condition_description B-state I-state I-state	2	0 0 8 65 66 66
+491	i want to video game espn major league soccer	SearchCreativeWork	O O O B-object_type I-object_type B-object_name I-object_name I-object_name I-object_name	5	0 0 0 40 41 34 35 35 35
+372	dwele to marguerite s eurovision 2016 playlist	AddToPlaylist	B-artist O B-playlist_owner I-playlist_owner B-playlist I-playlist O	0	3 0 47 48 45 46 0
+508	is just before nightfall playing	SearchScreeningEvent	O B-movie_name I-movie_name I-movie_name O	6	0 26 27 27 0
+273	david axelrod to my futuros hits list	AddToPlaylist	B-artist I-artist O B-playlist_owner B-playlist I-playlist O	0	3 4 0 47 45 46 0
+444	i like to apocalypse 2024	SearchScreeningEvent	O O O B-movie_name I-movie_name	6	0 0 0 26 27
+534	a xiang xiang track onto women of the blues	AddToPlaylist	O B-artist I-artist B-music_item O B-playlist I-playlist I-playlist I-playlist	0	0 3 4 30 0 45 46 46 46
+482	me the schedule of the loves of letty cinema closest	SearchScreeningEvent	O O B-object_type O B-movie_name I-movie_name I-movie_name I-movie_name B-object_location_type B-spatial_relation	6	0 0 40 0 26 27 27 27 32 63
+37	is weather going to be like in klondike gold rush national historical park on february the 28th 2034	GetWeather	O O O O O O O B-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi O B-timeRange I-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 0 0 22 23 23 23 23 23 0 67 68 68 68
+4	can you let me know what animated movies are close by	SearchScreeningEvent	O O O O O O B-movie_type I-movie_type O B-spatial_relation I-spatial_relation	6	0 0 0 0 0 0 28 29 0 63 64
+511	what will the humidity be varnado georgia at one am	GetWeather	O O O B-condition_description O B-city B-state O B-timeRange I-timeRange	2	0 0 0 8 0 6 65 0 67 68
+412	i to watch may blossom	SearchScreeningEvent	O O O B-movie_name I-movie_name	6	0 0 0 26 27
+307	what the weather be like this tuesday in the area neighboring rendezvous mountain educational state forest	GetWeather	O O O O O B-timeRange I-timeRange O O O B-spatial_relation B-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi	2	0 0 0 0 0 67 68 0 0 0 63 22 23 23 23 23
+233	what is children of divorce	SearchScreeningEvent	O O B-movie_name I-movie_name I-movie_name	6	0 0 26 27 27
+90	search the television show me and my guitar	SearchCreativeWork	O O B-object_type I-object_type B-object_name I-object_name I-object_name I-object_name	5	0 0 40 41 34 35 35 35
+377	i rate chronicle son of the tree four of 6 points	RateBook	O O B-object_part_of_series_type B-object_name I-object_name I-object_name I-object_name B-rating_value O B-best_rating B-rating_unit	4	0 0 36 34 35 35 35 52 0 5 51
+175	shinji miyazaki s on netflix	PlayMusic	B-artist I-artist O O B-service	3	3 4 0 0 59
+441	i need to have pat alger s album placed the spotlight spain 2016 playlist	AddToPlaylist	O O O O B-artist I-artist O B-music_item O O B-playlist I-playlist I-playlist O	0	0 0 0 0 3 4 0 30 0 0 45 46 46 0
+185	i d like to see movie schedules kerasotes theatres	SearchScreeningEvent	O O O O O B-object_type I-object_type B-location_name I-location_name	6	0 0 0 0 0 40 41 24 25
+149	you me the naked city – justice with a bullet album	SearchCreativeWork	O O O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name B-object_type	5	0 0 0 34 35 35 35 35 35 35 40
+404	it be snowy day in dalcour	GetWeather	O O B-condition_description B-timeRange O B-city	2	0 0 8 67 0 6
+7	worldly goods starting now a movie house	SearchScreeningEvent	B-movie_name I-movie_name O B-timeRange O B-object_location_type I-object_location_type	6	26 27 0 67 0 32 33
+353	put track lil mama into my guest list sneaky zebra playlist	AddToPlaylist	O B-music_item B-artist I-artist O B-playlist_owner B-playlist I-playlist I-playlist I-playlist O	0	0 30 3 4 0 47 45 46 46 46 0
+78	add the artist cho kyu hyun funky jams	AddToPlaylist	O O B-music_item B-artist I-artist I-artist B-playlist I-playlist	0	0 0 30 3 4 4 45 46
+290	book a for nine people in svalbard and jan mayen	BookRestaurant	O O O B-party_size_number O O B-country I-country I-country I-country	1	0 0 0 44 0 0 10 11 11 11
+101	the rating for this current series a four out of 6 points	RateBook	O O O O B-object_select B-object_part_of_series_type O B-rating_value O O B-best_rating B-rating_unit	4	0 0 0 0 38 36 0 52 0 0 5 51
+256	i want a for five at a restaurant with latin in arkansas for 1 hour from now	BookRestaurant	O O O O B-party_size_number O O B-restaurant_type O B-cuisine O B-state O B-timeRange I-timeRange I-timeRange I-timeRange	1	0 0 0 0 44 0 0 55 0 12 0 65 0 67 68 68 68
+113	is the forecast for in 1 second at monte sereno for freezing temps	GetWeather	O O O O B-timeRange I-timeRange I-timeRange O B-city I-city O B-condition_temperature O	2	0 0 0 0 67 68 68 0 6 7 0 9 0
+494	what s in timbo	GetWeather	O O O B-city	2	0 0 0 6
+257	play me a popular track 1984	PlayMusic	O O O B-sort B-music_item B-year	3	0 0 0 61 30 71
+449	play a track mila islam deezer	PlayMusic	O O B-music_item B-artist I-artist B-service	3	0 0 30 3 4 59
+477	add tune to the refugee playlist	AddToPlaylist	O B-music_item O B-playlist I-playlist I-playlist	0	0 30 0 45 46 46
+554	rate this album two out 6	RateBook	O B-object_select B-object_type B-rating_value O B-best_rating	4	0 38 40 52 0 5
+27	play some sixties	PlayMusic	O O B-year	3	0 0 71
+189	book space aliens grill & bar hord wy for feb the twenty-seventh	BookRestaurant	O B-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name B-city B-state O B-timeRange I-timeRange I-timeRange	1	0 53 54 54 54 54 6 65 0 67 68 68
+493	is it going be chillier at 10 pm in texas	GetWeather	O O O O B-condition_temperature O B-timeRange I-timeRange O B-state	2	0 0 0 0 9 0 67 68 0 65
+399	add pangaea to my gold edition	AddToPlaylist	O B-entity_name O B-playlist_owner B-playlist I-playlist	0	0 16 0 47 45 46
+80	can the butterfly crush showings	SearchScreeningEvent	O O B-movie_name I-movie_name O	6	0 0 26 27 0
+199	look the movie schedule	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+485	book a in the united states for 10 at the berghoff	BookRestaurant	O O O O B-country I-country O B-party_size_number O B-restaurant_name I-restaurant_name	1	0 0 0 0 10 11 0 44 0 53 54
+368	in 17 minutes it be foggy songimvelo game reserve	GetWeather	B-timeRange I-timeRange I-timeRange O O B-condition_description B-geographic_poi I-geographic_poi I-geographic_poi	2	67 68 68 0 0 8 22 23 23
+443	d like watch wish you were dead	SearchScreeningEvent	O O O B-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 0 26 27 27 27
+30	the video game of the chipmunk song	SearchCreativeWork	O B-object_type I-object_type O B-object_name I-object_name I-object_name	5	0 40 41 0 34 35 35
+288	cock-a-doodle-doo was awful i m giving it a 0 out 6	RateBook	B-object_name O O O O O O O B-rating_value O B-best_rating	4	34 0 0 0 0 0 0 0 52 0 5
+143	it freezing in colorado	GetWeather	O B-condition_temperature O B-state	2	0 9 0 65
+532	me the movie operetta for the theatre organ	SearchCreativeWork	O O B-object_type B-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 40 34 35 35 35 35
+263	book me reservation for eight for the top-rated bakery eleven hours from now in mango	BookRestaurant	O O O O B-party_size_number O O B-sort B-restaurant_type B-timeRange I-timeRange I-timeRange I-timeRange O B-city	1	0 0 0 0 44 0 0 61 55 67 68 68 68 0 6
+218	i a table in uruguay in 213 days when it s chillier	GetWeather	O O O O B-country B-timeRange I-timeRange I-timeRange O O O B-condition_temperature	2	0 0 0 0 10 67 68 68 0 0 0 9
+260	is niceville forecast in fm	GetWeather	O B-city O O B-state	2	0 6 0 0 65
+524	one somewhere in palco	BookRestaurant	B-party_size_number O O B-city	1	44 0 0 6
+156	i like a table for midday at the unseen bean	BookRestaurant	O O O O O B-timeRange O B-restaurant_name I-restaurant_name I-restaurant_name	1	0 0 0 0 0 67 0 53 54 54
+36	play melody from elmer bernstein	PlayMusic	O B-music_item O B-artist I-artist	3	0 30 0 3 4
+186	want these are the days to my spotlight spain 2016 playlist	AddToPlaylist	O B-entity_name I-entity_name I-entity_name I-entity_name O B-playlist_owner B-playlist I-playlist I-playlist O	0	0 16 17 17 17 0 47 45 46 46 0
+315	a movie house for 07:52 ganges: river to heaven	SearchScreeningEvent	O B-object_location_type I-object_location_type O B-timeRange B-movie_name I-movie_name I-movie_name I-movie_name	6	0 32 33 0 67 26 27 27 27
+424	i want to add hind etin to my la mejor música dance 2017	AddToPlaylist	O O O O B-entity_name I-entity_name O B-playlist_owner B-playlist I-playlist I-playlist I-playlist I-playlist	0	0 0 0 0 16 17 0 47 45 46 46 46 46
+129	it snowstorm in long lake national wildlife refuge	GetWeather	O B-condition_description O B-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi	2	0 8 0 22 23 23 23 23
+131	book a highly rated place in in in seven years at pub	BookRestaurant	O O B-sort I-sort O O B-state B-timeRange I-timeRange I-timeRange O B-restaurant_type	1	0 0 61 62 0 0 65 67 68 68 0 55
+332	play geddy lee music spotify sort top	PlayMusic	O B-artist I-artist O B-service O B-sort	3	0 3 4 0 59 0 61
+163	put a gary clark song the soul bpm	AddToPlaylist	O O B-artist I-artist B-music_item O B-playlist I-playlist	0	0 0 3 4 30 0 45 46
+386	add song to my lo que suena new york	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist I-playlist I-playlist I-playlist	0	0 30 0 47 45 46 46 46 46
+309	i a table for five at childs restaurants in brunei	BookRestaurant	O O O O B-party_size_number O B-restaurant_name I-restaurant_name O B-country	1	0 0 0 0 44 0 53 54 0 10
+120	what animated movies showing in the area	SearchScreeningEvent	O B-movie_type I-movie_type O B-spatial_relation I-spatial_relation I-spatial_relation	6	0 28 29 0 63 64 64
+205	give current book zero of 6	RateBook	O B-object_select B-object_type B-rating_value O B-best_rating	4	0 38 40 52 0 5
+479	i would like to book highly rated brasserie with souvlaki neighboring la next week	BookRestaurant	O O O O O B-sort I-sort B-restaurant_type O B-cuisine B-spatial_relation B-state B-timeRange I-timeRange	1	0 0 0 0 0 61 62 55 0 12 63 65 67 68
+450	it rainy in manitou springs	GetWeather	O B-condition_description O B-city I-city	2	0 8 0 6 7
+340	chronicle charlie peace earns 4 stars from	RateBook	B-object_part_of_series_type B-object_name I-object_name O B-rating_value B-rating_unit O	4	36 34 35 0 52 51 0
+439	play a nineties sound track	PlayMusic	O O B-year B-music_item I-music_item	3	0 0 71 30 31
+333	look up tv series operace silver a	SearchCreativeWork	O O B-object_type I-object_type B-object_name I-object_name I-object_name	5	0 0 40 41 34 35 35
+388	ma in the morning	GetWeather	B-state O O B-timeRange	2	65 0 0 67
+13	will wind die down at my current location by supper time	GetWeather	O B-condition_description O O O O B-current_location I-current_location O B-timeRange O	2	0 8 0 0 0 0 14 15 0 67 0
+110	give the current book five stars 6	RateBook	O O B-object_select B-object_type B-rating_value B-rating_unit B-best_rating	4	0 0 38 40 52 51 5
+380	play a cinder block movement	PlayMusic	O O B-artist I-artist B-music_item	3	0 0 3 4 30
+481	i need take three people to eat	BookRestaurant	O O O B-party_size_number O O O	1	0 0 0 44 0 0 0
+301	i want to a pastelaria cafe in alabama for me and my great grandfather	BookRestaurant	O O O O B-cuisine B-restaurant_type O B-state O B-party_size_description I-party_size_description I-party_size_description I-party_size_description I-party_size_description	1	0 0 0 0 12 55 0 65 0 42 43 43 43 43
+234	be a blizzard in white house curacao	GetWeather	O O B-condition_description O B-city I-city B-country	2	0 0 8 0 6 7 10
+65	what is the weather forecast my current place	GetWeather	O O O O O O B-current_location I-current_location	2	0 0 0 0 0 0 14 15
+305	i a for 9	BookRestaurant	O O O B-party_size_number	1	0 0 0 44
+474	i d like see the picture the principle of hope	SearchCreativeWork	O O O O O B-object_type B-object_name I-object_name I-object_name I-object_name	5	0 0 0 0 0 40 34 35 35 35
+89	will be snowfall six pm in leisure knoll california	GetWeather	O O B-condition_description B-timeRange I-timeRange O B-city I-city B-state	2	0 0 8 67 68 0 6 7 65
+54	book a table today at a steakhouse eight that serves sashimi	BookRestaurant	O O O B-timeRange O O B-restaurant_type B-party_size_number O O B-served_dish	1	0 0 0 67 0 0 55 44 0 0 57
+506	what is the humidity like faraway on ak	GetWeather	O O O B-condition_description O B-spatial_relation O B-state	2	0 0 0 8 0 63 0 65
+369	how hot it be in wisconsin on august fourth	GetWeather	O B-condition_temperature O O O B-state O B-timeRange I-timeRange	2	0 9 0 0 0 65 0 67 68
+433	will there a snowstorm taberville	GetWeather	O O O B-condition_description B-city	2	0 0 0 8 6
+98	check the forecast for the current spot in the oct 19 2037	GetWeather	O O O O O B-current_location I-current_location O O B-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 14 15 0 0 67 68 68
+12	can i purchase tv show time for heroes	SearchCreativeWork	O O O B-object_type I-object_type B-object_name I-object_name I-object_name	5	0 0 0 40 41 34 35 35
+214	show the closest movie house an unfinished life at eight pm	SearchScreeningEvent	O O B-spatial_relation B-object_location_type I-object_location_type B-movie_name I-movie_name I-movie_name O B-timeRange I-timeRange	6	0 0 63 32 33 26 27 27 0 67 68
+396	star light star bright to my jazz classics playlist	AddToPlaylist	B-entity_name I-entity_name I-entity_name I-entity_name O B-playlist_owner B-playlist I-playlist O	0	16 17 17 17 0 47 45 46 0
+204	play folk-rock music	PlayMusic	O B-genre O	3	0 20 0
+40	book a table for 2 at restaurant in follett	BookRestaurant	O O O O B-party_size_number O B-restaurant_type O B-city	1	0 0 0 0 44 0 55 0 6
+208	me the weather forecast close by brown county state park for meal time	GetWeather	O O O O B-spatial_relation I-spatial_relation B-geographic_poi I-geographic_poi I-geographic_poi I-geographic_poi O B-timeRange O	2	0 0 0 0 63 64 22 23 23 23 0 67 0
+361	i need to add to funk soul disco playlist my favorite artist	AddToPlaylist	O O O O O B-playlist I-playlist I-playlist O B-playlist_owner O B-music_item	0	0 0 0 0 0 45 46 46 0 47 0 30
+50	is it warm botna	GetWeather	O O B-condition_temperature B-city	2	0 0 9 6
+118	the weather in getzville minnesota	GetWeather	O O O B-city B-state	2	0 0 0 6 65
+306	add artist to my post-grunge	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist	0	0 30 0 47 45
+88	i want a matt garrison tune my fresh finds fire emoji	AddToPlaylist	O O O B-artist I-artist B-music_item B-playlist_owner B-playlist I-playlist I-playlist I-playlist	0	0 0 0 3 4 30 47 45 46 46 46
+516	lets some dawood sarkhosh from their the power of your love album from groove shark	PlayMusic	O O B-artist I-artist O O B-album I-album I-album I-album I-album B-music_item O B-service I-service	3	0 0 3 4 0 0 1 2 2 2 2 30 0 59 60
+10	find a movie living in america	SearchCreativeWork	O O B-object_type B-object_name I-object_name I-object_name	5	0 0 40 34 35 35
+304	make reservation in a popular sicilian bar place nearby for me only tomorrow	BookRestaurant	O O O O B-sort B-cuisine B-restaurant_type O B-spatial_relation O O O B-timeRange	1	0 0 0 0 61 12 55 0 63 0 0 0 67
+21	what the weather be at nine am in hi	GetWeather	O O O O O B-timeRange I-timeRange O B-state	2	0 0 0 0 0 67 68 0 65
+162	please the ironbound picture	SearchCreativeWork	O O B-object_name B-object_type	5	0 0 34 40
+292	what animated movies are nearby	SearchScreeningEvent	O B-movie_type I-movie_type O B-spatial_relation	6	0 28 29 0 63
+20	will snow in amy	GetWeather	O B-condition_description O B-city	2	0 8 0 6
+339	add circus my post garage wave revival list	AddToPlaylist	O B-entity_name B-playlist_owner B-playlist I-playlist I-playlist I-playlist O	0	0 16 47 45 46 46 46 0
+182	play some nineties	PlayMusic	O O B-year	3	0 0 71
+415	add song to my wild country	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist	0	0 30 0 47 45 46
+211	i want to give current textbook 0 out of 6 stars	RateBook	O O O O B-object_select B-object_type B-rating_value O O B-best_rating B-rating_unit	4	0 0 0 0 38 40 52 0 0 5 51
+8	on june 27 2026 i d to go to a delaware gastropub	BookRestaurant	O B-timeRange I-timeRange I-timeRange O O O O O O B-state B-restaurant_type	1	0 67 68 68 0 0 0 0 0 0 65 55
+553	add leah kauffman my uncharted 4 nathan drake playlist	AddToPlaylist	O B-artist I-artist B-playlist_owner B-playlist I-playlist I-playlist I-playlist O	0	0 3 4 47 45 46 46 46 0
+311	i would like to make a for 2 for brunch	BookRestaurant	O O O O O O O B-party_size_number O B-timeRange	1	0 0 0 0 0 0 0 44 0 67
+381	i to hear jody williams sound track	PlayMusic	O O O B-artist I-artist B-music_item I-music_item	3	0 0 0 3 4 30 31
+72	jungle music on iheart	PlayMusic	B-genre O O B-service	3	20 0 0 59
+70	add track the another glass playlist	AddToPlaylist	O B-music_item O B-playlist I-playlist O	0	0 30 0 45 46 0
+544	rate this book the improvisatore five stars	RateBook	O O B-object_type B-object_name I-object_name B-rating_value B-rating_unit	4	0 0 40 34 35 52 51
+86	what paris by night aired	SearchScreeningEvent	O B-movie_name I-movie_name I-movie_name O	6	0 26 27 27 0
+371	will be chilly oakdale ok	GetWeather	O O B-condition_temperature B-city B-state	2	0 0 9 6 65
+334	i m looking for the tv series unborn	SearchCreativeWork	O O O O O B-object_type I-object_type B-object_name	5	0 0 0 0 0 40 41 34
+488	rate current novel four out 6 points	RateBook	O B-object_select B-object_type B-rating_value O B-best_rating B-rating_unit	4	0 38 40 52 0 5 51
+535	can you add a track david wolfenberger to janell s all funked up playlist	AddToPlaylist	O O O O B-music_item B-artist I-artist O B-playlist_owner I-playlist_owner B-playlist I-playlist I-playlist O	0	0 0 0 0 30 3 4 0 47 48 45 46 46 0
+409	is goodbye mothers playing	SearchScreeningEvent	O B-movie_name I-movie_name O	6	0 26 27 0
+313	me a restaurant for nine statham	BookRestaurant	O O B-restaurant_type O B-party_size_number B-city	1	0 0 55 0 44 6
+84	for my crossfit playlist the soul sessions volume 2	AddToPlaylist	O B-playlist_owner B-playlist O B-entity_name I-entity_name I-entity_name I-entity_name I-entity_name	0	0 47 45 0 16 17 17 17 17
+471	need the wather for next week in the philippines	GetWeather	O O O O B-timeRange I-timeRange O O B-country	2	0 0 0 0 67 68 0 0 10
+71	the workout playlist chris cross	AddToPlaylist	O B-playlist O B-artist I-artist	0	0 45 0 3 4
+432	book a table for 5 at a best rated restaurant in italy	BookRestaurant	O O O O B-party_size_number O O B-sort I-sort B-restaurant_type O B-country	1	0 0 0 0 44 0 0 61 62 55 0 10
+422	rate the current chronicle series 3 6 points	RateBook	O O B-object_select B-object_part_of_series_type I-object_part_of_series_type B-rating_value B-best_rating B-rating_unit	4	0 0 38 36 37 52 5 51
+509	am giving this current book album 0 out of 6 stars	RateBook	O O O B-object_select B-object_type I-object_type B-rating_value O O B-best_rating B-rating_unit	4	0 0 0 38 40 41 52 0 0 5 51
+354	put frank ferrer into my edna st vincent millay	AddToPlaylist	O B-artist I-artist O B-playlist_owner B-playlist I-playlist I-playlist I-playlist	0	0 3 4 0 47 45 46 46 46
+232	i a reservation for ten at a tavern in west virginia	BookRestaurant	O O O O B-party_size_number O O B-restaurant_type O B-state I-state	1	0 0 0 0 44 0 0 55 0 65 66
+240	can find me a trailer for phineas redux	SearchCreativeWork	O O O O B-object_type O B-object_name I-object_name	5	0 0 0 0 40 0 34 35
+297	add nyoil to my this is prince	AddToPlaylist	O B-artist O B-playlist_owner B-playlist I-playlist I-playlist	0	0 3 0 47 45 46 46
+146	some theme from 1974	PlayMusic	O B-music_item O B-year	3	0 30 0 71
+446	show the movie times	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+495	me the weather forecast for sugarloaf provincial park ten weeks from now	GetWeather	O O O O O B-geographic_poi I-geographic_poi I-geographic_poi B-timeRange I-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 22 23 23 67 68 68 68
+141	the best album from seventies	PlayMusic	O B-sort B-music_item O B-year	3	0 61 30 0 71
+403	add album by twink my classic country playlist	AddToPlaylist	O B-music_item O B-artist B-playlist_owner B-playlist I-playlist O	0	0 30 0 3 47 45 46 0
+167	is the weather like in hurstville	GetWeather	O O O O O B-city	2	0 0 0 0 0 6
+296	a reservation clinton street baking company & restaurant distant from downtown	BookRestaurant	O O B-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name B-spatial_relation O B-poi	1	0 0 53 54 54 54 54 54 63 0 49
+515	can you queen of the organ	SearchCreativeWork	O O B-object_name I-object_name I-object_name I-object_name	5	0 0 34 35 35 35
+166	i like to reserve a table at a pub that serves andouillettes within the same area san marino	BookRestaurant	O O O O O O O O B-restaurant_type O O B-served_dish B-spatial_relation I-spatial_relation I-spatial_relation I-spatial_relation B-country I-country	1	0 0 0 0 0 0 0 0 55 0 0 57 63 64 64 64 10 11
+248	can you put a song by jessica mauboy my playlist entitled a sudden rainstorm	AddToPlaylist	O O O O B-music_item O B-artist I-artist B-playlist_owner O O B-playlist I-playlist I-playlist	0	0 0 0 0 30 0 3 4 47 0 0 45 46 46
+350	i to book a bar in bonaparte palau	BookRestaurant	O O O O B-restaurant_type O B-city B-state	1	0 0 0 0 55 0 6 65
+469	what is the weather forecast close-by gu 3 years from now	GetWeather	O O O O O B-spatial_relation B-state B-timeRange I-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 63 65 67 68 68 68
+492	the current book a three	RateBook	O B-object_select B-object_type O B-rating_value	4	0 38 40 0 52
+114	would like to eat fast food have a party of two in kentucky	BookRestaurant	O O O O B-restaurant_type I-restaurant_type O O O O B-party_size_number O B-state	1	0 0 0 0 55 56 0 0 0 0 44 0 65
+243	movies can see in the area	SearchScreeningEvent	B-movie_type O O B-spatial_relation I-spatial_relation I-spatial_relation	6	28 0 0 63 64 64
+42	find a at restaurant that serves gougère in laneville with a party of nine	BookRestaurant	O O O B-restaurant_type O O B-served_dish O B-city O O O O B-party_size_number	1	0 0 0 55 0 0 57 0 6 0 0 0 0 44
+373	s the weather forecast for croatia on jul 25th	GetWeather	O O O O O B-country O B-timeRange I-timeRange	2	0 0 0 0 0 10 0 67 68
+193	book a this evening in saint vincent and the grenadines at a gastropub	BookRestaurant	O O O B-timeRange O B-country I-country I-country I-country I-country O O B-restaurant_type	1	0 0 0 67 0 10 11 11 11 11 0 0 55
+454	what movies showing in the neighborhood	SearchScreeningEvent	O B-movie_type O B-spatial_relation I-spatial_relation I-spatial_relation	6	0 28 0 63 64 64
+461	this tune onto my dinner for 2	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist I-playlist	0	0 30 0 47 45 46 46
+226	21 weeks from now elinor crystal turner and nita to eat german food at a bar in distant california	BookRestaurant	B-timeRange I-timeRange I-timeRange I-timeRange B-party_size_description I-party_size_description I-party_size_description I-party_size_description I-party_size_description O O B-cuisine O O O B-restaurant_type O B-spatial_relation B-state	1	67 68 68 68 42 43 43 43 43 0 0 12 0 0 0 55 0 63 65
+457	what animated movies are playing in the neighbourhood	SearchScreeningEvent	O B-movie_type I-movie_type O O B-spatial_relation I-spatial_relation I-spatial_relation	6	0 28 29 0 0 63 64 64
+48	please me asking alexandria discography	SearchCreativeWork	O O B-object_name I-object_name I-object_name	5	0 0 34 35 35
+239	what will the be in grand coteau ut at six pm	GetWeather	O O O O O B-city I-city B-state O B-timeRange I-timeRange	2	0 0 0 0 0 6 7 65 0 67 68
+540	going to storm in black rock alaska	GetWeather	O O B-condition_description O B-city I-city B-state	2	0 0 8 0 6 7 65
+522	it hotter in wyomissing hills	GetWeather	O B-condition_temperature O B-city I-city	2	0 9 0 6 7
+327	what time phil ochs: there but for fortune playing at the movie house	SearchScreeningEvent	O O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name O O O B-object_location_type I-object_location_type	6	0 0 26 27 27 27 27 27 0 0 0 32 33
+299	a restaurant fm that servec quiche	BookRestaurant	O B-restaurant_type B-state O O B-served_dish	1	0 55 65 0 0 57
+197	can you tell me the actors the saga awards/	SearchCreativeWork	O O O O O B-object_name O B-object_type O	5	0 0 0 0 0 34 0 40 0
+171	the schedule for the band of honest men at nearest movie theatre	SearchScreeningEvent	O B-object_type O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name O B-spatial_relation B-object_location_type I-object_location_type	6	0 40 0 26 27 27 27 27 0 63 32 33
+177	what the forecast for belize around meal time	GetWeather	O O O O B-country O B-timeRange O	2	0 0 0 0 10 0 67 0
+169	rate this textbook 2 out 6	RateBook	O B-object_select B-object_type B-rating_value O B-best_rating	4	0 38 40 52 0 5
+52	can you confessions to my playlist called clásica	AddToPlaylist	O O B-entity_name O B-playlist_owner O O B-playlist	0	0 0 16 0 47 0 0 45
+519	this candi staton artist to my dancefloor hits	AddToPlaylist	O B-artist I-artist B-music_item O B-playlist_owner B-playlist I-playlist	0	0 3 4 30 0 47 45 46
+278	give 2 out of 6 points following textbook	RateBook	O B-rating_value O O B-best_rating B-rating_unit B-object_select B-object_type	4	0 52 0 0 5 51 38 40
+466	is nh forecast for mexican hat	GetWeather	O B-state O O B-city I-city	2	0 65 0 0 6 7
+261	which is nearest movie house the diary of anne frank	SearchScreeningEvent	O O B-spatial_relation B-object_location_type I-object_location_type B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 63 32 33 26 27 27 27 27
+35	is the weather east portal ks	GetWeather	O O O B-city I-city B-state	2	0 0 0 6 7 65
+346	i d like eat at the best restaurant	BookRestaurant	O O O O O O B-sort B-restaurant_type	1	0 0 0 0 0 0 61 55
+331	will there snowfall kitlope heritage conservancy	GetWeather	O O B-condition_description B-geographic_poi I-geographic_poi I-geographic_poi	2	0 0 8 22 23 23
+56	add this song blues roots	AddToPlaylist	O O B-music_item B-playlist I-playlist	0	0 0 30 45 46
+115	play itunes for ric grech	PlayMusic	O B-service O B-artist I-artist	3	0 59 0 3 4
+426	what is freezing forecast british virgin islands	GetWeather	O O B-condition_temperature O B-country I-country I-country	2	0 0 9 0 10 11 11
+356	ruth crawford seeger song to my playlist called the soundtrack 007	AddToPlaylist	B-artist I-artist I-artist B-music_item O B-playlist_owner O O B-playlist I-playlist I-playlist	0	3 4 4 30 0 47 0 0 45 46 46
+77	rate the current chronicle zero	RateBook	O O B-object_select B-object_part_of_series_type B-rating_value	4	0 0 38 36 52
+16	restaurant bulgaria this week party for 9	BookRestaurant	B-restaurant_type B-country B-timeRange I-timeRange O O B-party_size_number	1	55 10 67 68 0 0 44
+150	search work eve-olution	SearchCreativeWork	O O B-object_name	5	0 0 34
+319	search the halfway home tv show	SearchCreativeWork	O O B-object_name I-object_name B-object_type I-object_type	5	0 0 34 35 40 41
+255	rate current textbook one of 6 stars	RateBook	O B-object_select B-object_type B-rating_value O B-best_rating B-rating_unit	4	0 38 40 52 0 5 51
+483	play the top 20 ep from fifties john bundrick	PlayMusic	O O B-sort I-sort B-music_item O B-year B-artist I-artist	3	0 0 61 62 30 0 71 3 4
+73	give 1 to current textbook	RateBook	O B-rating_value O B-object_select B-object_type	4	0 52 0 38 40
+196	what the weather like in north salt lake and afghanistan	GetWeather	O O O O O B-city I-city I-city O B-country	2	0 0 0 0 0 6 7 7 0 10
+6	what s here on 2/7/2021	GetWeather	O O B-current_location O B-timeRange	2	0 0 14 0 67
+46	book a table for 8 at a restaurant that far breton	BookRestaurant	O O O O B-party_size_number O O B-restaurant_type O B-served_dish I-served_dish	1	0 0 0 0 44 0 0 55 0 57 58
+105	find schedule for films at night great escape theatres	SearchScreeningEvent	O B-object_type O B-movie_type O B-timeRange B-location_name I-location_name I-location_name	6	0 40 0 28 0 67 24 25 25
+1	i want bring four people to a place that close to downtown that serves churrascaria cuisine	BookRestaurant	O O O B-party_size_number O O O O O B-spatial_relation O B-poi O O B-restaurant_type O	1	0 0 0 44 0 0 0 0 0 63 0 49 0 0 55 0
+22	book a spot for ten a top-rated caucasian restaurant not far from selmer	BookRestaurant	O O O O B-party_size_number O B-sort B-cuisine B-restaurant_type B-spatial_relation I-spatial_relation O B-city	1	0 0 0 0 44 0 61 12 55 63 64 0 6
+117	show me the weather forecast the city of spencer	GetWeather	O O O O O O O O B-city	2	0 0 0 0 0 0 0 0 6
+127	book a table around london borough of ealing that is highly rated in gluten free bar	BookRestaurant	O O O B-spatial_relation B-poi I-poi I-poi I-poi O O B-sort I-sort O B-cuisine I-cuisine B-restaurant_type	1	0 0 0 63 49 50 50 50 0 0 61 62 0 12 13 55
+389	play a ballad bob johnston	PlayMusic	O O B-music_item B-artist I-artist	3	0 0 30 3 4
+190	find saga called set sail the prairie	SearchCreativeWork	O B-object_type O B-object_name I-object_name I-object_name I-object_name	5	0 40 0 34 35 35 35
+475	this series 2 out of 6	RateBook	B-object_select B-object_part_of_series_type B-rating_value O O B-best_rating	4	38 36 52 0 0 5
+85	put this tune dancepop	AddToPlaylist	O O B-music_item B-playlist	0	0 0 30 45
+168	album on my wild country playlist	AddToPlaylist	B-music_item O B-playlist_owner B-playlist I-playlist O	0	30 0 47 45 46 0
+312	need a for party of five for december 26 2040 in the of mt	BookRestaurant	O O O O O B-party_size_number O B-timeRange I-timeRange I-timeRange O O O B-state	1	0 0 0 0 0 44 0 67 68 68 0 0 0 65
+97	a at fish express	BookRestaurant	O O B-restaurant_name I-restaurant_name	1	0 0 53 54
+470	will it freezing 4/20/2038 in american beach nc	GetWeather	O O B-condition_temperature B-timeRange O B-city I-city B-state	2	0 0 9 67 0 6 7 65
+126	some kyle ward the seventies	PlayMusic	O B-artist I-artist O B-year	3	0 3 4 0 71
+330	are the mann theatres for secret sunshine	SearchScreeningEvent	O O B-location_name I-location_name O B-movie_name I-movie_name	6	0 0 24 25 0 26 27
+123	at meal time i m here will it be hot	GetWeather	O B-timeRange O O O B-current_location O O O B-condition_temperature	2	0 67 0 0 0 14 0 0 0 9
+64	a video game called family dog	SearchCreativeWork	O B-object_type I-object_type O B-object_name I-object_name	5	0 40 41 0 34 35
+341	the nearest movie house showing the luckiest girl in the world	SearchScreeningEvent	O B-spatial_relation B-object_location_type I-object_location_type O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name	6	0 63 32 33 0 26 27 27 27 27 27
+154	the sleep machine waterscapes playlist kris chetan ramlu in it	AddToPlaylist	B-playlist I-playlist I-playlist I-playlist O B-artist I-artist I-artist O O	0	45 46 46 46 0 3 4 4 0 0
+236	animated movies playing at magic johnson theatres	SearchScreeningEvent	B-movie_type I-movie_type O O B-location_name I-location_name I-location_name	6	28 29 0 0 24 25 25
+552	rate this album 0 points out 6	RateBook	O B-object_select B-object_type B-rating_value B-rating_unit O B-best_rating	4	0 38 40 52 51 0 5
+164	will be hot on orthodox good friday in michigan and close-by	GetWeather	O O B-condition_temperature O B-timeRange I-timeRange I-timeRange O B-state O B-spatial_relation	2	0 0 9 0 67 68 68 0 65 0 63
+258	book mediterranean restaurant for my sister and i	BookRestaurant	O B-cuisine B-restaurant_type O B-party_size_description I-party_size_description I-party_size_description I-party_size_description	1	0 12 55 0 42 43 43 43
+247	the song the soundscapes for gaming playlist	AddToPlaylist	O B-music_item O B-playlist I-playlist I-playlist O	0	0 30 0 45 46 46 0
+484	creativity photograph of my wonderful day	SearchCreativeWork	O B-object_type O B-object_name I-object_name I-object_name	5	0 40 0 34 35 35
+94	find video game called turnin me on	SearchCreativeWork	O B-object_type I-object_type O B-object_name I-object_name I-object_name	5	0 40 41 0 34 35 35
+434	add song this is no te va gustar playlist	AddToPlaylist	O B-music_item B-playlist I-playlist I-playlist I-playlist I-playlist I-playlist O	0	0 30 45 46 46 46 46 46 0
+264	table for 8 popular food court	BookRestaurant	O O B-party_size_number B-sort B-restaurant_type I-restaurant_type	1	0 0 44 61 55 56
+383	a table at grecian coffee house for 7 on apr 7th 2024	BookRestaurant	O O O B-restaurant_name I-restaurant_name I-restaurant_name O B-party_size_number O B-timeRange I-timeRange I-timeRange	1	0 0 0 53 54 54 0 44 0 67 68 68
+274	play sun ra from the fifties	PlayMusic	O B-artist I-artist O O B-year	3	0 3 4 0 0 71
+269	this track to my de camino playlist	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist O	0	0 30 0 47 45 46 0
+160	i want a table me and my kids in turkey at a neighboring restaurant	BookRestaurant	O O O O B-party_size_description I-party_size_description I-party_size_description I-party_size_description O B-country O O B-spatial_relation B-restaurant_type	1	0 0 0 0 42 43 43 43 0 10 0 0 63 55
+317	i to eat close bowlegs seven years from now	BookRestaurant	O O O B-spatial_relation B-city B-timeRange I-timeRange I-timeRange I-timeRange	1	0 0 0 63 6 67 68 68 68
+26	i rate shadow of suribachi five stars	RateBook	O O B-object_name I-object_name I-object_name B-rating_value B-rating_unit	4	0 0 34 35 35 52 51
+325	play song by nash the slash	PlayMusic	O B-music_item O B-artist I-artist I-artist	3	0 30 0 3 4 4
+314	i d like a table ten in 2 minutes at french horn sonning eye	BookRestaurant	O O O O O B-party_size_number B-timeRange I-timeRange I-timeRange O B-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name	1	0 0 0 0 0 44 67 68 68 0 53 54 54 54
+178	add gary lachman track to jazz for loving couples	AddToPlaylist	O B-artist I-artist B-music_item O B-playlist I-playlist I-playlist I-playlist	0	0 3 4 30 0 45 46 46 46
+275	add track to my dinnertime acoustics	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist	0	0 30 0 47 45 46
+438	please make reservations in yeager seven am at a highly rated indian brasserie	BookRestaurant	O O O O B-city B-timeRange I-timeRange O O B-sort I-sort B-cuisine B-restaurant_type	1	0 0 0 0 6 67 68 0 0 61 62 12 55
+344	which animated movies playing in the neighbourhood and	SearchScreeningEvent	O B-movie_type I-movie_type O B-spatial_relation I-spatial_relation I-spatial_relation O	6	0 28 29 0 63 64 64 0
+550	add my playlist all funked up track	AddToPlaylist	O B-playlist_owner O B-playlist I-playlist I-playlist B-music_item	0	0 47 0 45 46 46 30
+498	show me movie times	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+130	me a reservation at a bar around juliff for three people that bucatini for now	BookRestaurant	O O O O O B-restaurant_type B-spatial_relation B-city O B-party_size_number O O B-served_dish O B-timeRange	1	0 0 0 0 0 55 63 6 0 44 0 0 57 0 67
+521	book taverna that serves bengali for six at five	BookRestaurant	O B-restaurant_type O O B-cuisine O B-party_size_number O B-timeRange	1	0 55 0 0 12 0 44 0 67
+414	i want to rate the ingenuity gap 3 out 6	RateBook	O O O O B-object_name I-object_name I-object_name B-rating_value O B-best_rating	4	0 0 0 0 34 35 35 52 0 5
+298	show me everybody wants you picture	SearchCreativeWork	O O B-object_name I-object_name I-object_name B-object_type	5	0 0 34 35 35 40
+363	can watch tv series shopping spree	SearchCreativeWork	O O B-object_type I-object_type B-object_name I-object_name	5	0 0 40 41 34 35
+132	what is southern theatres ukraine is not a brothel	SearchScreeningEvent	O O B-location_name I-location_name B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 24 25 26 27 27 27 27
+473	i would like to the best food court persian food within the same area as ok for my ex husband and i	BookRestaurant	O O O O O B-sort B-restaurant_type I-restaurant_type B-cuisine O B-spatial_relation I-spatial_relation I-spatial_relation I-spatial_relation O B-state O B-party_size_description I-party_size_description I-party_size_description I-party_size_description I-party_size_description	1	0 0 0 0 0 61 55 56 12 0 63 64 64 64 0 65 0 42 43 43 43 43
+538	i m looking a movie called salvage mice	SearchCreativeWork	O O O O B-object_type O B-object_name I-object_name	5	0 0 0 0 40 0 34 35
+215	what s like in bahrain right now	GetWeather	O O O O B-country O B-timeRange	2	0 0 0 0 10 0 67
+277	need see mother joan of the angels in one second	SearchScreeningEvent	O O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name B-timeRange I-timeRange I-timeRange	6	0 0 26 27 27 27 27 67 68 68
+217	on jan the twentieth it feel like in ct or the area not far from it	GetWeather	O B-timeRange I-timeRange I-timeRange O O O O B-state O O O B-spatial_relation I-spatial_relation O O	2	0 67 68 68 0 0 0 0 65 0 0 0 63 64 0 0
+407	add armand van helden my black sabbath the ozzy years playlist	AddToPlaylist	O B-artist I-artist I-artist B-playlist_owner B-playlist I-playlist I-playlist I-playlist I-playlist O	0	0 3 4 4 47 45 46 46 46 46 0
+365	i d like to eat at popular brasserie in chile a party of 5	BookRestaurant	O O O O O O B-sort B-restaurant_type O B-country O O O B-party_size_number	1	0 0 0 0 0 0 61 55 0 10 0 0 0 44
+465	please book a room in spaghetti warehouse catalina delores and brandie mendoza at 12 am	BookRestaurant	O O O O O B-restaurant_name I-restaurant_name B-party_size_description I-party_size_description I-party_size_description I-party_size_description I-party_size_description O B-timeRange I-timeRange	1	0 0 0 0 0 53 54 42 43 43 43 43 0 67 68
+468	will be chillier at current location in one minute	GetWeather	O O B-condition_temperature O B-current_location I-current_location B-timeRange I-timeRange I-timeRange	2	0 0 9 0 14 15 67 68 68
+359	show me new showings for animated movies in the neighborhood	SearchScreeningEvent	O O O O O B-movie_type I-movie_type B-spatial_relation I-spatial_relation I-spatial_relation	6	0 0 0 0 0 28 29 63 64 64
+462	where can i the trailer for love on the beat	SearchCreativeWork	O O O O B-object_type O B-object_name I-object_name I-object_name I-object_name	5	0 0 0 0 40 0 34 35 35 35
+203	what s weather like in schenectady ma	GetWeather	O O O O O B-city B-state	2	0 0 0 0 0 6 65
+221	can you tell me the weather for samoa	GetWeather	O O O O O O O B-country	2	0 0 0 0 0 0 0 10
+157	i see the movie across the line: the exodus of charlie wright	SearchCreativeWork	O O O B-object_type B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 0 40 34 35 35 35 35 35 35 35
+67	can i conduct unbecoming	SearchCreativeWork	O O B-object_name I-object_name	5	0 0 34 35
+499	book a spot at restaurant within walking distance of palau	BookRestaurant	O O O O B-restaurant_type B-spatial_relation I-spatial_relation I-spatial_relation O B-state	1	0 0 0 0 55 63 64 64 0 65
+419	at table forest av restaurant close-by for 2 1 second from now	BookRestaurant	O O B-poi I-poi B-restaurant_type B-spatial_relation O B-party_size_number B-timeRange I-timeRange I-timeRange I-timeRange	1	0 0 49 50 55 63 0 44 67 68 68 68
+144	the last hawk gets a total of 3 out 6 stars from me	RateBook	B-object_name I-object_name I-object_name O O O O B-rating_value O B-best_rating B-rating_unit O O	4	34 35 35 0 0 0 0 52 0 5 51 0 0
+458	book a spot at savoy hotel and grill is neighboring wisconsin	BookRestaurant	O O O O B-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name O B-spatial_relation B-state	1	0 0 0 0 53 54 54 54 0 63 65
+122	can you add track to my spain top 50 playlist	AddToPlaylist	O O O B-music_item O B-playlist_owner B-playlist I-playlist I-playlist O	0	0 0 0 30 0 47 45 46 46 0
+541	the movie schedules at united paramount theatres	SearchScreeningEvent	O B-object_type I-object_type O B-location_name I-location_name I-location_name	6	0 40 41 0 24 25 25
+184	netflix to play bizzy bone kiss me goodnight sergeant major	PlayMusic	B-service O O B-artist I-artist B-track I-track I-track I-track I-track	3	59 0 0 3 4 69 70 70 70 70
+140	she me movie times mann theatres	SearchScreeningEvent	O O B-object_type I-object_type B-location_name I-location_name	6	0 0 40 41 24 25
+139	please make me somewhere for eight people in foley nv	BookRestaurant	O O O O O B-party_size_number O O B-city B-state	1	0 0 0 0 0 44 0 0 6 65
+390	is snowstorm in russia	GetWeather	O B-condition_description O B-country	2	0 8 0 10
+549	i give book dictionary of the english language 4 rating	RateBook	O O B-object_type B-object_name I-object_name I-object_name I-object_name I-object_name B-rating_value O	4	0 0 40 34 35 35 35 35 52 0
+108	what forecast in heber	GetWeather	O O O B-city	2	0 0 0 6
+151	add i dreamt of a dragon to my futuros hits	AddToPlaylist	O B-entity_name I-entity_name I-entity_name I-entity_name I-entity_name O B-playlist_owner B-playlist I-playlist	0	0 16 17 17 17 17 0 47 45 46
+520	i want to add a song jazz brasileiro	AddToPlaylist	O O O O O B-music_item B-playlist I-playlist	0	0 0 0 0 0 30 45 46
+210	find schedule for the solitude of prime numbers the nearest cinema in 1 hour	SearchScreeningEvent	O B-object_type O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name O B-spatial_relation B-object_location_type B-timeRange I-timeRange I-timeRange	6	0 40 0 26 27 27 27 27 0 63 32 67 68 68
+322	what time is holiday heart at the movie house	SearchScreeningEvent	O O O B-movie_name I-movie_name O O B-object_location_type I-object_location_type	6	0 0 0 26 27 0 0 32 33
+321	i d to see the trailer tony parker	SearchCreativeWork	O O O O O B-object_type B-object_name I-object_name	5	0 0 0 0 0 40 34 35
+81	add hanging on to my just dance by aftercluv	AddToPlaylist	O B-entity_name I-entity_name O B-playlist_owner B-playlist I-playlist I-playlist I-playlist	0	0 16 17 0 47 45 46 46 46
+100	i would rate that old ace in the hole one stars and a best rating 6	RateBook	O O O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name B-rating_value B-rating_unit O O O O B-best_rating	4	0 0 0 34 35 35 35 35 35 52 51 0 0 0 0 5
+266	is rain now in maine	GetWeather	O B-condition_description B-timeRange O B-state	2	0 8 67 0 65
+231	i need a reservation for february 27 2020 at a bar that paté	BookRestaurant	O O O O O B-timeRange I-timeRange I-timeRange O O B-restaurant_type O B-served_dish	1	0 0 0 0 0 67 68 68 0 0 55 0 57
+61	add tune my mellow bars playlist	AddToPlaylist	O B-music_item B-playlist_owner B-playlist I-playlist O	0	0 30 47 45 46 0
+224	i need table for 1 minute from now at pub for five around in that also serves fisn n chips	BookRestaurant	O O O O B-timeRange I-timeRange I-timeRange I-timeRange O B-restaurant_type O B-party_size_number B-spatial_relation B-state O O O B-served_dish I-served_dish I-served_dish	1	0 0 0 0 67 68 68 68 0 55 0 44 63 65 0 0 0 57 58 58
+324	add tune to cristina s endorphin rush	AddToPlaylist	O B-music_item O B-playlist_owner I-playlist_owner B-playlist I-playlist	0	0 30 0 47 48 45 46
+378	there be cloud coverage verdery myanmar	GetWeather	O O B-condition_description O B-city B-country	2	0 0 8 0 6 10
+355	is the for niger	GetWeather	O O O B-country	2	0 0 0 10
+406	find the movie schedules animated movies nearby 09:44 am	SearchScreeningEvent	O O B-object_type I-object_type B-movie_type I-movie_type B-spatial_relation B-timeRange I-timeRange	6	0 0 40 41 28 29 63 67 68
+212	movie times for animated movies playing three hours from now in the neighbourhood	SearchScreeningEvent	B-object_type I-object_type O B-movie_type I-movie_type O B-timeRange I-timeRange I-timeRange I-timeRange B-spatial_relation I-spatial_relation I-spatial_relation	6	40 41 0 28 29 0 67 68 68 68 63 64 64
+489	is going to chillier near hocking state forest	GetWeather	O O O B-condition_temperature B-spatial_relation B-geographic_poi I-geographic_poi I-geographic_poi	2	0 0 0 9 63 22 23 23
+300	would give this current novel 2 stars with a best rating of 6	RateBook	O O O B-object_select B-object_type B-rating_value B-rating_unit O O O O O B-best_rating	4	0 0 0 38 40 52 51 0 0 0 0 0 5
+188	what tv series in app store	SearchCreativeWork	O B-object_type I-object_type O B-object_name I-object_name	5	0 40 41 0 34 35
+69	add the da brat track the soak up the sun	AddToPlaylist	O O B-artist I-artist B-music_item O B-playlist I-playlist I-playlist I-playlist	0	0 0 3 4 30 0 45 46 46 46
+219	add track horace andy to acoustic soul	AddToPlaylist	O B-music_item B-artist I-artist O B-playlist I-playlist	0	0 30 3 4 0 45 46
+393	me movie schedules for warren theatres	SearchScreeningEvent	O B-object_type I-object_type O B-location_name I-location_name	6	0 40 41 0 24 25
+542	want to read saga michael clayton	SearchCreativeWork	O O O B-object_type B-object_name I-object_name	5	0 0 0 40 34 35
+134	a soundtrack called pax warrior	SearchCreativeWork	O B-object_type O B-object_name I-object_name	5	0 40 0 34 35
+32	new symphony by perfecto de castro on lastfm	PlayMusic	B-sort B-music_item O B-artist I-artist I-artist O B-service	3	61 30 0 3 4 4 0 59
+58	give 1 6 points to this novel	RateBook	O B-rating_value B-best_rating B-rating_unit O B-object_select B-object_type	4	0 52 5 51 0 38 40
+206	how is the right now at my current place	GetWeather	O O O O B-timeRange O O B-current_location I-current_location	2	0 0 0 0 67 0 0 14 15
+63	play me top-ten song phil ochs on groove shark	PlayMusic	O O B-sort B-music_item B-artist I-artist O B-service I-service	3	0 0 61 30 3 4 0 59 60
+55	the last sound track by soko around 1975	PlayMusic	O B-sort B-music_item I-music_item O B-artist O B-year	3	0 61 30 31 0 3 0 71
+507	i d like eat at an internet restaurant with party of four	BookRestaurant	O O O O O O B-facility B-restaurant_type O O O B-party_size_number	1	0 0 0 0 0 0 18 55 0 0 0 44
+111	when is fine totally fine	SearchScreeningEvent	O O B-movie_name I-movie_name I-movie_name	6	0 0 26 27 27
+51	please add a track to my playlist this is coti	AddToPlaylist	O O O B-music_item O B-playlist_owner O B-playlist I-playlist I-playlist	0	0 0 0 30 0 47 0 45 46 46
+237	give the current album five	RateBook	O O B-object_select B-object_type B-rating_value	4	0 0 38 40 52
+19	this tune by rod argent propuesta alternativa playlist	AddToPlaylist	O B-music_item O B-artist I-artist B-playlist I-playlist O	0	0 30 0 3 4 45 46 0
+45	rate book an appeal from the new to the old whigs a 0	RateBook	O B-object_type B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name O B-rating_value	4	0 40 34 35 35 35 35 35 35 35 35 0 52
+435	can i the movies showtimes for the closest movie house	SearchScreeningEvent	O O O B-movie_type O O O B-spatial_relation B-object_location_type I-object_location_type	6	0 0 0 28 0 0 0 63 32 33
+272	am looking for the tv show called the flight of the lost balloon	SearchCreativeWork	O O O O B-object_type I-object_type O O B-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 0 0 40 41 0 0 34 35 35 35 35
+124	you find me magic hour song	SearchCreativeWork	O O O B-object_name I-object_name B-object_type	5	0 0 0 34 35 40
+537	can you any chant from the fourties	PlayMusic	O O O B-music_item O O B-year	3	0 0 0 30 0 0 71
+49	what will the weather be in berville ak feb 6 2017	GetWeather	O O O O O O B-city B-state B-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 0 6 65 67 68 68
+445	show of song a discord electric	SearchCreativeWork	O O B-object_type B-object_name I-object_name I-object_name	5	0 0 40 34 35 35
+25	add this artist pop 2017 picks	AddToPlaylist	O O B-music_item B-playlist I-playlist I-playlist	0	0 0 30 45 46 46
+79	find work i looked up	SearchCreativeWork	O O B-object_name I-object_name I-object_name	5	0 0 34 35 35
+448	add tune to my pumping iron	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist	0	0 30 0 47 45 46
+38	songs by sarah harding	PlayMusic	O O B-artist I-artist	3	0 0 3 4
+459	find me the back when i knew it all album	SearchCreativeWork	O O O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name B-object_type	5	0 0 0 34 35 35 35 35 35 40
+11	make a reservation a bakery that has acquacotta in central african republic for five	BookRestaurant	O O O O B-restaurant_type O O B-served_dish O B-country I-country I-country O B-party_size_number	1	0 0 0 0 55 0 0 57 0 10 11 11 0 44
+536	the album vibrations by marion elise raven	PlayMusic	O B-music_item B-album O B-artist I-artist I-artist	3	0 30 1 0 3 4 4
+44	a bakery for lebanese january 11th 2032	BookRestaurant	O B-restaurant_type O B-cuisine B-timeRange I-timeRange I-timeRange	1	0 55 0 12 67 68 68
+39	rate chronicle ten from tomorrow a 2	RateBook	O B-object_part_of_series_type B-object_name I-object_name I-object_name O B-rating_value	4	0 36 34 35 35 0 52
+59	show the movie schedule animated movies close by	SearchScreeningEvent	O O B-object_type I-object_type B-movie_type I-movie_type B-spatial_relation I-spatial_relation	6	0 0 40 41 28 29 63 64
+533	s the nearest movie house no trains no planes	SearchScreeningEvent	O O B-spatial_relation B-object_location_type I-object_location_type B-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 63 32 33 26 27 27 27
+17	rate the current novel four 6 stars	RateBook	O O B-object_select B-object_type B-rating_value B-best_rating B-rating_unit	4	0 0 38 40 52 5 51
+145	it stormy in ma	GetWeather	O B-condition_description O B-state	2	0 8 0 65
+303	add tune to sxsw fresh	AddToPlaylist	O B-music_item O B-playlist I-playlist	0	0 30 0 45 46
+198	to my all out 00s and brian wilson	AddToPlaylist	O B-playlist_owner B-playlist I-playlist I-playlist O B-artist I-artist	0	0 47 45 46 46 0 3 4
+496	add a gackt camui track white noise playlist	AddToPlaylist	O O B-artist I-artist B-music_item B-playlist I-playlist O	0	0 0 3 4 30 45 46 0
+252	i want to a mortal flower two	RateBook	O O O B-object_name I-object_name I-object_name B-rating_value	4	0 0 0 34 35 35 52
+285	strauss is playing today at the cineplex odeon corporation	SearchScreeningEvent	B-movie_name I-movie_name I-movie_name I-movie_name O O B-location_name I-location_name I-location_name	6	26 27 27 27 0 0 24 25 25
+387	a 2001 sound track on deezer	PlayMusic	O B-year B-music_item I-music_item O B-service	3	0 71 30 31 0 59
+343	book a popular restaurant thai	BookRestaurant	O O B-sort B-restaurant_type B-cuisine	1	0 0 61 55 12
+253	i view the picture reaching horizons	SearchCreativeWork	O O O B-object_type B-object_name I-object_name	5	0 0 0 40 34 35
+137	book a restaurant three feb 18	BookRestaurant	O O B-restaurant_type B-party_size_number B-timeRange I-timeRange	1	0 0 55 44 67 68
+213	add track to sin ti playlist	AddToPlaylist	O B-music_item O B-playlist I-playlist O	0	0 30 0 45 46 0
+161	top 5 song from wally bastian on google music	PlayMusic	B-sort I-sort B-music_item O B-artist I-artist O B-service I-service	3	61 62 30 0 3 4 0 59 60
+289	show schedule of films in the neighbourhood	SearchScreeningEvent	O B-object_type O B-movie_type B-spatial_relation I-spatial_relation I-spatial_relation	6	0 40 0 28 63 64 64
+391	will it be nice on aug the nineteenth beda bulgaria	GetWeather	O O O O O B-timeRange I-timeRange I-timeRange B-city B-country	2	0 0 0 0 0 67 68 68 6 10
+83	a day no pigs would die deserves a best rating 6 and a value of 4	RateBook	B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name O O O O B-best_rating O O O O B-rating_value	4	34 35 35 35 35 35 0 0 0 0 5 0 0 0 0 52
+348	i want to book restaurant for four around zapata	BookRestaurant	O O O O B-restaurant_type O B-party_size_number B-spatial_relation B-city	1	0 0 0 0 55 0 44 63 6
+502	find an album just call me stupid	SearchCreativeWork	O O B-object_type B-object_name I-object_name I-object_name I-object_name	5	0 0 40 34 35 35 35
+472	add tune my metal crash course playlist	AddToPlaylist	O B-music_item B-playlist_owner B-playlist I-playlist I-playlist O	0	0 30 47 45 46 46 0
+242	add song in my dance workout	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist	0	0 30 0 47 45 46
+523	show while sunset in the same area south carolina	GetWeather	O O B-timeRange B-spatial_relation I-spatial_relation I-spatial_relation I-spatial_relation B-state I-state	2	0 0 67 63 64 64 64 65 66
+133	add album ny bill callahan my mi casa es la tuya playlist oficial list	AddToPlaylist	O B-music_item O B-artist I-artist B-playlist_owner B-playlist I-playlist I-playlist I-playlist I-playlist I-playlist I-playlist O	0	0 30 0 3 4 47 45 46 46 46 46 46 46 0
+276	add tune atmospheric black metal playlist	AddToPlaylist	O B-music_item B-playlist I-playlist I-playlist O	0	0 30 45 46 46 0
+174	play top-50 tune from 1982	PlayMusic	O B-sort B-music_item O B-year	3	0 61 30 0 71
+47	rate secret water a 4	RateBook	O B-object_name I-object_name O B-rating_value	4	0 34 35 0 52
+265	find me a for 8 people at a nearby al restaurant one minute from now	BookRestaurant	O O O O B-party_size_number O O O B-spatial_relation B-state B-restaurant_type B-timeRange I-timeRange I-timeRange I-timeRange	1	0 0 0 0 44 0 0 0 63 65 55 67 68 68 68
+3	play signe anderson chant is newest	PlayMusic	O B-artist I-artist B-music_item O B-sort	3	0 3 4 30 0 61
+392	i like for you to this artist to my evening commute playlist	AddToPlaylist	O O O O O O B-music_item O B-playlist_owner B-playlist I-playlist O	0	0 0 0 0 0 0 30 0 47 45 46 0
+119	i need a weather for são tomé and príncipe on december 8th 2026	GetWeather	O O O O O B-country I-country I-country I-country O B-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 10 11 11 11 0 67 68 68
+116	jennie jennie to my metal playlist	AddToPlaylist	B-entity_name I-entity_name O B-playlist_owner B-playlist O	0	16 17 0 47 45 0
+244	tell me what films playing at plitt theatres	SearchScreeningEvent	O O O B-movie_type O O B-location_name I-location_name	6	0 0 0 28 0 0 24 25
+316	what is michael moore is a big fat stupid white man video game	SearchCreativeWork	O O B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name I-object_name B-object_type I-object_type	5	0 0 34 35 35 35 35 35 35 35 35 40 41
+451	this tune to my dinnertime acoustics	AddToPlaylist	O B-music_item O B-playlist_owner B-playlist I-playlist	0	0 30 0 47 45 46
+440	where find thor meets captain america	SearchCreativeWork	O O B-object_name I-object_name I-object_name I-object_name	5	0 0 34 35 35 35
+326	rate doom 3: worlds on fire a 1 6	RateBook	O B-object_name I-object_name I-object_name I-object_name I-object_name O B-rating_value B-best_rating	4	0 34 35 35 35 35 0 52 5
+216	can you add blood on the face the playlist called heartland country	AddToPlaylist	O O O B-entity_name I-entity_name I-entity_name I-entity_name O O O B-playlist I-playlist	0	0 0 0 16 17 17 17 0 0 0 45 46
+66	add strong to metal monday	AddToPlaylist	O B-entity_name O B-playlist I-playlist	0	0 16 0 45 46
+225	book a at the food truck in ma	BookRestaurant	O O O O B-restaurant_type I-restaurant_type O B-state	1	0 0 0 0 55 56 0 65
+345	i want to listen the song only the greatest	SearchCreativeWork	O O O O O B-object_type B-object_name I-object_name I-object_name	5	0 0 0 0 0 40 34 35 35
+548	show me movie schedule animated movie around here eleven a m	SearchScreeningEvent	O O B-object_type I-object_type B-movie_type I-movie_type B-spatial_relation I-spatial_relation B-timeRange I-timeRange I-timeRange	6	0 0 40 41 28 29 63 64 67 68 68
+362	i want book a cafe for 3 in fargo	BookRestaurant	O O O O B-restaurant_type O B-party_size_number O B-city	1	0 0 0 0 55 0 44 0 6
+24	add the rock games	AddToPlaylist	O O B-playlist B-entity_name	0	0 0 45 16
+336	rupee to my ultra metal playlist	AddToPlaylist	B-artist O B-playlist_owner B-playlist I-playlist O	0	3 0 47 45 46 0
+107	rate the beggar of volubilis 1 out 6	RateBook	O B-object_name I-object_name I-object_name I-object_name B-rating_value O B-best_rating	4	0 34 35 35 35 52 0 5
+308	i need a in ottoville on feb 15th 2029 at gus stevens seafood restaurant & buccaneer lounge	BookRestaurant	O O O O B-city O B-timeRange I-timeRange I-timeRange O B-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name I-restaurant_name	1	0 0 0 0 6 0 67 68 68 0 53 54 54 54 54 54 54
+209	the last wellman braud album	PlayMusic	O O B-artist I-artist B-music_item	3	0 0 3 4 30
+425	play some latin zvooq	PlayMusic	O O B-genre B-service	3	0 0 20 59
+452	are the movie schedules	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+358	is romulus and the sabines at the nearest cinema ten	SearchScreeningEvent	O B-movie_name I-movie_name I-movie_name I-movie_name O O B-spatial_relation B-object_location_type B-timeRange	6	0 26 27 27 27 0 0 63 32 67
+512	are the movies movie times nearby	SearchScreeningEvent	O O B-movie_type B-object_type I-object_type B-spatial_relation	6	0 0 28 40 41 63
+281	is the closest cinema a drink in the passage	SearchScreeningEvent	O O B-spatial_relation B-object_location_type B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 63 32 26 27 27 27 27
+487	be temperate in the same area in vi	GetWeather	O B-condition_temperature B-spatial_relation I-spatial_relation I-spatial_relation I-spatial_relation O B-state	2	0 9 63 64 64 64 0 65
+159	what are movie schedules	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+375	add jency anthony my playlist this is mozart	AddToPlaylist	O B-artist I-artist B-playlist_owner O B-playlist I-playlist I-playlist	0	0 3 4 47 0 45 46 46
+310	i get the game still on it	SearchCreativeWork	O O O B-object_type B-object_name I-object_name I-object_name	5	0 0 0 40 34 35 35
+428	me the tv show limit of love: umizaru	SearchCreativeWork	O O B-object_type I-object_type B-object_name I-object_name I-object_name I-object_name	5	0 0 40 41 34 35 35 35
+398	the night time in new mexico	GetWeather	O B-timeRange O O B-state I-state	2	0 67 0 0 65 66
+328	andreas johnson to my rock save the queen playlist	AddToPlaylist	B-artist I-artist O B-playlist_owner B-playlist I-playlist I-playlist I-playlist O	0	3 4 0 47 45 46 46 46 0
+99	how can the show corpus: a home movie about selena	SearchCreativeWork	O O O B-object_type B-object_name I-object_name I-object_name I-object_name I-object_name I-object_name	5	0 0 0 40 34 35 35 35 35 35
+337	shi xin hui to my piano chill playlist	AddToPlaylist	B-artist I-artist I-artist O B-playlist_owner B-playlist I-playlist O	0	3 4 4 0 47 45 46 0
+60	please play newest music evil jared hasselhoff	PlayMusic	O O B-sort O B-artist I-artist I-artist	3	0 0 61 0 3 4 4
+128	when is crime and punishment u s a	SearchScreeningEvent	O O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 26 27 27 27 27 27
+514	please reservations for nine 3 am	BookRestaurant	O O O B-party_size_number B-timeRange I-timeRange	1	0 0 0 44 67 68
+68	will it freezing in current position	GetWeather	O O B-condition_temperature O B-current_location I-current_location	2	0 0 9 0 14 15
+416	is the weather forecast for close-by burkina	GetWeather	O O O O O B-spatial_relation B-country	2	0 0 0 0 0 63 10
+179	put artist paulinho da costa my very nearly nashville playlist	AddToPlaylist	O B-music_item B-artist I-artist I-artist B-playlist_owner B-playlist I-playlist I-playlist O	0	0 30 3 4 4 47 45 46 46 0
+546	will there be alot of wind march 13th in lost creek bahrain	GetWeather	O O O O O B-condition_description B-timeRange I-timeRange O B-city I-city B-country	2	0 0 0 0 0 8 67 68 0 6 7 10
+385	rate the manxman 5 out 6	RateBook	O B-object_name I-object_name B-rating_value O B-best_rating	4	0 34 35 52 0 5
+431	can i see television show falling away from me	SearchCreativeWork	O O O B-object_type I-object_type B-object_name I-object_name I-object_name I-object_name	5	0 0 0 40 41 34 35 35 35
+320	tell what animated movies i can see at the closest movie theatre	SearchScreeningEvent	O O B-movie_type I-movie_type O O O O O B-spatial_relation B-object_location_type I-object_location_type	6	0 0 28 29 0 0 0 0 0 63 32 33
+29	nothing fancy to meditate to sounds of nature playlist	AddToPlaylist	B-entity_name I-entity_name O B-playlist I-playlist I-playlist I-playlist I-playlist O	0	16 17 0 45 46 46 46 46 0
+202	will i be able to camping-car at movie house at 6 pm	SearchScreeningEvent	O O O O O B-movie_name O B-object_location_type I-object_location_type O B-timeRange I-timeRange	6	0 0 0 0 0 26 0 32 33 0 67 68
+195	films are the nearest cinema	SearchScreeningEvent	B-movie_type O O B-spatial_relation B-object_location_type	6	28 0 0 63 32
+437	what is the forecast for cistern	GetWeather	O O O O O B-city	2	0 0 0 0 0 6
+517	get overcast in la dolores	GetWeather	O B-condition_description O B-city I-city	2	0 8 0 6 7
+220	plan album by roni duani	PlayMusic	O B-music_item O B-artist I-artist	3	0 30 0 3 4
+418	troy van leeuwen to my nu metal list	AddToPlaylist	B-artist I-artist I-artist O B-playlist_owner B-playlist I-playlist O	0	3 4 4 0 47 45 46 0
+76	what time is beat the devil coming at mann theatres	SearchScreeningEvent	O O O B-movie_name I-movie_name I-movie_name O O B-location_name I-location_name	6	0 0 0 26 27 27 0 0 24 25
+400	find me a movie with name oshin	SearchCreativeWork	O O O B-object_type O O B-object_name	5	0 0 0 40 0 0 34
+497	i for circus world	SearchCreativeWork	O O B-object_name I-object_name	5	0 0 34 35
+436	do you something like impossible is nothing by abderrahmane abdelli	PlayMusic	O O O O B-track I-track I-track O B-artist I-artist	3	0 0 0 0 69 70 70 0 3 4
+91	tell when it will be chilly in chicken united kingdom	GetWeather	O O O O O B-condition_temperature O B-city B-country I-country	2	0 0 0 0 0 9 0 6 10 11
+456	what will the weather be like january 2nd 2025 in ga	GetWeather	O O O O O O B-timeRange I-timeRange I-timeRange O B-state	2	0 0 0 0 0 0 67 68 68 0 65
+329	i d like take this waltz	SearchScreeningEvent	O O O B-movie_name I-movie_name I-movie_name	6	0 0 0 26 27 27
+500	find the balance and timing book	SearchCreativeWork	O O B-object_name I-object_name I-object_name B-object_type	5	0 0 34 35 35 40
+455	my playlist tgif itunes	PlayMusic	O O B-playlist B-service	3	0 0 45 59
+423	i the movie times	SearchScreeningEvent	O O B-object_type I-object_type	6	0 0 40 41
+180	i am looking for the nikki	SearchCreativeWork	O O O O O B-object_name	5	0 0 0 0 0 34
+280	play some last fm music like 1992 ep from peaches	PlayMusic	O O B-service I-service O O B-year B-music_item O B-artist	3	0 0 59 60 0 0 71 30 0 3
+228	find animated movies close by a movie schedule	SearchScreeningEvent	O B-movie_type I-movie_type B-spatial_relation I-spatial_relation O B-object_type I-object_type	6	0 28 29 63 64 0 40 41
+382	is the forecast for foggy conditions here in twenty one minutes	GetWeather	O O O O B-condition_description O B-current_location B-timeRange I-timeRange I-timeRange I-timeRange	2	0 0 0 0 8 0 14 67 68 68 68
+194	i listen dj vibe s top 10	PlayMusic	O O B-artist I-artist O B-sort I-sort	3	0 0 3 4 0 61 62
+229	a spot for 7 at an outdoor food court in denmark	BookRestaurant	O O O B-party_size_number O O B-facility B-restaurant_type I-restaurant_type O B-country	1	0 0 0 44 0 0 18 55 56 0 10
+526	where i a slice of life	SearchScreeningEvent	O O B-movie_name I-movie_name I-movie_name I-movie_name	6	0 0 26 27 27 27
+286	what animated movies are at closest movie theatre	SearchScreeningEvent	O B-movie_type I-movie_type O O B-spatial_relation B-object_location_type I-object_location_type	6	0 28 29 0 0 63 32 33
+235	top melody from artist maakii	PlayMusic	B-sort B-music_item O O B-artist	3	61 30 0 0 3
+9	movies are playing mann theatres	SearchScreeningEvent	B-movie_type O O B-location_name I-location_name	6	28 0 0 24 25
+338	what time the clutching hand playing amco entertainment	SearchScreeningEvent	O O B-movie_name I-movie_name I-movie_name O B-location_name I-location_name	6	0 0 26 27 27 0 24 25
+413	music on slacker	PlayMusic	O O B-service	3	0 0 59
+43	find cold dead hand video game for	SearchCreativeWork	O B-object_name I-object_name I-object_name B-object_type I-object_type O	5	0 34 35 35 40 41 0
+222	play music youtube	PlayMusic	O O B-service	3	0 0 59
+504	a restaurant in donnelly	BookRestaurant	O B-restaurant_type O B-city	1	0 55 0 6
+530	can you put musiri subramania iyer song onto the lo-fi love soundtrack	AddToPlaylist	O O O B-artist I-artist I-artist B-music_item O O B-playlist I-playlist O	0	0 0 0 3 4 4 30 0 0 45 46 0
+545	book a restaurant for one 7 am	BookRestaurant	O O B-restaurant_type O B-party_size_number B-timeRange I-timeRange	1	0 0 55 0 44 67 68
+490	the current saga i 2 of 6 stars	RateBook	O B-object_select B-object_part_of_series_type O B-rating_value O B-best_rating B-rating_unit	4	0 38 36 0 52 0 5 51
+158	turn spotify to tiny tim ep	PlayMusic	O B-service O B-artist I-artist B-music_item	3	0 59 0 3 4 30
+294	want to give chronicle zombie bums from uranus 3 points	RateBook	O O O B-object_part_of_series_type B-object_name I-object_name I-object_name I-object_name B-rating_value B-rating_unit	4	0 0 0 36 34 35 35 35 52 51
+291	i would give french poets and novelists best rating 6 and a value of three	RateBook	O O O B-object_name I-object_name I-object_name I-object_name O O B-best_rating O O O O B-rating_value	4	0 0 0 34 35 35 35 0 0 5 0 0 0 0 52
+364	play andy silvester sound track from the thirties spotify	PlayMusic	O B-artist I-artist B-music_item I-music_item O O B-year B-service	3	0 3 4 30 31 0 0 71 59
+429	which movies playing the closest cinema	SearchScreeningEvent	O B-movie_type O O B-spatial_relation B-object_location_type	6	0 28 0 0 63 32
+513	i want to hear some songs from twenties	PlayMusic	O O O O O O O B-year	3	0 0 0 0 0 0 0 71
+427	four rating on the raging quiet	RateBook	B-rating_value O O B-object_name I-object_name I-object_name	4	52 0 0 34 35 35
+529	will the weather be in stelvio national park 1 hour and 1 minute from now	GetWeather	O O O O O B-geographic_poi I-geographic_poi I-geographic_poi B-timeRange I-timeRange I-timeRange I-timeRange I-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 22 23 23 67 68 68 68 68 68 68
+153	i like to eat at a restaurant around china with party of 7 anywhere that serves ouzeri	BookRestaurant	O O O O O O B-restaurant_type B-spatial_relation B-country O O O B-party_size_number O O O B-cuisine	1	0 0 0 0 0 0 55 63 10 0 0 0 44 0 0 0 12
+259	how will the weather different 5 years from now in waconia	GetWeather	O O O O O B-timeRange I-timeRange I-timeRange I-timeRange O B-city	2	0 0 0 0 0 67 68 68 68 0 6
+352	you make reservations at a tea house that serves fettucine	BookRestaurant	O O O O O B-restaurant_type I-restaurant_type O O B-served_dish	1	0 0 0 0 0 55 56 0 0 57
+200	book a table for chasity ruiz and mary at the fat duck puerto rico	BookRestaurant	O O O O B-party_size_description I-party_size_description I-party_size_description I-party_size_description O B-restaurant_name I-restaurant_name I-restaurant_name B-country I-country	1	0 0 0 0 42 43 43 43 0 53 54 54 10 11
+125	mary wells sings my guy to the electro sur	AddToPlaylist	B-entity_name I-entity_name I-entity_name I-entity_name I-entity_name O O B-playlist I-playlist	0	16 17 17 17 17 0 0 45 46
+293	will a cloud here at 06:50:20	GetWeather	O O B-condition_description B-current_location O B-timeRange	2	0 0 8 14 0 67
+183	find television show called swing high	SearchCreativeWork	O B-object_type I-object_type O B-object_name I-object_name	5	0 40 41 0 34 35
+15	what movie theatre is if the huns came to melbourne	SearchScreeningEvent	O B-object_location_type I-object_location_type O B-movie_name I-movie_name I-movie_name I-movie_name I-movie_name I-movie_name	6	0 32 33 0 26 27 27 27 27 27
+347	is it going to chilly in western sahara in 13 hours	GetWeather	O O O O B-condition_temperature O B-country I-country O B-timeRange I-timeRange	2	0 0 0 0 9 0 10 11 0 67 68
+510	play artist vlada divljan from something did that is good	PlayMusic	O O B-artist I-artist O O O O O B-sort	3	0 0 3 4 0 0 0 0 0 61
+374	fadl shaker on spotify and play a melody starting with the newest	PlayMusic	B-artist I-artist O B-service O O O B-music_item O O O B-sort	3	3 4 0 59 0 0 0 30 0 0 0 61
+18	add the song don t drink the water my	AddToPlaylist	O O B-music_item B-playlist I-playlist I-playlist I-playlist I-playlist B-playlist_owner	0	0 0 30 45 46 46 46 46 47
+41	brasserie in samoa for four people	BookRestaurant	B-restaurant_type O B-country O B-party_size_number O	1	55 0 10 0 44 0
+250	add cecil womack to my 50 great female voices	AddToPlaylist	O B-artist I-artist O B-playlist_owner B-playlist I-playlist I-playlist I-playlist	0	0 3 4 0 47 45 46 46 46
+397	put nothing remains the same my summer music playlist	AddToPlaylist	O B-entity_name I-entity_name I-entity_name I-entity_name B-playlist_owner B-playlist I-playlist O	0	0 16 17 17 17 47 45 46 0
+360	i want to go to 88th st-boyd av or close book seats for 10	BookRestaurant	O O O O O B-poi I-poi I-poi O B-spatial_relation O O O B-party_size_number	1	0 0 0 0 0 49 50 50 0 63 0 0 0 44
+147	what will the weather be la at 9 o clock	GetWeather	O O O O O B-state O B-timeRange I-timeRange I-timeRange	2	0 0 0 0 0 65 0 67 68 68
+245	in the heart of the world to the epic gaming	AddToPlaylist	B-entity_name I-entity_name I-entity_name I-entity_name I-entity_name I-entity_name O O B-playlist I-playlist	0	16 17 17 17 17 17 0 0 45 46
+384	creative photograph of icewind dale: heart of winter	SearchCreativeWork	O B-object_type O B-object_name I-object_name I-object_name I-object_name I-object_name	5	0 40 0 34 35 35 35 35
+142	add kylie minogue my novedades viernes sudamérica playlist	AddToPlaylist	O B-artist I-artist B-playlist_owner B-playlist I-playlist I-playlist O	0	0 3 4 47 45 46 46 0
