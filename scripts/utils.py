@@ -1,7 +1,20 @@
 import torch
+import pandas as pd
 from seqeval.metrics import f1_score
 from seqeval.metrics import accuracy_score
 from seqeval.scheme import IOB2
+
+def get_idx2slots(dataset):
+
+    if dataset == 'SNIPS':
+        slot_path = './data/SNIPS/slot_list.tsv'
+    elif dataset == 'ATIS':
+        slot_path = './data/ATIS/slot_list.tsv'
+
+    # loading slot file
+    slots_list = pd.read_csv(slot_path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()
+    idx2slots  = {idx:slots for idx,slots in enumerate(slots_list)}
+    return idx2slots
 
 def accuracy(pred,target):
     return torch.sum(pred==target)/len(target)

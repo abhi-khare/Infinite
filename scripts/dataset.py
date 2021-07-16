@@ -2,122 +2,90 @@ import torch
 from torch.utils.data import Dataset
 from transformers import DistilBertTokenizerFast
 import pandas as pd
-import random
 import pytorch_lightning as pl
 from torch.utils.data import Dataset, DataLoader
+from functools import partial
+from transformers import AutoTokenizer
+from collatefunc import collate_sup
 
-
-class nluDataset(Dataset):
-    def __init__(self, file_dir, tokenizer, max_len):
+class dataset(Dataset):
+    def __init__(self, file_dir):
 
         self.data = pd.read_csv(file_dir, sep="\t")
-        self.tokenizer = DistilBertTokenizerFast.from_pretrained(tokenizer)
-        self.max_len = max_len
-
-    def processSlotLabel(self, word_ids, slot_ids, text):
-
-        # replace None and repetition with -100
-
-        word_ids = [-100 if word_id == None else word_id for word_id in word_ids]
-
-        previous_word = -100
-
-        for idx, wid in enumerate(word_ids):
-
-            if wid == -100:
-                continue
-
-            if wid == previous_word:
-                word_ids[idx] = -100
-
-            previous_word = wid
-
-        slot_ids = list(map(int, slot_ids.split(" ")))
-        new_labels = [
-            -100 if word_id == -100 else slot_ids[word_id] for word_id in word_ids
-        ]
-
-        return new_labels
-
-    def __getitem__(self, index):
-
-        text = str(self.data.TEXT[index])
+    
+    def process_text(self,text):
         text = text.replace(".", "")
         text = text.replace("'", "")
         text = " ".join(text.split())
+        return text
 
-        inputs = self.tokenizer.encode_plus(
-            text,
-            None,
-            add_special_tokens=True,
-            return_token_type_ids=False,
-            truncation=True,
-            max_length=self.max_len,
-            padding="max_length",
-            # is_split_into_words=True
-        )
-
-        # print(self.tokenizer.convert_ids_to_tokens(inputs["input_ids"]),inputs.word_ids())
-        # text encoding
-        token_ids = torch.tensor(inputs["input_ids"], dtype=torch.long)
-        mask = torch.tensor(inputs["attention_mask"], dtype=torch.long)
-        word_ids = inputs.word_ids()
-
+    def __getitem__(self, index):
+        
+        # text
+        text = str(self.data.TEXT[index])
+        text = self.process_text(text)
+        
         # intent
-        intent_id = torch.tensor(self.data.INTENT_ID[index], dtype=torch.long)
         intent_label = self.data.INTENT[index]
-
-        # label processing
+        intent_id = self.data.INTENT_ID[index]
+        
+        # slots
         slot_label = self.data.SLOTS[index]
-        slot_id = self.processSlotLabel(word_ids, self.data.SLOTS_ID[index], text)
-
-        slot_id = torch.tensor(slot_id, dtype=torch.long)
-
-        # language = self.data.language[index]
+        slot_id = self.data.SLOTS_ID[index]
 
         return {
-            "token_ids": token_ids,
-            "mask": mask,
-            "intent_id": intent_id,
-            "slots_id": slot_id,
-            "intent_label": intent_label,
-            "slots_label": slot_label,
+
             "text": text,
-            "slotsID": self.data.SLOTS_ID[index],
+
+            "intent_id": intent_id,
+            "intent_label": intent_label,
+
+            "slots_id": slot_id,
+            "slots_label": slot_label,
         }
 
     def __len__(self):
         return len(self.data)
 
 
-class nluDataset_pl(pl.LightningDataModule):
-    def __init__(
-        self, train_dir, val_dir, test_dir, tokenizer, max_len, batch_size, num_worker,mode
-    ):
+class dataloader(pl.LightningDataModule):
+    
+    def __init__( self, args):
 
         super().__init__()
-        self.train_dir = train_dir
-        self.val_dir = val_dir
-        self.test_dir = test_dir
-        self.batch_size = batch_size
-        self.tokenizer = tokenizer
-        self.max_len = max_len
-        self.num_worker = num_worker
+        self.train_dir = args.train_dir
+        self.val_dir = args.val_dir
+        self.batch_size = args.batch_size
+        self.num_worker = args.num_workers
+        self.tokenizer = AutoTokenizer(args.tokenizer)
+        self.mode = args.mode
 
     def setup(self, stage: [str] = None):
 
-        self.train = nluDataset(self.train_dir, self.tokenizer, self.max_len)
+        self.train = dataset(self.train_dir)
 
-        self.val = nluDataset(self.val_dir, self.tokenizer, self.max_len)
+        self.val = dataset(self.val_dir)
+
+        if self.mode == 'BASELINE':
+            self.train_collate = partial(collate_sup,self.tokenizer)
+            self.val_collate = partial(collate_sup,self.tokenizer)
+        
+        elif self.mode == 'AT':
+            self.train_collate = 1
+            self.val_collate = partial(collate_sup,self.tokenizer)
+        
+        elif self.mode == 'CT':
+            self.train_collate = 1
+            self.val_collate = partial(collate_sup,self.tokenizer)
 
     def train_dataloader(self):
         return DataLoader(
-            self.train, batch_size=self.batch_size, num_workers=self.num_worker
+            self.train, batch_size=self.batch_size, shuffle=True, collate_fn=self.train_collate, num_workers=self.num_worker
         )
 
     def val_dataloader(self):
         return DataLoader(
-            self.val, batch_size=self.batch_size, num_workers=self.num_worker
+            self.val, batch_size=self.batch_size, collate_fn=self.val_collate, num_workers=self.num_worker
         )
 
 

@@ -17,9 +17,14 @@ parser = argparse.ArgumentParser()
 # model params
 parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
 parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
+parser.add_argument("--intent_hidden", type=int, nargs="+")
+parser.add_argument("--slots_hidden", type=int, nargs="+")
+parser.add_argument("--intent_dropout", type=float, nargs="+")
+parser.add_argument("--slots_dropout", type=float, nargs="+")
 
 # training params
-parser.add_argument('--epoch', type=int, default=20)
+parser.add_argument('--lr', type=float, default=0.00002)
+parser.add_argument('--epoch', type=int, default=40)
 parser.add_argument('--bs', type=int, default=32)
 parser.add_argument('--l2', type=float, default=0.003)
 
@@ -32,7 +37,9 @@ parser.add_argument('--dataset',type=str)
 
 #misc params
 parser.add_argument('--gpus', type=int, default=-1)
+parser.add_argument('--param_save_dir', type=str)
 parser.add_argument('--logging_dir', type=str)
+parser.add_argument('--precision', type=int, default=16)
 
 args = parser.parse_args()
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% command line arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,8 +52,10 @@ checkpoint_callback = ModelCheckpoint(
     filename='jointBert-{epoch:02d}-{val_loss:.2f}',
     save_top_k=1, mode='min',
 )
+
 # tensorboard logging
 tb_logger = pl_loggers.TensorBoardLogger(args.log_dir)
+
 
 class jointBertTrainer(pl.LightningModule):
     
