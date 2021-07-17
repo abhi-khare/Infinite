@@ -7,6 +7,7 @@ from transformers import AutoModel
 from transformers.models.auto.tokenization_auto import AutoTokenizer
 import optuna
 
+import time
 import argparse
 import pandas as pd
 from scripts.utils import accuracy, slot_F1
@@ -34,6 +35,7 @@ parser.add_argument('--gpus', type=int, default=-1)
 parser.add_argument('--logging_dir', type=str)
 parser.add_argument('--precision', type=int, default=16)
 parser.add_argument('--num_workers', type=int, default=8)
+parser.add_argument('--desc',type=str)
 args = parser.parse_args()
 
 def get_idx2slots(dataset):
@@ -61,7 +63,7 @@ class jointBert_model(nn.Module):
         self.encoder = AutoModel.from_pretrained(
             args.encoder,
             return_dict=True,
-            cache_dir = '/efs-storage/model/'
+            cache_dir = '/efs-storage/model/',
             output_hidden_states=True,
             sinusoidal_pos_embds=True
         )
@@ -118,18 +120,19 @@ class jointBert_model(nn.Module):
         }
 
 
-trial_cnt = 0
 
 def objective(trial: optuna.trial.Trial) -> float:
 
-    writer = SummaryWriter(log_dir=args.logging_dir + f'/{str(trial_cnt)}/')
+    timestamp = time.time()
+
+    writer = SummaryWriter(log_dir=args.logging_dir + f'{args.desc}/{str(timestamp)}/')
 
     # We optimize the number of layers, hidden units in each layer and dropouts.
     ihidden_size = trial.suggest_int("intent_hidden_size", 64, 512)
     shidden_size = trial.suggest_int("slots_hidden_size", 64, 512)
     idropout = trial.suggest_float("idropout", 0.2, 0.5)
     sdropout = trial.suggest_float("sdropout", 0.2, 0.5)
-    lr = trial.suggest_float("lr", 0.00006, 0.00001)
+    lr = trial.suggest_float("lr", 0.00001, 0.00006)
 
     
     model = jointBert_model(args, ihidden_size,shidden_size, idropout, sdropout).to(DEVICE)
@@ -140,8 +143,7 @@ def objective(trial: optuna.trial.Trial) -> float:
     trainDL, valDL = dm.train_dataloader() , dm.val_dataloader()
     
     optimizer = torch.optim.AdamW( model.parameters() , lr = lr , weight_decay = 0.003)
-
-    best_acc,best_F1 = 0.0,0.0
+    val_acc , val_slotsF1 = 0.0, 0.0
     # training
     model.train()
     for epoch in range(args.epoch):
@@ -155,37 +157,32 @@ def objective(trial: optuna.trial.Trial) -> float:
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
-        
-        if epoch%3==0:
 
-            #validation
-            model.eval()
-            acc,slotsF1,cnt = 0.0,0.0,0
-            with torch.no_grad():
-                
-                for batch in valDL:
-
-                    token_ids, attention_mask = batch["token_ids"].to(DEVICE), batch["mask"].to(DEVICE)
-                    intent_target, slots_target = batch["intent_id"].to(DEVICE), batch["slots_id"].to(DEVICE)
-
-                    out = model(token_ids, attention_mask, intent_target, slots_target)
-                    intent_pred, slot_pred = out["intent_pred"], out["slot_pred"]
-                    
-                    acc += accuracy(intent_pred, intent_target)
-                    slotsF1 += slot_F1(slot_pred, slots_target, idx2slots)
-                    cnt += 1
+        #validation
+        model.eval()
+        acc,slotsF1,cnt = 0.0,0.0,0.0
+        with torch.no_grad():
             
-            acc = acc/float(cnt)
-            slotsF1 = slotsF1/float(cnt)
+            for batch in valDL:
 
-            if acc>best_acc:
-                best_acc = acc
-                best_F1 = slotsF1
+                token_ids, attention_mask = batch["token_ids"].to(DEVICE), batch["mask"].to(DEVICE)
+                intent_target, slots_target = batch["intent_id"].to(DEVICE), batch["slots_id"].to(DEVICE)
 
-            writer.add_scalar('acc/val', acc, epoch/3)
-            writer.add_scalar('slotsF1/val', slotsF1, epoch/3)
+                out = model(token_ids, attention_mask, intent_target, slots_target)
+                intent_pred, slot_pred = out["intent_pred"], out["slot_pred"]
+                
+                acc += accuracy(intent_pred, intent_target)
+                slotsF1 += slot_F1(slot_pred, slots_target, idx2slots)
+                cnt += 1.0
+        print(acc)
+        acc = acc/float(cnt)
+        slotsF1 = slotsF1/float(cnt)
 
-    return best_acc, best_F1
+        writer.add_scalar('acc/val', acc, epoch/3)
+        writer.add_scalar('slotsF1/val', slotsF1, epoch/3)
+        val_acc, val_slotsF1 = acc, slotsF1
+
+    return val_acc, val_slotsF1
 
 sampler = optuna.samplers.MOTPESampler(n_startup_trials=21)
 study = optuna.create_study(directions=["maximize","maximize"])

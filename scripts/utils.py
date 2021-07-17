@@ -80,7 +80,7 @@ def contrastiveSampleGeneration(sample, noiseType):
 
 
 def accuracy(pred,target):
-    return torch.sum(pred==target)/len(target)
+    return torch.sum(pred==target)/float(len(target))
 
 
 def slot_F1(pred,target,id2slots):
