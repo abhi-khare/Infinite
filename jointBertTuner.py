@@ -45,7 +45,7 @@ idx2slots = get_idx2slots(args.dataset)
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 class jointBert_model(nn.Module):
-    def __init__(self, args, intent_head_size, idropout, sdropout):
+    def __init__(self, args, intent_hidden, slots_hidden, intent_dropout, slots_dropout):
 
         super(jointBert_model, self).__init__()
 
@@ -56,15 +56,22 @@ class jointBert_model(nn.Module):
             sinusoidal_pos_embds=True
         )
 
-        self.intent_dropout = nn.Dropout(idropout)
-        self.intent_hidden = nn.Linear(768, intent_head_size),
-        self.intent_head = nn.Linear(intent_head_size, args.intent_count),
-                                               
-        self.slots_dropout = nn.Dropout(sdropout)
-        self.slots_head = nn.Linear(768, args.slots_count)
+        self.intent_head = nn.Sequential(nn.GELU(),
+                                         nn.Dropout(intent_dropout),
+                                         nn.Linear(768,intent_hidden),
+                                         nn.GELU(),
+                                         nn.Linear(intent_hidden,args.intent_count) 
+                                        )
+
+        self.slots_head = nn.Sequential(nn.GELU(),
+                                         nn.Dropout(slots_dropout),
+                                         nn.Linear(768,slots_hidden),
+                                         nn.GELU(),
+                                         nn.Linear(slots_hidden,args.slots_count) 
+                                        )
 
         self.CE_loss = nn.CrossEntropyLoss()
-        self.joint_loss_coef = 0.5
+        self.jointCoef = 0.5
 
 
     def forward(self, input_ids, attention_mask, intent_target, slots_target):
@@ -73,22 +80,23 @@ class jointBert_model(nn.Module):
 
         # intent data flow
         intent_hidden = encoded_output[0][:, 0]
-        intent_hidden = self.intent_hidden(self.intent_dropout(F.gelu(intent_hidden)))
-        intent_logits = self.intent_head(self.intent_dropout(F.gelu(intent_hidden)))
+        intent_logits = self.intent_head(intent_hidden)
 
         # slots data flow
         slots_hidden = encoded_output[0]
-        slots_logits = self.slots_head(self.slots_dropout(F.relu(slots_hidden)))
+        slots_logits = self.slots_head(slots_hidden)
 
         # accumulating intent classification loss
         intent_loss = self.CE_loss(intent_logits, intent_target)
         intent_pred = torch.argmax(nn.Softmax(dim=1)(intent_logits), axis=1)
 
         # accumulating slot prediction loss
-        slots_loss = self.CE_loss(slots_logits.view(-1, self.args.slots_count), slots_target.view(-1))
+        slots_loss = self.CE_loss(
+            slots_logits.view(-1, self.args.slots_count), slots_target.view(-1)
+        )
         slots_pred = torch.argmax(nn.Softmax(dim=2)(slots_logits), axis=2)
 
-        joint_loss = self.joint_loss_coef * intent_loss + (1.0 - self.joint_loss_coef) * slots_loss
+        joint_loss = self.jointCoef * intent_loss + (1.0 - self.jointCoef) * slots_loss
 
         return {
             "joint_loss": joint_loss,
