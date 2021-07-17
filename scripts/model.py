@@ -11,7 +11,8 @@ class jointBert(nn.Module):
         super(jointBert, self).__init__()
 
         self.encoder = DistilBertModel.from_pretrained(
-            args.encoder, return_dict=True, output_hidden_states=True
+            args.encoder, return_dict=True, output_hidden_states=True,
+            sinusoidal_pos_embds=True
         )
         
         self.intent_head = nn.Sequential(nn.GELU(),

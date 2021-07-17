@@ -19,7 +19,7 @@ parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
 parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
 
 # training params
-parser.add_argument('--epoch', type=int, default=40)
+parser.add_argument('--epoch', type=int, default=20)
 parser.add_argument('--batch_size', type=int, default=32)
 parser.add_argument('--mode', type=str, default='BASELINE')
 # data params
@@ -128,8 +128,7 @@ def objective(trial: optuna.trial.Trial) -> float:
     shidden_size = trial.suggest_int("slots_hidden_size", 64, 512)
     idropout = trial.suggest_float("idropout", 0.2, 0.5)
     sdropout = trial.suggest_float("sdropout", 0.2, 0.5)
-    lr = trial.suggest_float("lr", 0.00006, 0.0006)
-    l2 = trial.suggest_float("l2", 0.0003, 0.03)
+    lr = trial.suggest_float("lr", 0.00006, 0.00001)
 
     
     model = jointBert_model(args, ihidden_size,shidden_size, idropout, sdropout).to(DEVICE)
@@ -139,7 +138,7 @@ def objective(trial: optuna.trial.Trial) -> float:
     
     trainDL, valDL = dm.train_dataloader() , dm.val_dataloader()
     
-    optimizer = torch.optim.AdamW( model.parameters() , lr = lr , weight_decay = l2)
+    optimizer = torch.optim.AdamW( model.parameters() , lr = lr , weight_decay = 0.003)
 
     best_acc,best_F1 = 0.0,0.0
     # training

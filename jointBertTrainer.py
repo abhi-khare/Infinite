@@ -8,7 +8,7 @@ from   pytorch_lightning.callbacks import ModelCheckpoint
 
 from scripts.dataset import dataloader
 from scripts.model import jointBert
-from scripts.utils import accuracy,slot_F1,get_idx2slots
+from scripts.utils import accuracy,slot_F1
 
 seed_everything(42, workers=True)
 
@@ -17,16 +17,19 @@ parser = argparse.ArgumentParser()
 # model params
 parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
 parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
-parser.add_argument("--intent_hidden", type=int, nargs="+")
-parser.add_argument("--slots_hidden", type=int, nargs="+")
-parser.add_argument("--intent_dropout", type=float, nargs="+")
-parser.add_argument("--slots_dropout", type=float, nargs="+")
+parser.add_argument("--intent_hidden", type=int)
+parser.add_argument("--slots_hidden", type=int)
+parser.add_argument("--intent_dropout", type=float)
+parser.add_argument("--slots_dropout", type=float)
+parser.add_argument('--jointCoef', type=float, default=0.50)
 
 # training params
 parser.add_argument('--lr', type=float, default=0.00002)
 parser.add_argument('--epoch', type=int, default=40)
-parser.add_argument('--bs', type=int, default=32)
+parser.add_argument('--batch_size', type=int, default=32)
 parser.add_argument('--l2', type=float, default=0.003)
+parser.add_argument('--mode', type=str, default='BASELINE')
+parser.add_argument('--checkNEpoch', type=int, default=1)
 
 # data params
 parser.add_argument('--train_dir', type=str)
@@ -40,21 +43,33 @@ parser.add_argument('--gpus', type=int, default=-1)
 parser.add_argument('--param_save_dir', type=str)
 parser.add_argument('--logging_dir', type=str)
 parser.add_argument('--precision', type=int, default=16)
-
+parser.add_argument('--num_workers', type=int, default=8)
 args = parser.parse_args()
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% command line arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+def get_idx2slots(dataset):
+
+    if dataset == 'SNIPS':
+        slot_path = './data/SNIPS/slots_list.tsv'
+    elif dataset == 'ATIS':
+        slot_path = './data/ATIS/slots_list.tsv'
+
+    # loading slot file
+    slots_list = pd.read_csv(slot_path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()
+    idx2slots  = {idx:slots for idx,slots in enumerate(slots_list)}
+    return idx2slots
 
 idx2slots = get_idx2slots(args.dataset)
 
 # ckpt callback config for pytorch lightning
 checkpoint_callback = ModelCheckpoint(
-    monitor='val_joint_loss', dirpath= args.ckpt_dir,
+    monitor='val_joint_loss', dirpath= args.param_save_dir,
     filename='jointBert-{epoch:02d}-{val_loss:.2f}',
     save_top_k=1, mode='min',
 )
 
 # tensorboard logging
-tb_logger = pl_loggers.TensorBoardLogger(args.log_dir)
+tb_logger = pl_loggers.TensorBoardLogger(args.logging_dir)
 
 
 class jointBertTrainer(pl.LightningModule):
