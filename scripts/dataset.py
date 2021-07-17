@@ -57,7 +57,7 @@ class dataloader(pl.LightningDataModule):
         self.val_dir = args.val_dir
         self.batch_size = args.batch_size
         self.num_worker = args.num_workers
-        self.tokenizer = AutoTokenizer.from_pretrained(args.tokenizer)
+        self.tokenizer = AutoTokenizer.from_pretrained(args.tokenizer,cache_dir = '/efs-storage/tokenizer/')
         self.mode = args.mode
 
     def setup(self, stage: [str] = None):

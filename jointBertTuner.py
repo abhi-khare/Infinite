@@ -61,6 +61,7 @@ class jointBert_model(nn.Module):
         self.encoder = AutoModel.from_pretrained(
             args.encoder,
             return_dict=True,
+            cache_dir = '/efs-storage/model/'
             output_hidden_states=True,
             sinusoidal_pos_embds=True
         )
