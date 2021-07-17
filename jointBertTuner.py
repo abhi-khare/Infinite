@@ -9,9 +9,9 @@ import optuna
 
 import argparse
 import pandas as pd
-from scripts.utils import accuracy, slot_F1, get_idx2slots
+from scripts.utils import accuracy, slot_F1
 from scripts.dataset import dataloader
-
+from scripts.collatefunc import collate_sup
 
 parser = argparse.ArgumentParser()
 # model params
@@ -19,11 +19,9 @@ parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
 parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
 
 # training params
-parser.add_argument('--lr', type=float, default=0.00002)
 parser.add_argument('--epoch', type=int, default=40)
-parser.add_argument('--bs', type=int, default=32)
-parser.add_argument('--l2', type=float, default=0.003)
-
+parser.add_argument('--batch_size', type=int, default=32)
+parser.add_argument('--mode', type=str, default='BASELINE')
 # data params
 parser.add_argument('--train_dir', type=str)
 parser.add_argument('--val_dir', type=str)
@@ -33,11 +31,22 @@ parser.add_argument('--dataset',type=str)
 
 #misc params
 parser.add_argument('--gpus', type=int, default=-1)
-parser.add_argument('--param_save_dir', type=str)
 parser.add_argument('--logging_dir', type=str)
 parser.add_argument('--precision', type=int, default=16)
-
+parser.add_argument('--num_workers', type=int, default=8)
 args = parser.parse_args()
+
+def get_idx2slots(dataset):
+
+    if dataset == 'SNIPS':
+        slot_path = './data/SNIPS/slots_list.tsv'
+    elif dataset == 'ATIS':
+        slot_path = './data/ATIS/slots_list.tsv'
+
+    # loading slot file
+    slots_list = pd.read_csv(slot_path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()
+    idx2slots  = {idx:slots for idx,slots in enumerate(slots_list)}
+    return idx2slots
 
 # loading slot index file
 idx2slots = get_idx2slots(args.dataset)
@@ -72,6 +81,7 @@ class jointBert_model(nn.Module):
 
         self.CE_loss = nn.CrossEntropyLoss()
         self.jointCoef = 0.5
+        self.args = args
 
 
     def forward(self, input_ids, attention_mask, intent_target, slots_target):
@@ -115,13 +125,14 @@ def objective(trial: optuna.trial.Trial) -> float:
 
     # We optimize the number of layers, hidden units in each layer and dropouts.
     ihidden_size = trial.suggest_int("intent_hidden_size", 64, 512)
+    shidden_size = trial.suggest_int("slots_hidden_size", 64, 512)
     idropout = trial.suggest_float("idropout", 0.2, 0.5)
     sdropout = trial.suggest_float("sdropout", 0.2, 0.5)
-    lr = trial.suggest_float("LR", 0.00006, 0.0006)
-    l2 = trial.suggest_float("LR", 0.0003, 0.03)
+    lr = trial.suggest_float("lr", 0.00006, 0.0006)
+    l2 = trial.suggest_float("l2", 0.0003, 0.03)
 
     
-    model = jointBert_model(args, ihidden_size, idropout, sdropout).to(DEVICE)
+    model = jointBert_model(args, ihidden_size,shidden_size, idropout, sdropout).to(DEVICE)
 
     dm = dataloader(args)
     dm.setup()
@@ -175,7 +186,6 @@ def objective(trial: optuna.trial.Trial) -> float:
             writer.add_scalar('slotsF1/val', slotsF1, epoch/3)
 
     return best_acc, best_F1
-
 
 sampler = optuna.samplers.MOTPESampler(n_startup_trials=21)
 study = optuna.create_study(directions=["maximize","maximize"])
