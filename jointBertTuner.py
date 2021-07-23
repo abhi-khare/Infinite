@@ -20,7 +20,7 @@ parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
 parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
 
 # training params
-parser.add_argument('--epoch', type=int, default=20)
+parser.add_argument('--epoch', type=int, default=15)
 parser.add_argument('--batch_size', type=int, default=32)
 parser.add_argument('--mode', type=str, default='BASELINE')
 # data params
@@ -36,14 +36,15 @@ parser.add_argument('--logging_dir', type=str)
 parser.add_argument('--precision', type=int, default=16)
 parser.add_argument('--num_workers', type=int, default=8)
 parser.add_argument('--desc',type=str)
+
 args = parser.parse_args()
 
 def get_idx2slots(dataset):
 
     if dataset == 'SNIPS':
-        slot_path = './data/SNIPS/slots_list.tsv'
+        slot_path = './data/SNIPS/slot_list.tsv'
     elif dataset == 'ATIS':
-        slot_path = './data/ATIS/slots_list.tsv'
+        slot_path = './data/ATIS/slot_list.tsv'
 
     # loading slot file
     slots_list = pd.read_csv(slot_path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()
@@ -125,7 +126,7 @@ def objective(trial: optuna.trial.Trial) -> float:
 
     timestamp = time.time()
 
-    writer = SummaryWriter(log_dir=args.logging_dir + f'{args.desc}/{str(timestamp)}/')
+    writer = SummaryWriter(log_dir=args.logging_dir + f'/{str(timestamp)}/')
 
     # We optimize the number of layers, hidden units in each layer and dropouts.
     ihidden_size = trial.suggest_int("intent_hidden_size", 64, 512)
@@ -174,12 +175,11 @@ def objective(trial: optuna.trial.Trial) -> float:
                 acc += accuracy(intent_pred, intent_target)
                 slotsF1 += slot_F1(slot_pred, slots_target, idx2slots)
                 cnt += 1.0
-        print(acc)
         acc = acc/float(cnt)
         slotsF1 = slotsF1/float(cnt)
 
-        writer.add_scalar('acc/val', acc, epoch/3)
-        writer.add_scalar('slotsF1/val', slotsF1, epoch/3)
+        writer.add_scalar('acc/val', acc, epoch)
+        writer.add_scalar('slotsF1/val', slotsF1, epoch)
         val_acc, val_slotsF1 = acc, slotsF1
 
     return val_acc, val_slotsF1
