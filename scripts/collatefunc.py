@@ -1,5 +1,7 @@
 import torch
+import random
 from .utils import *
+from .noise_models import *
 
 def processSlotLabel(word_ids, slot_ids):
 
@@ -65,24 +67,41 @@ def collate_sup(batch,tokenizer):
         intent_id.append(datapoint['intent_id'])
         slot_id.append(datapoint['slots_id'])
     
-    # tokenization
-    token_ids , mask , slot_processed = [],[],[]
-    for i in range(len(text)):
-        
-        inputs = tokenizer.encode_plus(text[i],None,add_special_tokens=True,return_token_type_ids=False,
-        truncation=True,max_length=56,padding="max_length")
-        word_ids = inputs.word_ids()
-        slot_processed.append(processSlotLabel(word_ids, slot_id[i].split()))
-        
-        token_ids.append(inputs["input_ids"])
-        mask.append(inputs["attention_mask"])
+    # tokenization    
+    token_ids, mask, slot_processed = batch_tokenizer(text, slot_id,tokenizer)
 
     token_ids, mask, intent_id, slot_processed = list2Tensor([token_ids, mask, intent_id, slot_processed])
     
     return {'token_ids':token_ids , 'mask':mask , 'intent_id':intent_id,'slots_id':slot_processed}
 
 def collate_AT(batch,tokenizer,noise_type):
-    return 1
+
+    text,intent_id,slot_id = [],[],[]
+    
+    for datapoint in batch:
+        text.append(datapoint['text'])
+        intent_id.append(datapoint['intent_id'])
+        slot_id.append(datapoint['slots_id'])
+    
+    # adversarial examples
+    if noise_type == 'MC':
+        noise_param = random.sample([0.20,0.40,0.60],1)[0]
+        adv_text,adv_intent,adv_slot = MC_noise(text,intent_id,slot_id,noise_param)
+    elif noise_type == 'BG':
+        noise_param = random.sample([0.25,0.50,0.75],1)[0]
+        adv_text,adv_intent,adv_slot = BG_noise(text,intent_id,slot_id,noise_param)
+    
+    text = text + adv_text
+    intent_id = intent_id + adv_intent
+    slot_id = slot_id + adv_slot
+
+    # tokenization
+    token_ids, mask, slot_processed = batch_tokenizer(text, slot_id,tokenizer)
+    # slot_processing
+    token_ids, mask, intent_id, slot_processed = list2Tensor([token_ids, mask, intent_id, slot_processed])
+
+    return {'token_ids':token_ids , 'mask':mask , 'intent_id':intent_id,'slots_id':slot_processed}
+
 
 def collate_CT(batch, tokenizer):
 
