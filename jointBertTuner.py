@@ -33,9 +33,7 @@ parser.add_argument('--dataset',type=str)
 #misc params
 parser.add_argument('--gpus', type=int, default=-1)
 parser.add_argument('--logging_dir', type=str)
-parser.add_argument('--precision', type=int, default=16)
 parser.add_argument('--num_workers', type=int, default=8)
-parser.add_argument('--desc',type=str)
 
 args = parser.parse_args()
 
