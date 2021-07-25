@@ -24,7 +24,7 @@ parser.add_argument("--slots_dropout", type=float)
 parser.add_argument('--jointCoef', type=float, default=0.50)
 
 # training params
-parser.add_argument('--lr', type=float, default=0.00002)
+parser.add_argument('--lr', type=float)
 parser.add_argument('--epoch', type=int, default=40)
 parser.add_argument('--batch_size', type=int, default=32)
 parser.add_argument('--l2', type=float, default=0.003)
@@ -64,7 +64,7 @@ idx2slots = get_idx2slots(args.dataset)
 # ckpt callback config for pytorch lightning
 checkpoint_callback = ModelCheckpoint(
     monitor='val_joint_loss', dirpath= args.param_save_dir,
-    filename='jointBert-{epoch:02d}-{val_loss:.2f}',
+    filename='JB-{epoch:02d}-{val_loss:.2f}',
     save_top_k=1, mode='min',
 )
 
@@ -112,8 +112,19 @@ class jointBertTrainer(pl.LightningModule):
         
         return out['joint_loss']
 
+    def test_step(self,batch,batch_idx):
+        
+        token_ids, attention_mask = batch['token_ids'], batch['mask']
+        intent_target,slots_target = batch['intent_id'], batch['slots_id']
+        
+        out = self(token_ids,attention_mask,intent_target,slots_target)
+        intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
+
+        return {'acc' : accuracy(intent_pred,intent_target),
+                'slotsF1' : slot_F1(slot_pred,slots_target,idx2slots)}
+
     def configure_optimizers(self):
-         return torch.optim.AdamW(self.parameters(), lr = args.lr , weight_decay = args.l2)
+         return torch.optim.AdamW(self.parameters(), lr = self.args.lr , weight_decay = self.args.l2)
 
 
 # initialize the dataloader and model
