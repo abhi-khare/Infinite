@@ -6,7 +6,7 @@ import pytorch_lightning as pl
 from torch.utils.data import Dataset, DataLoader
 from functools import partial
 from transformers import AutoTokenizer
-from .collatefunc import collate_sup
+from .collatefunc import collate_sup, collate_AT
 
 class dataset(Dataset):
     def __init__(self, file_dir):
@@ -14,8 +14,8 @@ class dataset(Dataset):
         self.data = pd.read_csv(file_dir, sep="\t")
     
     def process_text(self,text):
-        text = text.replace(".", "")
-        text = text.replace("'", "")
+        #text = text.replace(".", "")
+        #text = text.replace("'", "")
         text = " ".join(text.split())
         return text
 
@@ -59,6 +59,7 @@ class dataloader(pl.LightningDataModule):
         self.num_worker = args.num_workers
         self.tokenizer = AutoTokenizer.from_pretrained(args.tokenizer,cache_dir = '/efs-storage/tokenizer/')
         self.mode = args.mode
+        self.args = args
 
     def setup(self, stage: [str] = None):
 
@@ -71,7 +72,7 @@ class dataloader(pl.LightningDataModule):
             self.val_collate = partial(collate_sup, tokenizer = self.tokenizer)
         
         elif self.mode == 'AT':
-            self.train_collate = 1
+            self.train_collate = partial(collate_AT,tokenizer = self.tokenizer, noise_type = self.args.noise_type)
             self.val_collate = partial(collate_sup,self.tokenizer)
         
         elif self.mode == 'CT':
