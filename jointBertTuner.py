@@ -40,9 +40,9 @@ args = parser.parse_args()
 def get_idx2slots(dataset):
 
     if dataset == 'SNIPS':
-        slot_path = './data/SNIPS/slot_list.tsv'
+        slot_path = '/efs-storage/Infinite/data/SNIPS/slots_list.tsv'
     elif dataset == 'ATIS':
-        slot_path = './data/ATIS/slot_list.tsv'
+        slot_path = '/efs-storage/Infinite/data/ATIS/slots_list.tsv'
 
     # loading slot file
     slots_list = pd.read_csv(slot_path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()
@@ -67,18 +67,14 @@ class jointBert_model(nn.Module):
             sinusoidal_pos_embds=True
         )
 
-        self.intent_head = nn.Sequential(nn.GELU(),
+        self.intent_head = nn.Sequential(
                                          nn.Dropout(intent_dropout),
-                                         nn.Linear(768,intent_hidden),
-                                         nn.GELU(),
-                                         nn.Linear(intent_hidden,args.intent_count) 
+                                         nn.Linear(768,args.intent_count)
                                         )
 
-        self.slots_head = nn.Sequential(nn.GELU(),
+        self.slots_head = nn.Sequential(
                                          nn.Dropout(slots_dropout),
-                                         nn.Linear(768,slots_hidden),
-                                         nn.GELU(),
-                                         nn.Linear(slots_hidden,args.slots_count) 
+                                         nn.Linear(768,args.slots_count)
                                         )
 
         self.CE_loss = nn.CrossEntropyLoss()
