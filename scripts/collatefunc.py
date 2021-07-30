@@ -41,7 +41,7 @@ def batch_tokenizer(text, slots,tokenizer):
             is_split_into_words=True
         )
         word_ids = inputs.word_ids()
-        slots_processed.append(processSlotLabel(word_ids, slots[idx],split()))
+        slots_processed.append(processSlotLabel(word_ids, slots[idx].split()))
 
         token_ids.append(inputs["input_ids"])
         mask.append(inputs["attention_mask"])
