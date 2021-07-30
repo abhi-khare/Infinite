@@ -17,8 +17,6 @@ parser = argparse.ArgumentParser()
 # model params
 parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
 parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
-parser.add_argument("--intent_hidden", type=int)
-parser.add_argument("--slots_hidden", type=int)
 parser.add_argument("--intent_dropout", type=float)
 parser.add_argument("--slots_dropout", type=float)
 parser.add_argument('--jointCoef', type=float, default=0.50)
