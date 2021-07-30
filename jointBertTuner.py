@@ -123,14 +123,12 @@ def objective(trial: optuna.trial.Trial) -> float:
     writer = SummaryWriter(log_dir=args.logging_dir + f'/{str(timestamp)}/')
 
     # We optimize the number of layers, hidden units in each layer and dropouts.
-    ihidden_size = trial.suggest_int("intent_hidden_size", 64, 512)
-    shidden_size = trial.suggest_int("slots_hidden_size", 64, 512)
     idropout = trial.suggest_float("idropout", 0.2, 0.5)
     sdropout = trial.suggest_float("sdropout", 0.2, 0.5)
     lr = trial.suggest_float("lr", 0.00001, 0.00006)
 
     
-    model = jointBert_model(args, ihidden_size,shidden_size, idropout, sdropout).to(DEVICE)
+    model = jointBert_model(args,idropout, sdropout).to(DEVICE)
 
     dm = dataloader(args)
     dm.setup()
