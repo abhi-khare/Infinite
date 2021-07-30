@@ -55,7 +55,7 @@ idx2slots = get_idx2slots(args.dataset)
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 class jointBert_model(nn.Module):
-    def __init__(self, args, intent_hidden, slots_hidden, intent_dropout, slots_dropout):
+    def __init__(self, args, intent_dropout, slots_dropout):
 
         super(jointBert_model, self).__init__()
 
