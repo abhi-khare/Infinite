@@ -50,9 +50,9 @@ args = parser.parse_args()
 def get_idx2slots(dataset):
 
     if dataset == 'SNIPS':
-        slot_path = './data/SNIPS/slots_list.tsv'
+        slot_path = '/efs-storage/Infinite/data/SNIPS/slots_list.tsv'
     elif dataset == 'ATIS':
-        slot_path = './data/ATIS/slots_list.tsv'
+        slot_path = '/efs-storage/Infinite/data/ATIS/slots_list.tsv'
 
     # loading slot file
     slots_list = pd.read_csv(slot_path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()

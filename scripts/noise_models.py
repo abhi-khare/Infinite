@@ -1,7 +1,7 @@
 import random 
 import re 
 
-with open( '../data/BG_Noise_Phrase.txt') as f:
+with open( '/efs-storage/Infinite/data/BG_Noise_Phrase.txt') as f:
     content = f.readlines()
 noise_phrase = [x.strip() for x in content]
 

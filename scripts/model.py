@@ -12,7 +12,7 @@ class jointBert(nn.Module):
 
         self.encoder = DistilBertModel.from_pretrained(
             args.encoder, return_dict=True, output_hidden_states=True,
-            sinusoidal_pos_embds=True
+            sinusoidal_pos_embds=True, cache_dir='/efs-storage/model/'
         )
         
         self.intent_head = nn.Sequential(nn.GELU(),

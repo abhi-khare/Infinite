@@ -13,17 +13,17 @@ class dataset(Dataset):
 
         self.data = pd.read_csv(file_dir, sep="\t")
     
-    def process_text(self,text):
-        #text = text.replace(".", "")
-        #text = text.replace("'", "")
-        text = " ".join(text.split())
-        return text
+    #def process_text(self,text):
+    #    #text = text.replace(".", "")
+    #    #text = text.replace("'", "")
+    #    text = " ".join(text.split())
+    #    return text
 
     def __getitem__(self, index):
         
         # text
         text = str(self.data.TEXT[index])
-        text = self.process_text(text)
+        #text = self.process_text(text)
         
         # intent
         intent_label = self.data.INTENT[index]
