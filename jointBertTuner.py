@@ -40,9 +40,9 @@ args = parser.parse_args()
 def get_idx2slots(dataset):
 
     if dataset == 'SNIPS':
-        slot_path = './data/SNIPS/slot_list.tsv'
+        slot_path = '/efs-storage/Infinite/data/SNIPS/slots_list.tsv'
     elif dataset == 'ATIS':
-        slot_path = './data/ATIS/slot_list.tsv'
+        slot_path = '/efs-storage/Infinite/data/ATIS/slots_list.tsv'
 
     # loading slot file
     slots_list = pd.read_csv(slot_path,sep=',',header=None,names=['SLOTS']).SLOTS.values.tolist()
@@ -55,7 +55,7 @@ idx2slots = get_idx2slots(args.dataset)
 DEVICE = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 
 class jointBert_model(nn.Module):
-    def __init__(self, args, intent_hidden, slots_hidden, intent_dropout, slots_dropout):
+    def __init__(self, args, intent_dropout, slots_dropout):
 
         super(jointBert_model, self).__init__()
 
@@ -67,18 +67,14 @@ class jointBert_model(nn.Module):
             sinusoidal_pos_embds=True
         )
 
-        self.intent_head = nn.Sequential(nn.GELU(),
+        self.intent_head = nn.Sequential(
                                          nn.Dropout(intent_dropout),
-                                         nn.Linear(768,intent_hidden),
-                                         nn.GELU(),
-                                         nn.Linear(intent_hidden,args.intent_count) 
+                                         nn.Linear(768,args.intent_count)
                                         )
 
-        self.slots_head = nn.Sequential(nn.GELU(),
+        self.slots_head = nn.Sequential(
                                          nn.Dropout(slots_dropout),
-                                         nn.Linear(768,slots_hidden),
-                                         nn.GELU(),
-                                         nn.Linear(slots_hidden,args.slots_count) 
+                                         nn.Linear(768,args.slots_count)
                                         )
 
         self.CE_loss = nn.CrossEntropyLoss()
@@ -127,14 +123,12 @@ def objective(trial: optuna.trial.Trial) -> float:
     writer = SummaryWriter(log_dir=args.logging_dir + f'/{str(timestamp)}/')
 
     # We optimize the number of layers, hidden units in each layer and dropouts.
-    ihidden_size = trial.suggest_int("intent_hidden_size", 64, 512)
-    shidden_size = trial.suggest_int("slots_hidden_size", 64, 512)
     idropout = trial.suggest_float("idropout", 0.2, 0.5)
     sdropout = trial.suggest_float("sdropout", 0.2, 0.5)
     lr = trial.suggest_float("lr", 0.00001, 0.00006)
 
     
-    model = jointBert_model(args, ihidden_size,shidden_size, idropout, sdropout).to(DEVICE)
+    model = jointBert_model(args,idropout, sdropout).to(DEVICE)
 
     dm = dataloader(args)
     dm.setup()

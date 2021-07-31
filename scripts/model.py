@@ -15,18 +15,14 @@ class jointBert(nn.Module):
             sinusoidal_pos_embds=True, cache_dir='/efs-storage/model/'
         )
         
-        self.intent_head = nn.Sequential(nn.GELU(),
+        self.intent_head = nn.Sequential(
                                          nn.Dropout(args.intent_dropout),
-                                         nn.Linear(768,args.intent_hidden),
-                                         nn.GELU(),
-                                         nn.Linear(args.intent_hidden,args.intent_count) 
+                                         nn.Linear(768,args.intent_count)
                                         )
 
-        self.slots_head = nn.Sequential(nn.GELU(),
+        self.slots_head = nn.Sequential(
                                          nn.Dropout(args.slots_dropout),
-                                         nn.Linear(768,args.slots_hidden),
-                                         nn.GELU(),
-                                         nn.Linear(args.slots_hidden,args.slots_count) 
+                                         nn.Linear(768,args.slots_count)
                                         )
 
         self.CE_loss = nn.CrossEntropyLoss()
