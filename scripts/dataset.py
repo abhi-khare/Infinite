@@ -1,6 +1,5 @@
 import torch
 from torch.utils.data import Dataset
-from transformers import DistilBertTokenizerFast
 import pandas as pd
 import pytorch_lightning as pl
 from torch.utils.data import Dataset, DataLoader
@@ -12,18 +11,11 @@ class dataset(Dataset):
     def __init__(self, file_dir):
 
         self.data = pd.read_csv(file_dir, sep="\t")
-    
-    #def process_text(self,text):
-    #    #text = text.replace(".", "")
-    #    #text = text.replace("'", "")
-    #    text = " ".join(text.split())
-    #    return text
 
     def __getitem__(self, index):
         
         # text
         text = str(self.data.TEXT[index])
-        #text = self.process_text(text)
         
         # intent
         intent_label = self.data.INTENT[index]
