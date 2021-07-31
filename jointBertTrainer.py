@@ -27,6 +27,7 @@ parser.add_argument('--epoch', type=int, default=40)
 parser.add_argument('--batch_size', type=int, default=32)
 parser.add_argument('--l2', type=float, default=0.003)
 parser.add_argument('--mode', type=str, default='BASELINE')
+parser.add_argument('--noise_type', type=str, default='MC')
 parser.add_argument('--checkNEpoch', type=int, default=1)
 
 # data params
