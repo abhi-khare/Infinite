@@ -83,6 +83,15 @@ def collate_AT(batch,tokenizer,noise_type):
         intent_id.append(datapoint['intent_id'])
         slot_id.append(datapoint['slots_id'])
     
+    # sampling adversarial examples
+    batch_size = len(text)
+    idx = random.sample(list(range(batch_size)), int(0.30*batch_size))
+
+    text = [sample for id,sample in enumerate(text) if id in idx]
+    intent_id = [sample for id,sample in enumerate(intent_id) if id in idx]
+    slot_id = [sample for id,sample in enumerate(slot_id) if id in idx]
+    
+    
     # adversarial examples
     if noise_type == 'MC':
         noise_param = random.sample([0.20,0.40,0.60],1)[0]
