@@ -37,10 +37,11 @@ def BG_noise(text,intent,slot, prob):
     for i in range(len(text)):
         
         bg_TEXT = random.sample(noise_phrase,1)[0]
-        bg_SLOTS = re.sub(' +', ' ', '0 '*len(bg_TEXT.split(' ')))
+        label_str = '0 '*len(bg_TEXT.split())
+        bg_SLOTS = ' '.join(label_str.split())
         
-        noisyData = merge_text_label(bg_TEXT.split(' '),bg_SLOTS.split(' '))
-        cleanData = merge_text_label(text[i].split(' '),slot[i].split(' '))
+        noisyData = merge_text_label(bg_TEXT.split(),bg_SLOTS.split())
+        cleanData = merge_text_label(text[i].split(),slot[i].split())
         
         augText , augSlots = twolists(noisyData,cleanData,prob)
         
@@ -56,7 +57,7 @@ def MC_noise(text,intent,slot,tau):
     
     for i in range(len(text)):
         
-        phrase_idx = list(range(len(slot[i].split(' '))))
+        phrase_idx = list(range(len(slot[i].split())))
         phrase_length = len(phrase_idx)
         
         if phrase_length <= 2:
@@ -67,8 +68,8 @@ def MC_noise(text,intent,slot,tau):
             del_count = int(phrase_length/2) if phrase_length <= 5 else int(tau*phrase_length)
             del_index = random.sample(phrase_idx,del_count)
 
-            TEXT = ' '.join([i for j, i in enumerate(text[i].split(' ')) if j not in del_index])
-            SLOTS = ' '.join([i for j, i in enumerate(slot[i].split(' ')) if j not in del_index])
+            TEXT = ' '.join([i for j, i in enumerate(text[i].split()) if j not in del_index])
+            SLOTS = ' '.join([i for j, i in enumerate(slot[i].split()) if j not in del_index])
          
             augINTENT.append(intent[i])
             augTEXT.append(TEXT)
