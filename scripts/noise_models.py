@@ -37,10 +37,9 @@ def BG_noise(text,intent,slot, prob):
     for i in range(len(text)):
         
         bg_TEXT = random.sample(noise_phrase,1)[0]
-        label_str = '0 '*len(bg_TEXT.split())
-        bg_SLOTS = ' '.join(label_str.split())
+        bg_SLOTS = ['0' for tokens in bg_TEXT.split()]
         
-        noisyData = merge_text_label(bg_TEXT.split(),bg_SLOTS.split())
+        noisyData = merge_text_label(bg_TEXT.split(),bg_SLOTS)
         cleanData = merge_text_label(text[i].split(),slot[i].split())
         
         augText , augSlots = twolists(noisyData,cleanData,prob)
@@ -76,3 +75,4 @@ def MC_noise(text,intent,slot,tau):
             augSLOTS.append(SLOTS)
                
     return augTEXT, augINTENT, augSLOTS
+

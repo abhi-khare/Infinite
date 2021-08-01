@@ -1,11 +1,12 @@
 import torch
+import random
 import pandas as pd
+from copy import deepcopy
 from seqeval.metrics import f1_score
-from seqeval.metrics import accuracy_score
 from seqeval.scheme import IOB2
 
 
-with open("./data/BG_Noise_Phrase.txt") as f:
+with open("/efs-storage/Infinite/data/BG_Noise_Phrase.txt") as f:
     content = f.readlines()
 phrase = [x.strip() for x in content]
 
@@ -36,48 +37,64 @@ def mergelistsBG(ns, s, prob):
 
     return s,final
 
-def mergelistsMC(s, prob):
+def mergelistsMC(text_packed, prob):
 
-    anno = deepcopy(s)
+    text = deepcopy(text_packed)
 
     bernaulliSample = [0] * int((1000) * prob) + [1] * int(1000 * (1 - prob))
     random.shuffle(bernaulliSample)
 
-    orig,aug  = [anno[0]],[anno[0]]
-    for idx,tokens in enumerate(anno[1:]):
+    orig,aug  = [text_packed[0]],[text_packed[0]]
+    for idx,tokens in enumerate(text_packed[1:]):
         
         if random.sample(bernaulliSample, 1)[0] == 0:
-            orig.append([tokens[0],1000000])
-            continue
+            orig.append([tokens[0],2000])
         else:
+            orig.append(tokens)
             aug.append(tokens)
 
     return orig,aug
 
-
-def contrastiveSampleGeneration(sample, noiseType):
+def contrastiveSampleGenerator(sample, noise_type):
 
     samplePacked = [[token, idx] for idx, token in enumerate(sample.split())]
 
     noisyTEXT = random.sample(phrase, 3)
-    noisyTEXT = (noisyTEXT[0] + noisyTEXT[1] + noisyTEXT[2]).split(" ")
+    noisyTEXT = (noisyTEXT[0] + noisyTEXT[1] + noisyTEXT[2]).split()
     noisyTOKENS = random.sample(noisyTEXT, random.sample([5, 6, 7,8,9,10], 1)[0])
-    noisyPacked = [[token, 2000000] for idx, token in enumerate(noisyTOKENS)]
+    noisyPacked = [[token, 2000] for idx, token in enumerate(noisyTOKENS)]
 
-    noiseLevel = random.sample([0.25,0.50,0.75],1)[0]
-    
-    if noiseType == 'MC':
-        orig, aug = mergelistsMC(samplePacked, prob=noiseLevel)
+    if noise_type == 'MC':
+        noise_param = random.sample([0.20,0.40,0.60],1)[0]
+        orig, aug = mergelistsMC(samplePacked, prob=noise_param)
         augText, augSlots = zip(*aug)
         origText, origSlots = zip(*orig)
-        return " ".join(list(origText))," ".join(list(augText)), origSlots,augSlots
-    else:
-        orig, aug  = mergelistsBG(noisyPacked,samplePacked,  prob=noiseLevel)
+        return ' '.join(list(origText)), ' '.join(list(augText)), ' '.join(list(origSlots)), ' '.join(list(augSlots))
+
+    elif noise_type == 'BG':
+        noise_param = random.sample([0.20,0.40,0.60],1)[0]
+        orig, aug  = mergelistsBG(noisyPacked,samplePacked,  prob=noise_param)
         augText, augSlots = zip(*aug)
         origText, origSlots = zip(*orig)
-        return " ".join(list(origText))," ".join(list(augText)), origSlots,augSlots
+        return ' '.join(list(origText)), ' '.join(list(augText)), ' '.join(list(origSlots)), ' '.join(list(augSlots))
 
+def contrastivePairs(text, noise_type):
 
+    textP1, textP2, slotsID1, slotsID2, sentID1, sentID2 = [], [], [], [], [], []
+
+    for idx, sample in enumerate(text):
+
+        origText,augText, origSlots, augSlots = contrastiveSampleGenerator(sample,noise_type)
+          
+        textP1.append(origText)
+        slotsID1.append(origSlots)
+        sentID1.append(idx)
+
+        textP2.append(augText)
+        slotsID2.append(augSlots)
+        sentID2.append(idx)
+
+    return textP1, textP2, slotsID1, slotsID2, sentID1, sentID2
 
 def accuracy(pred,target):
     return torch.sum(pred==target)/float(len(target))

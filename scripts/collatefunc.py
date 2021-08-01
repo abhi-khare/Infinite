@@ -112,7 +112,7 @@ def collate_AT(batch,tokenizer,noise_type):
     return {'token_ids':token_ids , 'mask':mask , 'intent_id':intent_id,'slots_id':slot_processed}
 
 
-def collate_CT(batch, tokenizer):
+def collate_CT(batch, tokenizer, noise_type):
 
     text,intent_id,slot_id = [],[],[]
     
@@ -139,33 +139,33 @@ def collate_CT(batch, tokenizer):
 
     # generating contrastive pairs
     textP1, textP2, tokenID1, tokenID2, sentID1, sentID2 = contrastivePairs(
-        data["TEXT"]
+        text,noise_type
     )
 
     # tokenization and packing for pair 1
-    token_ids1, mask1, token_out1 = batch_tokenizer(textP1, tokenID1)
-    token_ids1, mask1, intent_id1, token_out1 = list2Tensor(
-        [token_ids1, mask1, sentID1, token_out1]
+    token_ids1, mask1, processed_tokenID1 = batch_tokenizer(textP1, tokenID1)
+    token_ids1, mask1, sentID1, packed_tokenID1 = list2Tensor(
+        [token_ids1, mask1, sentID1, processed_tokenID1]
     )
 
     # tokenization and packing for pair 2
-    token_ids2, mask2, token_out2 = batch_tokenizer(textP2, tokenID2)
-    token_ids2, mask2, intent_id2, token_out2 = list2Tensor(
-        [token_ids2, mask2, sentID2, token_out2]
+    token_ids2, mask2, processed_tokenID2 = batch_tokenizer(textP2, tokenID2)
+    token_ids2, mask2, sentID2, packed_tokenID2 = list2Tensor(
+        [token_ids2, mask2, sentID2, processed_tokenID2]
     )
 
     CP1 = {
         "token_ids": token_ids1,
         "mask": mask1,
         "sentId": sentID1,
-        "tokenId": token_out1,
+        "tokenId": packed_tokenID1,
     }
 
     CP2 = {
         "token_ids": token_ids2,
         "mask": mask2,
         "sentId": sentID2,
-        "tokenId": token_out2,
+        "tokenId": packed_tokenID2,
     }
 
     return {"supBatch": supBatch, "HCLBatch": [CP1, CP2]}
