@@ -157,15 +157,15 @@ def collate_CT(batch, tokenizer, noise_type):
     CP1 = {
         "token_ids": token_ids1,
         "mask": mask1,
-        "sentId": sentID1,
-        "tokenId": packed_tokenID1,
+        "sent_id": sentID1,
+        "token_id": packed_tokenID1,
     }
 
     CP2 = {
         "token_ids": token_ids2,
         "mask": mask2,
-        "sentId": sentID2,
-        "tokenId": packed_tokenID2,
+        "sent_id": sentID2,
+        "token_id": packed_tokenID2,
     }
 
     return {"supBatch": supBatch, "HCLBatch": [CP1, CP2]}
