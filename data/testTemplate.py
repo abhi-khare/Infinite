@@ -25,27 +25,27 @@ def test_template(test, basePath):
         ]
 
         test_20OOC = [
-            basePath + "data/ATIS/experiment/test/NoiseOOC/20per/test_01.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/20per/test_02.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/20per/test_03.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/20per/test_04.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/20per/test_05.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/20per/test_01.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/20per/test_02.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/20per/test_03.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/20per/test_04.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/20per/test_05.tsv",
         ]
 
         test_40OOC = [
-            basePath + "data/ATIS/experiment/test/NoiseOOC/40per/test_01.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/40per/test_02.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/40per/test_03.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/40per/test_04.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/40per/test_05.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/40per/test_01.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/40per/test_02.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/40per/test_03.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/40per/test_04.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/40per/test_05.tsv",
         ]
 
         test_60OOC = [
-            basePath + "data/ATIS/experiment/test/NoiseOOC/60per/test_01.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/60per/test_02.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/60per/test_03.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/60per/test_04.tsv",
-            basePath + "data/ATIS/experiment/test/NoiseOOC/60per/test_05.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/60per/test_01.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/60per/test_02.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/60per/test_03.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/60per/test_04.tsv",
+            basePath + "data/ATIS/experiment/test/NoiseMC/60per/test_05.tsv",
         ]
 
         test_clean = [basePath + "data/ATIS/experiment/test/clean/test.tsv"]
@@ -87,27 +87,27 @@ def test_template(test, basePath):
         ]
 
         test_20OOC = [
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/20per/test_01.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/20per/test_02.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/20per/test_03.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/20per/test_04.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/20per/test_05.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_01.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_02.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_03.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_04.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_05.tsv",
         ]
 
         test_40OOC = [
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/40per/test_01.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/40per/test_02.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/40per/test_03.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/40per/test_04.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/40per/test_05.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_01.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_02.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_03.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_04.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_05.tsv",
         ]
 
         test_60OOC = [
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/60per/test_01.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/60per/test_02.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/60per/test_03.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/60per/test_04.tsv",
-            basePath + "data/SNIPS/experiments/test/NoiseOOC/60per/test_05.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_01.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_02.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_03.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_04.tsv",
+            basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_05.tsv",
         ]
 
         test_clean = [basePath + "data/SNIPS/experiments/test/clean/test.tsv"]
