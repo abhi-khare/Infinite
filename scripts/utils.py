@@ -44,8 +44,8 @@ def mergelistsMC(text_packed, prob):
     bernaulliSample = [0] * int((1000) * prob) + [1] * int(1000 * (1 - prob))
     random.shuffle(bernaulliSample)
 
-    orig,aug  = [text_packed[0]],[text_packed[0]]
-    for idx,tokens in enumerate(text_packed[1:]):
+    orig,aug  = [text[0]],[text[0]]
+    for idx,tokens in enumerate(text[1:]):
         
         if random.sample(bernaulliSample, 1)[0] == 0:
             orig.append([tokens[0],2000])
