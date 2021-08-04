@@ -21,6 +21,11 @@ parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
 parser.add_argument("--intent_dropout", type=float)
 parser.add_argument("--slots_dropout", type=float)
 parser.add_argument('--jointCoef', type=float, default=0.50)
+parser.add_argument('--icnerCoef', type=float, default=0.50)
+parser.add_argument('--hierConCoef', type=float, default=0.50)
+parser.add_argument("--intent_contrast_hidden", type=int)
+parser.add_argument("--slots_contrast_hidden", type=int)
+
 
 # training params
 parser.add_argument('--lr', type=float, default=0.00002)
@@ -109,30 +114,26 @@ class hierConTrainer(pl.LightningModule):
     
     def validation_step(self, batch, batch_idx):
         
-        token_ids, attention_mask = batch['token_ids'], batch['mask']
-        intent_target,slots_target = batch['intent_id'], batch['slots_id']
-        
-        out = self(token_ids,attention_mask,intent_target,slots_target)
-        intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
-        
-        self.log('val_joint_loss', out['joint_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('val_IC_loss', out['ic_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('val_NER_loss', out['ner_loss'], on_step=False, on_epoch=True,  logger=True)
+        ICNER_out = self(batch,'ICNER')
+        intent_pred, slot_pred = ICNER_out['intent_pred'], ICNER_out['slot_pred']
+        intent_target , slots_target = batch['supBatch']['intent_id'] , batch['supBatch']['slots_id']
+
+        self.log('val_joint_loss', ICNER_out['joint_loss'], on_step=False, on_epoch=True,  logger=True)
+        self.log('val_IC_loss', ICNER_out['ic_loss'], on_step=False, on_epoch=True,  logger=True)
+        self.log('val_NER_loss', ICNER_out['ner_loss'], on_step=False, on_epoch=True,  logger=True)
         self.log('val_intent_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
         self.log('slot_f1', slot_F1(slot_pred ,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
         
-        return out['joint_loss']
+        return ICNER_out['joint_loss']
     
-    def test_step(self,batch,batch_idx):
+    def test_step(self, batch, batch_idx):
         
-        token_ids, attention_mask = batch['token_ids'], batch['mask']
-        intent_target,slots_target = batch['intent_id'], batch['slots_id']
-        
-        out = self(token_ids,attention_mask,intent_target,slots_target)
-        intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
+        ICNER_out = self(batch,'ICNER')
+        intent_pred, slot_pred = ICNER_out['intent_pred'], ICNER_out['slot_pred']
+        intent_target , slots_target = batch['supBatch']['intent_id'] , batch['supBatch']['slots_id']
 
-        return {'acc' : accuracy(intent_pred,intent_target),
-                'slotsF1' : slot_F1(slot_pred,slots_target,idx2slots)}
+        self.log('test_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
+        self.log('test_slotF1', slot_F1(slot_pred ,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
     
     def configure_optimizers(self):
          return torch.optim.AdamW(self.parameters(), lr = args.lr , weight_decay = args.l2)
