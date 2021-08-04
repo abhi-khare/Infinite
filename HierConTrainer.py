@@ -96,12 +96,15 @@ class hierConTrainer(pl.LightningModule):
         ICNERLoss,hierConLoss = 0.0,0.0
         
         # generating HierCon loss
-        jointCLLoss = self(batch,'hierCon')
-        self.log('jointCLLoss', jointCLLoss, on_step=False, on_epoch=True, logger=True)
+        try:
+            jointCLLoss = self(batch,'hierCon')
+            self.log('jointCLLoss', jointCLLoss, on_step=False, on_epoch=True, logger=True)
         
-        if self.step <= args.warmup:
-            return jointCLLoss
-
+            if self.step <= args.warmup:
+                return jointCLLoss
+        except:
+            a = 1
+            
         # generating joint ICNER and HierCon loss
         ICNER_out = self(batch,'ICNER')
         IC_loss, NER_loss = ICNER_out['ic_loss'],ICNER_out['ner_loss']
