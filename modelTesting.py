@@ -8,7 +8,8 @@ import pytorch_lightning as pl
 from pytorch_lightning import seed_everything, loggers as pl_loggers
 from pytorch_lightning.callbacks import ModelCheckpoint
 
-
+from functools import partial
+from transformers import AutoTokenizer
 from scripts.model import jointBert
 from scripts.dataset import dataset
 from scripts.utils import accuracy, slot_F1, cal_mean_stderror
@@ -107,8 +108,8 @@ class jointBertTrainer(pl.LightningModule):
         out = self(token_ids,attention_mask,intent_target,slots_target)
         intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
 
-        return {'acc' : accuracy(intent_pred,intent_target),
-                'slotsF1' : slot_F1(slot_pred,slots_target,idx2slots)}
+        self.log('test_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
+        self.log('test_slotsF1', slot_F1(slot_pred,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
 
     def configure_optimizers(self):
          return torch.optim.AdamW(self.parameters(), lr = self.args.lr , weight_decay = self.args.l2)
@@ -118,7 +119,7 @@ trainer = pl.Trainer(gpus=args.gpus, deterministic=True,precision=args.precision
 testSet = test_template(args.dataset, args.test_path)
 
 # testing the model
-          
+tokenizer = AutoTokenizer.from_pretrained(args.tokenizer,cache_dir = '/efs-storage/tokenizer/')          
 model_path = [ args.base_dir + name for name in os.listdir(args.base_dir)]
 
 for path in model_path:
@@ -130,14 +131,14 @@ for path in model_path:
         acc,slotF1 = [],[]
         print('calculating metrics for the testset: ', testName)
 
-        for test_fn in test:
+        for test_file in test[0]:
         
-            testDS = dataset(test_fn)
-            testDL = DataLoader( testDS, batch_size=1, collate_fn=collate_sup)
+            testDS = dataset(test_file)
+            testDL = DataLoader( testDS, batch_size=test[1], collate_fn=partial(collate_sup,tokenizer = tokenizer))
 
             out = trainer.test(model=model ,test_dataloaders=testDL)
             
-            acc.append(out[0]['test_intent_acc'])
-            slotF1.append(out[0]['test_slot_f1'])
+            acc.append(out[0]['test_acc'])
+            slotF1.append(out[0]['test_slotsF1'])
         
         print('acc: ',cal_mean_stderror(acc),'slotsF1: ',cal_mean_stderror(slotF1))
