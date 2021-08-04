@@ -48,7 +48,7 @@ def mergelistsMC(text_packed, prob):
     for idx,tokens in enumerate(text_packed[1:]):
         
         if random.sample(bernaulliSample, 1)[0] == 0:
-            orig.append([tokens[0],2000])
+            orig.append([tokens[0],'2000'])
         else:
             orig.append(tokens)
             aug.append(tokens)
@@ -57,18 +57,19 @@ def mergelistsMC(text_packed, prob):
 
 def contrastiveSampleGenerator(sample, noise_type):
 
-    samplePacked = [[token, idx] for idx, token in enumerate(sample.split())]
+    samplePacked = [[token, str(idx)] for idx, token in enumerate(sample.split())]
 
     noisyTEXT = random.sample(phrase, 3)
     noisyTEXT = (noisyTEXT[0] + noisyTEXT[1] + noisyTEXT[2]).split()
     noisyTOKENS = random.sample(noisyTEXT, random.sample([5, 6, 7,8,9,10], 1)[0])
-    noisyPacked = [[token, 2000] for idx, token in enumerate(noisyTOKENS)]
+    noisyPacked = [[token, '2000'] for idx, token in enumerate(noisyTOKENS)]
 
     if noise_type == 'MC':
         noise_param = random.sample([0.20,0.40,0.60],1)[0]
         orig, aug = mergelistsMC(samplePacked, prob=noise_param)
         augText, augSlots = zip(*aug)
         origText, origSlots = zip(*orig)
+
         return ' '.join(list(origText)), ' '.join(list(augText)), ' '.join(list(origSlots)), ' '.join(list(augSlots))
 
     elif noise_type == 'BG':

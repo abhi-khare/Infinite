@@ -85,17 +85,18 @@ class hierCon_model(nn.Module):
                                                  nn.Linear(768,768),
                                                  nn.BatchNorm1d(768),
                                                  nn.GELU(),
-                                                 nn.Linear(768,args.slots_contrast_hidden) 
+                                                 nn.Linear(768,768) 
                                                 )
         
         self.sent_contrast_proj = nn.Sequential(
                                                  nn.Linear(768,768),
                                                  nn.BatchNorm1d(768),
                                                  nn.GELU(),
-                                                 nn.Linear(768,args.slots_contrast_hidden) 
+                                                 nn.Linear(768,768) 
                                                 )
         
         self.criterion = nn.CosineSimilarity(dim=1)
+        
         self.CE_loss = nn.CrossEntropyLoss()
 
         self.icnerCoef = args.icnerCoef
@@ -112,7 +113,7 @@ class hierCon_model(nn.Module):
 
         # slots prediction loss
         slots_hidden = encoded_output[0]
-        slots_logits = self.slotsPredMLP(slots_hidden)
+        slots_logits = self.slots_head(slots_hidden)
         slots_pred = torch.argmax(nn.Softmax(dim=2)(slots_logits), axis=2)
         slots_loss = self.CE_loss(
             slots_logits.view(-1, self.args.slots_count), slots_target.view(-1)
@@ -140,17 +141,17 @@ class hierCon_model(nn.Module):
         return sentCLLoss
     
     def tokenCL(self, tokenEmb1,tokenEmb2,tokenID1,tokenID2):
-        
+        #torch.Size([32, 56, 768]) torch.Size([32, 56, 768]) torch.Size([1792]) torch.Size([1792])
         tokenID1 = torch.flatten(tokenID1)
         tokenID2 = torch.flatten(tokenID2)
         
         shape = tokenEmb1.shape
         tokenEmb1 = tokenEmb1.view(shape[0]*shape[1],-1)
-        tokenEmb2 = tokenEmb2.view(shape[0]*shape[1],-1)
-
+        tokenEmb2 = tokenEmb2.view(shape[0]*shape[1],-1) #torch.Size([1792, 768]) torch.Size([1792, 768])
+        
         filterTokenIdx1 = [idx for idx,val in enumerate(tokenID1.tolist()) if (val==-100 or val == 2000)!=True]
         filterTokenIdx2 = [idx for idx,val in enumerate(tokenID2.tolist()) if (val==-100 or val == 2000)!=True]
-        
+        print(len(filterTokenIdx1),len(filterTokenIdx2))
         if len(filterTokenIdx1) > 0:
             filterTokenIdx1 = torch.tensor( filterTokenIdx1,dtype=torch.long,device=torch.device('cuda'))
             tokenEmb1 = torch.index_select(tokenEmb1,0,filterTokenIdx1) 

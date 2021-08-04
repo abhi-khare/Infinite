@@ -83,22 +83,6 @@ class jointBertTrainer(pl.LightningModule):
         self.log('train_NER_loss', out['ner_loss'], on_step=False, on_epoch=True, logger=True)
         
         return out['joint_loss']
-    
-    def validation_step(self, batch, batch_idx):
-        
-        token_ids, attention_mask = batch['token_ids'], batch['mask']
-        intent_target,slots_target = batch['intent_id'], batch['slots_id']
-        
-        out = self(token_ids,attention_mask,intent_target,slots_target)
-        intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
-        
-        self.log('val_joint_loss', out['joint_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('val_IC_loss', out['ic_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('val_NER_loss', out['ner_loss'], on_step=False, on_epoch=True,  logger=True)
-        self.log('val_intent_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
-        self.log('slot_f1', slot_F1(slot_pred ,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
-        
-        return out['joint_loss']
 
     def test_step(self,batch,batch_idx):
         
