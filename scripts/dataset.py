@@ -69,7 +69,7 @@ class dataloader(pl.LightningDataModule):
         
         elif self.mode == 'CT':
             self.train_collate = partial(collate_CT,tokenizer = self.tokenizer, noise_type = self.args.noise_type)
-            self.val_collate = partial(collate_sup,tokenizer = self.tokenizer)
+            self.val_collate = partial(collate_CT,tokenizer = self.tokenizer, noise_type = 'MC')
 
     def train_dataloader(self):
         return DataLoader(
