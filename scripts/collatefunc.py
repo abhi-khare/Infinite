@@ -72,7 +72,14 @@ def collate_sup(batch,tokenizer):
 
     token_ids, mask, intent_id, slot_processed = list2Tensor([token_ids, mask, intent_id, slot_processed])
     
-    return {'token_ids':token_ids , 'mask':mask , 'intent_id':intent_id,'slots_id':slot_processed}
+    supBatch = {
+        "token_ids": token_ids,
+        "mask": mask,
+        "intent_id": intent_id,
+        "slots_id": slot_processed,
+    }
+
+    return {"supBatch": supBatch}
 
 def collate_AT(batch,tokenizer,noise_type):
 
@@ -109,7 +116,14 @@ def collate_AT(batch,tokenizer,noise_type):
     # slot_processing
     token_ids, mask, intent_id, slot_processed = list2Tensor([token_ids, mask, intent_id, slot_processed])
 
-    return {'token_ids':token_ids , 'mask':mask , 'intent_id':intent_id,'slots_id':slot_processed}
+    supBatch = {
+        "token_ids": token_ids,
+        "mask": mask,
+        "intent_id": intent_id,
+        "slots_id": slot_processed,
+    }
+
+    return {"supBatch": supBatch}
 
 
 def collate_CT(batch, tokenizer, noise_type):
