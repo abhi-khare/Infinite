@@ -24,7 +24,7 @@ def test_template(test, basePath):
             basePath + "data/ATIS/experiments/test/NoiseBG/75per/test_05.tsv",
         ]
 
-        test_20OOC = [
+        test_20MC = [
             basePath + "data/ATIS/experiments/test/NoiseMC/20per/test_01.tsv",
             basePath + "data/ATIS/experiments/test/NoiseMC/20per/test_02.tsv",
             basePath + "data/ATIS/experiments/test/NoiseMC/20per/test_03.tsv",
@@ -32,7 +32,7 @@ def test_template(test, basePath):
             basePath + "data/ATIS/experiments/test/NoiseMC/20per/test_05.tsv",
         ]
 
-        test_40OOC = [
+        test_40MC = [
             basePath + "data/ATIS/experiments/test/NoiseMC/40per/test_01.tsv",
             basePath + "data/ATIS/experiments/test/NoiseMC/40per/test_02.tsv",
             basePath + "data/ATIS/experiments/test/NoiseMC/40per/test_03.tsv",
@@ -40,7 +40,7 @@ def test_template(test, basePath):
             basePath + "data/ATIS/experiments/test/NoiseMC/40per/test_05.tsv",
         ]
 
-        test_60OOC = [
+        test_60MC = [
             basePath + "data/ATIS/experiments/test/NoiseMC/60per/test_01.tsv",
             basePath + "data/ATIS/experiments/test/NoiseMC/60per/test_02.tsv",
             basePath + "data/ATIS/experiments/test/NoiseMC/60per/test_03.tsv",
@@ -51,9 +51,9 @@ def test_template(test, basePath):
         test_clean = [basePath + "data/ATIS/experiments/test/clean/test.tsv"]
 
         return {
-            "test_20OOC": [test_20MC,2],
-            "test_40OOC": [test_40MC,2],
-            "test_60OOC": [test_60MC,2],
+            "test_20MC": [test_20MC,2],
+            "test_40MC": [test_40MC,2],
+            "test_60MC": [test_60MC,2],
             "test_25BG": [test_25BG,19],
             "test_50BG": [test_50BG,19],
             "test_75BG": [test_75BG,19],
@@ -86,7 +86,7 @@ def test_template(test, basePath):
             basePath + "data/SNIPS/experiments/test/NoiseBG/75per/test_05.tsv",
         ]
 
-        test_20OOC = [
+        test_20MC = [
             basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_01.tsv",
             basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_02.tsv",
             basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_03.tsv",
@@ -94,7 +94,7 @@ def test_template(test, basePath):
             basePath + "data/SNIPS/experiments/test/NoiseMC/20per/test_05.tsv",
         ]
 
-        test_40OOC = [
+        test_40MC = [
             basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_01.tsv",
             basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_02.tsv",
             basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_03.tsv",
@@ -102,7 +102,7 @@ def test_template(test, basePath):
             basePath + "data/SNIPS/experiments/test/NoiseMC/40per/test_05.tsv",
         ]
 
-        test_60OOC = [
+        test_60MC = [
             basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_01.tsv",
             basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_02.tsv",
             basePath + "data/SNIPS/experiments/test/NoiseMC/60per/test_03.tsv",
@@ -113,9 +113,9 @@ def test_template(test, basePath):
         test_clean = [basePath + "data/SNIPS/experiments/test/clean/test.tsv"]
 
         return {
-            "test_20OOC": [test_20MC,5],
-            "test_40OOC": [test_40MC,5],
-            "test_60OOC": [test_60MC,5],
+            "test_20MC": [test_20MC,5],
+            "test_40MC": [test_40MC,5],
+            "test_60MC": [test_60MC,5],
             "test_25BG": [test_25BG,25],
             "test_50BG": [test_50BG,25],
             "test_75BG": [test_75BG,25],
