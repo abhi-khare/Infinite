@@ -119,8 +119,8 @@ class jointBertTrainer(pl.LightningModule):
         out = self(token_ids,attention_mask,intent_target,slots_target)
         intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
 
-        return {'acc' : accuracy(intent_pred,intent_target),
-                'slotsF1' : slot_F1(slot_pred,slots_target,idx2slots)}
+        self.log('test_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
+        self.log('test_slotsF1', slot_F1(slot_pred,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
 
     def configure_optimizers(self):
          return torch.optim.AdamW(self.parameters(), lr = self.args.lr , weight_decay = self.args.l2)
