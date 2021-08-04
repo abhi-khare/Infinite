@@ -123,7 +123,7 @@ def collate_CT(batch, tokenizer, noise_type):
 
     # processing batch for supervised learning
     # tokenization and packing to torch tensor
-    token_ids, mask, slots_ids = batch_tokenizer(text, slot_id)
+    token_ids, mask, slots_ids = batch_tokenizer(text, slot_id, tokenizer)
     token_ids, mask, intent_id, slots_ids = list2Tensor(
         [token_ids, mask, intent_id, slots_ids]
     )
@@ -143,13 +143,13 @@ def collate_CT(batch, tokenizer, noise_type):
     )
 
     # tokenization and packing for pair 1
-    token_ids1, mask1, processed_tokenID1 = batch_tokenizer(textP1, tokenID1)
+    token_ids1, mask1, processed_tokenID1 = batch_tokenizer(textP1, tokenID1, tokenizer)
     token_ids1, mask1, sentID1, packed_tokenID1 = list2Tensor(
         [token_ids1, mask1, sentID1, processed_tokenID1]
     )
 
     # tokenization and packing for pair 2
-    token_ids2, mask2, processed_tokenID2 = batch_tokenizer(textP2, tokenID2)
+    token_ids2, mask2, processed_tokenID2 = batch_tokenizer(textP2, tokenID2, tokenizer)
     token_ids2, mask2, sentID2, packed_tokenID2 = list2Tensor(
         [token_ids2, mask2, sentID2, processed_tokenID2]
     )
