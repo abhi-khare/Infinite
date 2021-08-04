@@ -88,12 +88,11 @@ class hierCon_model(nn.Module):
                                                  nn.Linear(768,args.slots_contrast_hidden) 
                                                 )
         
-        self.sent_contrast_proj = nn.Sequential(nn.GELU(),
+        self.sent_contrast_proj = nn.Sequential(
+                                                 nn.Linear(768,768),
                                                  nn.BatchNorm1d(768),
-                                                 nn.Linear(768,args.intent_contrast_hidden),
                                                  nn.GELU(),
-                                                 nn.BatchNorm1d(args.intent_contrast_hidden),
-                                                 nn.Linear(args.intent_contrast_hidden,args.intent_count) 
+                                                 nn.Linear(768,args.slots_contrast_hidden) 
                                                 )
         
         self.criterion = nn.CosineSimilarity(dim=1)
