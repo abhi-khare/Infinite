@@ -15,3 +15,8 @@ env TRANSFORMERS_OFFLINE=1  python jointBertTrainer.py --train_dir ./data/SNIPS/
 env TRANSFORMERS_OFFLINE=1  python jointBertTrainer.py --train_dir ./data/ATIS/experiments/train/clean/train.tsv --val_dir ./data/ATIS/experiments/dev/clean/dev.tsv --intent_dropout 0.4959487455371492 --slots_dropout 0.4023767420439718 --lr 0.00003436854631596889 --intent_count 18 --slots_count 120 --dataset ATIS --param_save_dir ./bin/AT_BG_ATIS/ --logging_dir ./logs/AT_BG_ATIS/ --mode AT --noise_type BG --epoch 50
 env TRANSFORMERS_OFFLINE=1  python jointBertTrainer.py --train_dir ./data/SNIPS/experiments/train/clean/train.tsv --val_dir ./data/SNIPS/experiments/dev/clean/dev.tsv --intent_dropout 0.44971200311949866 --slots_dropout 0.31526667279678505 --lr 0.000056253710225502357 --intent_count 8 --slots_count 72 --dataset SNIPS --param_save_dir ./bin/AT_BG_SNIPS/ --logging_dir ./logs/AT_BG_SNIPS/ --mode AT --noise_type BG --epoch 30
 
+
+# model testing
+
+env TRANSFORMERS_OFFLINE=1 python modelTesting.py --intent_count 18 --slots_count 120 --dataset ATIS --intent_dropout 0.4959487455371492 --slots_dropout 0.4023767420439718 --lr 0.00003436854631596889 --base_dir /efs-storage/Infinite/bin/BASELINE_ATIS/ --test_path /efs-storage/Infinite/
+env TRANSFORMERS_OFFLINE=1 python modelTesting.py --intent_count 8 --slots_count 72 --dataset SNIPS --intent_dropout 0.44971200311949866 --slots_dropout 0.31526667279678505 --lr 0.000056253710225502357 --base_dir /efs-storage/Infinite/bin/BASELINE_SNIPS/ --test_path /efs-storage/Infinite/
