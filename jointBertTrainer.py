@@ -97,8 +97,8 @@ class jointBertTrainer(pl.LightningModule):
     
     def validation_step(self, batch, batch_idx):
         
-        token_ids, attention_mask = batch['token_ids'], batch['mask']
-        intent_target,slots_target = batch['intent_id'], batch['slots_id']
+        token_ids, attention_mask = batch['supBatch']['token_ids'], batch['supBatch']['mask']
+        intent_target,slots_target = batch['supBatch']['intent_id'], batch['supBatch']['slots_id']
         
         out = self(token_ids,attention_mask,intent_target,slots_target)
         intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
@@ -108,19 +108,6 @@ class jointBertTrainer(pl.LightningModule):
         self.log('val_NER_loss', out['ner_loss'], on_step=False, on_epoch=True,  logger=True)
         self.log('val_intent_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
         self.log('slot_f1', slot_F1(slot_pred ,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
-        
-        return out['joint_loss']
-
-    def test_step(self,batch,batch_idx):
-        
-        token_ids, attention_mask = batch['token_ids'], batch['mask']
-        intent_target,slots_target = batch['intent_id'], batch['slots_id']
-        
-        out = self(token_ids,attention_mask,intent_target,slots_target)
-        intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
-
-        self.log('test_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
-        self.log('test_slotsF1', slot_F1(slot_pred,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
 
     def configure_optimizers(self):
          return torch.optim.AdamW(self.parameters(), lr = self.args.lr , weight_decay = self.args.l2)

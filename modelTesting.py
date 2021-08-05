@@ -86,8 +86,8 @@ class jointBertTrainer(pl.LightningModule):
 
     def test_step(self,batch,batch_idx):
         
-        token_ids, attention_mask = batch['token_ids'], batch['mask']
-        intent_target,slots_target = batch['intent_id'], batch['slots_id']
+        token_ids, attention_mask = batch['supBatch']['token_ids'], batch['supBatch']['mask']
+        intent_target,slots_target = batch['supBatch']['intent_id'], batch['supBatch']['slots_id']
         
         out = self(token_ids,attention_mask,intent_target,slots_target)
         intent_pred, slot_pred = out['intent_pred'], out['slot_pred']
