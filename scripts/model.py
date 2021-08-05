@@ -151,7 +151,7 @@ class hierCon_model(nn.Module):
         
         filterTokenIdx1 = [idx for idx,val in enumerate(tokenID1.tolist()) if (val==-100 or val == 2000)!=True]
         filterTokenIdx2 = [idx for idx,val in enumerate(tokenID2.tolist()) if (val==-100 or val == 2000)!=True]
-        print(len(filterTokenIdx1),len(filterTokenIdx2))
+
         if len(filterTokenIdx1) > 0:
             filterTokenIdx1 = torch.tensor( filterTokenIdx1,dtype=torch.long,device=torch.device('cuda'))
             tokenEmb1 = torch.index_select(tokenEmb1,0,filterTokenIdx1) 
