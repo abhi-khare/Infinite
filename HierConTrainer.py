@@ -20,11 +20,9 @@ parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
 parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
 parser.add_argument("--intent_dropout", type=float)
 parser.add_argument("--slots_dropout", type=float)
-parser.add_argument('--jointCoef', type=float, default=0.50)
+parser.add_argument('--jointcoef', type=float, default=0.50)
 parser.add_argument('--icnerCoef', type=float, default=0.50)
 parser.add_argument('--hierConCoef', type=float, default=0.50)
-parser.add_argument("--intent_contrast_hidden", type=int)
-parser.add_argument("--slots_contrast_hidden", type=int)
 
 
 # training params
@@ -96,6 +94,7 @@ class hierConTrainer(pl.LightningModule):
         ICNERLoss,hierConLoss = 0.0,0.0
         
         # generating HierCon loss
+        flag = 0
         try:
             jointCLLoss = self(batch,'hierCon')
             self.log('jointCLLoss', jointCLLoss, on_step=False, on_epoch=True, logger=True)
@@ -103,7 +102,7 @@ class hierConTrainer(pl.LightningModule):
             if self.step <= args.warmup:
                 return jointCLLoss
         except:
-            a = 1
+            flag = 1
             
         # generating joint ICNER and HierCon loss
         ICNER_out = self(batch,'ICNER')
@@ -112,7 +111,10 @@ class hierConTrainer(pl.LightningModule):
         self.log('IC_loss', IC_loss, on_step=False, on_epoch=True, logger=True)
         self.log('NER_loss', NER_loss, on_step=False, on_epoch=True, logger=True)
         
-        return self.args.jointcoef*ICNER_out['joint_loss'] + (1.0 - self.args.jointcoef)*jointCLLoss
+        if flag == 0:
+            return self.args.jointcoef*ICNER_out['joint_loss'] + (1.0 - self.args.jointcoef)*jointCLLoss
+        else:
+            return ICNER_out['joint_loss']
 
     
     def validation_step(self, batch, batch_idx):
