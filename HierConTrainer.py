@@ -111,7 +111,7 @@ class hierConTrainer(pl.LightningModule):
         self.log('IC_loss', IC_loss, on_step=False, on_epoch=True, logger=True)
         self.log('NER_loss', NER_loss, on_step=False, on_epoch=True, logger=True)
         
-        if flag == 0:
+        if flag == 0 :
             return self.args.jointcoef*ICNER_out['joint_loss'] + (1.0 - self.args.jointcoef)*jointCLLoss
         else:
             return ICNER_out['joint_loss']
@@ -130,15 +130,6 @@ class hierConTrainer(pl.LightningModule):
         self.log('slot_f1', slot_F1(slot_pred ,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
         
         return ICNER_out['joint_loss']
-    
-    def test_step(self, batch, batch_idx):
-        
-        ICNER_out = self(batch,'ICNER')
-        intent_pred, slot_pred = ICNER_out['intent_pred'], ICNER_out['slot_pred']
-        intent_target , slots_target = batch['supBatch']['intent_id'] , batch['supBatch']['slots_id']
-
-        self.log('test_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
-        self.log('test_slotF1', slot_F1(slot_pred ,slots_target,idx2slots), on_step=False, on_epoch=True, logger=True)
     
     def configure_optimizers(self):
          return torch.optim.AdamW(self.parameters(), lr = args.lr , weight_decay = args.l2)
