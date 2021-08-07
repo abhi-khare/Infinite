@@ -106,14 +106,16 @@ testSet = test_template(args.dataset, args.test_path)
 tokenizer = AutoTokenizer.from_pretrained(args.tokenizer,cache_dir = '/efs-storage/tokenizer/')          
 model_path = [ args.base_dir + name for name in os.listdir(args.base_dir)]
 
+models = []
+
 for path in model_path:
+    models.append(jointBertTrainer.load_from_checkpoint(path,args=args))
 
-    model = jointBertTrainer.load_from_checkpoint(path,args=args)
-
-    for testName,test in testSet.items():
-
-        acc,slotF1 = [],[]
-        print('calculating metrics for the testset: ', testName)
+for testName,test in testSet.items():
+    
+    acc,slotF1 = [],[]
+    print('calculating metrics for the testset: ', testName)
+    for model in models:
 
         for test_file in test[0]:
         
@@ -125,4 +127,4 @@ for path in model_path:
             acc.append(out[0]['test_acc'])
             slotF1.append(out[0]['test_slotsF1'])
         
-        print('acc: ',cal_mean_stderror(acc),'slotsF1: ',cal_mean_stderror(slotF1))
+    print('acc: ',cal_mean_stderror(acc),'slotsF1: ',cal_mean_stderror(slotF1))
