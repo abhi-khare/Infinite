@@ -84,16 +84,30 @@ class hierCon_model(nn.Module):
         self.token_contrast_proj = nn.Sequential(
                                                  nn.Linear(768,768),
                                                  nn.BatchNorm1d(768),
-                                                 nn.GELU(),
-                                                 nn.Linear(768,768) 
+                                                 nn.ReLU(inplace=True),
+                                                 nn.Linear(768,768),
+                                                 nn.ReLU(inplace=True),
+                                                 nn.BatchNorm1d(768) 
                                                 )
         
         self.sent_contrast_proj = nn.Sequential(
                                                  nn.Linear(768,768),
                                                  nn.BatchNorm1d(768),
-                                                 nn.GELU(),
-                                                 nn.Linear(768,768) 
-                                                )
+                                                 nn.ReLU(inplace=True),
+                                                 nn.Linear(768,768),
+                                                 nn.ReLU(inplace=True),
+                                                 nn.BatchNorm1d(768) 
+                                                 )
+        self.intent_predictor = nn.Sequential(
+                                         nn.Dropout(args.intent_dropout),
+                                         nn.Linear(768,256)
+                                        )
+
+        self.slots_predictor = nn.Sequential(
+                                         nn.Dropout(args.intent_dropout),
+                                         nn.Linear(768,256)
+                                        )
+
         
         self.criterion = nn.CosineSimilarity(dim=1)
         
@@ -107,7 +121,7 @@ class hierCon_model(nn.Module):
 
         # intent prediction loss
         intent_hidden = encoded_output[0][:, 0]
-        intent_logits = self.intent_head(intent_hidden)
+        intent_logits = self.intent_head(self.sent_contrast_proj(intent_hidden))
         intent_loss = self.CE_loss(intent_logits, intent_target)
         intent_pred = torch.argmax(nn.Softmax(dim=1)(intent_logits), axis=1)
 
@@ -133,10 +147,11 @@ class hierCon_model(nn.Module):
 
         # calculating sentence level loss
         p1, p2 = self.sent_contrast_proj(sentz1), self.sent_contrast_proj(sentz2)
-        sentz2.detach()
-        sentz1.detach()
+        z1, z2 = self.intent_predictor(p1) , self.intent_predictor(p2) 
+        p1.detach()
+        p2.detach()
         
-        sentCLLoss =  -(self.criterion(p2, sentz1).mean() + self.criterion(p1, sentz2).mean()) * 0.5
+        sentCLLoss =  -(self.criterion(p2, z1).mean() + self.criterion(p1, z2).mean()) * 0.5
 
         return sentCLLoss
     
@@ -162,9 +177,10 @@ class hierCon_model(nn.Module):
         
         # calculating sentence level loss
         p1, p2 = self.token_contrast_proj(tokenEmb1), self.token_contrast_proj(tokenEmb2)
-        tokenEmb1.detach()
-        tokenEmb2.detach()
-        tokenCLLoss =  -(self.criterion(p2, tokenEmb1).mean() + self.criterion(p1, tokenEmb2).mean()) * 0.5
+        z1, z2 = self.intent_predictor(p1) , self.intent_predictor(p2) 
+        p1.detach()
+        p2.detach()
+        tokenCLLoss =  -(self.criterion(p2, z1).mean() + self.criterion(p1, z2).mean()) * 0.5
             
         return tokenCLLoss
 
@@ -185,5 +201,5 @@ class hierCon_model(nn.Module):
             tokenCL = self.tokenCL(encoded_output_0[0], encoded_output_1[0],tokenIDs0,tokenIDs1)
 
             hierConLoss = self.args.hierConCoef*sentCL + (1.0-self.args.hierConCoef)*tokenCL
-            
+
             return hierConLoss
