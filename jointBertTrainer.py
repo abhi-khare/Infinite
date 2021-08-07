@@ -10,7 +10,7 @@ from scripts.dataset import dataloader
 from scripts.model import jointBert
 from scripts.utils import accuracy,slot_F1
 
-seed_everything(42, workers=True)
+#jjseed_everything(42, workers=True)
 
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% command line arguments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 parser = argparse.ArgumentParser()
@@ -38,6 +38,7 @@ parser.add_argument('--slots_count',type=int)
 parser.add_argument('--dataset',type=str)
 
 #misc params
+parser.add_argument('--exp_num', type=str)
 parser.add_argument('--gpus', type=int, default=-1)
 parser.add_argument('--param_save_dir', type=str)
 parser.add_argument('--logging_dir', type=str)
@@ -63,7 +64,7 @@ idx2slots = get_idx2slots(args.dataset)
 # ckpt callback config for pytorch lightning
 checkpoint_callback = ModelCheckpoint(
     monitor='val_joint_loss', dirpath= args.param_save_dir,
-    filename='JB-{epoch:02d}-{val_loss:.2f}',
+    filename= args.exp_num + '_JB-{epoch:02d}-{val_loss:.2f}',
     save_top_k=1, mode='min',
 )
 
@@ -84,9 +85,9 @@ class jointBertTrainer(pl.LightningModule):
 
     def training_step(self, batch, batch_idx):
         
-        token_ids, attention_mask = batch['token_ids'], batch['mask']
-        intent_target,slots_target = batch['intent_id'], batch['slots_id']
-        
+        token_ids, attention_mask = batch['supBatch']['token_ids'], batch['supBatch']['mask']
+        intent_target,slots_target = batch['supBatch']['intent_id'], batch['supBatch']['slots_id']
+
         out = self(token_ids,attention_mask,intent_target,slots_target)
         
         self.log('train_joint_loss', out['joint_loss'], on_step=False, on_epoch=True, logger=True)
