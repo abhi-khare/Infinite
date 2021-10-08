@@ -4,30 +4,7 @@ from transformers import DistilBertForMaskedLM
 from transformers import LineByLineTextDataset
 from transformers import DataCollatorForLanguageModeling
 from transformers import Trainer, TrainingArguments
-import argparse
-
-def mlm_params():
-
-    parser = argparse.ArgumentParser()
-    
-    # model params
-    parser.add_argument('--encoder', type=str, default='distilbert-base-cased')
-    parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
-    
-    # training params
-    parser.add_argument('--epoch', type=int, default=40)
-    parser.add_argument('--batchSize', type=int, default=64)
-    parser.add_argument('--l2', type=float, default=0.003)
-
-    # data params
-    parser.add_argument('--trainDir', type=str)
-    parser.add_argument('--valDir', type=str)
-    
-    # misc. params
-    parser.add_argument('--paramDir', type=str)
-    parser.add_argument('--logDir', type=str)
-    
-    return parser.parse_args()
+from arguments import mlm_params
 
 args = mlm_params()
 

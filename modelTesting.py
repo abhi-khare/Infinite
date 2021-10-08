@@ -14,7 +14,7 @@ from scripts.model import jointBert
 from scripts.dataset import dataset
 from scripts.utils import accuracy, slot_F1, cal_mean_stderror
 from scripts.collatefunc import collate_sup
-from data.testTemplate import test_template
+from data.testTemplate import test_template, test_template_shift
 
 
 
@@ -35,7 +35,7 @@ parser.add_argument('--test_path',type=str)
 parser.add_argument('--intent_count', type=int)
 parser.add_argument('--slots_count',type=int)
 parser.add_argument('--dataset',type=str)
-
+parser.add_argument('--test_type', type=str)
 #misc params
 parser.add_argument('--gpus', type=int, default=-1)
 parser.add_argument('--precision', type=int, default=16)
@@ -100,7 +100,10 @@ class jointBertTrainer(pl.LightningModule):
 
 trainer = pl.Trainer(gpus=args.gpus, deterministic=True,precision=args.precision)
 
-testSet = test_template(args.dataset, args.test_path)
+if args.test_type =='normal':
+    testSet = test_template(args.dataset, args.test_path)
+elif args.test_type == 'shift':
+    testSet = test_template_shift(args.dataset, args.test_path)
 
 # testing the model
 tokenizer = AutoTokenizer.from_pretrained(args.tokenizer,cache_dir = '/efs-storage/tokenizer/')          
