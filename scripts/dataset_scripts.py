@@ -3,8 +3,9 @@ import pytorch_lightning as pl
 
 from torch.utils.data import Dataset, DataLoader
 from functools import partial
-from transformers import AutoTokenizer
-from .collatefunc import collate_sup, collate_AT, collate_CT, collate_CT_AT
+from transformers import DistilBertTokenizerFast
+
+from collatefunc import collate_sup
 
 class dataset(Dataset):
     def __init__(self, file_dir: str) -> None:
@@ -41,7 +42,7 @@ class dataloader(pl.LightningDataModule):
         self.val_dir = args.val_dir
         self.batch_size = args.batch_size
         self.num_worker = args.num_workers
-        self.tokenizer = AutoTokenizer.from_pretrained(args.tokenizer,
+        self.tokenizer = DistilBertTokenizerFast.from_pretrained(args.tokenizer,
                                             cache_dir = '/efs-storage/tokenizer/')
         self.mode = args.mode
         self.args = args
