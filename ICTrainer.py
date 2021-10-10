@@ -7,7 +7,7 @@ from   pytorch_lightning.callbacks import ModelCheckpoint
 
 from .scripts.dataset_scripts import dataloader
 from .scripts.model import intent_classifier
-from .scripts.utils import accuracy
+from .scripts.utils import F1
 from arguments import ICTrainer_args
 
 args = ICTrainer_args()
@@ -58,7 +58,7 @@ class ICTrainer(pl.LightningModule):
         intent_pred = out['intent_pred']
         
         self.log('val_IC_loss', out['ic_loss'], on_step=False, on_epoch=True, logger=True)
-        self.log('val_intent_acc', accuracy(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
+        self.log('val_intent_F1', F1(intent_pred,intent_target), on_step=False, on_epoch=True,  logger=True)
 
     def configure_optimizers(self):
          return torch.optim.AdamW(self.parameters(), lr = self.args.lr , weight_decay = self.args.l2)
