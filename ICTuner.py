@@ -12,9 +12,9 @@ import pytorch_lightning as pl
 import argparse
 
 from transformers.models.auto.tokenization_auto import logger
-from .scripts.utils import accuracy
-from .scripts.dataset_scripts import dataloader
-from .scripts.utils import F1
+from scripts.utils import accuracy
+from scripts.dataset_scripts import dataloader
+from scripts.utils import F1
 
 class intent_classifier(nn.Module):
 
@@ -133,15 +133,13 @@ if __name__ == "__main__":
     parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
 
     # training params
-    parser.add_argument('--epoch', type=int, default=15)
+    parser.add_argument('--epoch', type=int, default=20)
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--mode', type=str, default='BASELINE')
     # data params
     parser.add_argument('--train_dir', type=str)
     parser.add_argument('--val_dir', type=str)
     parser.add_argument('--intent_count', type=int)
-    parser.add_argument('--slots_count',type=int)
-    parser.add_argument('--dataset',type=str)
 
     #misc params
     parser.add_argument('--gpus', type=int, default=-1)
