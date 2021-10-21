@@ -5,7 +5,7 @@ from torch.utils.data import Dataset, DataLoader
 from functools import partial
 from transformers import DistilBertTokenizerFast
 
-from collatefunc import collate_sup
+from .collatefunc import collate_sup
 
 class dataset(Dataset):
     def __init__(self, file_dir: str) -> None:
@@ -43,19 +43,24 @@ class dataloader(pl.LightningDataModule):
         self.batch_size = args.batch_size
         self.num_worker = args.num_workers
         self.tokenizer = DistilBertTokenizerFast.from_pretrained(args.tokenizer,
-                                            cache_dir = '/efs-storage/tokenizer/')
-        self.mode = args.mode
+                                            cache_dir = '/efs-storage/research/tokenizer/')
+        self.experiment_type = args.experiment_type
         self.args = args
 
-    def setup(self):
+    def setup(self, stage: [str] = None):
 
         self.train = dataset(self.train_dir)
 
         self.val = dataset(self.val_dir)
 
-        if self.mode == 'BASELINE':
+        if self.experiment_type == 'BASELINE':
             self.train_collate = partial(collate_sup,tokenizer = self.tokenizer)
             self.val_collate = partial(collate_sup, tokenizer = self.tokenizer)
+        
+        elif self.experiment_type == 'ADVERSARIAL':
+            self.train_collate = partial(collate_AT,tokenizer = self.tokenizer)
+            self.val_collate = partial(collate_sup, tokenizer = self.tokenizer)
+        
 
 
     def train_dataloader(self):
