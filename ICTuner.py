@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from transformers import DistilBertModel
-from transformers import DistilBertTokenizerFast
 
 import optuna
 from optuna.integration import PyTorchLightningPruningCallback
@@ -27,7 +26,7 @@ class intent_classifier(nn.Module):
                                         return_dict=True, 
                                         output_hidden_states=True,
                                         sinusoidal_pos_embds=True, 
-                                        cache_dir='/efs-storage/model/'
+                                        cache_dir='/efs-storage/research/model/'
                                     )
 
         self.intent_head = nn.Sequential(
@@ -44,7 +43,7 @@ class intent_classifier(nn.Module):
         self.args = args
 
 
-    def forward(self, input_ids, attention_mask, intent_target, slots_target):
+    def forward(self, input_ids, attention_mask, intent_target):
 
         encoded_output = self.encoder(input_ids, attention_mask)
 
@@ -112,16 +111,16 @@ def objective(trial: optuna.trial.Trial) -> float:
     trainer = pl.Trainer(
         logger=True,
         checkpoint_callback=False,
-        max_epoch=25,
+        max_epochs=args.max_epoch,
         gpus=-1,
-        callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_acc")]
+        callbacks=[PyTorchLightningPruningCallback(trial, monitor="val_intent_F1")]
     )
 
     hyperparameters = dict(lr=lr, dropout=dropout, hidden=hidden)
     trainer.logger.log_hyperparams(hyperparameters)
     trainer.fit(model, datamodule=dl)
 
-    return trainer.callback_metrics["val_acc"].item()
+    return trainer.callback_metrics["val_intent_F1"].item()
 
 
 
@@ -133,13 +132,16 @@ if __name__ == "__main__":
     parser.add_argument('--tokenizer', type=str, default='distilbert-base-cased')
 
     # training params
-    parser.add_argument('--epoch', type=int, default=20)
+    parser.add_argument('--max_epoch', type=int, default=20)
     parser.add_argument('--batch_size', type=int, default=32)
     parser.add_argument('--mode', type=str, default='BASELINE')
+    parser.add_argument('--l2', type=float, default=0.003)
+    
+
     # data params
     parser.add_argument('--train_dir', type=str)
     parser.add_argument('--val_dir', type=str)
-    parser.add_argument('--intent_count', type=int)
+    parser.add_argument('--num_class', type=int)
 
     #misc params
     parser.add_argument('--gpus', type=int, default=-1)
