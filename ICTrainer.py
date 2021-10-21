@@ -5,20 +5,20 @@ import pytorch_lightning as pl
 from   pytorch_lightning import seed_everything, loggers as pl_loggers
 from   pytorch_lightning.callbacks import ModelCheckpoint
 
-from .scripts.dataset_scripts import dataloader
-from .scripts.model import intent_classifier
-from .scripts.utils import F1
+from scripts.dataset_scripts import dataloader
+from scripts.model import intent_classifier
+from scripts.utils import F1
 from arguments import ICTrainer_args
 
 args = ICTrainer_args()
 
 if args.freeze_args:
-    seed_everything(42, workers=True)
+    seed_everything(42)
 
 
 # ckpt callback config for pytorch lightning
 checkpoint_callback = ModelCheckpoint(
-                            monitor='val_intent_acc', 
+                            monitor= 'val_intent_F1', 
                             dirpath= args.param_save_dir,
                             filename= args.exp_num + '_JB-{epoch:02d}-{val_loss:.2f}',
                             save_top_k=1, mode='max',
