@@ -13,7 +13,7 @@ class intent_classifier(nn.Module):
                                         return_dict=True, 
                                         output_hidden_states=True,
                                         sinusoidal_pos_embds=True, 
-                                        cache_dir='/efs-storage/model/'
+                                        cache_dir='/efs-storage/research/model/'
                                     )
         
         self.intent_head = nn.Sequential(
