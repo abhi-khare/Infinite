@@ -14,3 +14,6 @@ env TRANSFORMERS_OFFLINE=1  python ICTesting.py --test_dir ./ --num_class 8 --in
 env TRANSFORMERS_OFFLINE=1  python ICTrainer.py --train_dir ./data/TOD/experiments/clean/train/train.tsv --val_dir ./data/TOD/experiments/clean/dev/dev.tsv --num_class 13 --intent_dropout 0.3025385895139513 --intent_hidden 35 --lr 0.00001184100185472858 --param_save_dir ./bin/baseline_bert/TOD --freeze_args True --logging_dir ./logs/baseline_bert/TOD --exp_num baseline_bert
 env TRANSFORMERS_OFFLINE=1  python ICTesting.py --test_dir ./ --num_class 13 --intent_dropout 0.3025385895139513 --intent_hidden 35 --lr 0.00001184100185472858  --freeze_args True --dataset TOD --model_dir bin/baseline_bert/TOD/ --batch_size 37
 
+# back translation testing
+
+# ATIS RU and DE
