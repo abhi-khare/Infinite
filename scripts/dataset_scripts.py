@@ -31,6 +31,30 @@ class dataset(Dataset):
     def __len__(self):
         return len(self.data)
 
+class adversarial_dataset(Dataset):
+    def __init__(self, file_dir: str) -> None:
+
+        self.data = pd.read_csv(file_dir, sep="\t")
+
+    def __getitem__(self, index: int) -> dict:
+        
+        # text
+        text = str(self.data.TEXT[index])
+        
+        # intent
+        intent_label = self.data.INTENT[index]
+        intent_id = self.data.INTENT_ID[index]
+
+        return {
+
+            "text": text,
+            "intent_id": intent_id,
+            "intent_label": intent_label
+        }
+
+    def __len__(self):
+        return len(self.data)
+
 
 class dataloader(pl.LightningDataModule):
     
@@ -39,6 +63,7 @@ class dataloader(pl.LightningDataModule):
         super().__init__()
 
         self.train_dir = args.train_dir
+        self.aug_train = args.aug_dir
         self.val_dir = args.val_dir
         self.batch_size = args.batch_size
         self.num_worker = args.num_workers
@@ -53,20 +78,34 @@ class dataloader(pl.LightningDataModule):
 
         self.val = dataset(self.val_dir)
 
-        if self.experiment_type == 'BASELINE':
+        if self.experiment_type == 'BASELINE' or self.experiment_type == 'ADVERSARIAL':
             self.train_collate = partial(collate_sup,tokenizer = self.tokenizer)
-            self.val_collate = partial(collate_sup, tokenizer = self.tokenizer)
-        
-        elif self.experiment_type == 'ADVERSARIAL':
-            self.train_collate = partial(collate_AT,tokenizer = self.tokenizer)
             self.val_collate = partial(collate_sup, tokenizer = self.tokenizer)
         
 
 
     def train_dataloader(self):
-        return DataLoader(
-            self.train, batch_size=self.batch_size, shuffle=True, collate_fn=self.train_collate, num_workers=self.num_worker
-        )
+
+        if self.experiment_type == 'BASELINE':
+            return DataLoader( self.train, batch_size=self.batch_size, 
+                                  shuffle=True, collate_fn=self.train_collate, 
+                                  num_workers=self.num_worker
+                             )
+
+        elif self.experiment_type == 'ADVERSARIAL':
+
+            orig_dl = DataLoader( self.train, batch_size=self.batch_size, 
+                                  shuffle=True, collate_fn=self.train_collate, 
+                                  num_workers=self.num_worker
+                                )
+
+            adv_dl = DataLoader( self.aug_train, batch_size=self.batch_size, 
+                                 shuffle=True, collate_fn=self.train_collate, 
+                                 num_workers=self.num_worker
+                               )
+
+            return {"orig": orig_dl, "adv": adv_dl}
+        
 
     def val_dataloader(self):
         return DataLoader(

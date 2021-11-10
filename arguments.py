@@ -20,6 +20,7 @@ def ICTrainer_args():
 
     # data params
     parser.add_argument('--train_dir', type=str)
+    parser.add_argument('--aug_dir', type=str, default=' ')
     parser.add_argument('--val_dir', type=str)
     parser.add_argument('--num_class', type=int)
     parser.add_argument('--dataset',type=str)
